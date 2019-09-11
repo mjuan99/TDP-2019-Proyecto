@@ -3,8 +3,8 @@ public class Hada extends Torre{
 	protected static int vidaMax=250;
 	protected static int dano=50;
 	protected static int alcance=8;
-	protected static String rutaImagen="/Sprites/Torres/Hada.png";
-	protected static String rutaProyectil="/Sprites/Ataques/AtaqueHada.gif";
+	protected static String rutaImagen="./src/Sprites/Torres/Hada.png";
+	protected static String rutaProyectil="./src/Sprites/Ataques/AtaqueHada.gif";
 	
 	public Hada(Celda celda) {
 		vida=vidaMax;
