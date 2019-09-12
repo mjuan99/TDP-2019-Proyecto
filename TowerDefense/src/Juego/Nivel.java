@@ -1,3 +1,4 @@
+package Juego;
 
 public class Nivel {
 	protected Oleada [] oleadas;

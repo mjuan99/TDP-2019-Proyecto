@@ -1,3 +1,5 @@
+package Personajes;
+import Juego.Elemento;
 
 public abstract class Personaje extends Elemento {
 	protected int dano;

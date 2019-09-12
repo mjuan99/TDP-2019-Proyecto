@@ -1,12 +1,14 @@
+package Personajes;
+import Objetos.Proyectil;
 
-public class Enemigo3 extends Enemigo {
+public class Enemigo5 extends Enemigo {
 	protected static int vidaMax=200;
 	protected static int dano=100;
 	protected static int alcance=5;
-	protected String rutaImagen="./src/Sprites/Enemigos/Enemigo3.gif";
-	protected static String rutaProyectil="./src/Sprites/Ataques/Enemigo3.gif";
+	protected String rutaImagen="./src/Sprites/Enemigos/Enemigo5.gif";
+	protected static String rutaProyectil="./src/Sprites/Ataques/Enemigo5.gif";
 	
-	public Enemigo3() {
+	public Enemigo5() {
 		vida=vidaMax;
 	}
 	

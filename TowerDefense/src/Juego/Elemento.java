@@ -1,9 +1,8 @@
-
+package Juego;
 public abstract class Elemento {
 	protected Celda celda;
 	protected int vida;
 	protected String rutaImagen;
-
 	public Celda getCelda() {
 		return celda;
 	}
@@ -20,7 +19,9 @@ public abstract class Elemento {
 		this.vida = vida;
 	}
 	
-	public abstract String getRutaImagen();
+	public String getRutaImagen() {
+		return rutaImagen;
+	}
 	
 	
 }

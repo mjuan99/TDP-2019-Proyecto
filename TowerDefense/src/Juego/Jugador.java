@@ -1,3 +1,4 @@
+package Juego;
 
 public class Jugador {
 	protected int presupuesto;

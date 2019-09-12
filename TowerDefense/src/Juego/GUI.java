@@ -1,8 +1,26 @@
+package Juego;
 
 import java.awt.EventQueue;
+import Personajes.*;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+
+import Personajes.Alien;
+import Personajes.Dinosaurio;
+import Personajes.Dragon;
+import Personajes.Enemigo;
+import Personajes.Enemigo1;
+import Personajes.Enemigo2;
+import Personajes.Enemigo3;
+import Personajes.Enemigo4;
+import Personajes.Enemigo5;
+import Personajes.Enemigo6;
+import Personajes.Fantasma;
+import Personajes.Fenix;
+import Personajes.Golem;
+import Personajes.Hada;
+import Personajes.Torre;
 
 public class GUI extends JFrame {
 	protected JPanel contentPane;
@@ -46,7 +64,7 @@ public class GUI extends JFrame {
 		for(int i=0;i<7;i++) {
 			image=new ImageIcon(torres[i].getRutaImagen());
 			dibujo[i]=new JLabel(image);
-			dibujo[i].setBounds(2*(i/6)*96,(i%6)*96,96,96);
+			dibujo[i].setBounds(torres[i].getCelda().getY()*96,torres[i].getCelda().getX()*96,96,96);
 			this.add(dibujo[i]);
 		}
 		disparos= new JLabel[7];
@@ -64,7 +82,7 @@ public class GUI extends JFrame {
 		for(int i=0;i<6;i++) {
 			image= new ImageIcon(enemigos[i].getRutaImagen());
 			dibujo2[i]=new JLabel(image);
-			dibujo2[i].setBounds(96*9,96*i , 96, 96);
+			dibujo2[i].setBounds(enemigos[i].getCelda().getY()*96,enemigos[i].getCelda().getX()*96 , 96, 96);
 			this.add(dibujo2[i]);
 		}
 	}

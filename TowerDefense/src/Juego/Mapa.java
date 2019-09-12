@@ -1,4 +1,6 @@
-
+package Juego;
+import Personajes.Enemigo;
+import Personajes.Torre;
 
 public class Mapa {
 	Celda[][] grilla;
