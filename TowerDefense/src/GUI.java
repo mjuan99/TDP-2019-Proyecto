@@ -30,7 +30,7 @@ public class GUI extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5,5,5,5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		fondo=new JLabel(new ImageIcon(this.getClass().getResource("/Sprites/Mapa/Mapa.jpg")));
+		fondo=new JLabel(new ImageIcon("./src/Sprites/Mapa/Mapa.jpg"));
 		fondo.setBounds(0,0,960,576);
 		this.agregarDibujo();
 		contentPane.add(fondo);
