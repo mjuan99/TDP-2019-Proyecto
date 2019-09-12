@@ -13,7 +13,17 @@ public class Mapa {
 		grilla=new Celda[x][y];
 		for(int i=0;i<y;i++)
 			for(int j=0;j<x;j++)
-				grilla[i][j]=new Celda(i,j);
+				grilla[j][i]=new Celda(i,j);
+	}
+	
+	public void crearTorre(Torre torre,int x,int y) {
+		grilla[x][y].setElem(torre);
+		torre.setCelda(grilla[x][y]);
+	}
+	
+	public void crearEnemigo(Enemigo enemigo,int x,int y) {
+		grilla[x][y].setElem(enemigo);
+		enemigo.setCelda(grilla[x][y]);
 	}
 
 	public Celda[][] getGrilla() {

@@ -9,6 +9,10 @@ public class Proyectil {
 		this.rango=rango;
 		this.rutaImagen=rutaImagen;
 	}
+	
+	public String getRutaImagen() {
+		return rutaImagen;
+	}
 
 	public int getDano() {
 		return dano;

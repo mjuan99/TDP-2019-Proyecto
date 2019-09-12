@@ -20,9 +20,7 @@ public abstract class Elemento {
 		this.vida = vida;
 	}
 	
-	public String getRutaImagen() {
-		return rutaImagen;
-	}
+	public abstract String getRutaImagen();
 	
 	
 }

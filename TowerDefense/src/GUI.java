@@ -32,29 +32,40 @@ public class GUI extends JFrame {
 		contentPane.setLayout(null);
 		fondo=new JLabel(new ImageIcon("./src/Sprites/Mapa/Mapa.jpg"));
 		fondo.setBounds(0,0,960,576);
-		this.agregarDibujo();
+		Mapa map=new Mapa(null,null);
+		this.agregarDibujo(map);
 		contentPane.add(fondo);
 	}
-	private void agregarDibujo() {
+	private void agregarDibujo(Mapa map) {
 		dibujo=new JLabel[7];
-		String [] rutas1= {"Alien.png","Dragon.png","Fantasma.png","Golem.png","Hada.png","Dinosaurio.png","Fenix.png"};
-		String[] rutas2= {"AtaqueAlien.gif","AtaqueDragon.gif","AtaqueFantasma.gif","AtaqueGolem.gif","AtaqueHada.gif"};
+		Torre[] torres={new Alien(),new Dragon(),new Fantasma(),new Golem(),new Hada(),new Dinosaurio(),new Fenix()};
+		for(int i=0;i<7;i++) {
+			map.crearTorre(torres[i], 2*(i/6), i%6);
+		}
 		ImageIcon image;
 		for(int i=0;i<7;i++) {
-			image=new ImageIcon("./src/Sprites/Torres/"+rutas1[i]);
+			image=new ImageIcon(torres[i].getRutaImagen());
 			dibujo[i]=new JLabel(image);
-			dibujo[i].setBounds(0,i*96,96,96);
+			dibujo[i].setBounds(2*(i/6)*96,(i%6)*96,96,96);
 			this.add(dibujo[i]);
 		}
-		dibujo[6]=new JLabel(new ImageIcon("./src/Sprites/Torres/"+rutas1[6]));
-		dibujo[6].setBounds(96,5*96,96,96);
-		this.add(dibujo[6]);
-		disparos= new JLabel[5];
-		for(int i=0;i<5;i++) {
-			image=new ImageIcon("./src/Sprites/Ataques/"+rutas2[i]);
+		disparos= new JLabel[7];
+		for(int i=0;i<7;i++) {
+			image=new ImageIcon(torres[i].Atacar().getRutaImagen());
 			disparos[i]=new JLabel(image);
-			disparos[i].setBounds(96,i*96,96,96);
+			disparos[i].setBounds((2*(i/6)+1)*96,(i%6)*96,96,96);
 			this.add(disparos[i]);
+		}
+		Enemigo[]enemigos= {new Enemigo1(),new Enemigo2(), new Enemigo3(),new Enemigo4(),new Enemigo5(),new Enemigo6()};
+		for(int i=0;i<6;i++) {
+			map.crearEnemigo(enemigos[i], 9, i);
+		}
+		JLabel[] dibujo2=new JLabel[6];
+		for(int i=0;i<6;i++) {
+			image= new ImageIcon(enemigos[i].getRutaImagen());
+			dibujo2[i]=new JLabel(image);
+			dibujo2[i].setBounds(96*9,96*i , 96, 96);
+			this.add(dibujo2[i]);
 		}
 	}
 }
