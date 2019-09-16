@@ -9,7 +9,7 @@ public class Dragon extends Torre {
 	
 	public Dragon() {
 		vida=vidaMax;
-		rutaImagen="./src/Sprites/Torres/Dinosaurio.png";
+		rutaImagen="./src/Sprites/Torres/Dragon.png";
 	}
 	
 	public Proyectil Atacar() {

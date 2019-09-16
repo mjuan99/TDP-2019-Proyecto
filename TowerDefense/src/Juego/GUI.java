@@ -1,28 +1,18 @@
 package Juego;
 
 import java.awt.EventQueue;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+
 import Personajes.*;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
-import Personajes.Alien;
-import Personajes.Dinosaurio;
-import Personajes.Dragon;
-import Personajes.Enemigo;
-import Personajes.Enemigo1;
-import Personajes.Enemigo2;
-import Personajes.Enemigo3;
-import Personajes.Enemigo4;
-import Personajes.Enemigo5;
-import Personajes.Enemigo6;
-import Personajes.Fantasma;
-import Personajes.Fenix;
-import Personajes.Golem;
-import Personajes.Hada;
-import Personajes.Torre;
+import Personajes.*;
 
 public class GUI extends JFrame {
+	protected static int pixel=96;
 	protected JPanel contentPane;
 	protected JLabel [] dibujo;
 	protected JLabel [] disparos;	
@@ -48,9 +38,24 @@ public class GUI extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5,5,5,5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		fondo=new JLabel(new ImageIcon("./src/Sprites/Mapa/Mapa.jpg"));
-		fondo.setBounds(0,0,960,576);
 		Mapa map=new Mapa(null,null);
+		fondo=new JLabel(new ImageIcon("./src/Sprites/Mapa/Mapa.jpg"));
+		fondo.setBounds(0,0,pixel*10,pixel*6);
+		fondo.addMouseListener(new MouseListener() {
+				public void mouseClicked(MouseEvent arg0) {
+					int x=(int)fondo.getMousePosition().getX();
+					int y=(int)fondo.getMousePosition().getY();
+					Torre t=new Dragon();
+					map.crearTorre(t, x/pixel, y/pixel);
+					JLabel img=new JLabel(new ImageIcon(t.getRutaImagen()));
+					img.setBounds(t.getCelda().getX()*pixel,t.getCelda().getY()*pixel,pixel,pixel);
+					contentPane.add(img);
+				}
+				public void mouseEntered(MouseEvent arg0) {}
+				public void mouseExited(MouseEvent arg0) {}
+				public void mousePressed(MouseEvent arg0) {}
+				public void mouseReleased(MouseEvent arg0) {}
+		});
 		this.agregarDibujo(map);
 		contentPane.add(fondo);
 	}
@@ -64,14 +69,14 @@ public class GUI extends JFrame {
 		for(int i=0;i<7;i++) {
 			image=new ImageIcon(torres[i].getRutaImagen());
 			dibujo[i]=new JLabel(image);
-			dibujo[i].setBounds(torres[i].getCelda().getY()*96,torres[i].getCelda().getX()*96,96,96);
+			dibujo[i].setBounds(torres[i].getCelda().getX()*pixel,torres[i].getCelda().getY()*pixel,pixel,pixel);
 			this.add(dibujo[i]);
 		}
 		disparos= new JLabel[7];
 		for(int i=0;i<7;i++) {
 			image=new ImageIcon(torres[i].Atacar().getRutaImagen());
 			disparos[i]=new JLabel(image);
-			disparos[i].setBounds((2*(i/6)+1)*96,(i%6)*96,96,96);
+			disparos[i].setBounds((2*(i/6)+1)*pixel,(i%6)*pixel,pixel,pixel);
 			this.add(disparos[i]);
 		}
 		Enemigo[]enemigos= {new Enemigo1(),new Enemigo2(), new Enemigo3(),new Enemigo4(),new Enemigo5(),new Enemigo6()};
@@ -82,8 +87,19 @@ public class GUI extends JFrame {
 		for(int i=0;i<6;i++) {
 			image= new ImageIcon(enemigos[i].getRutaImagen());
 			dibujo2[i]=new JLabel(image);
-			dibujo2[i].setBounds(enemigos[i].getCelda().getY()*96,enemigos[i].getCelda().getX()*96 , 96, 96);
+			dibujo2[i].setBounds(enemigos[i].getCelda().getX()*pixel,enemigos[i].getCelda().getY()*pixel , pixel, pixel);
 			this.add(dibujo2[i]);
 		}
+	}
+	public class OyenteClick implements MouseListener{
+		public void mouseClicked(MouseEvent arg0) {
+			double x=fondo.getMousePosition().getX();
+			double y=fondo.getMousePosition().getY();
+			
+		}
+		public void mouseEntered(MouseEvent arg0) {}
+		public void mouseExited(MouseEvent arg0) {}
+		public void mousePressed(MouseEvent arg0) {}
+		public void mouseReleased(MouseEvent arg0) {}
 	}
 }
