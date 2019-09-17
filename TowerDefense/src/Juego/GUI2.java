@@ -1,6 +1,8 @@
 package Juego;
 
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -12,8 +14,10 @@ import javax.swing.border.EmptyBorder;
 import Personajes.*;
 
 public class GUI2 extends JFrame{
+	protected int proxTorre=0;
 	protected static int pixel=96;
 	protected Mapa map;
+	protected JButton[] botones;
 	protected JPanel contentPane;
 	protected JLabel [][] celdas;
 	protected JLabel fondo;
@@ -35,7 +39,7 @@ public class GUI2 extends JFrame{
 	public GUI2() {
 		getContentPane().setLayout(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(30,30,1000,620);
+		setBounds(30,30,1150,620);
 		contentPane= new JPanel();
 		contentPane.setBorder(new EmptyBorder(5,5,5,5));
 		setContentPane(contentPane);
@@ -49,8 +53,8 @@ public class GUI2 extends JFrame{
 			public void mouseClicked(MouseEvent arg0) {
 				int x=(int)interfaz.getMousePosition().getX()/pixel;
 				int y=(int)interfaz.getMousePosition().getY()/pixel;
-				if(x>=0&&x<10&&y>=0&&y<6) {
-					Torre t=new Dragon();
+				if(x>=0&&x<9&&y>=0&&y<6) {
+					Torre t=getTorre(proxTorre);
 					map.crearTorre(t, x, y);
 					celdas[x][y].setIcon(new ImageIcon(t.getRutaImagen()));
 				}
@@ -62,6 +66,7 @@ public class GUI2 extends JFrame{
 		});
 		this.add(interfaz);
 		this.agregarDibujo();
+		this.agregarBotones();
 		contentPane.add(fondo);
 	}
 	private void agregarDibujo() {
@@ -72,16 +77,72 @@ public class GUI2 extends JFrame{
 				celdas[i][j].setBounds(i*pixel,j*pixel,pixel,pixel);
 				this.add(celdas[i][j]);
 			}
-		Torre[] torres={new Alien(),new Dragon(),new Fantasma(),new Golem(),new Hada(),new Dinosaurio(),new Fenix()};
-		Enemigo[]enemigos= {new Enemigo1(),new Enemigo2(), new Enemigo3(),new Enemigo4(),new Enemigo5(),new Enemigo6()};
-		for(int i=0;i<7;i++) {
-			map.crearTorre(torres[i], 2*(i/6), i%6);
-			celdas[2*(i/6)][i%6].setIcon(new ImageIcon(torres[i].getRutaImagen()));
-			celdas[2*(i/6)+1][i%6].setIcon(new ImageIcon(torres[i].Atacar().getRutaImagen()));
-		}
-		for(int i=0;i<6;i++) {
-			celdas[9][i].setIcon(new ImageIcon(enemigos[i].getRutaImagen()));
+	}
+	private void agregarBotones() {
+		botones= new JButton[8];
+		ActionListener [] oyentes= {new OyenteAlien(),new OyenteDinosaurio(),new OyenteDragon(), new OyenteFantasma(), new OyenteFenix(), new OyenteGolem(), new OyenteHada(),new OyenteOleada()};
+		String[] nombres= {"Alien","Dinosaurio","Dragon","Fantasma","Fenix","Golem","Hada","Oleada"};
+		for(int i=0;i<8;i++) {
+			botones[i]= new JButton(nombres[i]);
+			botones[i].setBounds(10*pixel,i*72, 150, 72);
+			botones[i].addActionListener(oyentes[i]);
+			this.add(botones[i]);
 		}
 	}
-	
+	private Torre getTorre(int i) {
+		Torre t=null;
+		switch(i) {
+		case 0:{t=new Alien();break;}
+		case 1:{t=new Dinosaurio();break;}
+		case 2:{t=new Dragon();break;}
+		case 3:{t=new Fantasma();break;}
+		case 4:{t=new Fenix();break;}
+		case 5:{t=new Golem();break;}
+		case 6:{t=new Hada();break;}
+		}
+		return t;
+	}
+	public class OyenteAlien implements ActionListener{
+		public void actionPerformed(ActionEvent arg0) {
+			proxTorre=0;
+		}
+	}
+	public class OyenteDinosaurio implements ActionListener{
+		public void actionPerformed(ActionEvent arg0) {
+			proxTorre=1;
+		}
+	}
+	public class OyenteDragon implements ActionListener{
+		public void actionPerformed(ActionEvent arg0) {
+			proxTorre=2;
+		}
+	}
+	public class OyenteFantasma implements ActionListener{
+		public void actionPerformed(ActionEvent arg0) {
+			proxTorre=3;
+		}
+	}
+	public class OyenteFenix implements ActionListener{
+		public void actionPerformed(ActionEvent arg0) {
+			proxTorre=4;
+		}
+	}
+	public class OyenteGolem implements ActionListener{
+		public void actionPerformed(ActionEvent arg0) {
+			proxTorre=5;
+		}
+	}
+	public class OyenteHada implements ActionListener{
+		public void actionPerformed(ActionEvent arg0) {
+			proxTorre=6;
+		}
+	}
+	public class OyenteOleada implements ActionListener{
+		public void actionPerformed(ActionEvent arg0) {
+			Enemigo[]enemigos= {new Enemigo1(),new Enemigo2(), new Enemigo3(),new Enemigo4(),new Enemigo5(),new Enemigo6()};
+			for(int i=0;i<6;i++) {
+				celdas[9][i].setIcon(new ImageIcon(enemigos[i].getRutaImagen()));
+			}
+		}
+	}
 }
