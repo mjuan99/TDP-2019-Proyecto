@@ -3,19 +3,50 @@ import Personajes.Enemigo;
 import Personajes.Torre;
 
 public class Mapa {
+	GUI2 gui;
 	Celda[][] grilla;
-	final static int x=12;
-	final static int y=8;
+	final static int x=10;
+	final static int y=6;
 	Nivel nivel;
 	Jugador jugador;
 	
-	public Mapa(Nivel nivel,Jugador jugador) {
+	public Mapa(Nivel nivel,Jugador jugador,GUI2 gui) {
+		this.gui=gui;
 		this.nivel=nivel;
 		this.jugador=jugador;
 		grilla=new Celda[x][y];
 		for(int i=0;i<y;i++)
 			for(int j=0;j<x;j++)
 				grilla[j][i]=new Celda(j,i);
+	}
+	
+	public void actuar() {
+		Elemento e;
+		for(int i=0;i<x;i++)
+			for(int j=0;j<y;j++) {
+				e=grilla[i][j].getElem();
+				if(e!=null) {
+					e.actuar();
+				}
+			}
+	}
+	
+	public boolean puedeAvanzar(Enemigo e) {
+		int celdaX=e.getCelda().getX();
+		int celdaY=e.getCelda().getY();
+		if(celdaX>0&&grilla[celdaX-1][celdaY].getElem()==null) 
+			return true;
+		else
+			return false;
+	}
+	
+	public void avanzar(Enemigo e) {
+		int celdaX=e.getCelda().getX();
+		int celdaY=e.getCelda().getY();
+		e.setCelda(grilla[celdaX-1][celdaY]);
+		grilla[celdaX][celdaY].setElem(null);;
+		grilla[celdaX-1][celdaY].setElem(e);
+		gui.mover(e,celdaX-1,celdaY);
 	}
 	
 	public void crearTorre(Torre torre,int x,int y) {

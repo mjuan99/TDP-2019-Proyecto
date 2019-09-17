@@ -7,6 +7,9 @@ public abstract class Personaje extends Elemento {
 	public int getDano() {
 		return dano;
 	}
+	
+	public void actuar() {}
+	
 	public void setDano(int dano) {
 		this.dano = dano;
 	}

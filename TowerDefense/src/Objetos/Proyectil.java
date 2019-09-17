@@ -5,7 +5,7 @@ public class Proyectil {
 	protected int rango;
 	protected String rutaImagen;
 	
-	public Proyectil(int dano,int rango,String rutaImagen) {
+	public Proyectil(int dano,int rango,String rutaImagen) {//agregar celda y entidad de donde se crea
 		this.dano=dano;
 		this.rango=rango;
 		this.rutaImagen=rutaImagen;

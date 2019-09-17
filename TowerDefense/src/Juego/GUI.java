@@ -38,7 +38,7 @@ public class GUI extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5,5,5,5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		Mapa map=new Mapa(null,null);
+		Mapa map=new Mapa(null,null,null);
 		fondo=new JLabel(new ImageIcon("./src/Sprites/Mapa/Mapa.jpg"));
 		fondo.setBounds(0,0,pixel*10,pixel*6);
 		fondo.addMouseListener(new MouseListener() {

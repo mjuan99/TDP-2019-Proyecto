@@ -14,6 +14,7 @@ import javax.swing.border.EmptyBorder;
 import Personajes.*;
 
 public class GUI2 extends JFrame{
+	protected ContadorTiempo tiempo;
 	protected int proxTorre=0;
 	protected static int pixel=96;
 	protected Mapa map;
@@ -44,7 +45,7 @@ public class GUI2 extends JFrame{
 		contentPane.setBorder(new EmptyBorder(5,5,5,5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		map=new Mapa(null,null);
+		map=new Mapa(null,null,this);
 		fondo=new JLabel(new ImageIcon("./src/Sprites/Mapa/Mapa.jpg"));
 		fondo.setBounds(0,0,pixel*10,pixel*6);
 		interfaz=new JLabel();
@@ -56,6 +57,7 @@ public class GUI2 extends JFrame{
 				if(x>=0&&x<9&&y>=0&&y<6) {
 					Torre t=getTorre(proxTorre);
 					map.crearTorre(t, x, y);
+					t.setComponenteGrafica(celdas[x][y]);
 					celdas[x][y].setIcon(new ImageIcon(t.getRutaImagen()));
 				}
 			}
@@ -68,6 +70,8 @@ public class GUI2 extends JFrame{
 		this.agregarDibujo();
 		this.agregarBotones();
 		contentPane.add(fondo);
+		tiempo=new ContadorTiempo(map);
+		tiempo.start();
 	}
 	private void agregarDibujo() {
 		celdas=new JLabel[10][6];
@@ -89,6 +93,13 @@ public class GUI2 extends JFrame{
 			this.add(botones[i]);
 		}
 	}
+	
+	public void mover(Enemigo e, int x, int y) {
+		celdas[x][y].setIcon(new ImageIcon(e.getRutaImagen()));
+		e.getComponenteGrafica().setIcon(null);
+		e.setComponenteGrafica(celdas[x][y]);
+	}
+	
 	private Torre getTorre(int i) {
 		Torre t=null;
 		switch(i) {
@@ -141,7 +152,10 @@ public class GUI2 extends JFrame{
 		public void actionPerformed(ActionEvent arg0) {
 			Enemigo[]enemigos= {new Enemigo1(),new Enemigo2(), new Enemigo3(),new Enemigo4(),new Enemigo5(),new Enemigo6()};
 			for(int i=0;i<6;i++) {
+				enemigos[i].setComponenteGrafica(celdas[9][i]);
+				enemigos[i].setMapa(map);
 				celdas[9][i].setIcon(new ImageIcon(enemigos[i].getRutaImagen()));
+				map.crearEnemigo(enemigos[i], 9, i);
 			}
 		}
 	}
