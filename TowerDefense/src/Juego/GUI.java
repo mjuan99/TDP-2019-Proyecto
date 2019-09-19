@@ -45,7 +45,7 @@ public class GUI extends JFrame {
 				public void mouseClicked(MouseEvent arg0) {
 					int x=(int)fondo.getMousePosition().getX();
 					int y=(int)fondo.getMousePosition().getY();
-					Torre t=new Dragon();
+					Torre t=new Dragon(map,null);
 					map.crearTorre(t, x/pixel, y/pixel);
 					JLabel img=new JLabel(new ImageIcon(t.getRutaImagen()));
 					img.setBounds(t.getCelda().getX()*pixel,t.getCelda().getY()*pixel,pixel,pixel);
@@ -61,7 +61,7 @@ public class GUI extends JFrame {
 	}
 	private void agregarDibujo(Mapa map) {
 		dibujo=new JLabel[7];
-		Torre[] torres={new Alien(),new Dragon(),new Fantasma(),new Golem(),new Hada(),new Dinosaurio(),new Fenix()};
+		Torre[] torres={new Alien(map,null),new Dragon(map,null),new Fantasma(map,null),new Golem(map,null),new Hada(map,null),new Dinosaurio(map,null),new Fenix(map,null)};
 		for(int i=0;i<7;i++) {
 			map.crearTorre(torres[i], 2*(i/6), i%6);
 		}
@@ -79,7 +79,7 @@ public class GUI extends JFrame {
 			disparos[i].setBounds((2*(i/6)+1)*pixel,(i%6)*pixel,pixel,pixel);
 			this.add(disparos[i]);
 		}
-		Enemigo[]enemigos= {new Enemigo1(),new Enemigo2(), new Enemigo3(),new Enemigo4(),new Enemigo5(),new Enemigo6()};
+		Enemigo[]enemigos= {new Enemigo1(map,null),new Enemigo2(map,null), new Enemigo3(map,null),new Enemigo4(map,null),new Enemigo5(map,null),new Enemigo6(map,null)};
 		for(int i=0;i<6;i++) {
 			map.crearEnemigo(enemigos[i], 9, i);
 		}

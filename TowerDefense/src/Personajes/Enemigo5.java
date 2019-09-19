@@ -1,21 +1,16 @@
 package Personajes;
+import Juego.Celda;
+import Juego.Mapa;
 import Objetos.Proyectil;
 
 public class Enemigo5 extends Enemigo {
-	protected static int vidaMax=200;
-	protected static int dano=100;
-	protected static int alcance=5;
-	protected String rutaImagen="./src/Sprites/Enemigos/Enemigo5.gif";
-	protected static String rutaProyectil="./src/Sprites/Ataques/Enemigo5.gif";
+	protected static int vidaBase=500;
+	protected static int danoBase=70;
+	protected static int alcanceBase=6;
+	protected static String imagen ="./src/Sprites/Enemigos/Enemigo5.gif";
+	protected static String proyectil="./src/Sprites/Ataques/Enemigo5.gif";
 	
-	public Enemigo5() {
-		vida=vidaMax;
-	}
-	
-	public Proyectil Atacar() {
-		return new Proyectil(dano,alcance,rutaProyectil);
-	}
-	public String getRutaImagen() {
-		return rutaImagen;
+	public Enemigo5(Mapa mapa,Celda celda) {
+		super(mapa,celda,vidaBase,imagen,danoBase,alcanceBase,proyectil);
 	}
 }

@@ -9,6 +9,13 @@ public abstract class Elemento {
 	protected Mapa mapa;
 	protected JLabel yo;
 	
+	protected Elemento(Mapa mapa,Celda celda,int vidaMax,String rutaImagen) {
+		this.celda=celda;
+		vida=vidaMax;
+		this.rutaImagen=rutaImagen;
+		this.mapa=mapa;
+	}
+	
 	public Celda getCelda() {
 		return celda;
 	}

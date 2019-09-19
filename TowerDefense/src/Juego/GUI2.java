@@ -103,13 +103,13 @@ public class GUI2 extends JFrame{
 	private Torre getTorre(int i) {
 		Torre t=null;
 		switch(i) {
-		case 0:{t=new Alien();break;}
-		case 1:{t=new Dinosaurio();break;}
-		case 2:{t=new Dragon();break;}
-		case 3:{t=new Fantasma();break;}
-		case 4:{t=new Fenix();break;}
-		case 5:{t=new Golem();break;}
-		case 6:{t=new Hada();break;}
+		case 0:{t=new Alien(map,null);break;}
+		case 1:{t=new Dinosaurio(map,null);break;}
+		case 2:{t=new Dragon(map,null);break;}
+		case 3:{t=new Fantasma(map,null);break;}
+		case 4:{t=new Fenix(map,null);break;}
+		case 5:{t=new Golem(map,null);break;}
+		case 6:{t=new Hada(map,null);break;}
 		}
 		return t;
 	}
@@ -150,10 +150,9 @@ public class GUI2 extends JFrame{
 	}
 	public class OyenteOleada implements ActionListener{
 		public void actionPerformed(ActionEvent arg0) {
-			Enemigo[]enemigos= {new Enemigo1(),new Enemigo2(), new Enemigo3(),new Enemigo4(),new Enemigo5(),new Enemigo6()};
+			Enemigo[]enemigos= {new Enemigo1(map,null),new Enemigo2(map,null), new Enemigo3(map,null),new Enemigo4(map,null),new Enemigo5(map,null),new Enemigo6(map,null)};
 			for(int i=0;i<6;i++) {
 				enemigos[i].setComponenteGrafica(celdas[9][i]);
-				enemigos[i].setMapa(map);
 				celdas[9][i].setIcon(new ImageIcon(enemigos[i].getRutaImagen()));
 				map.crearEnemigo(enemigos[i], 9, i);
 			}

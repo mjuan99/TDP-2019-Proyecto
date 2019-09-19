@@ -1,18 +1,18 @@
 package Personajes;
+import Juego.Celda;
+import Juego.Mapa;
 import Objetos.Proyectil;
 
 public class Dragon extends Torre {
-	protected static int vidaMax=600;
-	protected static int dano=50;
-	protected static int alcance=7;
-	protected static String rutaProyectil="./src/Sprites/Ataques/AtaqueDragon.gif";
 	
-	public Dragon() {
-		vida=vidaMax;
-		rutaImagen="./src/Sprites/Torres/Dragon.png";
+	protected static int vidaBase=600;
+	protected static int danoBase=50;
+	protected static int alcanceBase=7;
+	protected static String imagen ="./src/Sprites/Torres/Dragon.png";
+	protected static String proyectil="./src/Sprites/Ataques/AtaqueDragon.gif";
+	
+	public Dragon(Mapa mapa,Celda celda) {
+		super(mapa,celda,vidaBase,imagen,danoBase,alcanceBase,proyectil);
 	}
 	
-	public Proyectil Atacar() {
-		return new Proyectil(dano,alcance,rutaProyectil);
-	}
 }

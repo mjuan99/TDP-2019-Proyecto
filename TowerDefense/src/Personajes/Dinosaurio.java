@@ -1,19 +1,16 @@
 package Personajes;
+import Juego.Celda;
+import Juego.Mapa;
 import Objetos.Proyectil;
 
 public class Dinosaurio extends Torre {
-	protected static int vidaMax=600;
-	protected static int dano=80;
-	protected static int alcance=1;
-	protected static String rutaProyectil="./src/Sprites/Ataques/AtaqueDinosaurio.gif";
+	protected static int vidaBase=600;
+	protected static int danoBase=80;
+	protected static int alcanceBase=1;
+	protected static String imagen ="./src/Sprites/Torres/Dinosaurio.png";
+	protected static String proyectil="./src/Sprites/Ataques/AtaqueDinosaurio.gif";
 	
-	public Dinosaurio() {
-		vida=vidaMax;
-		rutaImagen="./src/Sprites/Torres/Dinosaurio.png";
+	public Dinosaurio(Mapa mapa,Celda celda) {
+		super(mapa,celda,vidaBase,imagen,danoBase,alcanceBase,proyectil);
 	}
-	
-	public Proyectil Atacar() {
-		return new Proyectil(dano,alcance,rutaProyectil);
-	}
-	
 }

@@ -1,6 +1,6 @@
 package Objetos;
 
-public class Proyectil {
+public abstract class Proyectil {
 	protected int dano;
 	protected int rango;
 	protected String rutaImagen;
