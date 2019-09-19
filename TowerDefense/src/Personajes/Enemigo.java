@@ -21,17 +21,16 @@ public abstract class Enemigo extends Personaje{
 	
 	public void actuar() {
 		Rectangle r=yo.getBounds();
-		int x=(int)r.getX()-4;
-		int y=(int)r.getY();
-		if(!moviendo)
+		if(!moviendo) {
 			if(mapa.puedeAvanzar(this)) {
 				celdaDestino=celda.getX()-1;
 				mapa.avanzar(this);
 				moviendo=true;
-			}else ;
+			}
+		}
 		else
 			if(celdaDestino*96<yo.getBounds().getX()) 
-				yo.setBounds(x,y,96,96);
+				yo.setBounds((int)r.getX()-4,(int)r.getY(),96,96);
 			else
 				moviendo=false;
 	}
