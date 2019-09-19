@@ -5,8 +5,8 @@ import Personajes.Torre;
 public class Mapa {
 	Controlador controlador;
 	Celda[][] grilla;
-	final static int x=10;
-	final static int y=6;
+	protected int x=10;
+	protected int y=6;
 	Nivel nivel;
 	Jugador jugador;
 	
@@ -59,6 +59,10 @@ public class Mapa {
 	public void crearEnemigo(Enemigo enemigo,int x,int y) {
 		grilla[x][y].setElem(enemigo);
 		enemigo.setCelda(grilla[x][y]);
+	}
+	
+	public boolean posicionValidaTorre(int x,int y) {
+		return (x>=0&&x<this.x-1&&y>=0&&y<this.y&&grilla[x][y].getElem()==null);
 	}
 
 	public Celda[][] getGrilla() {

@@ -107,8 +107,12 @@ public class GUI extends JFrame{
 			int y=celda.getY()/96;
 			controlador.agregarTorre(x, y);
 		}
-		public void mouseEntered(MouseEvent e) {celda.setIcon(new ImageIcon("./src/Sprites/Mapa/celda4.png"));}
-		public void mouseExited(MouseEvent e) {celda.setIcon(new ImageIcon("./src/Sprites/Mapa/celda2.png"));}
+		public void mouseEntered(MouseEvent e) {
+			celda.setIcon(new ImageIcon("./src/Sprites/Mapa/celda4.png"));
+		}
+		public void mouseExited(MouseEvent e) {
+			celda.setIcon(new ImageIcon("./src/Sprites/Mapa/celda2.png"));
+		}
 		public void mousePressed(MouseEvent e) {}
 		public void mouseReleased(MouseEvent e) {}
 	}
@@ -117,6 +121,7 @@ public class GUI extends JFrame{
 		elemento.setBounds(x*pixel, y*pixel, pixel, pixel);
 		contentPane.add(elemento);
 		contentPane.setComponentZOrder(elemento, 0);
+		elemento.repaint();
 		return elemento;
 	}
 }
