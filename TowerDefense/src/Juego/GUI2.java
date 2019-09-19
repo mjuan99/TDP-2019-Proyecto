@@ -45,7 +45,7 @@ public class GUI2 extends JFrame{
 		contentPane.setBorder(new EmptyBorder(5,5,5,5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		map=new Mapa(null,null,this);
+		map=new Mapa(null,null,null);
 		fondo=new JLabel(new ImageIcon("./src/Sprites/Mapa/Mapa.jpg"));
 		fondo.setBounds(0,0,pixel*10,pixel*6);
 		interfaz=new JLabel();

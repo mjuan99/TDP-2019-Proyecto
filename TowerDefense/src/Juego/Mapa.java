@@ -3,17 +3,17 @@ import Personajes.Enemigo;
 import Personajes.Torre;
 
 public class Mapa {
-	GUI2 gui;
+	Controlador controlador;
 	Celda[][] grilla;
 	final static int x=10;
 	final static int y=6;
 	Nivel nivel;
 	Jugador jugador;
 	
-	public Mapa(Nivel nivel,Jugador jugador,GUI2 gui) {
-		this.gui=gui;
+	public Mapa(Nivel nivel,Jugador jugador,Controlador controlador) {
 		this.nivel=nivel;
 		this.jugador=jugador;
+		this.controlador=controlador;
 		grilla=new Celda[x][y];
 		for(int i=0;i<y;i++)
 			for(int j=0;j<x;j++)
@@ -44,9 +44,9 @@ public class Mapa {
 		int celdaX=e.getCelda().getX();
 		int celdaY=e.getCelda().getY();
 		e.setCelda(grilla[celdaX-1][celdaY]);
-		grilla[celdaX][celdaY].setElem(null);;
+		grilla[celdaX][celdaY].setElem(null);
 		grilla[celdaX-1][celdaY].setElem(e);
-		gui.mover(e,celdaX-1,celdaY);
+		//controlador.mover(e,celdaX-1,celdaY);
 	}
 	
 	public void crearTorre(Torre torre,int x,int y) {
@@ -83,5 +83,17 @@ public class Mapa {
 
 	public void setJugador(Jugador jugador) {
 		this.jugador = jugador;
+	}
+	
+	public int getX() {
+		return x;
+	}
+	
+	public int getY() {
+		return y;
+	}
+	
+	public Controlador getControlador() {
+		return controlador;
 	}
 }
