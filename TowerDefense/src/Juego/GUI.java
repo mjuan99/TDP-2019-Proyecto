@@ -19,6 +19,7 @@ public class GUI extends JFrame{
 	
 	public GUI(Controlador controlador) {
 		super("Juego");
+		System.out.println("ASD");
 		this.controlador=controlador;
 		getContentPane().setLayout(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
