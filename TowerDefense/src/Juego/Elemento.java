@@ -3,13 +3,15 @@ package Juego;
 import javax.swing.JLabel;
 
 public abstract class Elemento {
+	protected boolean vivo;
 	protected Celda celda;
 	protected int vida;
 	protected String rutaImagen;
 	protected Mapa mapa;
-	protected JLabel yo;
+	protected JLabel componenteGrafica;
 	
 	protected Elemento(Mapa mapa,Celda celda,int vidaMax,String rutaImagen) {
+		vivo=true;
 		this.celda=celda;
 		vida=vidaMax;
 		this.rutaImagen=rutaImagen;
@@ -21,11 +23,11 @@ public abstract class Elemento {
 	}
 	
 	public JLabel getComponenteGrafica() {
-		return yo;
+		return componenteGrafica;
 	}
 	
 	public void setComponenteGrafica(JLabel componenteGrafica) {
-		yo=componenteGrafica;
+		this.componenteGrafica=componenteGrafica;
 	}
 	
 	public abstract void actuar();

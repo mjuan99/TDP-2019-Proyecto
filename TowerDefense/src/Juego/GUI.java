@@ -1,5 +1,6 @@
 package Juego;
 
+import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -14,22 +15,37 @@ public class GUI extends JFrame{
 	protected JButton[] botones;
 	protected JPanel contentPane;
 	protected JLabel [][] celdas;
+	protected JLabel puntaje;
 	protected Controlador controlador;
 	protected static int pixel=96;
 	
 	public GUI(Controlador controlador) {
 		super("Juego");
-		System.out.println("ASD");
 		this.controlador=controlador;
 		getContentPane().setLayout(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(30,30,1150,620);
+		setBounds(30,30,1300,620);
 		contentPane= new JPanel();
 		contentPane.setBorder(new EmptyBorder(5,5,5,5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		crearFondo();
 		agregarBotones();
+		agregarJugador();
+	}
+	
+	public void agregarJugador() {
+		puntaje=new JLabel("Puntos: 0");
+		puntaje.setBounds(1110,0,100,100);
+		contentPane.add(puntaje);
+	}
+	
+	public void actualizarPuntos(int puntos) {
+		puntaje.setText("Puntos: "+puntos);
+	}
+	
+	public void eliminarComponente(Component c) {
+		contentPane.remove(c);
 	}
 	
 	private void crearFondo() {
