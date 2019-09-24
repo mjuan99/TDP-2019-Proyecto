@@ -41,11 +41,15 @@ public class Controlador {
 	}
 	
 	public Controlador() {
-		map=new Mapa(null,null,this);
+		map=new Mapa(null,this);
 		gui=new GUI(this);
 		gui.setVisible(true);
 		tiempo=new ContadorTiempo(map);
 		tiempo.start();
+	}
+	
+	public void actualizarPuntos(int puntos) {
+		gui.actualizarPuntos(puntos);
 	}
 	
 	public Mapa getMapa() {

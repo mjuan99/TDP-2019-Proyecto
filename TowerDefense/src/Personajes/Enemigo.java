@@ -2,11 +2,14 @@ package Personajes;
 
 import java.awt.Rectangle;
 
+import javax.swing.ImageIcon;
+
 import Juego.Celda;
 import Juego.Mapa;
 import Objetos.ProyectilEnemigo;
 
 public abstract class Enemigo extends Personaje{
+	
 	protected int contadorMov=0;
 	protected boolean moviendo=false;
 	protected int celdaDestino;
@@ -20,21 +23,30 @@ public abstract class Enemigo extends Personaje{
 	}
 	
 	public void actuar() {
-		Rectangle r=yo.getBounds();
+		//System.out.println(componenteGrafica);
+		Rectangle r=componenteGrafica.getBounds();
 		if(!moviendo) {
 			if(mapa.puedeAvanzar(this)) {
 				celdaDestino=celda.getX()-1;
 				mapa.avanzar(this);
 				moviendo=true;
-			}
+			}else
+				morir();
 		}
 		else
-			if(celdaDestino*96<yo.getBounds().getX()) 
-				yo.setBounds((int)r.getX()-4,(int)r.getY(),96,96);
+			if(celdaDestino*96<componenteGrafica.getBounds().getX()) 
+				componenteGrafica.setBounds((int)r.getX()-4,(int)r.getY(),96,96);
 			else
 				moviendo=false;
 	}
 	public void setMapa(Mapa mapa) {
 		this.mapa=mapa;
+	}
+	
+	public void morir() {
+		componenteGrafica.setIcon(new ImageIcon("./src/Sprites/Efectos/Explosion2.gif"));
+		componenteGrafica.repaint();
+		mapa.getJugador().sumarPuntos(50);
+		mapa.eliminarElemento(this);
 	}
 }

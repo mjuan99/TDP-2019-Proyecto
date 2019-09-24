@@ -3,21 +3,26 @@ import Personajes.Enemigo;
 import Personajes.Torre;
 
 public class Mapa {
-	Controlador controlador;
-	Celda[][] grilla;
+	protected Controlador controlador;
+	protected Celda[][] grilla;
 	protected int x=10;
 	protected int y=6;
-	Nivel nivel;
-	Jugador jugador;
+	protected Nivel nivel;
+	protected Jugador jugador;
 	
-	public Mapa(Nivel nivel,Jugador jugador,Controlador controlador) {
+	public Mapa(Nivel nivel,Controlador controlador) {
+		this.nivel=new Nivel(500);
+		jugador=new Jugador(this);
 		this.nivel=nivel;
-		this.jugador=jugador;
 		this.controlador=controlador;
 		grilla=new Celda[x][y];
 		for(int i=0;i<y;i++)
 			for(int j=0;j<x;j++)
 				grilla[j][i]=new Celda(j,i);
+	}
+	
+	public void actualizarPuntos(int puntos) {
+		controlador.actualizarPuntos(puntos);
 	}
 	
 	public void actuar() {
@@ -29,6 +34,11 @@ public class Mapa {
 					e.actuar();
 				}
 			}
+	}
+	
+	public void eliminarElemento(Elemento e) {
+		grilla[e.getCelda().getX()][e.getCelda().getY()].setElem(null);
+		e.setCelda(null);
 	}
 	
 	public boolean puedeAvanzar(Enemigo e) {
