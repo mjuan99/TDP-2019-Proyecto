@@ -8,8 +8,6 @@ public class Jugador {
 	public Jugador(Mapa mapa) {
 		puntos=0;
 		this.mapa=mapa;
-		System.out.println(mapa);
-		System.out.println(mapa.getNivel());
 		presupuesto=mapa.getNivel().getPresupuestoBase();
 	}
 	

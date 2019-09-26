@@ -35,7 +35,7 @@ public abstract class Enemigo extends Personaje{
 		}
 		else
 			if(celdaDestino*96<componenteGrafica.getBounds().getX()) 
-				componenteGrafica.setBounds((int)r.getX()-4,(int)r.getY(),96,96);
+				componenteGrafica.setBounds((int)r.getX()-12,(int)r.getY(),96,96);
 			else
 				moviendo=false;
 	}
@@ -44,8 +44,9 @@ public abstract class Enemigo extends Personaje{
 	}
 	
 	public void morir() {
-		componenteGrafica.setIcon(new ImageIcon("./src/Sprites/Efectos/Explosion2.gif"));
-		componenteGrafica.repaint();
+		ImageIcon img=new ImageIcon("./src/Sprites/Efectos/Explosion2.gif");
+		//img.getImage().flush();
+		componenteGrafica.setIcon(img);
 		mapa.getJugador().sumarPuntos(50);
 		mapa.eliminarElemento(this);
 	}
