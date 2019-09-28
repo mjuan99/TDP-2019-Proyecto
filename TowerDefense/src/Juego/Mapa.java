@@ -1,4 +1,7 @@
 package Juego;
+import java.util.Iterator;
+import java.util.LinkedList;
+
 import Personajes.Enemigo;
 import Personajes.Torre;
 
@@ -9,8 +12,10 @@ public class Mapa {
 	protected int y=6;
 	protected Nivel nivel;
 	protected Jugador jugador;
+	protected LinkedList<Elemento> lista;
 	
 	public Mapa(Nivel nivel,Controlador controlador) {
+		lista=new LinkedList<Elemento>();
 		this.nivel=new Nivel(500);
 		jugador=new Jugador(this);
 		this.nivel=nivel;
@@ -26,19 +31,26 @@ public class Mapa {
 	}
 	
 	public void actuar() {
-		Elemento e;
+		LinkedList<Elemento> listaAux=new LinkedList<Elemento>();
+		for(Elemento el:lista)
+			listaAux.addLast(el);
+		for(Elemento el:listaAux) {
+			el.actuar();
+		}
+		/*Elemento e;
 		for(int i=0;i<x;i++)
 			for(int j=0;j<y;j++) {
 				e=grilla[i][j].getElem();
 				if(e!=null) {
 					e.actuar();
 				}
-			}
+			}*/
 	}
 	
 	public void eliminarElemento(Elemento e) {
 		grilla[e.getCelda().getX()][e.getCelda().getY()].setElem(null);
 		e.setCelda(null);
+		lista.remove(e);
 	}
 	
 	public boolean puedeAvanzar(Enemigo e) {
@@ -63,12 +75,14 @@ public class Mapa {
 		if(grilla[x][y].getElem()==null) {
 			grilla[x][y].setElem(torre);
 			torre.setCelda(grilla[x][y]);
+			lista.add(torre);
 		}
 	}
 	
 	public void crearEnemigo(Enemigo enemigo,int x,int y) {
 		grilla[x][y].setElem(enemigo);
 		enemigo.setCelda(grilla[x][y]);
+		lista.add(enemigo);
 	}
 	
 	public boolean posicionValidaTorre(int x,int y) {

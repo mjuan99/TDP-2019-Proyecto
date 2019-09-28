@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.Map;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -16,6 +17,7 @@ public class GUI extends JFrame{
 	protected JPanel contentPane;
 	protected JLabel [][] celdas;
 	protected JLabel puntaje;
+	protected JLabel oro;
 	protected Controlador controlador;
 	protected static int pixel=96;
 	
@@ -35,9 +37,15 @@ public class GUI extends JFrame{
 	}
 	
 	public void agregarJugador() {
+		Jugador jugador=controlador.getMapa().getJugador();
 		puntaje=new JLabel("Puntos: 0");
-		puntaje.setBounds(1110,0,100,100);
+		oro=new JLabel("Oro: "+jugador.getOro());
+		puntaje.setBounds(1110,0,100,30);
+		oro.setBounds(1110,30,100,30);
 		contentPane.add(puntaje);
+		contentPane.add(oro);
+		jugador.setPuntosGrafica(puntaje);
+		jugador.setOroGrafica(oro);
 	}
 	
 	public void actualizarPuntos(int puntos) {
@@ -139,6 +147,7 @@ public class GUI extends JFrame{
 		contentPane.add(elemento);
 		contentPane.setComponentZOrder(elemento, 0);
 		elemento.repaint();
+		System.out.println(elemento);
 		return elemento;
 	}
 }

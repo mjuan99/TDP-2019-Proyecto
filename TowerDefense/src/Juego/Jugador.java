@@ -1,6 +1,10 @@
 package Juego;
 
+import javax.swing.JLabel;
+
 public class Jugador {
+	protected JLabel oroGrafica;
+	protected JLabel puntosGrafica;
 	protected int presupuesto;
 	protected int puntos;
 	protected Mapa mapa;
@@ -13,6 +17,18 @@ public class Jugador {
 	
 	public void sumarPuntos(int p) {
 		puntos+=p;
-		mapa.actualizarPuntos(puntos);
+		puntosGrafica.setText("Puntos: "+puntos);
+	}
+	
+	public int getOro() {
+		return presupuesto;
+	}
+	
+	public void setOroGrafica(JLabel oro) {
+		oroGrafica=oro;
+	}
+	
+	public void setPuntosGrafica(JLabel puntos) {
+		puntosGrafica=puntos;
 	}
 }

@@ -45,7 +45,7 @@ public abstract class Enemigo extends Personaje{
 	
 	public void morir() {
 		ImageIcon img=new ImageIcon("./src/Sprites/Efectos/Explosion2.gif");
-		//img.getImage().flush();
+		img.getImage().flush();
 		componenteGrafica.setIcon(img);
 		mapa.getJugador().sumarPuntos(50);
 		mapa.eliminarElemento(this);
