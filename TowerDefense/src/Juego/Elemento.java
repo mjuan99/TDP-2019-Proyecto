@@ -9,6 +9,8 @@ public abstract class Elemento {
 	protected String rutaImagen;
 	protected Mapa mapa;
 	protected JLabel componenteGrafica;
+	protected int contadorPulsos=0;
+	protected int topePulso=100;
 	
 	protected Elemento(Mapa mapa,Celda celda,int vidaMax,String rutaImagen) {
 		vivo=true;

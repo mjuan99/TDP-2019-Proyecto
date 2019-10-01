@@ -1,4 +1,4 @@
-package Juego;
+/*package Juego;
 
 import java.awt.EventQueue;
 import java.awt.event.MouseEvent;
@@ -102,4 +102,4 @@ public class GUI1 extends JFrame {
 		public void mousePressed(MouseEvent arg0) {}
 		public void mouseReleased(MouseEvent arg0) {}
 	}
-}
+}*/

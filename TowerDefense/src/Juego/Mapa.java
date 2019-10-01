@@ -2,6 +2,7 @@ package Juego;
 import java.util.Iterator;
 import java.util.LinkedList;
 
+import Objetos.Proyectil;
 import Personajes.Enemigo;
 import Personajes.Torre;
 
@@ -24,6 +25,11 @@ public class Mapa {
 		for(int i=0;i<y;i++)
 			for(int j=0;j<x;j++)
 				grilla[j][i]=new Celda(j,i);
+	}
+	
+	public void crearProyectil(Proyectil proyectil) {
+		lista.add(proyectil);
+		
 	}
 	
 	public void actualizarPuntos(int puntos) {

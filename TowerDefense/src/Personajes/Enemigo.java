@@ -19,7 +19,7 @@ public abstract class Enemigo extends Personaje{
 	}
 	
 	public ProyectilEnemigo Atacar() {
-		return new ProyectilEnemigo(dano,alcance,rutaProyectil);
+		return new ProyectilEnemigo(mapa, celda, dano,alcance,rutaProyectil);
 	}
 	
 	public void actuar() {

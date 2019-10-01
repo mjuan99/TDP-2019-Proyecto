@@ -63,12 +63,12 @@ public class Controlador {
 		if(map.posicionValidaTorre(x, y)) {
 			Torre t=getTorre(proxTorre);
 			map.crearTorre(t, x, y);
-			t.setComponenteGrafica(gui.crearElemento(x, y, t.getRutaImagen()));
+			gui.crearElemento(x, y, t);
 		}
 	}
 	public void agregarEnemigo(int x, int y, Enemigo e) {
 		map.crearEnemigo(e, x, y);
-		e.setComponenteGrafica(gui.crearElemento(x, y, e.getRutaImagen()));
+		gui.crearElemento(x, y, e);
 	}
 	private Torre getTorre(int i) {
 		Torre t=null;

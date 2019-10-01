@@ -141,13 +141,12 @@ public class GUI extends JFrame{
 		public void mousePressed(MouseEvent e) {}
 		public void mouseReleased(MouseEvent e) {}
 	}
-	public JLabel crearElemento(int x, int y, String rutaImagen) {
-		JLabel elemento= new JLabel(new ImageIcon(rutaImagen));
+	public void crearElemento(int x, int y, Elemento e) {
+		JLabel elemento= new JLabel(new ImageIcon(e.getRutaImagen()));
 		elemento.setBounds(x*pixel, y*pixel, pixel, pixel);
 		contentPane.add(elemento);
 		contentPane.setComponentZOrder(elemento, 0);
 		elemento.repaint();
-		System.out.println(elemento);
-		return elemento;
+		e.setComponenteGrafica(elemento);
 	}
 }

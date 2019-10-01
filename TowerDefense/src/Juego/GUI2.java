@@ -1,4 +1,4 @@
-package Juego;
+/*package Juego;
 
 import java.awt.EventQueue;
 import java.awt.event.ActionEvent;
@@ -158,4 +158,4 @@ public class GUI2 extends JFrame{
 			}
 		}
 	}
-}
+}*/
