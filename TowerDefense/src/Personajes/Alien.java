@@ -6,7 +6,7 @@ public class Alien extends Torre {
 	
 	protected static int vidaBase=500;
 	protected static int danoBase=70;
-	protected static int alcanceBase=6;
+	protected static int alcanceBase=3;
 	protected static String imagen ="./src/Sprites/Torres/Alien.gif";
 	protected static String proyectil="./src/Sprites/Ataques/AtaqueAlien.gif";
 	

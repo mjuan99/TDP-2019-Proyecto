@@ -3,7 +3,9 @@ package Personajes;
 import java.awt.Rectangle;
 
 import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 
+import Juego.AutoRemove;
 import Juego.Celda;
 import Juego.Mapa;
 import Objetos.ProyectilEnemigo;
@@ -30,8 +32,9 @@ public abstract class Enemigo extends Personaje{
 				celdaDestino=celda.getX()-1;
 				mapa.avanzar(this);
 				moviendo=true;
-			}else
+			}else {
 				morir();
+			}
 		}
 		else
 			if(celdaDestino*96<componenteGrafica.getBounds().getX()) 
@@ -43,11 +46,21 @@ public abstract class Enemigo extends Personaje{
 		this.mapa=mapa;
 	}
 	
+	public void danar(int dano) {
+		if(vida<=dano)
+			morir();
+		else
+			vida-=dano;
+		System.out.println(vida);
+	}
+	
 	public void morir() {
-		ImageIcon img=new ImageIcon("./src/Sprites/Efectos/Explosion2.gif");
-		img.getImage().flush();
-		componenteGrafica.setIcon(img);
+		//ImageIcon img=new ImageIcon("./src/Sprites/Efectos/Explosion2.gif");
+		//img.getImage().flush();
+		//mapa.getControlador().getGui().setearLabel(this,"./src/Sprites/Efectos/Explosion2.gif");
 		mapa.getJugador().sumarPuntos(50);
 		mapa.eliminarElemento(this);
+		AutoRemove a=new AutoRemove(this,5000,"./src/Sprites/Efectos/Explosion2.gif");
+		a.start();
 	}
 }

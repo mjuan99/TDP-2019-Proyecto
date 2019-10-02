@@ -1,6 +1,7 @@
 package Juego;
 
 import java.awt.Component;
+import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -54,6 +55,16 @@ public class GUI extends JFrame{
 	
 	public void eliminarComponente(Component c) {
 		contentPane.remove(c);
+	}
+	
+	public void setearLabel(Elemento elem, String rutaImagen) {
+		Rectangle r=elem.getComponenteGrafica().getBounds();
+		elem.getComponenteGrafica().setIcon(null);
+		JLabel nuevo = new JLabel(new ImageIcon(rutaImagen));
+		elem.setComponenteGrafica(nuevo);
+		nuevo.setBounds(r);
+		contentPane.add(nuevo);
+		contentPane.setComponentZOrder(nuevo, 0);
 	}
 	
 	private void crearFondo() {
@@ -146,7 +157,7 @@ public class GUI extends JFrame{
 		elemento.setBounds(x*pixel, y*pixel, pixel, pixel);
 		contentPane.add(elemento);
 		contentPane.setComponentZOrder(elemento, 0);
-		elemento.repaint();
+		//elemento.repaint();
 		e.setComponenteGrafica(elemento);
 	}
 }

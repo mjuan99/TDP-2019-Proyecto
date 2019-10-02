@@ -10,7 +10,7 @@ public abstract class Elemento {
 	protected Mapa mapa;
 	protected JLabel componenteGrafica;
 	protected int contadorPulsos=0;
-	protected int topePulso=100;
+	protected int topePulso=10;
 	
 	protected Elemento(Mapa mapa,Celda celda,int vidaMax,String rutaImagen) {
 		vivo=true;

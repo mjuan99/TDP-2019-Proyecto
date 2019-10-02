@@ -8,7 +8,7 @@ public class Hada extends Torre{
 	
 	protected static int vidaBase=250;
 	protected static int danoBase=50;
-	protected static int alcanceBase=8;
+	protected static int alcanceBase=3;
 	protected static String imagen ="./src/Sprites/Torres/Hada.gif";
 	protected static String proyectil="./src/Sprites/Ataques/AtaqueHada.gif";
 	

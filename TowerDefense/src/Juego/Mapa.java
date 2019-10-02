@@ -29,9 +29,9 @@ public class Mapa {
 	
 	public void crearProyectil(Proyectil proyectil) {
 		lista.add(proyectil);
-		
+		controlador.crearElemento(proyectil);
 	}
-	
+
 	public void actualizarPuntos(int puntos) {
 		controlador.actualizarPuntos(puntos);
 	}

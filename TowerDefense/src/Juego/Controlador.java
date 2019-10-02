@@ -66,9 +66,16 @@ public class Controlador {
 			gui.crearElemento(x, y, t);
 		}
 	}
+	
+	public GUI getGui() {
+		return gui;
+	}
 	public void agregarEnemigo(int x, int y, Enemigo e) {
 		map.crearEnemigo(e, x, y);
 		gui.crearElemento(x, y, e);
+	}
+	public void crearElemento(Elemento e) {
+		gui.crearElemento(e.getCelda().getX(), e.getCelda().getY(), e);
 	}
 	private Torre getTorre(int i) {
 		Torre t=null;
