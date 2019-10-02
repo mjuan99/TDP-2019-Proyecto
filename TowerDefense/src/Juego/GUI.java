@@ -13,7 +13,6 @@ import javax.swing.border.EmptyBorder;
 
 import Personajes.*;
 
-//comentario random
 public class GUI extends JFrame{
 	protected JButton[] botones;
 	protected JPanel contentPane;
