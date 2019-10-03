@@ -17,6 +17,10 @@ public abstract class Proyectil extends Elemento{
 		this.rutaImagen=rutaImagen;
 	}
 	
+	public void accept() {
+		visitor.visit(this);
+	}
+	
 	public String getRutaImagen() {
 		return rutaImagen;
 	}

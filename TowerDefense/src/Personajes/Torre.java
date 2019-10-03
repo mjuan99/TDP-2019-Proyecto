@@ -12,6 +12,10 @@ public abstract class Torre extends Personaje{
 		return new ProyectilAliado(mapa, celda, dano,alcance,rutaProyectil);
 	}
 	
+	public void accept() {
+		visitor.visit(this);
+	}
+	
 	public void actuar() {
 		
 		if(contadorPulsos==0) {

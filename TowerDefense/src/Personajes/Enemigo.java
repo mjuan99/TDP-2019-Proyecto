@@ -26,6 +26,10 @@ public abstract class Enemigo extends Personaje{
 		return new ProyectilEnemigo(mapa, celda, dano,alcance,rutaProyectil);
 	}
 	
+	public void accept() {
+		visitor.visit(this);
+	}
+	
 	public void actuar() {
 		//System.out.println(componenteGrafica);
 		Rectangle r=componenteGrafica.getBounds();
@@ -62,7 +66,7 @@ public abstract class Enemigo extends Personaje{
 		//mapa.getControlador().getGui().setearLabel(this,"./src/Sprites/Efectos/Explosion2.gif");
 		mapa.getJugador().sumarPuntos(50);
 		mapa.eliminarElemento(this);
-		AutoRemove a=new AutoRemove(this,5000,animacionMuerte);
+		AutoRemove a=new AutoRemove(this,2000,animacionMuerte);
 		a.start();
 	}
 }
