@@ -19,6 +19,7 @@ public class AutoRemove extends Thread {
 		e.getComponenteGrafica().setIcon(img);
 		//e.getComponenteGrafica().disable();
 		e.getComponenteGrafica().setEnabled(false);
+		
 			try {
 				Thread.sleep(t);
 			}catch(InterruptedException e) {

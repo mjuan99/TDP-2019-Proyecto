@@ -15,9 +15,11 @@ public abstract class Enemigo extends Personaje{
 	protected int contadorMov=0;
 	protected boolean moviendo=false;
 	protected int celdaDestino;
+	protected String animacionMuerte;
 	
-	protected Enemigo(Mapa mapa,Celda celda,int vidaMax,String rutaImagen,int dano,int alcance,String rutaProyectil) {
+	protected Enemigo(Mapa mapa,Celda celda,int vidaMax,String rutaImagen,String animacionMuerte,int dano,int alcance,String rutaProyectil) {
 		super(mapa,celda,vidaMax,rutaImagen,dano,alcance,rutaProyectil);
+		this.animacionMuerte=animacionMuerte;
 	}
 	
 	public ProyectilEnemigo Atacar() {
@@ -60,7 +62,7 @@ public abstract class Enemigo extends Personaje{
 		//mapa.getControlador().getGui().setearLabel(this,"./src/Sprites/Efectos/Explosion2.gif");
 		mapa.getJugador().sumarPuntos(50);
 		mapa.eliminarElemento(this);
-		AutoRemove a=new AutoRemove(this,5000,"./src/Sprites/Efectos/Explosion2.gif");
+		AutoRemove a=new AutoRemove(this,5000,animacionMuerte);
 		a.start();
 	}
 }
