@@ -3,45 +3,46 @@ package Visitor;
 import Objetos.Obstaculo;
 import Objetos.PowerUp;
 import Objetos.Proyectil;
+import Objetos.ProyectilEnemigo;
 import Personajes.Enemigo;
 import Personajes.Torre;
 
-public class VisitorEnemigo extends Visitor {
+public class VisitorProyectilEnemigo extends Visitor {
 	
-	protected Enemigo miEnemigo;
+	protected ProyectilEnemigo miProyectil;
 	
-	public VisitorEnemigo(Enemigo miEnemigo) {
-		this.miEnemigo=miEnemigo;
+	public VisitorProyectilEnemigo(ProyectilEnemigo miProyectil) {
+		this.miProyectil=miProyectil;
 	}
 
 	@Override
 	public void visit(Torre torre) {
-		//atacar
-		
+		//dañar torre
+
 	}
 
 	@Override
 	public void visit(Enemigo enemigo) {
 		//nada
-		
+
 	}
 
 	@Override
 	public void visit(Proyectil proyectil) {
-		//nada
-		
+		// TODO Auto-generated method stub
+
 	}
 
 	@Override
 	public void visit(Obstaculo obstaculo) {
-		//atacar
-		
+		//nada
+
 	}
 
 	@Override
 	public void visit(PowerUp powerup) {
-		//destruir powerup
-		
+		//nada
+
 	}
 
 }

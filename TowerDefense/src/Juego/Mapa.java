@@ -54,8 +54,10 @@ public class Mapa {
 	}
 	
 	public void eliminarElemento(Elemento e) {
-		grilla[e.getCelda().getX()][e.getCelda().getY()].setElem(null);
-		e.setCelda(null);
+		int x=e.getCelda().getX();
+		int y=e.getCelda().getY();
+		if(grilla[x][y].getElem()==e)
+			grilla[e.getCelda().getX()][e.getCelda().getY()].setElem(null);
 		lista.remove(e);
 	}
 	

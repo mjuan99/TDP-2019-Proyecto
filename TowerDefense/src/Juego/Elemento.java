@@ -23,6 +23,16 @@ public abstract class Elemento {
 		this.mapa=mapa;
 	}
 	
+	public abstract void accept(Visitor v);
+	
+	public void morir() {
+		mapa.eliminarElemento(this);
+		componenteGrafica.setIcon(null);
+		componenteGrafica.setBounds(0,0,0,0);
+		vivo=false;
+		mapa.getControlador().getGui().eliminarComponente(componenteGrafica);
+	}
+	
 	public Celda getCelda() {
 		return celda;
 	}
@@ -53,5 +63,7 @@ public abstract class Elemento {
 		return rutaImagen;
 	}
 	
-	
+	public Mapa getMapa() {
+		return mapa;
+	}
 }

@@ -3,38 +3,45 @@ package Visitor;
 import Objetos.Obstaculo;
 import Objetos.PowerUp;
 import Objetos.Proyectil;
+import Objetos.ProyectilAliado;
 import Personajes.Enemigo;
 import Personajes.Torre;
 
-public class VisitorProyectil extends Visitor {
+public class VisitorProyectilAliado extends Visitor {
+	
+	protected ProyectilAliado miProyectil;
+	
+	public VisitorProyectilAliado(ProyectilAliado miProyectil) {
+		this.miProyectil=miProyectil;
+	}
 
 	@Override
 	public void visit(Torre torre) {
-		// TODO Auto-generated method stub
+		//nada
 		
 	}
 
 	@Override
 	public void visit(Enemigo enemigo) {
-		// TODO Auto-generated method stub
-		
+		enemigo.danar(miProyectil.getDano());
+		miProyectil.morir();
 	}
 
 	@Override
 	public void visit(Proyectil proyectil) {
-		// TODO Auto-generated method stub
+		//nada
 		
 	}
 
 	@Override
 	public void visit(Obstaculo obstaculo) {
-		// TODO Auto-generated method stub
+		//nada
 		
 	}
 
 	@Override
 	public void visit(PowerUp powerup) {
-		// TODO Auto-generated method stub
+		//nada
 		
 	}
 
