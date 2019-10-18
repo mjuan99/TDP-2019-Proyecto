@@ -7,8 +7,8 @@ import Visitor.Visitor;
 
 public abstract class PowerUp extends Elemento {
 
-	protected PowerUp(Mapa mapa, Celda celda, int vidaMax, String rutaImagen) {
-		super(mapa, celda, vidaMax, rutaImagen);
+	protected PowerUp(Mapa mapa, Celda celda, int vidaMax,int tamano, String rutaImagen) {
+		super(mapa, celda, vidaMax,tamano, rutaImagen);
 		// TODO Auto-generated constructor stub
 	}
 	

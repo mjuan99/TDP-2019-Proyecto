@@ -1,6 +1,8 @@
 package Visitor;
 
 import Objetos.Obstaculo;
+import Objetos.ObstaculoTiempo;
+import Objetos.ObstaculoVida;
 import Objetos.PowerUp;
 import Objetos.Proyectil;
 import Personajes.Enemigo;
@@ -33,14 +35,20 @@ public class VisitorEnemigo extends Visitor {
 	}
 
 	@Override
-	public void visit(Obstaculo obstaculo) {
-		//atacar
+	public void visit(PowerUp powerup) {
+		//destruir powerup
 		
 	}
 
 	@Override
-	public void visit(PowerUp powerup) {
-		//destruir powerup
+	public void visit(ObstaculoVida obstaculo) {
+		// atacar
+		
+	}
+
+	@Override
+	public void visit(ObstaculoTiempo obstaculo) {
+		// nada
 		
 	}
 

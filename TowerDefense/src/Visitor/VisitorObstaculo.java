@@ -1,6 +1,8 @@
 package Visitor;
 
 import Objetos.Obstaculo;
+import Objetos.ObstaculoTiempo;
+import Objetos.ObstaculoVida;
 import Objetos.PowerUp;
 import Objetos.Proyectil;
 import Personajes.Enemigo;
@@ -27,13 +29,19 @@ public class VisitorObstaculo extends Visitor {
 	}
 
 	@Override
-	public void visit(Obstaculo obstaculo) {
+	public void visit(PowerUp powerup) {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void visit(PowerUp powerup) {
+	public void visit(ObstaculoVida obstaculo) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void visit(ObstaculoTiempo obstaculo) {
 		// TODO Auto-generated method stub
 		
 	}

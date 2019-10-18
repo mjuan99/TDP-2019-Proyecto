@@ -19,8 +19,8 @@ public abstract class Enemigo extends Personaje{
 	protected int celdaDestino;
 	protected String animacionMuerte;
 	
-	protected Enemigo(Mapa mapa,Celda celda,int vidaMax,String rutaImagen,String animacionMuerte,int dano,int alcance,String rutaProyectil) {
-		super(mapa,celda,vidaMax,rutaImagen,dano,alcance,rutaProyectil);
+	protected Enemigo(Mapa mapa,Celda celda,int vidaMax,int tamano,String rutaImagen,String animacionMuerte,int dano,int alcance,String rutaProyectil) {
+		super(mapa,celda,vidaMax,tamano,rutaImagen,dano,alcance,rutaProyectil);
 		this.animacionMuerte=animacionMuerte;
 		visitor=new VisitorEnemigo(this);
 	}
@@ -59,7 +59,6 @@ public abstract class Enemigo extends Personaje{
 			morir();
 		else
 			vida-=dano;
-		System.out.println(vida);
 	}
 	
 	public void morir() {

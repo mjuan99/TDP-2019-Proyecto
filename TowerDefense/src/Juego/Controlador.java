@@ -5,6 +5,9 @@ import java.awt.Rectangle;
 
 import javax.swing.ImageIcon;
 
+import Objetos.Dugtrio;
+import Objetos.Obstaculo;
+import Objetos.Snorlax;
 import Personajes.Alien;
 import Personajes.Dinosaurio;
 import Personajes.Dragon;
@@ -19,6 +22,7 @@ import Personajes.Fantasma;
 import Personajes.Fenix;
 import Personajes.Golem;
 import Personajes.Hada;
+import Personajes.Leviatan;
 import Personajes.Torre;
 
 public class Controlador {
@@ -44,8 +48,22 @@ public class Controlador {
 		map=new Mapa(null,this);
 		gui=new GUI(this);
 		gui.setVisible(true);
+		setObstaculos();
 		tiempo=new ContadorTiempo(map);
 		tiempo.start();
+	}
+	
+	public void setObstaculos() {
+		int x=(int)(Math.random()*9);
+		int y=(int)(Math.random()*6);
+		Obstaculo obs=new Snorlax(map,null);
+		map.crearObstaculo(obs, x, y);
+		gui.crearElemento(x, y, obs);
+		x=(int)(Math.random()*9);
+		y=(int)(Math.random()*6);
+		obs=new Dugtrio(map,null);
+		map.crearObstaculo(obs, x, y);
+		gui.crearElemento(x, y, obs);
 	}
 	
 	public void actualizarPuntos(int puntos) {
@@ -62,8 +80,8 @@ public class Controlador {
 	public void agregarTorre(int x, int y) {
 		if(map.posicionValidaTorre(x, y)) {
 			Torre t=getTorre(proxTorre);
-			map.crearTorre(t, x, y);
-			gui.crearElemento(x, y, t);
+			if(map.crearTorre(t, x, y))
+				gui.crearElemento(x, y, t);
 		}
 	}
 	
@@ -87,6 +105,7 @@ public class Controlador {
 		case 4:{t=new Fenix(map,null);break;}
 		case 5:{t=new Golem(map,null);break;}
 		case 6:{t=new Hada(map,null);break;}
+		case 7:{t=new Leviatan(map,null);break;}
 		}
 		return t;
 	}

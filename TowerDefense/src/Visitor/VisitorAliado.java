@@ -23,11 +23,19 @@ public class VisitorAliado extends Visitor {
 		//nada
 	}
 
-	public void visit(Obstaculo obstaculo) {
-		//nada
-	}
-
 	public void visit(PowerUp powerup) {
 		//realizar metodo de adquisicion
+	}
+
+	@Override
+	public void visit(ObstaculoVida obstaculo) {
+		//nada
+		
+	}
+
+	@Override
+	public void visit(ObstaculoTiempo obstaculo) {
+		//nada
+		
 	}
 }

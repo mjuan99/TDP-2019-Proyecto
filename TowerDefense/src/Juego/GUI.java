@@ -81,12 +81,12 @@ public class GUI extends JFrame{
 	}
 
 	private void agregarBotones() {
-		botones= new JButton[8];
-		ActionListener [] oyentes= {new OyenteAlien(),new OyenteDinosaurio(),new OyenteDragon(), new OyenteFantasma(), new OyenteFenix(), new OyenteGolem(), new OyenteHada(),new OyenteOleada()};
-		String[] nombres= {"Alien","Dinosaurio","Dragon","Fantasma","Fenix","Golem","Hada","Oleada"};
-		for(int i=0;i<8;i++) {
+		botones= new JButton[9];
+		ActionListener [] oyentes= {new OyenteAlien(),new OyenteDinosaurio(),new OyenteDragon(), new OyenteFantasma(), new OyenteFenix(), new OyenteGolem(), new OyenteHada(),new OyenteLeviatan(),new OyenteOleada()};
+		String[] nombres= {"Alien","Dinosaurio","Dragon","Fantasma","Fenix","Golem","Hada","Leviatan","Oleada"};
+		for(int i=0;i<9;i++) {
 			botones[i]= new JButton(nombres[i]);
-			botones[i].setBounds(10*pixel,i*72, 150, 72);
+			botones[i].setBounds(10*pixel,i*64, 150, 64);
 			botones[i].addActionListener(oyentes[i]);
 			this.add(botones[i]);
 		}
@@ -127,6 +127,11 @@ public class GUI extends JFrame{
 			controlador.setProxTorre(6);
 		}
 	}
+	public class OyenteLeviatan implements ActionListener{
+		public void actionPerformed(ActionEvent arg0) {
+			controlador.setProxTorre(7);
+		}
+	}
 	public class OyenteOleada implements ActionListener{
 		public void actionPerformed(ActionEvent arg0) {
 			controlador.agregarOleadaPrueba();
@@ -154,10 +159,9 @@ public class GUI extends JFrame{
 	}
 	public void crearElemento(int x, int y, Elemento e) {
 		JLabel elemento= new JLabel(new ImageIcon(e.getRutaImagen()));
-		elemento.setBounds(x*pixel, y*pixel, pixel, pixel);
+		elemento.setBounds(x*pixel, y*pixel, e.getTamano()*pixel, pixel);
 		contentPane.add(elemento);
 		contentPane.setComponentZOrder(elemento, 0);
-		//elemento.repaint();
 		e.setComponenteGrafica(elemento);
 	}
 }

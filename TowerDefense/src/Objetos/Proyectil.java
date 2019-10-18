@@ -10,8 +10,8 @@ public abstract class Proyectil extends Elemento{
 	protected String rutaImagen;
 	protected boolean moviendo=false;
 	protected int celdaDestino;
-	public Proyectil(Mapa mapa, Celda celda, int dano,int rango,String rutaImagen) {//agregar celda y entidad de donde se crea
-		super(mapa,celda,1,rutaImagen);
+	public Proyectil(Mapa mapa, Celda celda, int dano,int rango,int tamano,String rutaImagen) {//agregar celda y entidad de donde se crea
+		super(mapa,celda,1,tamano,rutaImagen);
 		this.dano=dano;
 		this.rango=rango;
 		this.rutaImagen=rutaImagen;

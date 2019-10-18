@@ -6,6 +6,7 @@ import Visitor.*;
 
 public abstract class Elemento {
 	protected boolean vivo;
+	protected int tamano;
 	protected Celda celda;
 	protected int vida;
 	protected String rutaImagen;
@@ -15,12 +16,17 @@ public abstract class Elemento {
 	protected int topePulso=10;
 	protected Visitor visitor;
 	
-	protected Elemento(Mapa mapa,Celda celda,int vidaMax,String rutaImagen) {
+	protected Elemento(Mapa mapa,Celda celda,int vidaMax,int tamano,String rutaImagen) {
 		vivo=true;
 		this.celda=celda;
 		vida=vidaMax;
+		this.tamano=tamano;
 		this.rutaImagen=rutaImagen;
 		this.mapa=mapa;
+	}
+	
+	public int getTamano() {
+		return tamano;
 	}
 	
 	public abstract void accept(Visitor v);

@@ -2,8 +2,10 @@ package Juego;
 import java.util.Iterator;
 import java.util.LinkedList;
 
+import Objetos.Obstaculo;
 import Objetos.Proyectil;
 import Personajes.Enemigo;
+import Personajes.Leviatan;
 import Personajes.Torre;
 
 public class Mapa {
@@ -79,12 +81,42 @@ public class Mapa {
 		//controlador.mover(e,celdaX-1,celdaY);
 	}
 	
-	public void crearTorre(Torre torre,int x,int y) {
+	public void crearObstaculo(Obstaculo obs,int x,int y) {
 		if(grilla[x][y].getElem()==null) {
+			grilla[x][y].setElem(obs);
+			obs.setCelda(grilla[x][y]);
+			lista.add(obs);
+		}
+	}
+	
+	public boolean crearTorre(Leviatan l,int x,int y) {
+		if(x<8&&grilla[x][y].getElem()==null&&grilla[x+1][y].getElem()==null) {
+			grilla[x][y].setElem(l);
+			grilla[x+1][y].setElem(l);
+			l.setCelda(grilla[x][y]);
+			lista.add(l);
+			return true;
+		}
+		return false;
+		
+	}
+	
+	public boolean crearTorre(Torre torre,int x,int y) {
+		System.out.println("Hola");
+		if(torre.getTamano()==1&&grilla[x][y].getElem()==null) {
 			grilla[x][y].setElem(torre);
 			torre.setCelda(grilla[x][y]);
 			lista.add(torre);
-		}
+			return true;
+		}else
+			if(torre.getTamano()==2&&x<8&&grilla[x][y].getElem()==null&&grilla[x+1][y].getElem()==null) {
+				grilla[x][y].setElem(torre);
+				grilla[x+1][y].setElem(torre);
+				torre.setCelda(grilla[x][y]);
+				lista.add(torre);
+				return true;
+			}
+		return false;
 	}
 	
 	public void crearEnemigo(Enemigo enemigo,int x,int y) {

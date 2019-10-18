@@ -6,6 +6,7 @@ import Objetos.Proyectil;
 public class Enemigo2 extends Enemigo{
 	
 	protected static int vidaBase=500;
+	protected static int tam=1;
 	protected static int danoBase=70;
 	protected static int alcanceBase=6;
 	protected static String imagen ="./src/Sprites/Enemigos/Enemigo2.gif";
@@ -13,7 +14,7 @@ public class Enemigo2 extends Enemigo{
 	protected static String animacionMuerte="./src/Sprites/Efectos/Muerte2.gif";
 	
 	public Enemigo2(Mapa mapa,Celda celda) {
-		super(mapa,celda,vidaBase,imagen,animacionMuerte,danoBase,alcanceBase,proyectil);
+		super(mapa,celda,vidaBase,tam,imagen,animacionMuerte,danoBase,alcanceBase,proyectil);
 	}
 
 }
