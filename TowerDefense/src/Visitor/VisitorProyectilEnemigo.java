@@ -19,8 +19,8 @@ public class VisitorProyectilEnemigo extends Visitor {
 
 	@Override
 	public void visit(Torre torre) {
-		//dañar torre
-
+		torre.danar(miProyectil.getDano());
+		miProyectil.morir();
 	}
 
 	@Override
@@ -43,8 +43,8 @@ public class VisitorProyectilEnemigo extends Visitor {
 
 	@Override
 	public void visit(ObstaculoVida obstaculo) {
-		// dañar obstaculo
-		
+		obstaculo.danar(miProyectil.getDano());
+		miProyectil.morir();
 	}
 
 	@Override

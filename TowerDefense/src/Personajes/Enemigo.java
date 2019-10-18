@@ -1,12 +1,14 @@
 package Personajes;
 
 import java.awt.Rectangle;
+import java.util.Iterator;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 import Juego.AutoRemove;
 import Juego.Celda;
+import Juego.Elemento;
 import Juego.Mapa;
 import Objetos.ProyectilEnemigo;
 import Visitor.Visitor;
@@ -25,7 +27,8 @@ public abstract class Enemigo extends Personaje{
 		visitor=new VisitorEnemigo(this);
 	}
 	
-	public ProyectilEnemigo Atacar() {
+	public ProyectilEnemigo atacar() {
+		ataco=true;
 		return new ProyectilEnemigo(mapa, celda, dano,alcance,rutaProyectil);
 	}
 	
@@ -34,31 +37,32 @@ public abstract class Enemigo extends Personaje{
 	}
 	
 	public void actuar() {
-		if (vivo) {
-			//System.out.println(componenteGrafica);
+		if (contadorPulsos==0) {
 			Rectangle r = componenteGrafica.getBounds();
 			if (!moviendo) {
-				if (mapa.puedeAvanzar(this)) {
-					celdaDestino = celda.getX() - 1;
-					mapa.avanzar(this);
-					moviendo = true;
-				}
-			} else if (celdaDestino * 96 < componenteGrafica.getBounds().getX())
-				componenteGrafica.setBounds((int) r.getX() - 12, (int) r.getY(), 96, 96);
-			else
-				moviendo = false;
-		}
+				ataco=false;
+				Iterator<Elemento> it=mapa.elementosRango(this).iterator();
+				while(!ataco&&it.hasNext())
+					it.next().accept(visitor);
+				if(ataco)
+					contadorPulsos++;
+				else
+					if (mapa.puedeAvanzar(this)) {
+						celdaDestino = celda.getX() - 1;
+						mapa.avanzar(this);
+						moviendo = true;
+					}
+			} else 
+				if (celdaDestino * 96 < componenteGrafica.getBounds().getX())
+					componenteGrafica.setBounds((int) r.getX() - 12, (int) r.getY(), 96, 96);
+				else
+					moviendo = false;
+		}else
+			contadorPulsos=(contadorPulsos+1)%topePulso;
 	}
 	
 	public void setMapa(Mapa mapa) {
 		this.mapa=mapa;
-	}
-	
-	public void danar(int dano) {
-		if(vida<=dano)
-			morir();
-		else
-			vida-=dano;
 	}
 	
 	public void morir() {

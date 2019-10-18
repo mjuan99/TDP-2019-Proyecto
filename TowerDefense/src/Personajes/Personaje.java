@@ -8,12 +8,14 @@ public abstract class Personaje extends Elemento {
 	protected int alcance;
 	protected int vidaMax=200;
 	protected String rutaProyectil;
+	protected boolean ataco;
 	
 	protected Personaje(Mapa mapa,Celda celda,int vidaMax,int tamano,String rutaImagen,int dano,int alcance,String rutaProyectil) {
 		super(mapa,celda,vidaMax,tamano,rutaImagen);
 		this.dano=dano;
 		this.alcance=alcance;
 		this.rutaProyectil=rutaProyectil;
+		ataco=false;
 	}
 	public int getDano() {
 		return dano;

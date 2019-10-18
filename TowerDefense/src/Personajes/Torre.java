@@ -1,5 +1,8 @@
 package Personajes;
+import java.util.Iterator;
+
 import Juego.Celda;
+import Juego.Elemento;
 import Juego.Mapa;
 import Objetos.ProyectilAliado;
 import Visitor.Visitor;
@@ -12,6 +15,7 @@ public abstract class Torre extends Personaje{
 		visitor=new VisitorAliado(this);
 	}
 	public ProyectilAliado atacar() {
+		ataco=true;
 		return new ProyectilAliado(mapa, celda, dano,alcance,rutaProyectil);
 	}
 	
@@ -24,10 +28,14 @@ public abstract class Torre extends Personaje{
 	}
 	
 	public void actuar() {
-		
+		Iterator<Elemento> it=mapa.elementosRango(this).iterator();
 		if(contadorPulsos==0) {
-			mapa.crearProyectil(atacar());
-		}
-		contadorPulsos=(contadorPulsos+1)%topePulso;
+			ataco=false;
+			while(!ataco&&it.hasNext())
+				it.next().accept(visitor);
+			if(ataco)
+				contadorPulsos=(contadorPulsos+1)%topePulso;
+		}else
+			contadorPulsos=(contadorPulsos+1)%topePulso;
 	}
 }

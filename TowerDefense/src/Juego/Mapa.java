@@ -58,8 +58,11 @@ public class Mapa {
 	public void eliminarElemento(Elemento e) {
 		int x=e.getCelda().getX();
 		int y=e.getCelda().getY();
-		if(grilla[x][y].getElem()==e)
-			grilla[e.getCelda().getX()][e.getCelda().getY()].setElem(null);
+		if(grilla[x][y].getElem()==e) {
+			grilla[x][y].setElem(null);
+			if(e.getTamano()==2)
+				grilla[x+1][y].setElem(null);
+		}
 		lista.remove(e);
 	}
 	
@@ -101,8 +104,29 @@ public class Mapa {
 		
 	}
 	
+	public LinkedList<Elemento> elementosRango(Enemigo e){
+		LinkedList<Elemento> lista=new LinkedList<Elemento>();
+		int n=e.getAlcance();
+		int x=e.getCelda().getX();
+		int y=e.getCelda().getY();
+		for(int i=x-1;i>=x-n&&i>=0;i--)
+			if(grilla[i][y].getElem()!=null)
+				lista.add(grilla[i][y].getElem());
+		return lista;		
+	}
+	
+	public LinkedList<Elemento> elementosRango(Torre t){
+		LinkedList<Elemento> lista=new LinkedList<Elemento>();
+		int n=t.getAlcance();
+		int x=t.getCelda().getX();
+		int y=t.getCelda().getY();
+		for(int i=x+1;i<=x+n&&i<this.x;i++)
+			if(grilla[i][y].getElem()!=null)
+				lista.add(grilla[i][y].getElem());
+		return lista;
+	}
+	
 	public boolean crearTorre(Torre torre,int x,int y) {
-		System.out.println("Hola");
 		if(torre.getTamano()==1&&grilla[x][y].getElem()==null) {
 			grilla[x][y].setElem(torre);
 			torre.setCelda(grilla[x][y]);

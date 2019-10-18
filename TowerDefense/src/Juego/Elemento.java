@@ -29,6 +29,13 @@ public abstract class Elemento {
 		return tamano;
 	}
 	
+	public void danar(int dano) {
+		if(vida<=dano)
+			morir();
+		else
+			vida-=dano;
+	}
+	
 	public abstract void accept(Visitor v);
 	
 	public void morir() {
