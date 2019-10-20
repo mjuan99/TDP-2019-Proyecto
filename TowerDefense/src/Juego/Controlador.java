@@ -47,7 +47,7 @@ public class Controlador {
 
 	private Controlador() {
 		map=getMapa();
-		//gui=getGUI();
+		gui=getGUI();
 		gui.setVisible(true);
 		setObstaculos();
 		tiempo=new ContadorTiempo(map);
@@ -88,10 +88,6 @@ public class Controlador {
 		gui.actualizarPuntos(puntos);
 	}
 	
-	public Mapa getMapa() {
-		return map;
-	}
-	
 	public void setProxTorre(int proxTorre){
 		this.proxTorre=proxTorre;
 	}
@@ -103,9 +99,6 @@ public class Controlador {
 		}
 	}
 	
-	public GUI getGui() {
-		return gui;
-	}
 	public void agregarEnemigo(int x, int y, Enemigo e) {
 		map.crearElemento(e, x, y);
 		gui.crearElemento(x, y, e);
