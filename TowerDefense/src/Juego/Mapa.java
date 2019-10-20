@@ -115,8 +115,8 @@ public class Mapa {
 		
 	}
 	
-	public boolean posicionValidaTorre(int x,int y) {
-		return (x>=0&&x<this.x-1&&y>=0&&y<this.y&&grilla[x][y].getElem()==null);
+	public boolean posicionValidaTorre(Torre t,int x,int y) {
+		return (x>=0&&x<this.x-t.getTamano()&&y>=0&&y<this.y&&grilla[x][y].getElem()==null&&(t.getTamano()==1||grilla[x+1][y].getElem()==null));
 	}
 
 	public Celda[][] getGrilla() {

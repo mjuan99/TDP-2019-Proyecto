@@ -54,7 +54,7 @@ public class Controlador {
 	}
 	
 	public void setObstaculos() {
-		int x=(int)(Math.random()*9);
+		int x=(int)(Math.random()*5)+2;
 		int y=(int)(Math.random()*6);
 		Obstaculo obs=new Snorlax(map,null);
 		map.crearElemento(obs, x, y);
@@ -62,8 +62,8 @@ public class Controlador {
 		x=(int)(Math.random()*9);
 		y=(int)(Math.random()*6);
 		obs=new Dugtrio(map,null);
-		map.crearElemento(obs, x, y);
-		gui.crearElemento(x, y, obs);
+		if(map.crearElemento(obs, x, y))
+			gui.crearElemento(x, y, obs);
 	}
 	
 	public void actualizarPuntos(int puntos) {
@@ -78,8 +78,8 @@ public class Controlador {
 		this.proxTorre=proxTorre;
 	}
 	public void agregarTorre(int x, int y) {
-		if(map.posicionValidaTorre(x, y)) {
-			Torre t=getTorre(proxTorre);
+		Torre t=getTorre(proxTorre);
+		if(map.posicionValidaTorre(t, x, y)) {
 			if(map.crearElemento(t, x, y))
 				gui.crearElemento(x, y, t);
 		}
