@@ -16,7 +16,7 @@ public class VisitorAliado extends Visitor {
 	}
 	
 	public void visit(Enemigo enemigo) {
-		miTorre.getMapa().crearProyectil(miTorre.atacar());
+		miTorre.atacar();
 	}
 
 	public void visit(Proyectil proyectil) {

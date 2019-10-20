@@ -57,12 +57,12 @@ public class Controlador {
 		int x=(int)(Math.random()*9);
 		int y=(int)(Math.random()*6);
 		Obstaculo obs=new Snorlax(map,null);
-		map.crearObstaculo(obs, x, y);
+		map.crearElemento(obs, x, y);
 		gui.crearElemento(x, y, obs);
 		x=(int)(Math.random()*9);
 		y=(int)(Math.random()*6);
 		obs=new Dugtrio(map,null);
-		map.crearObstaculo(obs, x, y);
+		map.crearElemento(obs, x, y);
 		gui.crearElemento(x, y, obs);
 	}
 	
@@ -80,7 +80,7 @@ public class Controlador {
 	public void agregarTorre(int x, int y) {
 		if(map.posicionValidaTorre(x, y)) {
 			Torre t=getTorre(proxTorre);
-			if(map.crearTorre(t, x, y))
+			if(map.crearElemento(t, x, y))
 				gui.crearElemento(x, y, t);
 		}
 	}
@@ -89,7 +89,7 @@ public class Controlador {
 		return gui;
 	}
 	public void agregarEnemigo(int x, int y, Enemigo e) {
-		map.crearEnemigo(e, x, y);
+		map.crearElemento(e, x, y);
 		gui.crearElemento(x, y, e);
 	}
 	public void crearElemento(Elemento e) {

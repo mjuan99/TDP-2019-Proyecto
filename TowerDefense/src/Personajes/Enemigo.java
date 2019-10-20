@@ -27,9 +27,9 @@ public abstract class Enemigo extends Personaje{
 		visitor=new VisitorEnemigo(this);
 	}
 	
-	public ProyectilEnemigo atacar() {
+	public void atacar() {
 		ataco=true;
-		return new ProyectilEnemigo(mapa, celda, dano,alcance,rutaProyectil);
+		mapa.crearProyectil(new ProyectilEnemigo(mapa, celda, dano,alcance,rutaProyectil));
 	}
 	
 	public void accept(Visitor v) {

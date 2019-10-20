@@ -14,9 +14,10 @@ public abstract class Torre extends Personaje{
 		super(mapa,celda,vidaMax,tamano,rutaImagen,dano,alcance,rutaProyectil);
 		visitor=new VisitorAliado(this);
 	}
-	public ProyectilAliado atacar() {
+	public void atacar() {
 		ataco=true;
-		return new ProyectilAliado(mapa, celda, dano,alcance,rutaProyectil);
+		mapa.crearProyectil(new ProyectilAliado(mapa, celda, dano,alcance,rutaProyectil));
+			
 	}
 	
 	public void accept(Visitor v) {

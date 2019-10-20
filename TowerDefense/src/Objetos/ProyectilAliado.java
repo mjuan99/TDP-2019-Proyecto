@@ -26,18 +26,22 @@ public class ProyectilAliado extends Proyectil {
 		}
 		if(celda.getElem()!=null)
 			celda.getElem().accept(visitor);
-		if(celdaDestino*96>componenteGrafica.getBounds().getX()) 
-			componenteGrafica.setBounds((int)r.getX()+24,(int)r.getY(),96,96);
-		else{
-			if(celdaDestino<mapa.getX()-1&&rango>0) {
-				celda=mapa.getGrilla()[celdaDestino][celda.getY()];
-				componenteGrafica.setBounds((int)r.getX()+24,(int)r.getY(),96,96);
-				moviendo=false;
-				rango--;
-			}
-			else{
-				morir();
-			}
+		if (vivo) {
+			if (celdaDestino * 96 > componenteGrafica.getBounds().getX())
+				componenteGrafica.setBounds((int) r.getX() + 24, (int) r.getY(), 96, 96);
+			else {
+				celda = mapa.getGrilla()[celdaDestino][celda.getY()];
+				if (celdaDestino < mapa.getX()-1 && rango > 1) {
+					componenteGrafica.setBounds((int) r.getX() + 24, (int) r.getY(), 96, 96);
+					moviendo = false;
+					rango--;
+				} else {
+					if(celda.getElem()!=null)
+						celda.getElem().accept(visitor);
+					if(vivo)
+						morir();
+				}
+			} 
 		}
 	}
 }

@@ -18,7 +18,7 @@ public class VisitorEnemigo extends Visitor {
 
 	@Override
 	public void visit(Torre torre) {
-		miEnemigo.getMapa().crearProyectil(miEnemigo.atacar());
+		miEnemigo.atacar();
 	}
 
 	@Override
@@ -41,7 +41,7 @@ public class VisitorEnemigo extends Visitor {
 
 	@Override
 	public void visit(ObstaculoVida obstaculo) {
-		miEnemigo.getMapa().crearProyectil(miEnemigo.atacar());
+		miEnemigo.atacar();
 	}
 
 	@Override

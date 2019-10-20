@@ -45,14 +45,6 @@ public class Mapa {
 		for(Elemento el:listaAux) {
 			el.actuar();
 		}
-		/*Elemento e;
-		for(int i=0;i<x;i++)
-			for(int j=0;j<y;j++) {
-				e=grilla[i][j].getElem();
-				if(e!=null) {
-					e.actuar();
-				}
-			}*/
 	}
 	
 	public void eliminarElemento(Elemento e) {
@@ -61,7 +53,7 @@ public class Mapa {
 		if(grilla[x][y].getElem()==e) {
 			grilla[x][y].setElem(null);
 			if(e.getTamano()==2)
-				grilla[x+1][y].setElem(null);
+				grilla[x-1][y].setElem(null);
 		}
 		lista.remove(e);
 	}
@@ -81,27 +73,6 @@ public class Mapa {
 		e.setCelda(grilla[celdaX-1][celdaY]);
 		grilla[celdaX][celdaY].setElem(null);
 		grilla[celdaX-1][celdaY].setElem(e);
-		//controlador.mover(e,celdaX-1,celdaY);
-	}
-	
-	public void crearObstaculo(Obstaculo obs,int x,int y) {
-		if(grilla[x][y].getElem()==null) {
-			grilla[x][y].setElem(obs);
-			obs.setCelda(grilla[x][y]);
-			lista.add(obs);
-		}
-	}
-	
-	public boolean crearTorre(Leviatan l,int x,int y) {
-		if(x<8&&grilla[x][y].getElem()==null&&grilla[x+1][y].getElem()==null) {
-			grilla[x][y].setElem(l);
-			grilla[x+1][y].setElem(l);
-			l.setCelda(grilla[x][y]);
-			lista.add(l);
-			return true;
-		}
-		return false;
-		
 	}
 	
 	public LinkedList<Elemento> elementosRango(Enemigo e){
@@ -126,27 +97,22 @@ public class Mapa {
 		return lista;
 	}
 	
-	public boolean crearTorre(Torre torre,int x,int y) {
-		if(torre.getTamano()==1&&grilla[x][y].getElem()==null) {
-			grilla[x][y].setElem(torre);
-			torre.setCelda(grilla[x][y]);
-			lista.add(torre);
+	public boolean crearElemento(Elemento elem,int x, int y) {
+		if(elem.getTamano()==1&&grilla[x][y].getElem()==null) {
+			grilla[x][y].setElem(elem);
+			elem.setCelda(grilla[x][y]);
+			lista.add(elem);
 			return true;
 		}else
-			if(torre.getTamano()==2&&x<8&&grilla[x][y].getElem()==null&&grilla[x+1][y].getElem()==null) {
-				grilla[x][y].setElem(torre);
-				grilla[x+1][y].setElem(torre);
-				torre.setCelda(grilla[x][y]);
-				lista.add(torre);
+			if(elem.getTamano()==2&&x<9&&grilla[x][y].getElem()==null&&grilla[x+1][y].getElem()==null) {
+				grilla[x][y].setElem(elem);
+				grilla[x+1][y].setElem(elem);
+				elem.setCelda(grilla[x+1][y]);
+				lista.add(elem);
 				return true;
 			}
 		return false;
-	}
-	
-	public void crearEnemigo(Enemigo enemigo,int x,int y) {
-		grilla[x][y].setElem(enemigo);
-		enemigo.setCelda(grilla[x][y]);
-		lista.add(enemigo);
+		
 	}
 	
 	public boolean posicionValidaTorre(int x,int y) {
