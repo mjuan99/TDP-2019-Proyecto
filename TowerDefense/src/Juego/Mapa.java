@@ -16,17 +16,25 @@ public class Mapa {
 	protected Nivel nivel;
 	protected Jugador jugador;
 	protected LinkedList<Elemento> lista;
+	protected boolean oleadaActiva;
+	protected int cantEnemigos;
 	
-	public Mapa(Nivel nivel,Controlador controlador) {
+	public Mapa(int nivel,Controlador controlador) {
 		lista=new LinkedList<Elemento>();
-		this.nivel=new Nivel(500);
+		this.nivel=new Nivel(nivel);
 		jugador=new Jugador(this);
-		this.nivel=nivel;
 		this.controlador=controlador;
 		grilla=new Celda[x][y];
+		oleadaActiva=false;
+		cantEnemigos=0;
 		for(int i=0;i<y;i++)
 			for(int j=0;j<x;j++)
 				grilla[j][i]=new Celda(j,i);
+	}
+	
+	public void activarOleada() {
+		oleadaActiva=true;
+		cantEnemigos=nivel.cantEnemigos();
 	}
 	
 	public void crearProyectil(Proyectil proyectil) {
@@ -39,12 +47,38 @@ public class Mapa {
 	}
 	
 	public void actuar() {
+		Enemigo e;
 		LinkedList<Elemento> listaAux=new LinkedList<Elemento>();
 		for(Elemento el:lista)
 			listaAux.addLast(el);
 		for(Elemento el:listaAux) {
 			el.actuar();
 		}
+		if(oleadaActiva) {
+			if(cantEnemigos!=0) {
+				for(int i=0;i<6;i++) {
+					if(grilla[9][i].getElem()==null)
+						if (nivel.quedanEnemigos(i)) {
+							e=nivel.getEnemigo(i);
+							e.setCelda(grilla[9][i]);
+							e.setMapa(this);
+							grilla[9][i].setElem(e);
+							lista.add(e);
+							controlador.crearElemento(e);
+						}
+				}
+			}
+			else {
+				oleadaActiva=false;
+				controlador.getGui().activarBotonOleada();
+				if(!nivel.siguienteOleada())
+					controlador.ganar();
+			}
+		}
+	}
+	
+	public void decrementarEnemigos() {
+		cantEnemigos--;
 	}
 	
 	public void eliminarElemento(Elemento e) {
@@ -63,8 +97,11 @@ public class Mapa {
 		int celdaY=e.getCelda().getY();
 		if(celdaX>0&&grilla[celdaX-1][celdaY].getElem()==null) 
 			return true;
-		else
-			return false;
+		else {
+			if(celdaX==0)
+				controlador.perder();
+			return false;	
+		}
 	}
 	
 	public void avanzar(Enemigo e) {

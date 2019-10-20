@@ -45,12 +45,20 @@ public class Controlador {
 	}
 	
 	public Controlador() {
-		map=new Mapa(null,this);
+		map=new Mapa(1,this);
 		gui=new GUI(this);
 		gui.setVisible(true);
 		setObstaculos();
 		tiempo=new ContadorTiempo(map);
 		tiempo.start();
+	}
+	
+	public void ganar() {
+		System.out.println("Implementar Ganar");
+	}
+	
+	public void perder() {
+		System.out.println("Implementar Perder");
 	}
 	
 	public void setObstaculos() {
@@ -110,14 +118,10 @@ public class Controlador {
 		return t;
 	}
 	public void agregarOleadaPrueba() {
-		Enemigo[]enemigos= {new Enemigo1(map,null),new Enemigo2(map,null), new Enemigo3(map,null),new Enemigo4(map,null),new Enemigo5(map,null),new Enemigo6(map,null)};
+		map.activarOleada();
+		/*Enemigo[]enemigos= {new Enemigo1(map,null),new Enemigo2(map,null), new Enemigo3(map,null),new Enemigo4(map,null),new Enemigo5(map,null),new Enemigo6(map,null)};
 		for(int i=0;i<6;i++) {
 			agregarEnemigo(9,i,enemigos[i]);
-		}
-	}
-	public void mover(Elemento elemento, int x, int y) {
-		Rectangle r;
-		r=elemento.getComponenteGrafica().getBounds();
-		elemento.getComponenteGrafica().setBounds(x,y,(int)r.getWidth(),(int)r.getHeight());
+		}*/
 	}
 }
