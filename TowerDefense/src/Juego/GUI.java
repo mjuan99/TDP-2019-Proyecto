@@ -57,16 +57,6 @@ public class GUI extends JFrame{
 		contentPane.remove(c);
 	}
 	
-	public void setearLabel(Elemento elem, String rutaImagen) {
-		Rectangle r=elem.getComponenteGrafica().getBounds();
-		elem.getComponenteGrafica().setIcon(null);
-		JLabel nuevo = new JLabel(new ImageIcon(rutaImagen));
-		elem.setComponenteGrafica(nuevo);
-		nuevo.setBounds(r);
-		contentPane.add(nuevo);
-		contentPane.setComponentZOrder(nuevo, 0);
-	}
-	
 	private void crearFondo() {
 		int x=controlador.getMapa().getX();
 		int y=controlador.getMapa().getY();
@@ -163,5 +153,6 @@ public class GUI extends JFrame{
 		contentPane.add(elemento);
 		contentPane.setComponentZOrder(elemento, 0);
 		e.setComponenteGrafica(elemento);
+		elemento.repaint();
 	}
 }
