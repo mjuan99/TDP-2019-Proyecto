@@ -24,6 +24,9 @@ public class Jugador {
 		return presupuesto;
 	}
 	
+	public void decrementarOro(int valor) {
+		presupuesto-=valor;
+	}
 	public void setOroGrafica(JLabel oro) {
 		oroGrafica=oro;
 	}
