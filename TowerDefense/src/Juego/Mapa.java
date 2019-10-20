@@ -9,6 +9,7 @@ import Personajes.Leviatan;
 import Personajes.Torre;
 
 public class Mapa {
+	private static Mapa mapa;
 	protected Controlador controlador;
 	protected Celda[][] grilla;
 	protected int x=10;
@@ -17,7 +18,7 @@ public class Mapa {
 	protected Jugador jugador;
 	protected LinkedList<Elemento> lista;
 	
-	public Mapa(Nivel nivel,Controlador controlador) {
+	private Mapa(Nivel nivel,Controlador controlador) {
 		lista=new LinkedList<Elemento>();
 		this.nivel=new Nivel(500);
 		jugador=new Jugador(this);
@@ -27,6 +28,15 @@ public class Mapa {
 		for(int i=0;i<y;i++)
 			for(int j=0;j<x;j++)
 				grilla[j][i]=new Celda(j,i);
+	}
+	
+	public static Mapa getMapa(Nivel nivel,Controlador controlador) {
+		if(mapa==null) {
+			return (mapa= new Mapa(nivel,controlador));
+		}
+		else {
+			return mapa;
+		}
 	}
 	
 	public void crearProyectil(Proyectil proyectil) {

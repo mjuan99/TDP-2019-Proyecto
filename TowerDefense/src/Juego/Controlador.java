@@ -26,6 +26,7 @@ import Personajes.Leviatan;
 import Personajes.Torre;
 
 public class Controlador {
+	private static Controlador controlador;
 	protected GUI gui;
 	protected ContadorTiempo tiempo;
 	protected Mapa map;
@@ -44,7 +45,7 @@ public class Controlador {
 		});
 	}
 	
-	public Controlador() {
+	private Controlador() {
 		map=new Mapa(null,this);
 		gui=new GUI(this);
 		gui.setVisible(true);
@@ -53,6 +54,14 @@ public class Controlador {
 		tiempo.start();
 	}
 	
+	public static Controlador getControlador() {
+		if(controlador==null) {
+			return (controlador= new Controlador());
+		}
+		else {
+			return controlador;
+		}
+	}
 	public void setObstaculos() {
 		int x=(int)(Math.random()*5)+2;
 		int y=(int)(Math.random()*6);

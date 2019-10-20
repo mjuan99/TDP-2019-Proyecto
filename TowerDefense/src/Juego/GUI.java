@@ -14,6 +14,7 @@ import javax.swing.border.EmptyBorder;
 import Personajes.*;
 
 public class GUI extends JFrame{
+	private static GUI gui;
 	protected JButton[] botones;
 	protected JPanel contentPane;
 	protected JLabel [][] celdas;
@@ -22,7 +23,7 @@ public class GUI extends JFrame{
 	protected Controlador controlador;
 	protected static int pixel=96;
 	
-	public GUI(Controlador controlador) {
+	private GUI(Controlador controlador) {
 		super("Juego");
 		this.controlador=controlador;
 		getContentPane().setLayout(null);
@@ -35,6 +36,15 @@ public class GUI extends JFrame{
 		crearFondo();
 		agregarBotones();
 		agregarJugador();
+	}
+	
+	public static GUI getGUI(Controlador controlador) {
+		if(gui==null) {
+			return (gui= new GUI(controlador));
+		}
+		else {
+			return gui;
+		}
 	}
 	
 	public void agregarJugador() {
