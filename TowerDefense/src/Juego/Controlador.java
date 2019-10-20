@@ -91,12 +91,14 @@ public class Controlador {
 	public void setProxTorre(int proxTorre){
 		this.proxTorre=proxTorre;
 	}
-	public void agregarTorre(int x, int y) {
-		Torre t=getTorre(proxTorre);
+	public boolean agregarTorre(Torre t,int x, int y) {
+		//Torre t=getTorre(proxTorre);
 		if(map.posicionValidaTorre(t, x, y)) {
 			if(map.crearElemento(t, x, y))
 				gui.crearElemento(x, y, t);
+				return true;
 		}
+		return false;
 	}
 	
 	public void agregarEnemigo(int x, int y, Enemigo e) {
