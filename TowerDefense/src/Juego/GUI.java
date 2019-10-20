@@ -47,6 +47,10 @@ public class GUI extends JFrame{
 		}
 	}
 	
+	public void activarBotonOleada() {
+		botones[8].setEnabled(true);
+	}
+	
 	public void agregarJugador() {
 		Jugador jugador=controlador.getMapa().getJugador();
 		puntaje=new JLabel("Puntos: 0");
@@ -134,6 +138,7 @@ public class GUI extends JFrame{
 	}
 	public class OyenteOleada implements ActionListener{
 		public void actionPerformed(ActionEvent arg0) {
+			botones[8].setEnabled(false);
 			controlador.agregarOleadaPrueba();
 		}
 	}

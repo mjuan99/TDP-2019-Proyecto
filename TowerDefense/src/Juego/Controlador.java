@@ -44,16 +44,16 @@ public class Controlador {
 			}
 		});
 	}
-	
+
 	private Controlador() {
-		map=new Mapa(null,this);
-		gui=new GUI(this);
+		map=getMapa();
+		//gui=getGUI();
 		gui.setVisible(true);
 		setObstaculos();
 		tiempo=new ContadorTiempo(map);
 		tiempo.start();
 	}
-	
+
 	public static Controlador getControlador() {
 		if(controlador==null) {
 			return (controlador= new Controlador());
@@ -62,6 +62,15 @@ public class Controlador {
 			return controlador;
 		}
 	}
+
+	public void ganar() {
+		System.out.println("Implementar Ganar");
+	}
+	
+	public void perder() {
+		System.out.println("Implementar Perder");
+	}
+	
 	public void setObstaculos() {
 		int x=(int)(Math.random()*5)+2;
 		int y=(int)(Math.random()*6);
@@ -119,14 +128,10 @@ public class Controlador {
 		return t;
 	}
 	public void agregarOleadaPrueba() {
-		Enemigo[]enemigos= {new Enemigo1(map,null),new Enemigo2(map,null), new Enemigo3(map,null),new Enemigo4(map,null),new Enemigo5(map,null),new Enemigo6(map,null)};
+		map.activarOleada();
+		/*Enemigo[]enemigos= {new Enemigo1(map,null),new Enemigo2(map,null), new Enemigo3(map,null),new Enemigo4(map,null),new Enemigo5(map,null),new Enemigo6(map,null)};
 		for(int i=0;i<6;i++) {
 			agregarEnemigo(9,i,enemigos[i]);
-		}
-	}
-	public void mover(Elemento elemento, int x, int y) {
-		Rectangle r;
-		r=elemento.getComponenteGrafica().getBounds();
-		elemento.getComponenteGrafica().setBounds(x,y,(int)r.getWidth(),(int)r.getHeight());
+		}*/
 	}
 }

@@ -71,6 +71,7 @@ public abstract class Enemigo extends Personaje{
 		//mapa.getControlador().getGui().setearLabel(this,"./src/Sprites/Efectos/Explosion2.gif");
 		mapa.getJugador().sumarPuntos(50);
 		mapa.eliminarElemento(this);
+		mapa.decrementarEnemigos();
 		vivo=false;
 		AutoRemove a=new AutoRemove(this,2000,animacionMuerte);
 		a.start();
