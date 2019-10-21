@@ -23,6 +23,6 @@ public class AutoRemove extends Thread {
 			}catch(InterruptedException e) {
 				e.printStackTrace();
 			}
-		e.getMapa().getControlador().getGui().eliminarComponente(e.getComponenteGrafica());
+		GUI.getGUI().eliminarComponente(e.getComponenteGrafica());
 	}
 }

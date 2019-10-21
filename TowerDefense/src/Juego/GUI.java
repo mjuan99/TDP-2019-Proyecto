@@ -1,12 +1,10 @@
 package Juego;
 
 import java.awt.Component;
-import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.util.Map;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -20,12 +18,10 @@ public class GUI extends JFrame{
 	protected JLabel [][] celdas;
 	protected JLabel puntaje;
 	protected JLabel oro;
-	protected Controlador controlador;
 	protected static int pixel=96;
 	
-	private GUI(Controlador controlador) {
+	private GUI() {
 		super("Juego");
-		this.controlador=controlador;
 		getContentPane().setLayout(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(30,30,1300,620);
@@ -38,9 +34,9 @@ public class GUI extends JFrame{
 		agregarJugador();
 	}
 	
-	public static GUI getGUI(Controlador controlador) {
+	public static GUI getGUI() {
 		if(gui==null) {
-			return (gui= new GUI(controlador));
+			return (gui= new GUI());
 		}
 		else {
 			return gui;
@@ -52,15 +48,14 @@ public class GUI extends JFrame{
 	}
 	
 	public void agregarJugador() {
-		Jugador jugador=controlador.getMapa().getJugador();
 		puntaje=new JLabel("Puntos: 0");
-		oro=new JLabel("Oro: "+jugador.getOro());
+		oro=new JLabel("Oro: "+Jugador.getJugador().getOro());
 		puntaje.setBounds(1110,0,100,30);
 		oro.setBounds(1110,30,100,30);
 		contentPane.add(puntaje);
 		contentPane.add(oro);
-		jugador.setPuntosGrafica(puntaje);
-		jugador.setOroGrafica(oro);
+		Jugador.getJugador().setPuntosGrafica(puntaje);
+		Jugador.getJugador().setOroGrafica(oro);
 	}
 	
 	public void actualizarPuntos(int puntos) {
@@ -72,8 +67,8 @@ public class GUI extends JFrame{
 	}
 	
 	private void crearFondo() {
-		int x=controlador.getMapa().getX();
-		int y=controlador.getMapa().getY();
+		int x=Mapa.getMapa(0).getX();
+		int y=Mapa.getMapa(0).getY();
 		celdas=new JLabel[x][y];
 		for(int i=0;i<x;i++)
 			for(int j=0;j<y;j++) {
@@ -98,48 +93,48 @@ public class GUI extends JFrame{
 	
 	public class OyenteAlien implements ActionListener{
 		public void actionPerformed(ActionEvent arg0) {
-			controlador.setProxTorre(0);
+			Tienda.getTienda().comprar(new Alien(Mapa.getMapa(0),null));
 		}
 	}
 	public class OyenteDinosaurio implements ActionListener{
 		public void actionPerformed(ActionEvent arg0) {
-			controlador.setProxTorre(1);
+			Tienda.getTienda().comprar(new Dinosaurio(Mapa.getMapa(0),null));
 		}
 	}
 	public class OyenteDragon implements ActionListener{
 		public void actionPerformed(ActionEvent arg0) {
-			controlador.setProxTorre(2);
+			Tienda.getTienda().comprar(new Dragon(Mapa.getMapa(0),null));
 		}
 	}
 	public class OyenteFantasma implements ActionListener{
 		public void actionPerformed(ActionEvent arg0) {
-			controlador.setProxTorre(3);
+			Tienda.getTienda().comprar(new Fantasma(Mapa.getMapa(0),null));
 		}
 	}
 	public class OyenteFenix implements ActionListener{
 		public void actionPerformed(ActionEvent arg0) {
-			controlador.setProxTorre(4);
+			Tienda.getTienda().comprar(new Fenix(Mapa.getMapa(0),null));
 		}
 	}
 	public class OyenteGolem implements ActionListener{
 		public void actionPerformed(ActionEvent arg0) {
-			controlador.setProxTorre(5);
+			Tienda.getTienda().comprar(new Golem(Mapa.getMapa(0),null));
 		}
 	}
 	public class OyenteHada implements ActionListener{
 		public void actionPerformed(ActionEvent arg0) {
-			controlador.setProxTorre(6);
+			Tienda.getTienda().comprar(new Hada(Mapa.getMapa(0),null));
 		}
 	}
 	public class OyenteLeviatan implements ActionListener{
 		public void actionPerformed(ActionEvent arg0) {
-			controlador.setProxTorre(7);
+			Tienda.getTienda().comprar(new Leviatan(Mapa.getMapa(0),null));
 		}
 	}
 	public class OyenteOleada implements ActionListener{
 		public void actionPerformed(ActionEvent arg0) {
 			botones[8].setEnabled(false);
-			controlador.agregarOleadaPrueba();
+			Controlador.getControlador().activarOleada();
 		}
 	}
 	
@@ -151,7 +146,7 @@ public class GUI extends JFrame{
 		public void mouseClicked(MouseEvent e) {
 			int x=celda.getX()/96;
 			int y=celda.getY()/96;
-			controlador.agregarTorre(x, y);
+			Tienda.getTienda().ubicar(x, y);
 		}
 		public void mouseEntered(MouseEvent e) {
 			celda.setIcon(new ImageIcon("./src/Sprites/Mapa/celda4.png"));
@@ -162,7 +157,9 @@ public class GUI extends JFrame{
 		public void mousePressed(MouseEvent e) {}
 		public void mouseReleased(MouseEvent e) {}
 	}
-	public void crearElemento(int x, int y, Elemento e) {
+	public void crearElemento(Elemento e) {
+		int x=e.getCelda().getX();
+		int y=e.getCelda().getY();
 		JLabel elemento= new JLabel(new ImageIcon(e.getRutaImagen()));
 		elemento.setBounds(x*pixel, y*pixel, e.getTamano()*pixel, pixel);
 		contentPane.add(elemento);

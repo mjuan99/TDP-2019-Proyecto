@@ -3,12 +3,10 @@ package Personajes;
 import java.awt.Rectangle;
 import java.util.Iterator;
 
-import javax.swing.ImageIcon;
-import javax.swing.JLabel;
-
 import Juego.AutoRemove;
 import Juego.Celda;
 import Juego.Elemento;
+import Juego.Jugador;
 import Juego.Mapa;
 import Objetos.ProyectilEnemigo;
 import Visitor.Visitor;
@@ -69,7 +67,7 @@ public abstract class Enemigo extends Personaje{
 		//ImageIcon img=new ImageIcon("./src/Sprites/Efectos/Explosion2.gif");
 		//img.getImage().flush();
 		//mapa.getControlador().getGui().setearLabel(this,"./src/Sprites/Efectos/Explosion2.gif");
-		mapa.getJugador().sumarPuntos(50);
+		Jugador.getJugador().sumarPuntos(50);
 		mapa.eliminarElemento(this);
 		mapa.decrementarEnemigos();
 		vivo=false;

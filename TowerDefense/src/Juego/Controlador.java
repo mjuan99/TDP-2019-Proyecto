@@ -1,42 +1,22 @@
 package Juego;
 
 import java.awt.EventQueue;
-import java.awt.Rectangle;
-
-import javax.swing.ImageIcon;
 
 import Objetos.Dugtrio;
 import Objetos.Obstaculo;
 import Objetos.Snorlax;
-import Personajes.Alien;
-import Personajes.Dinosaurio;
-import Personajes.Dragon;
 import Personajes.Enemigo;
-import Personajes.Enemigo1;
-import Personajes.Enemigo2;
-import Personajes.Enemigo3;
-import Personajes.Enemigo4;
-import Personajes.Enemigo5;
-import Personajes.Enemigo6;
-import Personajes.Fantasma;
-import Personajes.Fenix;
-import Personajes.Golem;
-import Personajes.Hada;
-import Personajes.Leviatan;
 import Personajes.Torre;
 
 public class Controlador {
 	private static Controlador controlador;
-	protected GUI gui;
 	protected ContadorTiempo tiempo;
-	protected Mapa map;
-	protected int proxTorre=0;
 	
 	public static void main(String[]args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					new Controlador();
+					Controlador.getControlador();
 				}
 				catch(Exception e) {
 					e.printStackTrace();
@@ -46,11 +26,10 @@ public class Controlador {
 	}
 
 	private Controlador() {
-		map=getMapa();
-		gui=getGUI();
-		gui.setVisible(true);
+		Mapa.getMapa(1);
+		GUI.getGUI().setVisible(true);
 		setObstaculos();
-		tiempo=new ContadorTiempo(map);
+		tiempo=new ContadorTiempo();
 		tiempo.start();
 	}
 
@@ -74,59 +53,25 @@ public class Controlador {
 	public void setObstaculos() {
 		int x=(int)(Math.random()*5)+2;
 		int y=(int)(Math.random()*6);
-		Obstaculo obs=new Snorlax(map,null);
-		map.crearElemento(obs, x, y);
-		gui.crearElemento(x, y, obs);
+		Obstaculo obs=new Snorlax(Mapa.getMapa(0),null);
+		Mapa.getMapa(0).crearElemento(obs, x, y);
+		GUI.getGUI().crearElemento(obs);
 		x=(int)(Math.random()*9);
 		y=(int)(Math.random()*6);
-		obs=new Dugtrio(map,null);
-		if(map.crearElemento(obs, x, y))
-			gui.crearElemento(x, y, obs);
-	}
-	
-	public void actualizarPuntos(int puntos) {
-		gui.actualizarPuntos(puntos);
-	}
-	
-	public void setProxTorre(int proxTorre){
-		this.proxTorre=proxTorre;
+		obs=new Dugtrio(Mapa.getMapa(0),null);
+		if(Mapa.getMapa(0).crearElemento(obs, x, y))
+			GUI.getGUI().crearElemento(obs);
 	}
 	public boolean agregarTorre(Torre t,int x, int y) {
 		//Torre t=getTorre(proxTorre);
-		if(map.posicionValidaTorre(t, x, y)) {
-			if(map.crearElemento(t, x, y))
-				gui.crearElemento(x, y, t);
-				return true;
+		if(Mapa.getMapa(0).posicionValidaTorre(t, x, y)) {
+			if(Mapa.getMapa(0).crearElemento(t, x, y))
+				GUI.getGUI().crearElemento(t);
+			return true;
 		}
 		return false;
 	}
-	
-	public void agregarEnemigo(int x, int y, Enemigo e) {
-		map.crearElemento(e, x, y);
-		gui.crearElemento(x, y, e);
-	}
-	public void crearElemento(Elemento e) {
-		gui.crearElemento(e.getCelda().getX(), e.getCelda().getY(), e);
-	}
-	private Torre getTorre(int i) {
-		Torre t=null;
-		switch(i) {
-		case 0:{t=new Alien(map,null);break;}
-		case 1:{t=new Dinosaurio(map,null);break;}
-		case 2:{t=new Dragon(map,null);break;}
-		case 3:{t=new Fantasma(map,null);break;}
-		case 4:{t=new Fenix(map,null);break;}
-		case 5:{t=new Golem(map,null);break;}
-		case 6:{t=new Hada(map,null);break;}
-		case 7:{t=new Leviatan(map,null);break;}
-		}
-		return t;
-	}
-	public void agregarOleadaPrueba() {
-		map.activarOleada();
-		/*Enemigo[]enemigos= {new Enemigo1(map,null),new Enemigo2(map,null), new Enemigo3(map,null),new Enemigo4(map,null),new Enemigo5(map,null),new Enemigo6(map,null)};
-		for(int i=0;i<6;i++) {
-			agregarEnemigo(9,i,enemigos[i]);
-		}*/
+	public void activarOleada() {
+		Mapa.getMapa(0).activarOleada();
 	}
 }

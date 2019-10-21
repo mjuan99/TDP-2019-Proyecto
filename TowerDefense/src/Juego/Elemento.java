@@ -43,7 +43,7 @@ public abstract class Elemento {
 		componenteGrafica.setIcon(null);
 		componenteGrafica.setBounds(0,0,0,0);
 		vivo=false;
-		mapa.getControlador().getGui().eliminarComponente(componenteGrafica);
+		GUI.getGUI().eliminarComponente(componenteGrafica);
 	}
 	
 	public Celda getCelda() {

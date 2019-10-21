@@ -1,30 +1,24 @@
 package Juego;
-import java.util.Iterator;
 import java.util.LinkedList;
 
 import Objetos.Obstaculo;
 import Objetos.Proyectil;
 import Personajes.Enemigo;
-import Personajes.Leviatan;
 import Personajes.Torre;
 
 public class Mapa {
 	private static Mapa mapa;
-	protected Controlador controlador;
 	protected Celda[][] grilla;
 	protected int x=10;
 	protected int y=6;
 	protected Nivel nivel;
-	protected Jugador jugador;
 	protected LinkedList<Elemento> lista;
 	protected boolean oleadaActiva;
 	protected int cantEnemigos;
 	
-	private Mapa(Nivel nivel,Controlador controlador) {
+	private Mapa(int nivel) {
 		lista=new LinkedList<Elemento>();
-		this.nivel=new Nivel(1);
-		jugador=new Jugador(this);
-		this.controlador=controlador;
+		this.nivel=new Nivel(nivel);
 		grilla=new Celda[x][y];
 		oleadaActiva=false;
 		cantEnemigos=0;
@@ -33,9 +27,9 @@ public class Mapa {
 				grilla[j][i]=new Celda(j,i);
 	}
 	
-	public static Mapa getMapa(Nivel nivel,Controlador controlador) {
+	public static Mapa getMapa(int nivel) {
 		if(mapa==null) {
-			return (mapa= new Mapa(nivel,controlador));
+			return (mapa= new Mapa(nivel));
 		}
 		else {
 			return mapa;
@@ -49,11 +43,7 @@ public class Mapa {
 	
 	public void crearProyectil(Proyectil proyectil) {
 		lista.add(proyectil);
-		controlador.crearElemento(proyectil);
-	}
-
-	public void actualizarPuntos(int puntos) {
-		controlador.actualizarPuntos(puntos);
+		GUI.getGUI().crearElemento(proyectil);
 	}
 	
 	public void actuar() {
@@ -74,15 +64,15 @@ public class Mapa {
 							e.setMapa(this);
 							grilla[9][i].setElem(e);
 							lista.add(e);
-							controlador.crearElemento(e);
+							GUI.getGUI().crearElemento(e);
 						}
 				}
 			}
 			else {
 				oleadaActiva=false;
-				controlador.getGui().activarBotonOleada();
+				GUI.getGUI().activarBotonOleada();
 				if(!nivel.siguienteOleada())
-					controlador.ganar();
+					Controlador.getControlador().ganar();
 			}
 		}
 	}
@@ -109,7 +99,7 @@ public class Mapa {
 			return true;
 		else {
 			if(celdaX==0)
-				controlador.perder();
+				Controlador.getControlador().perder();
 			return false;	
 		}
 	}
@@ -145,6 +135,7 @@ public class Mapa {
 	}
 	
 	public boolean crearElemento(Elemento elem,int x, int y) {
+		//System.out.println(x+" - "+y);
 		if(elem.getTamano()==1&&grilla[x][y].getElem()==null) {
 			grilla[x][y].setElem(elem);
 			elem.setCelda(grilla[x][y]);
@@ -181,14 +172,6 @@ public class Mapa {
 	public void setNivel(Nivel nivel) {
 		this.nivel = nivel;
 	}
-
-	public Jugador getJugador() {
-		return jugador;
-	}
-
-	public void setJugador(Jugador jugador) {
-		this.jugador = jugador;
-	}
 	
 	public int getX() {
 		return x;
@@ -196,9 +179,5 @@ public class Mapa {
 	
 	public int getY() {
 		return y;
-	}
-	
-	public Controlador getControlador() {
-		return controlador;
 	}
 }
