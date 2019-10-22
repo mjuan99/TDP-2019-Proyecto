@@ -1,5 +1,6 @@
 package Juego;
 
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -8,8 +9,6 @@ import java.awt.event.MouseListener;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-
-import Personajes.*;
 import Tienda.*;
 
 public class GUI extends JFrame{
@@ -25,7 +24,7 @@ public class GUI extends JFrame{
 		super("Juego");
 		getContentPane().setLayout(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(30,30,1300,620);
+		setBounds(30,30,1100,700);
 		contentPane= new JPanel();
 		contentPane.setBorder(new EmptyBorder(5,5,5,5));
 		setContentPane(contentPane);
@@ -61,8 +60,8 @@ public class GUI extends JFrame{
 	public void agregarJugador() {
 		puntaje=new JLabel("Puntos: 0");
 		oro=new JLabel("Oro: "+Jugador.getJugador().getOro());
-		puntaje.setBounds(1110,0,100,30);
-		oro.setBounds(1110,30,100,30);
+		puntaje.setBounds(960,0,100,30);
+		oro.setBounds(960,30,100,30);
 		contentPane.add(puntaje);
 		contentPane.add(oro);
 		Jugador.getJugador().setPuntosGrafica(puntaje);
@@ -95,12 +94,12 @@ public class GUI extends JFrame{
 		TorreTienda[] torres= {new AlienTienda(),new DinosaurioTienda(),new DragonTienda(),new FantasmaTienda(),new FenixTienda(),new GolemTienda(),new HadaTienda(),new LeviatanTienda()};
 		for(int i=0;i<8;i++) {
 			botones[i]= new BotonTienda(torres[i]);
-			botones[i].setBounds(10*pixel,i*64, 150, 64);
+			botones[i].setBounds(i*100,6*pixel, 100, 64);
 			this.add(botones[i]);
 		}
 		botones[8]=new JButton("Oleada");
 		botones[8].addActionListener(new OyenteOleada());
-		botones[8].setBounds(10*pixel,8*64,150,64);
+		botones[8].setBounds(9*pixel,6*pixel,pixel,64);
 		this.add(botones[8]);
 	}
 	public class OyenteOleada implements ActionListener{

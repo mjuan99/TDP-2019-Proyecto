@@ -14,7 +14,7 @@ public class BotonTienda extends JButton {
 	public BotonTienda(TorreTienda torre) {
 		super(new ImageIcon(torre.getImagen()));
 		this.torre=torre;
-		this.setBackground(Color.WHITE);
+		this.setBackground(Color.WHITE);;
 		this.setBorder(null);
 		this.addMouseListener(new OyenteBoton(this));
 	}
