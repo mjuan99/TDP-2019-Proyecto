@@ -10,19 +10,17 @@ public abstract class Elemento {
 	protected Celda celda;
 	protected int vida;
 	protected String rutaImagen;
-	protected Mapa mapa;
 	protected JLabel componenteGrafica;
 	protected int contadorPulsos=0;
 	protected int topePulso=10;
 	protected Visitor visitor;
 	
-	protected Elemento(Mapa mapa,Celda celda,int vidaMax,int tamano,String rutaImagen) {
+	protected Elemento(Celda celda,int vidaMax,int tamano,String rutaImagen) {
 		vivo=true;
 		this.celda=celda;
 		vida=vidaMax;
 		this.tamano=tamano;
 		this.rutaImagen=rutaImagen;
-		this.mapa=mapa;
 	}
 	
 	public int getTamano() {
@@ -43,7 +41,7 @@ public abstract class Elemento {
 	public abstract void accept(Visitor v);
 	
 	public void morir() {
-		mapa.eliminarElemento(this);
+		Mapa.getMapa(0).eliminarElemento(this);
 		componenteGrafica.setIcon(null);
 		componenteGrafica.setBounds(0,0,0,0);
 		vivo=false;
@@ -78,13 +76,5 @@ public abstract class Elemento {
 	
 	public String getRutaImagen() {
 		return rutaImagen;
-	}
-	
-	public Mapa getMapa() {
-		return mapa;
-	}
-	
-	public void setMapa(Mapa mapa) {
-		this.mapa=mapa;
 	}
 }

@@ -60,7 +60,6 @@ public class Mapa {
 				y=(int)(Math.random()*6);
 			}
 			o.setCelda(grilla[x][y]);
-			o.setMapa(this);
 			grilla[x][y].setElem(o);
 			lista.add(o);
 			GUI.getGUI().crearElemento(o);
@@ -88,7 +87,6 @@ public class Mapa {
 						if (nivel.quedanEnemigos(i)) {
 							e=nivel.getEnemigo(i);
 							e.setCelda(grilla[9][i]);
-							e.setMapa(this);
 							grilla[9][i].setElem(e);
 							lista.add(e);
 							GUI.getGUI().crearElemento(e);

@@ -8,8 +8,8 @@ import Visitor.VisitorProyectilEnemigo;
 
 public class ProyectilEnemigo extends Proyectil {
 	protected static int tam=1;
-	public ProyectilEnemigo(Mapa mapa, Celda celda, int dano,int rango,String rutaImagen) {//agregar celda y entidad de donde se crea
-		super(mapa, celda, dano,rango,tam,rutaImagen);
+	public ProyectilEnemigo(Celda celda, int dano,int rango,String rutaImagen) {//agregar celda y entidad de donde se crea
+		super(celda, dano,rango,tam,rutaImagen);
 		visitor=new VisitorProyectilEnemigo(this);
 	}
 	
@@ -29,7 +29,7 @@ public class ProyectilEnemigo extends Proyectil {
 			componenteGrafica.setBounds((int)r.getX()-24,(int)r.getY(),96,96);
 		else{
 			if(celdaDestino>=0&&rango>0) {
-				celda=mapa.getGrilla()[celdaDestino][celda.getY()];
+				celda=Mapa.getMapa(0).getGrilla()[celdaDestino][celda.getY()];
 				componenteGrafica.setBounds((int)r.getX()-24,(int)r.getY(),96,96);
 				moviendo=false;
 				rango--;

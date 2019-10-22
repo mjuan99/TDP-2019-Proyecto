@@ -55,8 +55,8 @@ public class Oleada {
 	private Obstaculo getObstaculo(char c) {
 		Obstaculo o=null;
 		switch(c) {
-		case 't':{o=new Dugtrio(null,null);break;}
-		case 'v':{o=new Snorlax(null,null);break;}
+		case 't':{o=new Dugtrio(null);break;}
+		case 'v':{o=new Snorlax(null);break;}
 		}
 		return o;
 	}
@@ -68,12 +68,12 @@ public class Oleada {
 	private Enemigo getEnemigo(char c) {
 		Enemigo e=null;
 		switch (c) {
-		case '1':{e=new Enemigo1(null,null);break;}
-		case '2':{e=new Enemigo2(null,null);break;}
-		case '3':{e=new Enemigo3(null,null);break;}
-		case '4':{e=new Enemigo4(null,null);break;}
-		case '5':{e=new Enemigo5(null,null);break;}
-		case '6':{e=new Enemigo6(null,null);break;}
+		case '1':{e=new Enemigo1(null);break;}
+		case '2':{e=new Enemigo2(null);break;}
+		case '3':{e=new Enemigo3(null);break;}
+		case '4':{e=new Enemigo4(null);break;}
+		case '5':{e=new Enemigo5(null);break;}
+		case '6':{e=new Enemigo6(null);break;}
 		}
 		return e;
 	}

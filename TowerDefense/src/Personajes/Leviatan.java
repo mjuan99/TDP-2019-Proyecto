@@ -11,8 +11,8 @@ public class Leviatan extends Torre {
 	protected static String imagen ="./src/Sprites/Torres/Onix.gif";
 	protected static String proyectil="";
 	
-	public Leviatan(Mapa mapa,Celda celda) {
-		super(mapa,celda,vidaBase,tam,imagen,danoBase,alcanceBase,proyectil);
+	public Leviatan(Celda celda) {
+		super(celda,vidaBase,tam,imagen,danoBase,alcanceBase,proyectil);
 	}
 	
 	public void actuar() {}

@@ -9,8 +9,8 @@ import Visitor.VisitorProyectilAliado;
 
 public class ProyectilAliado extends Proyectil {
 	protected static int tam=1;
-	public ProyectilAliado(Mapa mapa, Celda celda, int dano,int rango,String rutaImagen) {//agregar celda y entidad de donde se crea
-		super(mapa, celda, dano,rango,tam,rutaImagen);
+	public ProyectilAliado(Celda celda, int dano,int rango,String rutaImagen) {//agregar celda y entidad de donde se crea
+		super(celda, dano,rango,tam,rutaImagen);
 		visitor=new VisitorProyectilAliado(this);
 	}
 	
@@ -30,8 +30,8 @@ public class ProyectilAliado extends Proyectil {
 			if (celdaDestino * 96 > componenteGrafica.getBounds().getX())
 				componenteGrafica.setBounds((int) r.getX() + 24, (int) r.getY(), 96, 96);
 			else {
-				celda = mapa.getGrilla()[celdaDestino][celda.getY()];
-				if (celdaDestino < mapa.getX()-1 && rango > 1) {
+				celda = Mapa.getMapa(0).getGrilla()[celdaDestino][celda.getY()];
+				if (celdaDestino < Mapa.getMapa(0).getX()-1 && rango > 1) {
 					componenteGrafica.setBounds((int) r.getX() + 24, (int) r.getY(), 96, 96);
 					moviendo = false;
 					rango--;

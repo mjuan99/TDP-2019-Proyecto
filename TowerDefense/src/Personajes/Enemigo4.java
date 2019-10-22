@@ -14,7 +14,7 @@ public class Enemigo4 extends Enemigo {
 	protected static String proyectil="./src/Sprites/Ataques/AtaqueEnemigo.gif";
 	protected static String animacionMuerte="./src/Sprites/Efectos/Muerte4.gif";
 	
-	public Enemigo4(Mapa mapa,Celda celda) {
-		super(mapa,celda,vidaBase,tam,imagen,animacionMuerte,danoBase,alcanceBase,proyectil,velocBase);
+	public Enemigo4(Celda celda) {
+		super(celda,vidaBase,tam,imagen,animacionMuerte,danoBase,alcanceBase,proyectil,velocBase);
 	}
 }

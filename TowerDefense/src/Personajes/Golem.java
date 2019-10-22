@@ -13,8 +13,8 @@ public class Golem extends Torre {
 	protected static String imagen ="./src/Sprites/Torres/Golem.gif";
 	protected static String proyectil="./src/Sprites/Ataques/AtaqueGolem.gif";
 	
-	public Golem(Mapa mapa,Celda celda) {
-		super(mapa,celda,vidaBase,tam,imagen,danoBase,alcanceBase,proyectil);
+	public Golem(Celda celda) {
+		super(celda,vidaBase,tam,imagen,danoBase,alcanceBase,proyectil);
 	}
 	
 }

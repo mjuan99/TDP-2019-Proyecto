@@ -6,8 +6,6 @@ import java.awt.event.MouseListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-
-import Tienda.AlienTienda;
 import Tienda.Tienda;
 import Tienda.TorreTienda;
 

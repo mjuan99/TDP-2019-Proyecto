@@ -11,7 +11,7 @@ public class Dinosaurio extends Torre {
 	protected static String imagen ="./src/Sprites/Torres/Dinosaurio.gif";
 	protected static String proyectil="./src/Sprites/Ataques/AtaqueDinosaurio.gif";
 	
-	public Dinosaurio(Mapa mapa,Celda celda) {
-		super(mapa,celda,vidaBase,tam,imagen,danoBase,alcanceBase,proyectil);
+	public Dinosaurio(Celda celda) {
+		super(celda,vidaBase,tam,imagen,danoBase,alcanceBase,proyectil);
 	}
 }

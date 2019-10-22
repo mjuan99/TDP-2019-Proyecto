@@ -103,47 +103,6 @@ public class GUI extends JFrame{
 		botones[8].setBounds(10*pixel,8*64,150,64);
 		this.add(botones[8]);
 	}
-	
-	public class OyenteAlien implements ActionListener{
-		public void actionPerformed(ActionEvent arg0) {
-			Tienda.getTienda().comprar(new Alien(Mapa.getMapa(0),null));
-		}
-	}
-	public class OyenteDinosaurio implements ActionListener{
-		public void actionPerformed(ActionEvent arg0) {
-			Tienda.getTienda().comprar(new Dinosaurio(Mapa.getMapa(0),null));
-		}
-	}
-	public class OyenteDragon implements ActionListener{
-		public void actionPerformed(ActionEvent arg0) {
-			Tienda.getTienda().comprar(new Dragon(Mapa.getMapa(0),null));
-		}
-	}
-	public class OyenteFantasma implements ActionListener{
-		public void actionPerformed(ActionEvent arg0) {
-			Tienda.getTienda().comprar(new Fantasma(Mapa.getMapa(0),null));
-		}
-	}
-	public class OyenteFenix implements ActionListener{
-		public void actionPerformed(ActionEvent arg0) {
-			Tienda.getTienda().comprar(new Fenix(Mapa.getMapa(0),null));
-		}
-	}
-	public class OyenteGolem implements ActionListener{
-		public void actionPerformed(ActionEvent arg0) {
-			Tienda.getTienda().comprar(new Golem(Mapa.getMapa(0),null));
-		}
-	}
-	public class OyenteHada implements ActionListener{
-		public void actionPerformed(ActionEvent arg0) {
-			Tienda.getTienda().comprar(new Hada(Mapa.getMapa(0),null));
-		}
-	}
-	public class OyenteLeviatan implements ActionListener{
-		public void actionPerformed(ActionEvent arg0) {
-			Tienda.getTienda().comprar(new Leviatan(Mapa.getMapa(0),null));
-		}
-	}
 	public class OyenteOleada implements ActionListener{
 		public void actionPerformed(ActionEvent arg0) {
 			botones[8].setEnabled(false);

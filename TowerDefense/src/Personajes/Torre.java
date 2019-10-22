@@ -10,13 +10,13 @@ import Visitor.VisitorAliado;
 
 public abstract class Torre extends Personaje{
 	
-	protected Torre(Mapa mapa,Celda celda,int vidaMax,int tamano,String rutaImagen,int dano,int alcance,String rutaProyectil) {
-		super(mapa,celda,vidaMax,tamano,rutaImagen,dano,alcance,rutaProyectil);
+	protected Torre(Celda celda,int vidaMax,int tamano,String rutaImagen,int dano,int alcance,String rutaProyectil) {
+		super(celda,vidaMax,tamano,rutaImagen,dano,alcance,rutaProyectil);
 		visitor=new VisitorAliado(this);
 	}
 	public void atacar() {
 		ataco=true;
-		mapa.crearProyectil(new ProyectilAliado(mapa, celda, dano,alcance,rutaProyectil));
+		Mapa.getMapa(0).crearProyectil(new ProyectilAliado(celda, dano,alcance,rutaProyectil));
 			
 	}
 	
@@ -29,7 +29,7 @@ public abstract class Torre extends Personaje{
 	}
 	
 	public void actuar() {
-		Iterator<Elemento> it=mapa.elementosRango(this).iterator();
+		Iterator<Elemento> it=Mapa.getMapa(0).elementosRango(this).iterator();
 		if(contadorPulsos==0) {
 			ataco=false;
 			while(!ataco&&it.hasNext())

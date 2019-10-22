@@ -2,12 +2,7 @@ package Juego;
 
 import java.awt.EventQueue;
 
-import Objetos.Dugtrio;
-import Objetos.Obstaculo;
-import Objetos.Snorlax;
-import Personajes.Enemigo;
 import Personajes.Torre;
-import Tienda.AlienTienda;
 
 public class Controlador {
 	private static Controlador controlador;

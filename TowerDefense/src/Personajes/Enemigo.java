@@ -20,8 +20,8 @@ public abstract class Enemigo extends Personaje{
 	protected int celdaDestino;
 	protected String animacionMuerte;
 	
-	protected Enemigo(Mapa mapa,Celda celda,int vidaMax,int tamano,String rutaImagen,String animacionMuerte,int dano,int alcance,String rutaProyectil,int velocBase) {
-		super(mapa,celda,vidaMax,tamano,rutaImagen,dano,alcance,rutaProyectil);
+	protected Enemigo(Celda celda,int vidaMax,int tamano,String rutaImagen,String animacionMuerte,int dano,int alcance,String rutaProyectil,int velocBase) {
+		super(celda,vidaMax,tamano,rutaImagen,dano,alcance,rutaProyectil);
 		this.animacionMuerte=animacionMuerte;
 		velocidad=velocBase;
 		visitor=new VisitorEnemigo(this);
@@ -29,7 +29,7 @@ public abstract class Enemigo extends Personaje{
 	
 	public void atacar() {
 		ataco=true;
-		mapa.crearProyectil(new ProyectilEnemigo(mapa, celda, dano,alcance,rutaProyectil));
+		Mapa.getMapa(0).crearProyectil(new ProyectilEnemigo(celda, dano,alcance,rutaProyectil));
 	}
 	
 	public void accept(Visitor v) {
@@ -41,15 +41,15 @@ public abstract class Enemigo extends Personaje{
 			Rectangle r = componenteGrafica.getBounds();
 			if (!moviendo) {
 				ataco=false;
-				Iterator<Elemento> it=mapa.elementosRango(this).iterator();
+				Iterator<Elemento> it=Mapa.getMapa(0).elementosRango(this).iterator();
 				while(!ataco&&it.hasNext())
 					it.next().accept(visitor);
 				if(ataco)
 					contadorPulsos++;
 				else
-					if (mapa.puedeAvanzar(this)) {
+					if (Mapa.getMapa(0).puedeAvanzar(this)) {
 						celdaDestino = celda.getX() - 1;
-						mapa.avanzar(this);
+						Mapa.getMapa(0).avanzar(this);
 						moviendo = true;
 					}
 			} else 
@@ -66,8 +66,8 @@ public abstract class Enemigo extends Personaje{
 		//img.getImage().flush();
 		//mapa.getControlador().getGui().setearLabel(this,"./src/Sprites/Efectos/Explosion2.gif");
 		Jugador.getJugador().sumarPuntos(50);
-		mapa.eliminarElemento(this);
-		mapa.decrementarEnemigos();
+		Mapa.getMapa(0).eliminarElemento(this);
+		Mapa.getMapa(0).decrementarEnemigos();
 		vivo=false;
 		AutoRemove a=new AutoRemove(this,2000,animacionMuerte);
 		a.start();
