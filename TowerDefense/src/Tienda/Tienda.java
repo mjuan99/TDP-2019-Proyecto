@@ -1,5 +1,8 @@
-package Juego;
+package Tienda;
 
+import Juego.Controlador;
+import Juego.Elemento;
+import Juego.Jugador;
 import Objetos.PowerUp;
 import Personajes.Torre;
 

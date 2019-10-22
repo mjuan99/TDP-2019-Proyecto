@@ -15,13 +15,15 @@ import Visitor.VisitorEnemigo;
 public abstract class Enemigo extends Personaje{
 	
 	protected int contadorMov=0;
+	protected int velocidad;
 	protected boolean moviendo=false;
 	protected int celdaDestino;
 	protected String animacionMuerte;
 	
-	protected Enemigo(Mapa mapa,Celda celda,int vidaMax,int tamano,String rutaImagen,String animacionMuerte,int dano,int alcance,String rutaProyectil) {
+	protected Enemigo(Mapa mapa,Celda celda,int vidaMax,int tamano,String rutaImagen,String animacionMuerte,int dano,int alcance,String rutaProyectil,int velocBase) {
 		super(mapa,celda,vidaMax,tamano,rutaImagen,dano,alcance,rutaProyectil);
 		this.animacionMuerte=animacionMuerte;
+		velocidad=velocBase;
 		visitor=new VisitorEnemigo(this);
 	}
 	
@@ -52,7 +54,7 @@ public abstract class Enemigo extends Personaje{
 					}
 			} else 
 				if (celdaDestino * 96 < componenteGrafica.getBounds().getX())
-					componenteGrafica.setBounds((int) r.getX() - 12, (int) r.getY(), 96, 96);
+					componenteGrafica.setBounds((int) r.getX() - velocidad, (int) r.getY(), 96, 96);
 				else
 					moviendo = false;
 		}else

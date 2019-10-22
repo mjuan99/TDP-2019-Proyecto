@@ -10,6 +10,7 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
 import Personajes.*;
+import Tienda.Tienda;
 
 public class GUI extends JFrame{
 	private static GUI gui;

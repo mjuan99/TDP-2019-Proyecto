@@ -41,7 +41,8 @@ public class Mapa {
 		Elemento e;
 		while(!lista.isEmpty()) {
 			e=lista.removeFirst();
-			e.morir();
+			e.getComponenteGrafica().setIcon(null);
+			GUI.getGUI().eliminarComponente(e.getComponenteGrafica());
 		}
 	}
 		
