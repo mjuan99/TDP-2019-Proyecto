@@ -9,7 +9,7 @@ public class Enemigo5 extends Enemigo {
 	protected static int danoBase=70;
 	protected static int alcanceBase=2;
 	protected static String imagen ="./src/Sprites/Enemigos/Enemigo5.gif";
-	protected static String proyectil="./src/Sprites/Ataques/AtaqueAlien.gif";
+	protected static String proyectil="./src/Sprites/Ataques/AtaqueEnemigo.gif";
 	protected static String animacionMuerte="./src/Sprites/Efectos/Muerte5.gif";
 	
 	public Enemigo5(Mapa mapa,Celda celda) {
