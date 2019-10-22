@@ -7,6 +7,7 @@ import Objetos.Obstaculo;
 import Objetos.Snorlax;
 import Personajes.Enemigo;
 import Personajes.Torre;
+import Tienda.AlienTienda;
 
 public class Controlador {
 	private static Controlador controlador;
@@ -30,6 +31,7 @@ public class Controlador {
 		GUI.getGUI().setVisible(true);
 		tiempo=new ContadorTiempo();
 		tiempo.start();
+		System.out.println(AlienTienda.descripcion());
 	}
 
 	public static Controlador getControlador() {
