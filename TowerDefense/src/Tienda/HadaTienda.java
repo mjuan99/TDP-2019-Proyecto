@@ -5,7 +5,7 @@ import Personajes.*;
 public class HadaTienda {
 	protected static int precio=50;
 	protected static String nombre="Hada";
-	protected static String rutaImagen="./src/Sprites/Torres/Hada.gif";
+	protected static String rutaImagen="./src/Sprites/Tienda/Hada.png";
 	protected static int rango=3;
 	protected static int dano=50;
 	protected static int vida=250;

@@ -4,7 +4,7 @@ import Personajes.*;
 public class AlienTienda {
 	protected static int precio=50;
 	protected static String nombre="Alien";
-	protected static String rutaImagen="./src/Sprites/Torres/Alien.gif";
+	protected static String rutaImagen="./src/Sprites/Tienda/Alien.png";
 	protected static int rango=3;
 	protected static int dano=70;
 	protected static int vida=500;

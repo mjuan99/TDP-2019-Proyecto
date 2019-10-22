@@ -5,7 +5,7 @@ import Personajes.*;
 public class FantasmaTienda {
 	protected static int precio=50;
 	protected static String nombre="Fantasma";
-	protected static String rutaImagen="./src/Sprites/Torres/Fantasma.gif";
+	protected static String rutaImagen="./src/Sprites/Tienda/Fantasma.png";
 	protected static int rango=4;
 	protected static int dano=50;
 	protected static int vida=250;
