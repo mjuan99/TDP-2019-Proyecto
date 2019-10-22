@@ -1,9 +1,7 @@
 package Juego;
 
 public class ContadorTiempo extends Thread {
-	Mapa mapa;
-	ContadorTiempo(Mapa mapa){
-		this.mapa=mapa;
+	ContadorTiempo(){
 	}
 	
 	public void run() {
@@ -13,7 +11,7 @@ public class ContadorTiempo extends Thread {
 			}catch(InterruptedException e) {
 				e.printStackTrace();
 			}
-			mapa.actuar();
+			Mapa.getMapa(0).actuar();
 		}
 	}
 }
