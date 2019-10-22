@@ -1,5 +1,6 @@
 package Juego;
 import java.util.LinkedList;
+import java.util.Queue;
 
 import Objetos.Obstaculo;
 import Objetos.Proyectil;
@@ -35,10 +36,34 @@ public class Mapa {
 			return mapa;
 		}
 	}
+	
+	public void limpiar() {
+		Elemento e;
+		while(!lista.isEmpty()) {
+			e=lista.removeFirst();
+			e.morir();
+		}
+	}
 		
 	public void activarOleada() {
 		oleadaActiva=true;
 		cantEnemigos=nivel.cantEnemigos();
+		Queue<Obstaculo> obstaculos=nivel.getColaObstaculos();
+		int x=(int)(Math.random()*6+2);
+		int y=(int)(Math.random()*6);
+		Obstaculo o;
+		while(!obstaculos.isEmpty()) {
+			o=obstaculos.poll();
+			while(grilla[x][y].getElem()!=null) {
+				x=(int)(Math.random()*6+2);
+				y=(int)(Math.random()*6);
+			}
+			o.setCelda(grilla[x][y]);
+			o.setMapa(this);
+			grilla[x][y].setElem(o);
+			lista.add(o);
+			GUI.getGUI().crearElemento(o);
+		}
 	}
 	
 	public void crearProyectil(Proyectil proyectil) {
@@ -52,7 +77,8 @@ public class Mapa {
 		for(Elemento el:lista)
 			listaAux.addLast(el);
 		for(Elemento el:listaAux) {
-			el.actuar();
+			if(el.estaVivo())
+				el.actuar();
 		}
 		if(oleadaActiva) {
 			if(cantEnemigos!=0) {
@@ -87,7 +113,7 @@ public class Mapa {
 		if(grilla[x][y].getElem()==e) {
 			grilla[x][y].setElem(null);
 			if(e.getTamano()==2)
-				grilla[x-1][y].setElem(null);
+				grilla[x][y+1].setElem(null);
 		}
 		lista.remove(e);
 	}
@@ -142,10 +168,10 @@ public class Mapa {
 			lista.add(elem);
 			return true;
 		}else
-			if(elem.getTamano()==2&&x<9&&grilla[x][y].getElem()==null&&grilla[x+1][y].getElem()==null) {
+			if(elem.getTamano()==2&&y<5&&grilla[x][y].getElem()==null&&grilla[x][y+1].getElem()==null) {
 				grilla[x][y].setElem(elem);
-				grilla[x+1][y].setElem(elem);
-				elem.setCelda(grilla[x+1][y]);
+				grilla[x][y+1].setElem(elem);
+				elem.setCelda(grilla[x][y]);
 				lista.add(elem);
 				return true;
 			}
@@ -154,7 +180,7 @@ public class Mapa {
 	}
 	
 	public boolean posicionValidaTorre(Torre t,int x,int y) {
-		return (x>=0&&x<this.x-t.getTamano()&&y>=0&&y<this.y&&grilla[x][y].getElem()==null&&(t.getTamano()==1||grilla[x+1][y].getElem()==null));
+		return (x>=0&&x<this.x-1&&y>=0&&y<=this.y-t.getTamano()&&grilla[x][y].getElem()==null&&(t.getTamano()==1||grilla[x][y+1].getElem()==null));
 	}
 
 	public Celda[][] getGrilla() {

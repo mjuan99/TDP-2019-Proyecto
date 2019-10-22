@@ -4,9 +4,9 @@ import Juego.Mapa;
 import Objetos.Proyectil;
 
 public class Enemigo5 extends Enemigo {
-	protected static int vidaBase=500;
+	protected static int vidaBase=900;
 	protected static int tam=1;
-	protected static int danoBase=70;
+	protected static int danoBase=50;
 	protected static int alcanceBase=2;
 	protected static String imagen ="./src/Sprites/Enemigos/Enemigo5.gif";
 	protected static String proyectil="./src/Sprites/Ataques/AtaqueAlien.gif";

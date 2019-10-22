@@ -36,6 +36,10 @@ public abstract class Elemento {
 			vida-=dano;
 	}
 	
+	public boolean estaVivo() {
+		return vivo;
+	}
+	
 	public abstract void accept(Visitor v);
 	
 	public void morir() {
@@ -78,5 +82,9 @@ public abstract class Elemento {
 	
 	public Mapa getMapa() {
 		return mapa;
+	}
+	
+	public void setMapa(Mapa mapa) {
+		this.mapa=mapa;
 	}
 }

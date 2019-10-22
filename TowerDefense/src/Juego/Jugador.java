@@ -29,6 +29,10 @@ public class Jugador {
 		return presupuesto;
 	}
 	
+	public int getPuntos() {
+		return puntos;
+	}
+	
 	public void decrementarOro(int valor) {
 		presupuesto-=valor;
 	}

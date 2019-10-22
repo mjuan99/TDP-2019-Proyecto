@@ -43,6 +43,16 @@ public class GUI extends JFrame{
 		}
 	}
 	
+	public void ganar() {
+		JOptionPane.showMessageDialog(null, "Ganaste\nPuntos: "+Jugador.getJugador().getPuntos());
+		System.exit(0);
+	}
+	
+	public void perder() {
+		JOptionPane.showMessageDialog(null, "Perdiste\nPuntos: "+Jugador.getJugador().getPuntos());
+		System.exit(0);
+	}
+	
 	public void activarBotonOleada() {
 		botones[8].setEnabled(true);
 	}
@@ -161,7 +171,7 @@ public class GUI extends JFrame{
 		int x=e.getCelda().getX();
 		int y=e.getCelda().getY();
 		JLabel elemento= new JLabel(new ImageIcon(e.getRutaImagen()));
-		elemento.setBounds(x*pixel, y*pixel, e.getTamano()*pixel, pixel);
+		elemento.setBounds(x*pixel, y*pixel, pixel, e.getTamano()*pixel);
 		contentPane.add(elemento);
 		contentPane.setComponentZOrder(elemento, 0);
 		e.setComponenteGrafica(elemento);

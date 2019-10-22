@@ -28,7 +28,6 @@ public class Controlador {
 	private Controlador() {
 		Mapa.getMapa(1);
 		GUI.getGUI().setVisible(true);
-		setObstaculos();
 		tiempo=new ContadorTiempo();
 		tiempo.start();
 	}
@@ -43,25 +42,15 @@ public class Controlador {
 	}
 
 	public void ganar() {
-		System.out.println("Implementar Ganar");
+		Mapa.getMapa(0).limpiar();
+		GUI.getGUI().ganar();
 	}
 	
 	public void perder() {
-		System.out.println("Implementar Perder");
+		Mapa.getMapa(0).limpiar();
+		GUI.getGUI().perder();
 	}
-	
-	public void setObstaculos() {
-		int x=(int)(Math.random()*5)+2;
-		int y=(int)(Math.random()*6);
-		Obstaculo obs=new Snorlax(Mapa.getMapa(0),null);
-		Mapa.getMapa(0).crearElemento(obs, x, y);
-		GUI.getGUI().crearElemento(obs);
-		x=(int)(Math.random()*9);
-		y=(int)(Math.random()*6);
-		obs=new Dugtrio(Mapa.getMapa(0),null);
-		if(Mapa.getMapa(0).crearElemento(obs, x, y))
-			GUI.getGUI().crearElemento(obs);
-	}
+
 	public boolean agregarTorre(Torre t,int x, int y) {
 		//Torre t=getTorre(proxTorre);
 		if(Mapa.getMapa(0).posicionValidaTorre(t, x, y)) {
