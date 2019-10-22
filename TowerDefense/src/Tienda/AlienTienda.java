@@ -11,6 +11,7 @@ public class AlienTienda {
 	protected static int dano;
 	protected static int vida;
 	protected static int tamano;
+	//asd
 	
 	public static Torre getTorre() {
 		return new Alien(null,null);
