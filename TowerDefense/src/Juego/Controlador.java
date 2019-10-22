@@ -52,7 +52,6 @@ public class Controlador {
 	}
 
 	public boolean agregarTorre(Torre t,int x, int y) {
-		//Torre t=getTorre(proxTorre);
 		if(Mapa.getMapa(0).posicionValidaTorre(t, x, y)) {
 			if(Mapa.getMapa(0).crearElemento(t, x, y))
 				GUI.getGUI().crearElemento(t);
