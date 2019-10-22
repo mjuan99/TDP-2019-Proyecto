@@ -8,7 +8,7 @@ public class Leviatan extends Torre {
 	protected static int tam=2;
 	protected static int danoBase=0;
 	protected static int alcanceBase=0;
-	protected static String imagen ="./src/Sprites/Torres/Leviatan.gif";
+	protected static String imagen ="./src/Sprites/Torres/Onix.gif";
 	protected static String proyectil="";
 	
 	public Leviatan(Mapa mapa,Celda celda) {
