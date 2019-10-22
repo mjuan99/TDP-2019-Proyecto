@@ -10,7 +10,7 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
 import Personajes.*;
-import Tienda.Tienda;
+import Tienda.*;
 
 public class GUI extends JFrame{
 	private static GUI gui;
@@ -92,14 +92,16 @@ public class GUI extends JFrame{
 
 	private void agregarBotones() {
 		botones= new JButton[9];
-		ActionListener [] oyentes= {new OyenteAlien(),new OyenteDinosaurio(),new OyenteDragon(), new OyenteFantasma(), new OyenteFenix(), new OyenteGolem(), new OyenteHada(),new OyenteLeviatan(),new OyenteOleada()};
-		String[] nombres= {"Alien","Dinosaurio","Dragon","Fantasma","Fenix","Golem","Hada","Leviatan","Oleada"};
-		for(int i=0;i<9;i++) {
-			botones[i]= new JButton(nombres[i]);
+		TorreTienda[] torres= {new AlienTienda(),new DinosaurioTienda(),new DragonTienda(),new FantasmaTienda(),new FenixTienda(),new GolemTienda(),new HadaTienda(),new LeviatanTienda()};
+		for(int i=0;i<8;i++) {
+			botones[i]= new BotonTienda(torres[i]);
 			botones[i].setBounds(10*pixel,i*64, 150, 64);
-			botones[i].addActionListener(oyentes[i]);
 			this.add(botones[i]);
 		}
+		botones[8]=new JButton("Oleada");
+		botones[8].addActionListener(new OyenteOleada());
+		botones[8].setBounds(10*pixel,8*64,150,64);
+		this.add(botones[8]);
 	}
 	
 	public class OyenteAlien implements ActionListener{
@@ -155,9 +157,6 @@ public class GUI extends JFrame{
 			this.celda=celda;
 		}
 		public void mouseClicked(MouseEvent e) {
-			int x=celda.getX()/96;
-			int y=celda.getY()/96;
-			Tienda.getTienda().ubicar(x, y);
 		}
 		public void mouseEntered(MouseEvent e) {
 			celda.setIcon(new ImageIcon("./src/Sprites/Mapa/celda4.png"));
@@ -166,7 +165,10 @@ public class GUI extends JFrame{
 			celda.setIcon(new ImageIcon("./src/Sprites/Mapa/celda2.png"));
 		}
 		public void mousePressed(MouseEvent e) {}
-		public void mouseReleased(MouseEvent e) {}
+		public void mouseReleased(MouseEvent e) {
+			int x=celda.getX()/96;
+			int y=celda.getY()/96;
+			Tienda.getTienda().ubicar(x, y);}
 	}
 	public void crearElemento(Elemento e) {
 		int x=e.getCelda().getX();

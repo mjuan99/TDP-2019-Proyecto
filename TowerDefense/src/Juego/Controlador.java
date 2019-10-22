@@ -31,7 +31,6 @@ public class Controlador {
 		GUI.getGUI().setVisible(true);
 		tiempo=new ContadorTiempo();
 		tiempo.start();
-		System.out.println(AlienTienda.descripcion());
 	}
 
 	public static Controlador getControlador() {
