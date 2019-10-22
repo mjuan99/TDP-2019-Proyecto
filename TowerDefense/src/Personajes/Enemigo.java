@@ -59,10 +59,6 @@ public abstract class Enemigo extends Personaje{
 			contadorPulsos=(contadorPulsos+1)%topePulso;
 	}
 	
-	public void setMapa(Mapa mapa) {
-		this.mapa=mapa;
-	}
-	
 	public void morir() {
 		//ImageIcon img=new ImageIcon("./src/Sprites/Efectos/Explosion2.gif");
 		//img.getImage().flush();

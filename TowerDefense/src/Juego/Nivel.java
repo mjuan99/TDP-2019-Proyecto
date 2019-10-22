@@ -2,6 +2,7 @@ package Juego;
 
 import java.util.Queue;
 
+import Objetos.Obstaculo;
 import Personajes.Enemigo;
 
 import java.util.ArrayDeque;
@@ -25,6 +26,10 @@ public class Nivel {
 	
 	public boolean quedanEnemigos(int i) {
 		return oleadas.peek().quedanEnemigos(i);
+	}
+	
+	public Queue<Obstaculo> getColaObstaculos(){
+		return oleadas.peek().getColaObstaculos();
 	}
 	
 	public Enemigo getEnemigo(int i) {
