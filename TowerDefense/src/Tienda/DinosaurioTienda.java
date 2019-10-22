@@ -5,7 +5,7 @@ import Personajes.*;
 public class DinosaurioTienda extends TorreTienda {
 	protected static int precio=50;
 	protected static String nombre="Dinosaurio";
-	protected static String rutaImagen="./src/Sprites/Torres/Dinosaurio.gif";
+	protected static String rutaImagen="./src/Sprites/Tienda/Dinosaurio.png";
 	protected static int rango=1;
 	protected static int dano=80;
 	protected static int vida=600;

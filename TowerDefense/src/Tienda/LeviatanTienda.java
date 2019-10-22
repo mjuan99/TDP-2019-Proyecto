@@ -5,7 +5,7 @@ import Personajes.*;
 public class LeviatanTienda extends TorreTienda {
 	protected static int precio=100;
 	protected static String nombre="Leviatan";
-	protected static String rutaImagen="./src/Sprites/Torres/Onix.gif";
+	protected static String rutaImagen="./src/Sprites/Tienda/Onix.png";
 	protected static int rango=0;
 	protected static int dano=0;
 	protected static int vida=1500;

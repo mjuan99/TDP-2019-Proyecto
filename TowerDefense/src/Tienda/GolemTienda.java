@@ -5,7 +5,7 @@ import Personajes.*;
 public class GolemTienda extends TorreTienda {
 	protected static int precio=50;
 	protected static String nombre="Golem";
-	protected static String rutaImagen="./src/Sprites/Torres/Golem.gif";
+	protected static String rutaImagen="./src/Sprites/Tienda/Golem.png";
 	protected static int rango=4;
 	protected static int dano=50;
 	protected static int vida=250;
