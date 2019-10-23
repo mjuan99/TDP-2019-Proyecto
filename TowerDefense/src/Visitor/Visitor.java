@@ -2,6 +2,7 @@ package Visitor;
 
 import Objetos.*;
 import Personajes.*;
+import PowerUps.PowerUp;
 
 public abstract class Visitor {
 	

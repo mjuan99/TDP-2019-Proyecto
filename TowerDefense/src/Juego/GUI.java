@@ -6,12 +6,15 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.LinkedList;
 import java.util.Map;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
+import PowerUps.*;
 import Personajes.*;
+import Objetos.*;
 
 public class GUI extends JFrame{
 	protected JButton[] botones;
@@ -157,6 +160,54 @@ public class GUI extends JFrame{
 		public void mousePressed(MouseEvent e) {}
 		public void mouseReleased(MouseEvent e) {}
 	}
+	
+	public class OyenteMousePower implements MouseListener{
+		JLabel celda;
+		Elemento elem;
+		
+		public OyenteMousePower(JLabel celda) {
+			this.celda=celda;
+		}
+		
+		public void mouseClicked(MouseEvent e) {
+			int x= celda.getX()/96;
+			int y = celda.getY()/96;
+			//eliminar imagen eliminar elemento del mapa
+			Elemento elem= controlador.getMapa().getElemento(x, y);
+			controlador.getMapa().eliminarElemento(elem);
+			//activar el estado en las torres
+			/* LinkedList<Elemento> torres= controlador.getMapa().getTorres();
+			 * for(Elemento t: torres){
+			 * t.setEstado()}
+			 * */
+			
+				
+			}
+
+		@Override
+		public void mouseEntered(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mouseExited(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mousePressed(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void mouseReleased(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+	}
 	public void crearElemento(int x, int y, Elemento e) {
 		JLabel elemento= new JLabel(new ImageIcon(e.getRutaImagen()));
 		elemento.setBounds(x*pixel, y*pixel, e.getTamano()*pixel, pixel);
@@ -164,4 +215,5 @@ public class GUI extends JFrame{
 		contentPane.setComponentZOrder(elemento, 0);
 		e.setComponenteGrafica(elemento);
 	}
+
 }

@@ -7,6 +7,7 @@ import Objetos.Proyectil;
 import Personajes.Enemigo;
 import Personajes.Leviatan;
 import Personajes.Torre;
+import PowerUps.PowerUp;
 
 public class Mapa {
 	protected Controlador controlador;
@@ -16,9 +17,11 @@ public class Mapa {
 	protected Nivel nivel;
 	protected Jugador jugador;
 	protected LinkedList<Elemento> lista;
+	protected LinkedList<Elemento> listaTorres;
 	
 	public Mapa(Nivel nivel,Controlador controlador) {
 		lista=new LinkedList<Elemento>();
+		listaTorres= new LinkedList<Elemento>();
 		this.nivel=new Nivel(500);
 		jugador=new Jugador(this);
 		this.nivel=nivel;
@@ -27,6 +30,16 @@ public class Mapa {
 		for(int i=0;i<y;i++)
 			for(int j=0;j<x;j++)
 				grilla[j][i]=new Celda(j,i);
+	}
+	
+	public void crearPowerUp(PowerUp powerup, int x, int y) {
+		if (grilla[x][y].getElem()==null) {
+			grilla[x][y].setElem(powerup);
+			powerup.setCelda(grilla[x][y]);
+			lista.add(powerup);
+		}
+		//controlador.crearElemento(powerup);
+		
 	}
 	
 	public void crearProyectil(Proyectil proyectil) {
@@ -95,6 +108,7 @@ public class Mapa {
 			grilla[x+1][y].setElem(l);
 			l.setCelda(grilla[x][y]);
 			lista.add(l);
+			listaTorres.add(l);
 			return true;
 		}
 		return false;
@@ -107,6 +121,7 @@ public class Mapa {
 			grilla[x][y].setElem(torre);
 			torre.setCelda(grilla[x][y]);
 			lista.add(torre);
+			listaTorres.add(torre);
 			return true;
 		}else
 			if(torre.getTamano()==2&&x<8&&grilla[x][y].getElem()==null&&grilla[x+1][y].getElem()==null) {
@@ -114,6 +129,7 @@ public class Mapa {
 				grilla[x+1][y].setElem(torre);
 				torre.setCelda(grilla[x][y]);
 				lista.add(torre);
+				listaTorres.add(torre);
 				return true;
 			}
 		return false;
@@ -163,5 +179,14 @@ public class Mapa {
 	
 	public Controlador getControlador() {
 		return controlador;
+	}
+	//agregue este metodo
+	public Elemento getElemento(int x, int y ) {
+		return grilla[x][y].getElem();
+		
+	}
+	
+	public LinkedList<Elemento> getTorres() {
+		return listaTorres;
 	}
 }

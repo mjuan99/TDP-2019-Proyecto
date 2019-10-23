@@ -2,6 +2,7 @@ package Juego;
 
 import javax.swing.JLabel;
 
+import Estado.EstadoPower;
 import Visitor.*;
 
 public abstract class Elemento {
@@ -15,6 +16,7 @@ public abstract class Elemento {
 	protected int contadorPulsos=0;
 	protected int topePulso=10;
 	protected Visitor visitor;
+	protected EstadoPower miEstado;
 	
 	protected Elemento(Mapa mapa,Celda celda,int vidaMax,int tamano,String rutaImagen) {
 		vivo=true;
@@ -23,6 +25,12 @@ public abstract class Elemento {
 		this.tamano=tamano;
 		this.rutaImagen=rutaImagen;
 		this.mapa=mapa;
+	}
+	
+	public void setEstado() {
+	 
+		
+		
 	}
 	
 	public int getTamano() {

@@ -1,4 +1,5 @@
 package Personajes;
+import Estado.EstadoPower;
 import Juego.Celda;
 import Juego.Elemento;
 import Juego.Mapa;
@@ -8,6 +9,7 @@ public abstract class Personaje extends Elemento {
 	protected int alcance;
 	protected int vidaMax=200;
 	protected String rutaProyectil;
+
 	
 	protected Personaje(Mapa mapa,Celda celda,int vidaMax,int tamano,String rutaImagen,int dano,int alcance,String rutaProyectil) {
 		super(mapa,celda,vidaMax,tamano,rutaImagen);
@@ -30,4 +32,6 @@ public abstract class Personaje extends Elemento {
 	public void setAlcance(int alcance) {
 		this.alcance = alcance;
 	}
+	
+	
 }

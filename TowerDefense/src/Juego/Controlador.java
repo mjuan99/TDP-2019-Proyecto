@@ -24,6 +24,8 @@ import Personajes.Golem;
 import Personajes.Hada;
 import Personajes.Leviatan;
 import Personajes.Torre;
+import PowerUps.Bomba;
+import PowerUps.PowerUp;
 
 public class Controlador {
 	protected GUI gui;
@@ -51,6 +53,16 @@ public class Controlador {
 		setObstaculos();
 		tiempo=new ContadorTiempo(map);
 		tiempo.start();
+	}
+	
+	public void crearPowerUp(Celda celda) {
+		
+		int x= celda.getX();
+		int y = celda.getY();
+		PowerUp powerup= new Bomba(map, null);
+		map.crearPowerUp(powerup, x, y);
+		gui.crearElemento(x, y, powerup);
+		
 	}
 	
 	public void setObstaculos() {

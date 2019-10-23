@@ -3,11 +3,11 @@ package Visitor;
 import Objetos.Obstaculo;
 import Objetos.ObstaculoTiempo;
 import Objetos.ObstaculoVida;
-import Objetos.PowerUp;
 import Objetos.Proyectil;
 import Objetos.ProyectilAliado;
 import Personajes.Enemigo;
 import Personajes.Torre;
+import PowerUps.PowerUp;
 
 public class VisitorProyectilAliado extends Visitor {
 	

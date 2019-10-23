@@ -9,6 +9,8 @@ import Juego.AutoRemove;
 import Juego.Celda;
 import Juego.Mapa;
 import Objetos.ProyectilEnemigo;
+import PowerUps.Bomba;
+import PowerUps.PowerUp;
 import Visitor.Visitor;
 import Visitor.VisitorEnemigo;
 
@@ -66,9 +68,11 @@ public abstract class Enemigo extends Personaje{
 		//img.getImage().flush();
 		//mapa.getControlador().getGui().setearLabel(this,"./src/Sprites/Efectos/Explosion2.gif");
 		mapa.getJugador().sumarPuntos(50);
+		Celda celda= this.getCelda();
 		mapa.eliminarElemento(this);
 		vivo=false;
 		AutoRemove a=new AutoRemove(this,2000,animacionMuerte);
 		a.start();
+		mapa.getControlador().crearPowerUp(celda);
 	}
 }
