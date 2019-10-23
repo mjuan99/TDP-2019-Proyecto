@@ -163,18 +163,21 @@ public class GUI extends JFrame{
 	
 	public class OyenteMousePower implements MouseListener{
 		JLabel celda;
-		Elemento elem;
+
 		
 		public OyenteMousePower(JLabel celda) {
 			this.celda=celda;
 		}
 		
 		public void mouseClicked(MouseEvent e) {
-			int x= celda.getX()/96;
-			int y = celda.getY()/96;
+			int x= celda.getX();
+			int y = celda.getY();
 			//eliminar imagen eliminar elemento del mapa
 			Elemento elem= controlador.getMapa().getElemento(x, y);
+			controlador.getGui().eliminarComponente(elem.componenteGrafica);
+			elem.getComponenteGrafica().setIcon(null);
 			controlador.getMapa().eliminarElemento(elem);
+			
 			//activar el estado en las torres
 			/* LinkedList<Elemento> torres= controlador.getMapa().getTorres();
 			 * for(Elemento t: torres){

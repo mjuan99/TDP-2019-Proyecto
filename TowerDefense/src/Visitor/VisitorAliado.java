@@ -2,6 +2,8 @@ package Visitor;
 
 import Objetos.*;
 import Personajes.*;
+import PowerUps.Bomba;
+import PowerUps.DobleFuerza;
 import PowerUps.PowerUp;
 
 public class VisitorAliado extends Visitor {
@@ -24,8 +26,13 @@ public class VisitorAliado extends Visitor {
 		//nada
 	}
 
-	public void visit(PowerUp powerup) {
+	public void visit(Bomba powerup) {
 		//realizar metodo de adquisicion
+
+	}
+	
+	public void visit(DobleFuerza powerup) {
+//		miTorre.atacar(danio*2);
 	}
 
 	@Override
@@ -37,6 +44,12 @@ public class VisitorAliado extends Visitor {
 	@Override
 	public void visit(ObstaculoTiempo obstaculo) {
 		//nada
+		
+	}
+
+	@Override
+	public void visit(PowerUp powerup) {
+		// TODO Auto-generated method stub
 		
 	}
 }
