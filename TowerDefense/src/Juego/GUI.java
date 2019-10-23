@@ -13,7 +13,10 @@ import Tienda.*;
 
 public class GUI extends JFrame{
 	private static GUI gui;
-	protected JButton[] botones;
+	protected BotonTorre[] btTorres;
+	protected BotonObjeto[] btObjetos;
+	protected BotonTienda btOleada;
+	protected BotonTienda btVender;
 	protected JPanel contentPane;
 	protected JLabel [][] celdas;
 	protected JLabel puntaje;
@@ -43,6 +46,25 @@ public class GUI extends JFrame{
 		}
 	}
 	
+	public void crearElemento(Elemento e) {
+		int x=e.getCelda().getX();
+		int y=e.getCelda().getY();
+		JLabel elemento= new JLabel(new ImageIcon(e.getRutaImagen()));
+		elemento.setBounds(x*pixel, y*pixel, pixel, e.getTamano()*pixel);
+		contentPane.add(elemento);
+		contentPane.setComponentZOrder(elemento, 0);
+		e.setComponenteGrafica(elemento);
+		elemento.repaint();
+	}
+	
+	public void deseleccionarBotones() {
+		for(int i=0;i<btTorres.length;i++)
+			btTorres[i].deseleccionar();
+		for(int i=0;i<btObjetos.length;i++)
+			btObjetos[i].deseleccionar();
+		btVender.deseleccionar();
+	}
+	
 	public void ganar() {
 		JOptionPane.showMessageDialog(null, "Ganaste\nPuntos: "+Jugador.getJugador().getPuntos());
 		System.exit(0);
@@ -54,14 +76,14 @@ public class GUI extends JFrame{
 	}
 	
 	public void activarBotonOleada() {
-		botones[8].setEnabled(true);
+		btOleada.setEnabled(true);
 	}
 	
 	public void agregarJugador() {
 		puntaje=new JLabel("Puntos: 0");
 		oro=new JLabel("Oro: "+Jugador.getJugador().getOro());
-		puntaje.setBounds(960,0,100,30);
-		oro.setBounds(960,30,100,30);
+		puntaje.setBounds(960,60,100,30);
+		oro.setBounds(960,90,100,30);
 		contentPane.add(puntaje);
 		contentPane.add(oro);
 		Jugador.getJugador().setPuntosGrafica(puntaje);
@@ -90,21 +112,43 @@ public class GUI extends JFrame{
 	}
 
 	private void agregarBotones() {
-		botones= new JButton[9];
+		btTorres= new BotonTorre[8];
 		TorreTienda[] torres= {new AlienTienda(),new DinosaurioTienda(),new DragonTienda(),new FantasmaTienda(),new FenixTienda(),new GolemTienda(),new HadaTienda(),new LeviatanTienda()};
 		for(int i=0;i<8;i++) {
-			botones[i]= new BotonTienda(torres[i]);
-			botones[i].setBounds(i*100,6*pixel, 100, 64);
-			this.add(botones[i]);
+			btTorres[i]= new BotonTorre(torres[i]);
+			btTorres[i].setBounds(i*120,6*pixel, 120, 64);
+			this.add(btTorres[i]);
 		}
-		botones[8]=new JButton("Oleada");
-		botones[8].addActionListener(new OyenteOleada());
-		botones[8].setBounds(9*pixel,6*pixel,pixel,64);
-		this.add(botones[8]);
+		btObjetos=new BotonObjeto[3];
+		ImageIcon[] imagenes= {new ImageIcon("./src/Sprites/Premios/vanillish.png"),new ImageIcon("./src/Sprites/Premios/staryu.png"),new ImageIcon("./src/Sprites/Premios/voltorb.png")};
+		String[] descripciones= {"Congelar","????","Bomba"};
+		for(int i=0;i<3;i++) {
+			btObjetos[i]=new BotonObjeto(imagenes[i],descripciones[i]);
+			btObjetos[i].setBounds(960,384+i*64,pixel,64);
+			this.add(btObjetos[i]);
+		}
+		
+		btOleada=new BotonTienda("Oleada");
+		btOleada.addActionListener(new OyenteOleada());
+		btOleada.setBounds(10*pixel,0,pixel,64);
+		this.add(btOleada);
+		btVender=new BotonTienda("Vender");
+		btVender.addActionListener(new OyenteVender());
+		btVender.setBounds(960,576,pixel,64);
+		btVender.setBorder(null);
+		this.add(btVender);
 	}
+	
+	public class OyenteVender implements ActionListener{
+		public void actionPerformed(ActionEvent arg0) {
+			btVender.seleccionar();
+		}
+		
+	}
+	
 	public class OyenteOleada implements ActionListener{
 		public void actionPerformed(ActionEvent arg0) {
-			botones[8].setEnabled(false);
+			btOleada.setEnabled(false);
 			Controlador.getControlador().activarOleada();
 		}
 	}
@@ -127,15 +171,5 @@ public class GUI extends JFrame{
 			int x=celda.getX()/96;
 			int y=celda.getY()/96;
 			Tienda.getTienda().ubicar(x, y);}
-	}
-	public void crearElemento(Elemento e) {
-		int x=e.getCelda().getX();
-		int y=e.getCelda().getY();
-		JLabel elemento= new JLabel(new ImageIcon(e.getRutaImagen()));
-		elemento.setBounds(x*pixel, y*pixel, pixel, e.getTamano()*pixel);
-		contentPane.add(elemento);
-		contentPane.setComponentZOrder(elemento, 0);
-		e.setComponenteGrafica(elemento);
-		elemento.repaint();
 	}
 }

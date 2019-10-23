@@ -2,6 +2,7 @@ package Tienda;
 
 import Juego.Controlador;
 import Juego.Elemento;
+import Juego.GUI;
 import Juego.Jugador;
 import Objetos.PowerUp;
 import Personajes.Torre;
@@ -35,6 +36,7 @@ public class Tienda {
 		if(proxTorre!=null&&Controlador.getControlador().agregarTorre(proxTorre,x, y)) {
 			//jugador.decrementarOro(proxTorre.getPrecio());
 			proxTorre=null;
+			GUI.getGUI().deseleccionarBotones();
 		}
 	}
 	
