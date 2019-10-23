@@ -19,8 +19,10 @@ public class VisitorProyectilEnemigo extends Visitor {
 
 	@Override
 	public void visit(Torre torre) {
-		torre.danar(miProyectil.getDano());
-		miProyectil.morir();
+		if(torre.estaVivo()) {
+			torre.danar(miProyectil.getDano());
+			miProyectil.morir();
+		}
 	}
 
 	@Override
@@ -43,14 +45,15 @@ public class VisitorProyectilEnemigo extends Visitor {
 
 	@Override
 	public void visit(ObstaculoVida obstaculo) {
-		obstaculo.danar(miProyectil.getDano());
-		miProyectil.morir();
+		if(obstaculo.estaVivo()) {
+			obstaculo.danar(miProyectil.getDano());
+			miProyectil.morir();
+		}
 	}
 
 	@Override
 	public void visit(ObstaculoTiempo obstaculo) {
-		// morir proyectil
-		
+		miProyectil.morir();
 	}
 
 }

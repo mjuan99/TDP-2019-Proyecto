@@ -41,11 +41,13 @@ public abstract class Elemento {
 	public abstract void accept(Visitor v);
 	
 	public void morir() {
-		Mapa.getMapa(0).eliminarElemento(this);
-		componenteGrafica.setIcon(null);
-		componenteGrafica.setBounds(0,0,0,0);
-		vivo=false;
-		GUI.getGUI().eliminarComponente(componenteGrafica);
+		if (vivo) {
+			Mapa.getMapa(0).eliminarElemento(this);
+			componenteGrafica.setIcon(null);
+			componenteGrafica.setBounds(0, 0, 0, 0);
+			vivo = false;
+			GUI.getGUI().eliminarComponente(componenteGrafica);
+		}
 	}
 	
 	public Celda getCelda() {

@@ -25,8 +25,10 @@ public class VisitorProyectilAliado extends Visitor {
 
 	@Override
 	public void visit(Enemigo enemigo) {
-		enemigo.danar(miProyectil.getDano());
-		miProyectil.morir();
+		if(enemigo.estaVivo()) {
+			enemigo.danar(miProyectil.getDano());
+			miProyectil.morir();
+		}
 	}
 
 	@Override
