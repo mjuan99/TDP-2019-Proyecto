@@ -6,6 +6,7 @@ import Objetos.Obstaculo;
 import Objetos.Proyectil;
 import Personajes.Enemigo;
 import Personajes.Torre;
+import PowerUps.PowerUp;
 
 public class Mapa {
 	private static Mapa mapa;
@@ -70,6 +71,11 @@ public class Mapa {
 	public void crearProyectil(Proyectil proyectil) {
 		lista.add(proyectil);
 		GUI.getGUI().crearElemento(proyectil);
+	}
+	
+	public void crearPowerUp(PowerUp p) {
+		lista.add(p);
+		GUI.getGUI().crearElemento(p);
 	}
 	
 	public void actuar() {

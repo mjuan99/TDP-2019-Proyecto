@@ -10,6 +10,7 @@ import Juego.Elemento;
 import Juego.Jugador;
 import Juego.Mapa;
 import Objetos.ProyectilEnemigo;
+import PowerUps.*;
 import Visitor.Visitor;
 import Visitor.VisitorEnemigo;
 
@@ -73,9 +74,21 @@ public abstract class Enemigo extends Personaje{
 		vivo=false;
 		AutoRemove a=new AutoRemove(this,2000,animacionMuerte);
 		a.start();
-		Controlador.getControlador().crearPowerUp(celda);
+		if((int)(Math.random()*10)<3)
+			Controlador.getControlador().crearPowerUp(getPowerUp((int)(Math.random()*4),celda),celda);
 	
-}
+	}
+	
+	private PowerUp getPowerUp(int i,Celda celda) {
+		PowerUp p=null;
+		switch(i) {
+		case 0:{p=new Bomba(celda);break;}
+		case 1:{p=new Escudo(celda);break;}
+		case 2:{p=new Congelar(celda);break;}
+		case 3:{p=new DobleFuerza(celda);break;}
+		}
+		return p;
+	}
 	
 
 }

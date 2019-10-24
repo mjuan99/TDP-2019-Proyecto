@@ -60,13 +60,10 @@ public class Controlador {
 		Mapa.getMapa(0).activarOleada();
 	}
 
-	public void crearPowerUp(Celda celda) {
-		
+	public void crearPowerUp(PowerUp p,Celda celda) {
 		int x= celda.getX();
 		int y = celda.getY();
-		PowerUp powerup= new Bomba(null);
-		Mapa.getMapa(0).crearElemento(powerup, x, y);
-		GUI.getGUI().crearElemento(powerup);
+		Mapa.getMapa(0).crearPowerUp(p);
 	}
 	
 }
