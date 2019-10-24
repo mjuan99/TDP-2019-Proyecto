@@ -22,6 +22,10 @@ public class Tienda {
 			return tienda;
 	}
 	
+	public void click(Elemento elemento) {
+		System.out.println(elemento);
+	}
+	
 	//faltan metodos de torre
 	public void comprar(Torre t) {
 		//if(jugador.getOro()>=t.getPrecio()) {

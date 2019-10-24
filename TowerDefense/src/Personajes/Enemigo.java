@@ -75,7 +75,7 @@ public abstract class Enemigo extends Personaje{
 		AutoRemove a=new AutoRemove(this,2000,animacionMuerte);
 		a.start();
 		if((int)(Math.random()*10)<3)
-			Controlador.getControlador().crearPowerUp(getPowerUp((int)(Math.random()*4),celda),celda);
+			Controlador.getControlador().crearPowerUp(getPowerUp((int)(Math.random()*5),celda),celda);
 	
 	}
 	
@@ -86,6 +86,7 @@ public abstract class Enemigo extends Personaje{
 		case 1:{p=new Escudo(celda);break;}
 		case 2:{p=new Congelar(celda);break;}
 		case 3:{p=new DobleFuerza(celda);break;}
+		case 4:{p=new TorreAleatoria(celda);break;}
 		}
 		return p;
 	}

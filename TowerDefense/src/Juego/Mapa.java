@@ -7,6 +7,7 @@ import Objetos.Proyectil;
 import Personajes.Enemigo;
 import Personajes.Torre;
 import PowerUps.PowerUp;
+import Visitor.Visitor;
 
 public class Mapa {
 	private static Mapa mapa;
@@ -76,6 +77,13 @@ public class Mapa {
 	public void crearPowerUp(PowerUp p) {
 		lista.add(p);
 		GUI.getGUI().crearElemento(p);
+	}
+	
+	public void visitorGlobal(Visitor v) {
+		for(Elemento e:lista) {
+			if (e.estaVivo())
+				e.accept(v);
+		}
 	}
 	
 	public void actuar() {

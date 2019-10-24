@@ -20,6 +20,7 @@ public class BotonObjeto extends BotonTienda {
 		this.setBorder(null);
 		this.addMouseListener(mouseL);
 		this.add(descripcion);
+		this.setEnabled(false);
 		descripcion.setVisible(false);
 		descripcion.setEditable(false);
 		descripcion.addMouseListener(mouseL);
