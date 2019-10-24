@@ -7,7 +7,7 @@ import Visitor.Visitor;
 public class Snorlax extends ObstaculoVida {
 	protected static int vidaBase=1000;
 	protected static int tam=1;
-	protected static String imagen="./src/Sprites/Obstaculos/snorlax.png";
+	protected static String imagen="./src/Sprites/Obstaculos/Snorlax.gif";
 
 	public Snorlax(Celda celda) {
 		super(celda, vidaBase,tam, imagen);

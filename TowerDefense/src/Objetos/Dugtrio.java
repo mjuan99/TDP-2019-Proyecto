@@ -7,7 +7,7 @@ import Visitor.Visitor;
 public class Dugtrio extends ObstaculoTiempo {
 	protected static int vidaBase=50;
 	protected static int tam=1;
-	protected static String imagen="./src/Sprites/Obstaculos/dugtrio.png";
+	protected static String imagen="./src/Sprites/Obstaculos/Dugtrio.gif";
 
 	public Dugtrio(Celda celda) {
 		super(celda, vidaBase,tam , imagen);
