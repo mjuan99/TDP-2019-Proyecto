@@ -3,7 +3,7 @@ package PowerUps;
 import Juego.Celda;
 import Juego.Mapa;
 
-public class ObjetoPrecioso extends PowerUp {
+public abstract class ObjetoPrecioso extends PowerUp {
 
 	protected ObjetoPrecioso( Celda celda, int vidaMax, int tamano, String rutaImagen) {
 		super(celda, vidaMax, tamano, rutaImagen);

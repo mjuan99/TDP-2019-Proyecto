@@ -6,7 +6,12 @@ import Objetos.ObstaculoVida;
 import Objetos.Proyectil;
 import Personajes.Enemigo;
 import Personajes.Torre;
+import PowerUps.Bomba;
+import PowerUps.Congelar;
+import PowerUps.DobleFuerza;
+import PowerUps.Escudo;
 import PowerUps.PowerUp;
+import PowerUps.TorreAleatoria;
 
 public class VisitorPowerUp extends Visitor {
 
@@ -29,12 +34,6 @@ public class VisitorPowerUp extends Visitor {
 	}
 
 	@Override
-	public void visit(PowerUp powerup) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public void visit(ObstaculoVida obstaculo) {
 		// TODO Auto-generated method stub
 		
@@ -42,6 +41,36 @@ public class VisitorPowerUp extends Visitor {
 
 	@Override
 	public void visit(ObstaculoTiempo obstaculo) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void visit(Bomba b) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void visit(Congelar c) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void visit(DobleFuerza d) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void visit(TorreAleatoria t) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void visit(Escudo e) {
 		// TODO Auto-generated method stub
 		
 	}

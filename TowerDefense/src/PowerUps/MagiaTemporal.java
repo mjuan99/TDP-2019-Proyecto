@@ -3,7 +3,7 @@ package PowerUps;
 import Juego.Celda;
 import Juego.Mapa;
 
-public class MagiaTemporal extends PowerUp {
+public abstract class MagiaTemporal extends PowerUp {
 
 	protected MagiaTemporal( Celda celda, int vidaMax, int tamano, String rutaImagen) {
 		super(celda, vidaMax, tamano, rutaImagen);

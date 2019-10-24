@@ -11,8 +11,12 @@ public class Tienda {
 	private static Tienda tienda;
 	protected Jugador jugador;
 	protected Torre proxTorre;
+	protected boolean premiosDisponibles[];
 	
 	private Tienda () {
+		premiosDisponibles=new boolean[5];
+		for(int i=0;i<5;i++)
+			premiosDisponibles[i]=false;
 	}
 	
 	public static Tienda getTienda() {
@@ -24,6 +28,31 @@ public class Tienda {
 	
 	public void click(Elemento elemento) {
 		System.out.println(elemento);
+	}
+	
+	public void disponibleCongelar() {
+		setDisponible(0);
+	}
+	
+	public void disponibleDobleFuerza() {
+		setDisponible(1);
+	}
+	
+	public void disponibleBomba() {
+		setDisponible(2);
+	}
+	
+	public void disponibleEscudo() {
+		setDisponible(3);
+	}
+	
+	public void disponibleTorreAleatoria() {
+		setDisponible(4);
+	}
+	
+	private void setDisponible(int i) {
+		premiosDisponibles[i]=true;
+		GUI.getGUI().habilitarBotonPremio(i);
 	}
 	
 	//faltan metodos de torre

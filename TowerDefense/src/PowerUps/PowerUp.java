@@ -17,14 +17,7 @@ public abstract class PowerUp extends Elemento {
 		// TODO Auto-generated constructor stub
 	}
 	
-	
-	public void accept(Visitor v) {
-		v.visit(this);
-	}
-
-	public void accept() {
-		visitor.visit(this);
-	}
+	public abstract int getIndice();
 }
 /*=======
 package Objetos;

@@ -47,6 +47,10 @@ public class GUI extends JFrame{
 		}
 	}
 	
+	public void habilitarBotonPremio(int i) {
+		btObjetos[i].setEnabled(true);
+	}
+	
 	public void crearElemento(Elemento e) {
 		int x=e.getCelda().getX();
 		int y=e.getCelda().getY();

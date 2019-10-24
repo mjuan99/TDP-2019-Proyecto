@@ -3,8 +3,11 @@ package Visitor;
 import Objetos.*;
 import Personajes.*;
 import PowerUps.Bomba;
+import PowerUps.Congelar;
 import PowerUps.DobleFuerza;
+import PowerUps.Escudo;
 import PowerUps.PowerUp;
+import PowerUps.TorreAleatoria;
 
 public class VisitorAliado extends Visitor {
 
@@ -48,7 +51,19 @@ public class VisitorAliado extends Visitor {
 	}
 
 	@Override
-	public void visit(PowerUp powerup) {
+	public void visit(Congelar c) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void visit(TorreAleatoria t) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void visit(Escudo e) {
 		// TODO Auto-generated method stub
 		
 	}
