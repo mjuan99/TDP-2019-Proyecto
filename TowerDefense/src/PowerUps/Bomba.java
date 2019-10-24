@@ -8,8 +8,8 @@ public class Bomba extends ObjetoPrecioso {
 	protected static int tam=1;
 	protected static String imagen="./src/Sprites/Premios/voltorb.png";
 
-	public Bomba(Mapa mapa, Celda celda) {
-		super(mapa, celda, vidaBase, tam, imagen);
+	public Bomba(Celda celda) {
+		super( celda, vidaBase, tam, imagen);
 		// TODO Auto-generated constructor stub
 	}
 

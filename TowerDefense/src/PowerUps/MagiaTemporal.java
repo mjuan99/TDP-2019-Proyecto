@@ -5,8 +5,8 @@ import Juego.Mapa;
 
 public class MagiaTemporal extends PowerUp {
 
-	protected MagiaTemporal(Mapa mapa, Celda celda, int vidaMax, int tamano, String rutaImagen) {
-		super(mapa, celda, vidaMax, tamano, rutaImagen);
+	protected MagiaTemporal( Celda celda, int vidaMax, int tamano, String rutaImagen) {
+		super(celda, vidaMax, tamano, rutaImagen);
 		// TODO Auto-generated constructor stub
 	}
 

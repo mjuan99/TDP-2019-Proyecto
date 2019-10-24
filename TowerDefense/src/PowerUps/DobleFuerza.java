@@ -8,8 +8,8 @@ public class DobleFuerza extends MagiaTemporal {
 	protected static int tam=1;
 	protected static String imagen="./src/Sprites/Premios/staryu.png";
 	
-	public DobleFuerza(Mapa mapa, Celda celda) {
-		super(mapa, celda, vidaBase, tam, imagen);
+	public DobleFuerza( Celda celda) {
+		super(celda, vidaBase, tam, imagen);
 		// TODO Auto-generated constructor stub
 	}
 

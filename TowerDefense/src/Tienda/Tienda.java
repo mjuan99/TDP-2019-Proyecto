@@ -4,7 +4,7 @@ import Juego.Controlador;
 import Juego.Elemento;
 import Juego.GUI;
 import Juego.Jugador;
-import Objetos.PowerUp;
+import PowerUps.*;
 import Personajes.Torre;
 
 public class Tienda {

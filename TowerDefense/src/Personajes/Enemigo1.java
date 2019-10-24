@@ -6,7 +6,7 @@ import Objetos.Proyectil;
 public class Enemigo1 extends Enemigo{
 	
 	protected static int velocBase=8;
-	protected static int vidaBase=500;
+	protected static int vidaBase=50;
 	protected static int tam=1;
 	protected static int danoBase=50;
 	protected static int alcanceBase=1;
