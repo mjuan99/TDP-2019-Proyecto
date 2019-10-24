@@ -119,12 +119,12 @@ public class GUI extends JFrame{
 			btTorres[i].setBounds(i*120,6*pixel, 120, 64);
 			this.add(btTorres[i]);
 		}
-		btObjetos=new BotonObjeto[3];
-		ImageIcon[] imagenes= {new ImageIcon("./src/Sprites/Premios/vanillish.png"),new ImageIcon("./src/Sprites/Premios/staryu.png"),new ImageIcon("./src/Sprites/Premios/voltorb.png")};
-		String[] descripciones= {"Congelar","????","Bomba"};
-		for(int i=0;i<3;i++) {
+		btObjetos=new BotonObjeto[4];
+		ImageIcon[] imagenes= {new ImageIcon("./src/Sprites/Premios/Congelar.png"),new ImageIcon("./src/Sprites/Premios/Fuerza.png"),new ImageIcon("./src/Sprites/Premios/Bomba.png"),new ImageIcon("./src/Sprites/Premios/Escudo.png")};
+		String[] descripciones= {"Congelar","Fuerza","Bomba","Escudo"};
+		for(int i=0;i<4;i++) {
 			btObjetos[i]=new BotonObjeto(imagenes[i],descripciones[i]);
-			btObjetos[i].setBounds(960,384+i*64,pixel,64);
+			btObjetos[i].setBounds(960,320+i*64,pixel,64);
 			this.add(btObjetos[i]);
 		}
 		
