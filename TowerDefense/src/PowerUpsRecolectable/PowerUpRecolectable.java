@@ -1,5 +1,5 @@
 
-package PowerUps;
+package PowerUpsRecolectable;
 
 
 import Juego.Celda;
@@ -7,11 +7,11 @@ import Juego.Elemento;
 import Juego.Mapa;
 import Visitor.Visitor;
 
-public abstract class PowerUp extends Elemento {
+public abstract class PowerUpRecolectable extends Elemento {
 	
 
 
-	protected PowerUp(Celda celda, int vidaMax,int tamano, String rutaImagen) {
+	protected PowerUpRecolectable(Celda celda, int vidaMax,int tamano, String rutaImagen) {
 		super(celda, vidaMax,tamano, rutaImagen);
 
 		// TODO Auto-generated constructor stub

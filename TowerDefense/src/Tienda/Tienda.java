@@ -4,8 +4,8 @@ import Juego.Controlador;
 import Juego.Elemento;
 import Juego.GUI;
 import Juego.Jugador;
-import PowerUps.*;
 import Personajes.Torre;
+import PowerUpsRecolectable.*;
 
 public class Tienda {
 	private static Tienda tienda;
@@ -73,7 +73,7 @@ public class Tienda {
 		}
 	}
 	
-	public void comprar(PowerUp p) {
+	public void comprar(PowerUpRecolectable p) {
 		/*if(jugador.getOro()>=p.getPrecio()) {
 			jugador.decrementarOro(p.getPrecio());
 		}*/

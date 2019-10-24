@@ -13,9 +13,10 @@ public class Enemigo2 extends Enemigo{
 	protected static String imagen ="./src/Sprites/Enemigos/Enemigo2.gif";
 	protected static String proyectil="./src/Sprites/Ataques/AtaqueEnemigo.gif";
 	protected static String animacionMuerte="./src/Sprites/Efectos/Muerte2.gif";
+	protected static String rutaCongelado="./src/Sprites/Efectos/EfectosPowerUps/Congelado2.png";
 	
 	public Enemigo2(Celda celda) {
-		super(celda,vidaBase,tam,imagen,animacionMuerte,danoBase,alcanceBase,proyectil,velocBase);
+		super(celda,vidaBase,tam,imagen,rutaCongelado,animacionMuerte,danoBase,alcanceBase,proyectil,velocBase);
 	}
 
 }

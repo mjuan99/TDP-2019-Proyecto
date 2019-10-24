@@ -1,16 +1,16 @@
-package PowerUps;
+package PowerUpsRecolectable;
 
 import Juego.Celda;
 import Juego.Mapa;
 import Visitor.Visitor;
 
-public class DobleFuerza extends MagiaTemporal {
+public class DobleFuerzaRecolectable extends MagiaTemporalRecolectable {
 	protected int indice=1;
 	protected static int vidaBase=50;
 	protected static int tam=1;
 	protected static String imagen="./src/Sprites/Premios/Fuerza.png";
 	
-	public DobleFuerza( Celda celda) {
+	public DobleFuerzaRecolectable( Celda celda) {
 		super(celda, vidaBase, tam, imagen);
 		// TODO Auto-generated constructor stub
 	}

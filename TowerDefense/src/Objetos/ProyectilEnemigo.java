@@ -8,8 +8,8 @@ import Visitor.VisitorProyectilEnemigo;
 
 public class ProyectilEnemigo extends Proyectil {
 	protected static int tam=1;
-	public ProyectilEnemigo(Celda celda, int dano,int rango,String rutaImagen) {//agregar celda y entidad de donde se crea
-		super(celda, dano,rango,tam,rutaImagen);
+	public ProyectilEnemigo(Celda celda,Elemento creador, int dano,int rango,String rutaImagen) {//agregar celda y entidad de donde se crea
+		super(celda, creador,dano,rango,tam,rutaImagen);
 		visitor=new VisitorProyectilEnemigo(this);
 	}
 	

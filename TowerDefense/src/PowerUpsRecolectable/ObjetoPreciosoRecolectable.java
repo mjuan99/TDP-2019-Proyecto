@@ -1,11 +1,11 @@
-package PowerUps;
+package PowerUpsRecolectable;
 
 import Juego.Celda;
 import Juego.Mapa;
 
-public abstract class ObjetoPrecioso extends PowerUp {
+public abstract class ObjetoPreciosoRecolectable extends PowerUpRecolectable {
 
-	protected ObjetoPrecioso( Celda celda, int vidaMax, int tamano, String rutaImagen) {
+	protected ObjetoPreciosoRecolectable( Celda celda, int vidaMax, int tamano, String rutaImagen) {
 		super(celda, vidaMax, tamano, rutaImagen);
 		// TODO Auto-generated constructor stub
 	}

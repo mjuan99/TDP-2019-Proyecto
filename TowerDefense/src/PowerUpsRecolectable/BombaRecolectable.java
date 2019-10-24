@@ -1,16 +1,16 @@
-package PowerUps;
+package PowerUpsRecolectable;
 
 import Juego.Celda;
 import Juego.Mapa;
 import Visitor.Visitor;
 
-public class Bomba extends ObjetoPrecioso {
+public class BombaRecolectable extends ObjetoPreciosoRecolectable {
 	protected int indice=2;
 	protected static int vidaBase=50;
 	protected static int tam=1;
 	protected static String imagen="./src/Sprites/Premios/Bomba.png";
 
-	public Bomba(Celda celda) {
+	public BombaRecolectable(Celda celda) {
 		super( celda, vidaBase, tam, imagen);
 		// TODO Auto-generated constructor stub
 	}

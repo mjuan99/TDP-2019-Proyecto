@@ -1,15 +1,15 @@
-package PowerUps;
+package PowerUpsRecolectable;
 
 import Juego.Celda;
 import Visitor.Visitor;
 
-public class Congelar extends MagiaTemporal {
-	protected int indice=0;
+public class TorreAleatoriaRecolectable extends ObjetoPreciosoRecolectable {
+	protected int indice=4;
 	protected static int vidaBase=50;
 	protected static int tam=1;
-	protected static String imagen="./src/Sprites/Premios/Congelar.png";
+	protected static String imagen="./src/Sprites/Premios/TorreAleatoria.png";
 	
-	public Congelar( Celda celda) {
+	public TorreAleatoriaRecolectable( Celda celda) {
 		super(celda, vidaBase, tam, imagen);
 		// TODO Auto-generated constructor stub
 	}
@@ -26,4 +26,5 @@ public class Congelar extends MagiaTemporal {
 	public void accept() {
 		visitor.visit(this);
 	}
+
 }

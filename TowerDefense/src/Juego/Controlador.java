@@ -3,7 +3,7 @@ package Juego;
 import java.awt.EventQueue;
 
 import Personajes.Torre;
-import PowerUps.*;
+import PowerUpsRecolectable.*;
 
 public class Controlador {
 	private static Controlador controlador;
@@ -60,7 +60,7 @@ public class Controlador {
 		Mapa.getMapa(0).activarOleada();
 	}
 
-	public void crearPowerUp(PowerUp p,Celda celda) {
+	public void crearPowerUp(PowerUpRecolectable p,Celda celda) {
 		int x= celda.getX();
 		int y = celda.getY();
 		Mapa.getMapa(0).crearPowerUp(p);

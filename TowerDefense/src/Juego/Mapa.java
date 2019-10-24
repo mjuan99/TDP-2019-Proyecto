@@ -6,7 +6,7 @@ import Objetos.Obstaculo;
 import Objetos.Proyectil;
 import Personajes.Enemigo;
 import Personajes.Torre;
-import PowerUps.PowerUp;
+import PowerUpsRecolectable.PowerUpRecolectable;
 import Visitor.Visitor;
 
 public class Mapa {
@@ -74,7 +74,7 @@ public class Mapa {
 		GUI.getGUI().crearElemento(proyectil);
 	}
 	
-	public void crearPowerUp(PowerUp p) {
+	public void crearPowerUp(PowerUpRecolectable p) {
 		lista.add(p);
 		GUI.getGUI().crearElemento(p);
 	}
