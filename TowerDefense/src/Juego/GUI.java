@@ -15,7 +15,7 @@ import Tienda.*;
 public class GUI extends JFrame{
 	private static GUI gui;
 	protected BotonTorre[] btTorres;
-	protected BotonPowerUp[] btObjetos;
+	protected BotonPowerUp[] btPowerUps;
 	protected BotonTienda btOleada;
 	protected BotonTienda btVender;
 	protected JPanel contentPane;
@@ -48,7 +48,7 @@ public class GUI extends JFrame{
 	}
 	
 	public void habilitarBotonPremio(int i) {
-		btObjetos[i].setEnabled(true);
+		btPowerUps[i].setEnabled(true);
 	}
 	
 	public void crearElemento(Elemento e) {
@@ -66,8 +66,8 @@ public class GUI extends JFrame{
 	public void deseleccionarBotones() {
 		for(int i=0;i<btTorres.length;i++)
 			btTorres[i].deseleccionar();
-		for(int i=0;i<btObjetos.length;i++)
-			btObjetos[i].deseleccionar();
+		for(int i=0;i<btPowerUps.length;i++)
+			btPowerUps[i].deseleccionar();
 		btVender.deseleccionar();
 	}
 	
@@ -126,13 +126,13 @@ public class GUI extends JFrame{
 			btTorres[i].setBounds(i*120,6*pixel, 120, 64);
 			this.add(btTorres[i]);
 		}
-		btObjetos=new BotonPowerUp[5];
+		btPowerUps=new BotonPowerUp[5];
 		ImageIcon[] imagenes= {new ImageIcon("./src/Sprites/Premios/Congelar.png"),new ImageIcon("./src/Sprites/Premios/Fuerza.png"),new ImageIcon("./src/Sprites/Premios/Bomba.png"),new ImageIcon("./src/Sprites/Premios/Escudo.png"),new ImageIcon("./src/Sprites/Premios/TorreAleatoria.png")};
 		String[] descripciones= {"Congelar","Fuerza","Bomba","Escudo","Torre Aleatoria"};
 		for(int i=0;i<5;i++) {
-			btObjetos[i]=new BotonPowerUp(imagenes[i],descripciones[i]);
-			btObjetos[i].setBounds(960,256+i*64,pixel,64);
-			this.add(btObjetos[i]);
+			btPowerUps[i]=new BotonPowerUp(imagenes[i],descripciones[i]);
+			btPowerUps[i].setBounds(960,256+i*64,pixel,64);
+			this.add(btPowerUps[i]);
 		}
 		
 		btOleada=new BotonTienda("Oleada");
