@@ -8,10 +8,10 @@ import java.awt.event.MouseListener;
 import javax.swing.ImageIcon;
 import javax.swing.JTextArea;
 
-public class BotonObjeto extends BotonTienda {
+public class BotonPowerUp extends BotonTienda {
 	ImageIcon imagen;
 	JTextArea descripcion;
-	public BotonObjeto(ImageIcon i,String s) {
+	public BotonPowerUp(ImageIcon i,String s) {
 		super(i);
 		imagen=i;
 		descripcion=new JTextArea(s);
@@ -33,8 +33,8 @@ public class BotonObjeto extends BotonTienda {
 	}
 }
 class OyenteBotonObjeto implements MouseListener{
-	BotonObjeto boton;
-	public OyenteBotonObjeto(BotonObjeto b) {
+	BotonPowerUp boton;
+	public OyenteBotonObjeto(BotonPowerUp b) {
 		boton=b;
 	}
 	@Override
