@@ -13,8 +13,8 @@ public class Hada extends Torre{
 	protected static String imagen ="./src/Sprites/Torres/Hada.gif";
 	protected static String proyectil="./src/Sprites/Ataques/AtaqueHada.gif";
 	
-	public Hada(Mapa mapa,Celda celda) {
-		super(mapa,celda,vidaBase,tam,imagen,danoBase,alcanceBase,proyectil);
+	public Hada(Celda celda) {
+		super(celda,vidaBase,tam,imagen,danoBase,alcanceBase,proyectil);
 	}
 	
 }

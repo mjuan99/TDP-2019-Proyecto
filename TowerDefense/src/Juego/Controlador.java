@@ -1,43 +1,19 @@
 package Juego;
 
 import java.awt.EventQueue;
-import java.awt.Rectangle;
 
-import javax.swing.ImageIcon;
-
-import Objetos.Dugtrio;
-import Objetos.Obstaculo;
-import Objetos.Snorlax;
-import Personajes.Alien;
-import Personajes.Dinosaurio;
-import Personajes.Dragon;
-import Personajes.Enemigo;
-import Personajes.Enemigo1;
-import Personajes.Enemigo2;
-import Personajes.Enemigo3;
-import Personajes.Enemigo4;
-import Personajes.Enemigo5;
-import Personajes.Enemigo6;
-import Personajes.Fantasma;
-import Personajes.Fenix;
-import Personajes.Golem;
-import Personajes.Hada;
-import Personajes.Leviatan;
 import Personajes.Torre;
-import PowerUps.Bomba;
-import PowerUps.PowerUp;
+import PowerUps.*;
 
 public class Controlador {
-	protected GUI gui;
+	private static Controlador controlador;
 	protected ContadorTiempo tiempo;
-	protected Mapa map;
-	protected int proxTorre=0;
 	
 	public static void main(String[]args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					new Controlador();
+					Controlador.getControlador();
 				}
 				catch(Exception e) {
 					e.printStackTrace();
@@ -45,91 +21,53 @@ public class Controlador {
 			}
 		});
 	}
-	
-	public Controlador() {
-		map=new Mapa(null,this);
-		gui=new GUI(this);
-		gui.setVisible(true);
-		setObstaculos();
-		tiempo=new ContadorTiempo(map);
+
+	private Controlador() {
+		Mapa.getMapa(1);
+		GUI.getGUI().setVisible(true);
+		tiempo=new ContadorTiempo();
 		tiempo.start();
 	}
+
+	public static Controlador getControlador() {
+		if(controlador==null) {
+			return (controlador= new Controlador());
+		}
+		else {
+			return controlador;
+		}
+	}
+
+	public void ganar() {
+		Mapa.getMapa(0).limpiar();
+		GUI.getGUI().ganar();
+	}
 	
+	public void perder() {
+		Mapa.getMapa(0).limpiar();
+		GUI.getGUI().perder();
+	}
+
+	public boolean agregarTorre(Torre t,int x, int y) {
+		if(Mapa.getMapa(0).posicionValidaTorre(t, x, y)) {
+			if(Mapa.getMapa(0).crearElemento(t, x, y))
+				GUI.getGUI().crearElemento(t);
+			return true;
+		}
+		return false;
+	}
+	public void activarOleada() {
+		Mapa.getMapa(0).activarOleada();
+	}
+
 	public void crearPowerUp(Celda celda) {
 		
 		int x= celda.getX();
 		int y = celda.getY();
-		PowerUp powerup= new Bomba(map, null);
-		map.crearPowerUp(powerup, x, y);
-		gui.crearElemento(x, y, powerup);
+		PowerUp powerup= new Bomba(null);
+		Mapa.getMapa(0).crearElemento(powerup, x, y);
+		GUI.getGUI().crearElemento(powerup);
 		
 	}
 	
-	public void setObstaculos() {
-		int x=(int)(Math.random()*9);
-		int y=(int)(Math.random()*6);
-		Obstaculo obs=new Snorlax(map,null);
-		map.crearObstaculo(obs, x, y);
-		gui.crearElemento(x, y, obs);
-		x=(int)(Math.random()*9);
-		y=(int)(Math.random()*6);
-		obs=new Dugtrio(map,null);
-		map.crearObstaculo(obs, x, y);
-		gui.crearElemento(x, y, obs);
-	}
-	
-	public void actualizarPuntos(int puntos) {
-		gui.actualizarPuntos(puntos);
-	}
-	
-	public Mapa getMapa() {
-		return map;
-	}
-	
-	public void setProxTorre(int proxTorre){
-		this.proxTorre=proxTorre;
-	}
-	public void agregarTorre(int x, int y) {
-		if(map.posicionValidaTorre(x, y)) {
-			Torre t=getTorre(proxTorre);
-			if(map.crearTorre(t, x, y))
-				gui.crearElemento(x, y, t);
-		}
-	}
-	
-	public GUI getGui() {
-		return gui;
-	}
-	public void agregarEnemigo(int x, int y, Enemigo e) {
-		map.crearEnemigo(e, x, y);
-		gui.crearElemento(x, y, e);
-	}
-	public void crearElemento(Elemento e) {
-		gui.crearElemento(e.getCelda().getX(), e.getCelda().getY(), e);
-	}
-	private Torre getTorre(int i) {
-		Torre t=null;
-		switch(i) {
-		case 0:{t=new Alien(map,null);break;}
-		case 1:{t=new Dinosaurio(map,null);break;}
-		case 2:{t=new Dragon(map,null);break;}
-		case 3:{t=new Fantasma(map,null);break;}
-		case 4:{t=new Fenix(map,null);break;}
-		case 5:{t=new Golem(map,null);break;}
-		case 6:{t=new Hada(map,null);break;}
-		case 7:{t=new Leviatan(map,null);break;}
-		}
-		return t;
-	}
-	public void agregarOleadaPrueba() {
-		Enemigo[]enemigos= {new Enemigo1(map,null),new Enemigo2(map,null), new Enemigo3(map,null),new Enemigo4(map,null),new Enemigo5(map,null),new Enemigo6(map,null)};
-		for(int i=0;i<6;i++) {
-			agregarEnemigo(9,i,enemigos[i]);
-		}
-	}
-	public void mover(Elemento elemento, int x, int y) {
-		Rectangle r;
-		r=elemento.getComponenteGrafica().getBounds();
-		elemento.getComponenteGrafica().setBounds(x,y,(int)r.getWidth(),(int)r.getHeight());
-	}
 }

@@ -12,8 +12,8 @@ public class Dragon extends Torre {
 	protected static String imagen ="./src/Sprites/Torres/Dragon.gif";
 	protected static String proyectil="./src/Sprites/Ataques/AtaqueDragon.gif";
 	
-	public Dragon(Mapa mapa,Celda celda) {
-		super(mapa,celda,vidaBase,tam,imagen,danoBase,alcanceBase,proyectil);
+	public Dragon(Celda celda) {
+		super(celda,vidaBase,tam,imagen,danoBase,alcanceBase,proyectil);
 	}
 	
 }

@@ -1,36 +1,34 @@
+
 package Juego;
 
+import java.awt.Color;
 import java.awt.Component;
-import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.util.LinkedList;
-import java.util.Map;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
-
-import PowerUps.*;
-import Personajes.*;
-import Objetos.*;
+import Tienda.*;
 
 public class GUI extends JFrame{
-	protected JButton[] botones;
+	private static GUI gui;
+	protected BotonTorre[] btTorres;
+	protected BotonObjeto[] btObjetos;
+	protected BotonTienda btOleada;
+	protected BotonTienda btVender;
 	protected JPanel contentPane;
 	protected JLabel [][] celdas;
 	protected JLabel puntaje;
 	protected JLabel oro;
-	protected Controlador controlador;
 	protected static int pixel=96;
 	
-	public GUI(Controlador controlador) {
+	private GUI() {
 		super("Juego");
-		this.controlador=controlador;
 		getContentPane().setLayout(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(30,30,1300,620);
+		setBounds(30,30,1100,700);
 		contentPane= new JPanel();
 		contentPane.setBorder(new EmptyBorder(5,5,5,5));
 		setContentPane(contentPane);
@@ -40,16 +38,57 @@ public class GUI extends JFrame{
 		agregarJugador();
 	}
 	
+	public static GUI getGUI() {
+		if(gui==null) {
+			return (gui= new GUI());
+		}
+		else {
+			return gui;
+		}
+	}
+	
+	public void crearElemento(Elemento e) {
+		int x=e.getCelda().getX();
+		int y=e.getCelda().getY();
+		JLabel elemento= new JLabel(new ImageIcon(e.getRutaImagen()));
+		elemento.setBounds(x*pixel, y*pixel, pixel, e.getTamano()*pixel);
+		contentPane.add(elemento);
+		contentPane.setComponentZOrder(elemento, 0);
+		e.setComponenteGrafica(elemento);
+		elemento.repaint();
+	}
+	
+	public void deseleccionarBotones() {
+		for(int i=0;i<btTorres.length;i++)
+			btTorres[i].deseleccionar();
+		for(int i=0;i<btObjetos.length;i++)
+			btObjetos[i].deseleccionar();
+		btVender.deseleccionar();
+	}
+	
+	public void ganar() {
+		JOptionPane.showMessageDialog(null, "Ganaste\nPuntos: "+Jugador.getJugador().getPuntos());
+		System.exit(0);
+	}
+	
+	public void perder() {
+		JOptionPane.showMessageDialog(null, "Perdiste\nPuntos: "+Jugador.getJugador().getPuntos());
+		System.exit(0);
+	}
+	
+	public void activarBotonOleada() {
+		btOleada.setEnabled(true);
+	}
+	
 	public void agregarJugador() {
-		Jugador jugador=controlador.getMapa().getJugador();
 		puntaje=new JLabel("Puntos: 0");
-		oro=new JLabel("Oro: "+jugador.getOro());
-		puntaje.setBounds(1110,0,100,30);
-		oro.setBounds(1110,30,100,30);
+		oro=new JLabel("Oro: "+Jugador.getJugador().getOro());
+		puntaje.setBounds(960,60,100,30);
+		oro.setBounds(960,90,100,30);
 		contentPane.add(puntaje);
 		contentPane.add(oro);
-		jugador.setPuntosGrafica(puntaje);
-		jugador.setOroGrafica(oro);
+		Jugador.getJugador().setPuntosGrafica(puntaje);
+		Jugador.getJugador().setOroGrafica(oro);
 	}
 	
 	public void actualizarPuntos(int puntos) {
@@ -60,19 +99,9 @@ public class GUI extends JFrame{
 		contentPane.remove(c);
 	}
 	
-	public void setearLabel(Elemento elem, String rutaImagen) {
-		Rectangle r=elem.getComponenteGrafica().getBounds();
-		elem.getComponenteGrafica().setIcon(null);
-		JLabel nuevo = new JLabel(new ImageIcon(rutaImagen));
-		elem.setComponenteGrafica(nuevo);
-		nuevo.setBounds(r);
-		contentPane.add(nuevo);
-		contentPane.setComponentZOrder(nuevo, 0);
-	}
-	
 	private void crearFondo() {
-		int x=controlador.getMapa().getX();
-		int y=controlador.getMapa().getY();
+		int x=Mapa.getMapa(0).getX();
+		int y=Mapa.getMapa(0).getY();
 		celdas=new JLabel[x][y];
 		for(int i=0;i<x;i++)
 			for(int j=0;j<y;j++) {
@@ -84,60 +113,44 @@ public class GUI extends JFrame{
 	}
 
 	private void agregarBotones() {
-		botones= new JButton[9];
-		ActionListener [] oyentes= {new OyenteAlien(),new OyenteDinosaurio(),new OyenteDragon(), new OyenteFantasma(), new OyenteFenix(), new OyenteGolem(), new OyenteHada(),new OyenteLeviatan(),new OyenteOleada()};
-		String[] nombres= {"Alien","Dinosaurio","Dragon","Fantasma","Fenix","Golem","Hada","Leviatan","Oleada"};
-		for(int i=0;i<9;i++) {
-			botones[i]= new JButton(nombres[i]);
-			botones[i].setBounds(10*pixel,i*64, 150, 64);
-			botones[i].addActionListener(oyentes[i]);
-			this.add(botones[i]);
+		btTorres= new BotonTorre[8];
+		TorreTienda[] torres= {new AlienTienda(),new DinosaurioTienda(),new DragonTienda(),new FantasmaTienda(),new FenixTienda(),new GolemTienda(),new HadaTienda(),new LeviatanTienda()};
+		for(int i=0;i<8;i++) {
+			btTorres[i]= new BotonTorre(torres[i]);
+			btTorres[i].setBounds(i*120,6*pixel, 120, 64);
+			this.add(btTorres[i]);
 		}
+		btObjetos=new BotonObjeto[3];
+		ImageIcon[] imagenes= {new ImageIcon("./src/Sprites/Premios/vanillish.png"),new ImageIcon("./src/Sprites/Premios/staryu.png"),new ImageIcon("./src/Sprites/Premios/voltorb.png")};
+		String[] descripciones= {"Congelar","????","Bomba"};
+		for(int i=0;i<3;i++) {
+			btObjetos[i]=new BotonObjeto(imagenes[i],descripciones[i]);
+			btObjetos[i].setBounds(960,384+i*64,pixel,64);
+			this.add(btObjetos[i]);
+		}
+		
+		btOleada=new BotonTienda("Oleada");
+		btOleada.addActionListener(new OyenteOleada());
+		btOleada.setBounds(10*pixel,0,pixel,64);
+		this.add(btOleada);
+		btVender=new BotonTienda("Vender");
+		btVender.addActionListener(new OyenteVender());
+		btVender.setBounds(960,576,pixel,64);
+		btVender.setBorder(null);
+		this.add(btVender);
 	}
 	
-	public class OyenteAlien implements ActionListener{
+	public class OyenteVender implements ActionListener{
 		public void actionPerformed(ActionEvent arg0) {
-			controlador.setProxTorre(0);
+			btVender.seleccionar();
 		}
+		
 	}
-	public class OyenteDinosaurio implements ActionListener{
-		public void actionPerformed(ActionEvent arg0) {
-			controlador.setProxTorre(1);
-		}
-	}
-	public class OyenteDragon implements ActionListener{
-		public void actionPerformed(ActionEvent arg0) {
-			controlador.setProxTorre(2);
-		}
-	}
-	public class OyenteFantasma implements ActionListener{
-		public void actionPerformed(ActionEvent arg0) {
-			controlador.setProxTorre(3);
-		}
-	}
-	public class OyenteFenix implements ActionListener{
-		public void actionPerformed(ActionEvent arg0) {
-			controlador.setProxTorre(4);
-		}
-	}
-	public class OyenteGolem implements ActionListener{
-		public void actionPerformed(ActionEvent arg0) {
-			controlador.setProxTorre(5);
-		}
-	}
-	public class OyenteHada implements ActionListener{
-		public void actionPerformed(ActionEvent arg0) {
-			controlador.setProxTorre(6);
-		}
-	}
-	public class OyenteLeviatan implements ActionListener{
-		public void actionPerformed(ActionEvent arg0) {
-			controlador.setProxTorre(7);
-		}
-	}
+	
 	public class OyenteOleada implements ActionListener{
 		public void actionPerformed(ActionEvent arg0) {
-			controlador.agregarOleadaPrueba();
+			btOleada.setEnabled(false);
+			Controlador.getControlador().activarOleada();
 		}
 	}
 	
@@ -147,9 +160,6 @@ public class GUI extends JFrame{
 			this.celda=celda;
 		}
 		public void mouseClicked(MouseEvent e) {
-			int x=celda.getX()/96;
-			int y=celda.getY()/96;
-			controlador.agregarTorre(x, y);
 		}
 		public void mouseEntered(MouseEvent e) {
 			celda.setIcon(new ImageIcon("./src/Sprites/Mapa/celda4.png"));
@@ -158,10 +168,13 @@ public class GUI extends JFrame{
 			celda.setIcon(new ImageIcon("./src/Sprites/Mapa/celda2.png"));
 		}
 		public void mousePressed(MouseEvent e) {}
-		public void mouseReleased(MouseEvent e) {}
+		public void mouseReleased(MouseEvent e) {
+			int x=celda.getX()/96;
+			int y=celda.getY()/96;
+			Tienda.getTienda().ubicar(x, y);}
 	}
-	
-	public class OyenteMousePower implements MouseListener{
+}	
+	/*public class OyenteMousePower implements MouseListener{
 		JLabel celda;
 
 		
@@ -185,38 +198,4 @@ public class GUI extends JFrame{
 			 * */
 			
 				
-			}
-
-		@Override
-		public void mouseEntered(MouseEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
-
-		@Override
-		public void mouseExited(MouseEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
-
-		@Override
-		public void mousePressed(MouseEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
-
-		@Override
-		public void mouseReleased(MouseEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
-	}
-	public void crearElemento(int x, int y, Elemento e) {
-		JLabel elemento= new JLabel(new ImageIcon(e.getRutaImagen()));
-		elemento.setBounds(x*pixel, y*pixel, e.getTamano()*pixel, pixel);
-		contentPane.add(elemento);
-		contentPane.setComponentZOrder(elemento, 0);
-		e.setComponenteGrafica(elemento);
-	}
-
-}
+		

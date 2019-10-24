@@ -9,8 +9,8 @@ public class Snorlax extends ObstaculoVida {
 	protected static int tam=1;
 	protected static String imagen="./src/Sprites/Obstaculos/snorlax.png";
 
-	public Snorlax(Mapa mapa, Celda celda) {
-		super(mapa, celda, vidaBase,tam, imagen);
+	public Snorlax(Celda celda) {
+		super(celda, vidaBase,tam, imagen);
 		// TODO Auto-generated constructor stub
 	}
 	

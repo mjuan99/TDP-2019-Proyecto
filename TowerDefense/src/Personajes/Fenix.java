@@ -13,8 +13,8 @@ public class Fenix extends Torre {
 	protected static String imagen ="./src/Sprites/Torres/Fenix.gif";
 	protected static String proyectil="./src/Sprites/Ataques/AtaqueFenix.gif";
 	
-	public Fenix(Mapa mapa,Celda celda) {
-		super(mapa,celda,vidaBase,tam,imagen,danoBase,alcanceBase,proyectil);
+	public Fenix(Celda celda) {
+		super(celda,vidaBase,tam,imagen,danoBase,alcanceBase,proyectil);
 	}
 
 }

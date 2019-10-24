@@ -19,7 +19,7 @@ public class VisitorAliado extends Visitor {
 	}
 	
 	public void visit(Enemigo enemigo) {
-		//atacar
+		miTorre.atacar();
 	}
 
 	public void visit(Proyectil proyectil) {

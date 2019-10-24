@@ -11,20 +11,18 @@ public abstract class Elemento {
 	protected Celda celda;
 	protected int vida;
 	protected String rutaImagen;
-	protected Mapa mapa;
 	protected JLabel componenteGrafica;
 	protected int contadorPulsos=0;
 	protected int topePulso=10;
 	protected Visitor visitor;
 	protected EstadoPower miEstado;
 	
-	protected Elemento(Mapa mapa,Celda celda,int vidaMax,int tamano,String rutaImagen) {
+	protected Elemento(Celda celda,int vidaMax,int tamano,String rutaImagen) {
 		vivo=true;
 		this.celda=celda;
 		vida=vidaMax;
 		this.tamano=tamano;
 		this.rutaImagen=rutaImagen;
-		this.mapa=mapa;
 	}
 	
 	public void setEstado() {
@@ -37,14 +35,27 @@ public abstract class Elemento {
 		return tamano;
 	}
 	
+	public void danar(int dano) {
+		if(vida<=dano)
+			morir();
+		else
+			vida-=dano;
+	}
+	
+	public boolean estaVivo() {
+		return vivo;
+	}
+	
 	public abstract void accept(Visitor v);
 	
 	public void morir() {
-		mapa.eliminarElemento(this);
-		componenteGrafica.setIcon(null);
-		componenteGrafica.setBounds(0,0,0,0);
-		vivo=false;
-		mapa.getControlador().getGui().eliminarComponente(componenteGrafica);
+		if (vivo) {
+			Mapa.getMapa(0).eliminarElemento(this);
+			componenteGrafica.setIcon(null);
+			componenteGrafica.setBounds(0, 0, 0, 0);
+			vivo = false;
+			GUI.getGUI().eliminarComponente(componenteGrafica);
+		}
 	}
 	
 	public Celda getCelda() {
@@ -75,9 +86,5 @@ public abstract class Elemento {
 	
 	public String getRutaImagen() {
 		return rutaImagen;
-	}
-	
-	public Mapa getMapa() {
-		return mapa;
 	}
 }

@@ -9,8 +9,8 @@ public class Dugtrio extends ObstaculoTiempo {
 	protected static int tam=1;
 	protected static String imagen="./src/Sprites/Obstaculos/dugtrio.png";
 
-	public Dugtrio(Mapa mapa, Celda celda) {
-		super(mapa, celda, vidaBase,tam , imagen);
+	public Dugtrio(Celda celda) {
+		super(celda, vidaBase,tam , imagen);
 		// TODO Auto-generated constructor stub
 	}
 	

@@ -1,78 +1,120 @@
 package Juego;
-import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.Queue;
 
 import Objetos.Obstaculo;
 import Objetos.Proyectil;
 import Personajes.Enemigo;
-import Personajes.Leviatan;
 import Personajes.Torre;
-import PowerUps.PowerUp;
 
 public class Mapa {
-	protected Controlador controlador;
+	private static Mapa mapa;
 	protected Celda[][] grilla;
 	protected int x=10;
 	protected int y=6;
 	protected Nivel nivel;
-	protected Jugador jugador;
 	protected LinkedList<Elemento> lista;
-	protected LinkedList<Elemento> listaTorres;
+	protected boolean oleadaActiva;
+	protected int cantEnemigos;
 	
-	public Mapa(Nivel nivel,Controlador controlador) {
+	private Mapa(int nivel) {
 		lista=new LinkedList<Elemento>();
-		listaTorres= new LinkedList<Elemento>();
-		this.nivel=new Nivel(500);
-		jugador=new Jugador(this);
-		this.nivel=nivel;
-		this.controlador=controlador;
+		this.nivel=new Nivel(nivel);
 		grilla=new Celda[x][y];
+		oleadaActiva=false;
+		cantEnemigos=0;
 		for(int i=0;i<y;i++)
 			for(int j=0;j<x;j++)
 				grilla[j][i]=new Celda(j,i);
 	}
 	
-	public void crearPowerUp(PowerUp powerup, int x, int y) {
-		if (grilla[x][y].getElem()==null) {
-			grilla[x][y].setElem(powerup);
-			powerup.setCelda(grilla[x][y]);
-			lista.add(powerup);
+	public static Mapa getMapa(int nivel) {
+		if(mapa==null) {
+			return (mapa= new Mapa(nivel));
 		}
-		//controlador.crearElemento(powerup);
+		else {
+			return mapa;
+		}
+	}
+	
+	public void limpiar() {
+		Elemento e;
+		while(!lista.isEmpty()) {
+			e=lista.removeFirst();
+			e.getComponenteGrafica().setIcon(null);
+			e.getComponenteGrafica().setBounds(0,0,0,0);
+			GUI.getGUI().eliminarComponente(e.getComponenteGrafica());
+		}
+	}
 		
+	public void activarOleada() {
+		oleadaActiva=true;
+		cantEnemigos=nivel.cantEnemigos();
+		Queue<Obstaculo> obstaculos=nivel.getColaObstaculos();
+		int x=(int)(Math.random()*6+2);
+		int y=(int)(Math.random()*6);
+		Obstaculo o;
+		while(!obstaculos.isEmpty()) {
+			o=obstaculos.poll();
+			while(grilla[x][y].getElem()!=null) {
+				x=(int)(Math.random()*6+2);
+				y=(int)(Math.random()*6);
+			}
+			o.setCelda(grilla[x][y]);
+			grilla[x][y].setElem(o);
+			lista.add(o);
+			GUI.getGUI().crearElemento(o);
+		}
 	}
 	
 	public void crearProyectil(Proyectil proyectil) {
 		lista.add(proyectil);
-		controlador.crearElemento(proyectil);
-	}
-
-	public void actualizarPuntos(int puntos) {
-		controlador.actualizarPuntos(puntos);
+		GUI.getGUI().crearElemento(proyectil);
 	}
 	
 	public void actuar() {
+		Enemigo e;
 		LinkedList<Elemento> listaAux=new LinkedList<Elemento>();
 		for(Elemento el:lista)
 			listaAux.addLast(el);
 		for(Elemento el:listaAux) {
-			el.actuar();
+			if(el.estaVivo())
+				el.actuar();
 		}
-		/*Elemento e;
-		for(int i=0;i<x;i++)
-			for(int j=0;j<y;j++) {
-				e=grilla[i][j].getElem();
-				if(e!=null) {
-					e.actuar();
+		if(oleadaActiva) {
+			if(cantEnemigos!=0) {
+				for(int i=0;i<6;i++) {
+					if(grilla[9][i].getElem()==null)
+						if (nivel.quedanEnemigos(i)) {
+							e=nivel.getEnemigo(i);
+							e.setCelda(grilla[9][i]);
+							grilla[9][i].setElem(e);
+							lista.add(e);
+							GUI.getGUI().crearElemento(e);
+						}
 				}
-			}*/
+			}
+			else {
+				oleadaActiva=false;
+				GUI.getGUI().activarBotonOleada();
+				if(!nivel.siguienteOleada())
+					Controlador.getControlador().ganar();
+			}
+		}
+	}
+	
+	public void decrementarEnemigos() {
+		cantEnemigos--;
 	}
 	
 	public void eliminarElemento(Elemento e) {
 		int x=e.getCelda().getX();
 		int y=e.getCelda().getY();
-		if(grilla[x][y].getElem()==e)
-			grilla[e.getCelda().getX()][e.getCelda().getY()].setElem(null);
+		if(grilla[x][y].getElem()==e) {
+			grilla[x][y].setElem(null);
+			if(e.getTamano()==2)
+				grilla[x][y+1].setElem(null);
+		}
 		lista.remove(e);
 	}
 	
@@ -81,8 +123,11 @@ public class Mapa {
 		int celdaY=e.getCelda().getY();
 		if(celdaX>0&&grilla[celdaX-1][celdaY].getElem()==null) 
 			return true;
-		else
-			return false;
+		else {
+			if(celdaX==0)
+				Controlador.getControlador().perder();
+			return false;	
+		}
 	}
 	
 	public void avanzar(Enemigo e) {
@@ -91,58 +136,51 @@ public class Mapa {
 		e.setCelda(grilla[celdaX-1][celdaY]);
 		grilla[celdaX][celdaY].setElem(null);
 		grilla[celdaX-1][celdaY].setElem(e);
-		//controlador.mover(e,celdaX-1,celdaY);
 	}
 	
-	public void crearObstaculo(Obstaculo obs,int x,int y) {
-		if(grilla[x][y].getElem()==null) {
-			grilla[x][y].setElem(obs);
-			obs.setCelda(grilla[x][y]);
-			lista.add(obs);
-		}
+	public LinkedList<Elemento> elementosRango(Enemigo e){
+		LinkedList<Elemento> lista=new LinkedList<Elemento>();
+		int n=e.getAlcance();
+		int x=e.getCelda().getX();
+		int y=e.getCelda().getY();
+		for(int i=x-1;i>=x-n&&i>=0;i--)
+			if(grilla[i][y].getElem()!=null)
+				lista.add(grilla[i][y].getElem());
+		return lista;		
 	}
 	
-	public boolean crearTorre(Leviatan l,int x,int y) {
-		if(x<8&&grilla[x][y].getElem()==null&&grilla[x+1][y].getElem()==null) {
-			grilla[x][y].setElem(l);
-			grilla[x+1][y].setElem(l);
-			l.setCelda(grilla[x][y]);
-			lista.add(l);
-			listaTorres.add(l);
+	public LinkedList<Elemento> elementosRango(Torre t){
+		LinkedList<Elemento> lista=new LinkedList<Elemento>();
+		int n=t.getAlcance();
+		int x=t.getCelda().getX();
+		int y=t.getCelda().getY();
+		for(int i=x+1;i<=x+n&&i<this.x;i++)
+			if(grilla[i][y].getElem()!=null)
+				lista.add(grilla[i][y].getElem());
+		return lista;
+	}
+	
+	public boolean crearElemento(Elemento elem,int x, int y) {
+		//System.out.println(x+" - "+y);
+		if(elem.getTamano()==1&&grilla[x][y].getElem()==null) {
+			grilla[x][y].setElem(elem);
+			elem.setCelda(grilla[x][y]);
+			lista.add(elem);
 			return true;
-		}
+		}else
+			if(elem.getTamano()==2&&y<5&&grilla[x][y].getElem()==null&&grilla[x][y+1].getElem()==null) {
+				grilla[x][y].setElem(elem);
+				grilla[x][y+1].setElem(elem);
+				elem.setCelda(grilla[x][y]);
+				lista.add(elem);
+				return true;
+			}
 		return false;
 		
 	}
 	
-	public boolean crearTorre(Torre torre,int x,int y) {
-		System.out.println("Hola");
-		if(torre.getTamano()==1&&grilla[x][y].getElem()==null) {
-			grilla[x][y].setElem(torre);
-			torre.setCelda(grilla[x][y]);
-			lista.add(torre);
-			listaTorres.add(torre);
-			return true;
-		}else
-			if(torre.getTamano()==2&&x<8&&grilla[x][y].getElem()==null&&grilla[x+1][y].getElem()==null) {
-				grilla[x][y].setElem(torre);
-				grilla[x+1][y].setElem(torre);
-				torre.setCelda(grilla[x][y]);
-				lista.add(torre);
-				listaTorres.add(torre);
-				return true;
-			}
-		return false;
-	}
-	
-	public void crearEnemigo(Enemigo enemigo,int x,int y) {
-		grilla[x][y].setElem(enemigo);
-		enemigo.setCelda(grilla[x][y]);
-		lista.add(enemigo);
-	}
-	
-	public boolean posicionValidaTorre(int x,int y) {
-		return (x>=0&&x<this.x-1&&y>=0&&y<this.y&&grilla[x][y].getElem()==null);
+	public boolean posicionValidaTorre(Torre t,int x,int y) {
+		return (x>=0&&x<this.x-1&&y>=0&&y<=this.y-t.getTamano()&&grilla[x][y].getElem()==null&&(t.getTamano()==1||grilla[x][y+1].getElem()==null));
 	}
 
 	public Celda[][] getGrilla() {
@@ -160,14 +198,6 @@ public class Mapa {
 	public void setNivel(Nivel nivel) {
 		this.nivel = nivel;
 	}
-
-	public Jugador getJugador() {
-		return jugador;
-	}
-
-	public void setJugador(Jugador jugador) {
-		this.jugador = jugador;
-	}
 	
 	public int getX() {
 		return x;
@@ -176,17 +206,14 @@ public class Mapa {
 	public int getY() {
 		return y;
 	}
-	
-	public Controlador getControlador() {
-		return controlador;
-	}
+}
+	//en crear elemento agrege las torres a la lista de torres que cree
 	//agregue este metodo
-	public Elemento getElemento(int x, int y ) {
+	/*public Elemento getElemento(int x, int y ) {
 		return grilla[x][y].getElem();
 		
 	}
 	
-	public LinkedList<Elemento> getTorres() {
+	/*public LinkedList<Elemento> getTorres() {
 		return listaTorres;
-	}
-}
+	}*/

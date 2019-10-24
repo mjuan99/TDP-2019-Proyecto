@@ -6,14 +6,16 @@ public class Leviatan extends Torre {
 	
 	protected static int vidaBase=1500;
 	protected static int tam=2;
-	protected static int danoBase=70;
-	protected static int alcanceBase=3;
-	protected static String imagen ="./src/Sprites/Torres/Leviatan.gif";
-	protected static String proyectil="./src/Sprites/Ataques/AtaqueLeviatan.gif";
+	protected static int danoBase=0;
+	protected static int alcanceBase=0;
+	protected static String imagen ="./src/Sprites/Torres/Onix.gif";
+	protected static String proyectil="";
 	
-	public Leviatan(Mapa mapa,Celda celda) {
-		super(mapa,celda,vidaBase,tam,imagen,danoBase,alcanceBase,proyectil);
+	public Leviatan(Celda celda) {
+		super(celda,vidaBase,tam,imagen,danoBase,alcanceBase,proyectil);
 	}
+	
+	public void actuar() {}
 	
 	
 }

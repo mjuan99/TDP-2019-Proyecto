@@ -13,8 +13,8 @@ public class Fantasma extends Torre {
 	protected static String imagen ="./src/Sprites/Torres/Fantasma.gif";
 	protected static String proyectil="./src/Sprites/Ataques/AtaqueFantasma.gif";
 	
-	public Fantasma(Mapa mapa,Celda celda) {
-		super(mapa,celda,vidaBase,tam,imagen,danoBase,alcanceBase,proyectil);
+	public Fantasma(Celda celda) {
+		super(celda,vidaBase,tam,imagen,danoBase,alcanceBase,proyectil);
 	}
 	
 }

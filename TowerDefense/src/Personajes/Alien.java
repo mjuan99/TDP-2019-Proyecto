@@ -11,8 +11,8 @@ public class Alien extends Torre {
 	protected static String imagen ="./src/Sprites/Torres/Alien.gif";
 	protected static String proyectil="./src/Sprites/Ataques/AtaqueAlien.gif";
 	
-	public Alien(Mapa mapa,Celda celda) {
-		super(mapa,celda,vidaBase,tam,imagen,danoBase,alcanceBase,proyectil);
+	public Alien(Celda celda) {
+		super(celda,vidaBase,tam,imagen,danoBase,alcanceBase,proyectil);
 	}
 	
 	

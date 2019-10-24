@@ -18,8 +18,7 @@ public class VisitorEnemigo extends Visitor {
 
 	@Override
 	public void visit(Torre torre) {
-		//atacar
-		
+		miEnemigo.atacar();
 	}
 
 	@Override
@@ -42,8 +41,7 @@ public class VisitorEnemigo extends Visitor {
 
 	@Override
 	public void visit(ObstaculoVida obstaculo) {
-		// atacar
-		
+		miEnemigo.atacar();
 	}
 
 	@Override

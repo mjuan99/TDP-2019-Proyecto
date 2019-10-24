@@ -17,15 +17,12 @@ public class AutoRemove extends Thread {
 		ImageIcon img = new ImageIcon(rutaImagen);
 		img.getImage().flush();
 		e.getComponenteGrafica().setIcon(img);
-		//e.getComponenteGrafica().disable();
 		e.getComponenteGrafica().setEnabled(false);
 			try {
 				Thread.sleep(t);
 			}catch(InterruptedException e) {
 				e.printStackTrace();
 			}
-		e.getMapa().getControlador().getGui().eliminarComponente(e.getComponenteGrafica());
-		e.getComponenteGrafica().setIcon(null);
+		GUI.getGUI().eliminarComponente(e.getComponenteGrafica());
 	}
-	
 }
