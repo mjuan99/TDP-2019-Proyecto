@@ -21,7 +21,7 @@ public class DinosaurioTienda extends TorreTienda {
 	
 	public String descripcion() {
 		String cadena="";
-		cadena+=nombre+"\n"+"$"+precio+"\n"+"Vida:"+vida+"\n"+"Daño:"+dano+"\n"+"Rango:"+rango+"\n"+"Tamaño:"+tamano+"\n";
+		cadena+=nombre+"\n"+"$"+precio+"\n"+"Vida: "+vida+"\n"+"Daño: "+dano+"  ("+rango+")";
 		return cadena;
 	}
 }
