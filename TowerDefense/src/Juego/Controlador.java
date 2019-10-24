@@ -67,7 +67,6 @@ public class Controlador {
 		PowerUp powerup= new Bomba(null);
 		Mapa.getMapa(0).crearElemento(powerup, x, y);
 		GUI.getGUI().crearElemento(powerup);
-		
 	}
 	
 }
