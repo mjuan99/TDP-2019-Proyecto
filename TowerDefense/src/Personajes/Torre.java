@@ -9,6 +9,7 @@ import EstadosAliado.EstadoDobleFuerzaAtaque;
 import EstadosAliado.EstadoProtegidoAliado;
 import Juego.Celda;
 import Juego.Elemento;
+import Juego.Jugador;
 import Juego.Mapa;
 import Visitor.Visitor;
 import Visitor.VisitorAliado;
@@ -16,12 +17,32 @@ import Visitor.VisitorAliado;
 public abstract class Torre extends Personaje{
 	protected EstadoAtaqueAliado estadoAtaque;
 	protected EstadoDefensaAliado estadoDefensa;
+	protected int vidaBase;
+	protected int precio;
+	protected String nombre;
+	protected String miniatura;
 	
-	protected Torre(Celda celda,int vidaMax,int tamano,String rutaImagen,int dano,int alcance,String rutaProyectil) {
+	protected Torre(Celda celda,int vidaMax,int tamano,String rutaImagen,int dano,int alcance,String rutaProyectil,int precio,String miniatura,String nombre) {
 		super(celda,vidaMax,tamano,rutaImagen,dano,alcance,rutaProyectil);
+		this.nombre=nombre;
+		this.precio=precio;
+		vidaBase=vidaMax;
+		this.miniatura=miniatura;
 		visitor=new VisitorAliado(this);
 		estadoAtaque=new EstadoDefaultAtaque(this);
 		estadoDefensa=new EstadoDefaultDefensaA(this);
+	}
+	
+	public int getPrecio() {
+		return precio;
+	}
+	
+	public void vender() {
+		if(vida==vidaBase)
+			Jugador.getJugador().aumentarOro(precio);
+		else
+			Jugador.getJugador().aumentarOro(precio/2);
+		morir();
 	}
 	
 	public void danar(Elemento e,int dano) {
@@ -71,5 +92,17 @@ public abstract class Torre extends Personaje{
 	
 	public String getRutaProyectil() {
 		return rutaProyectil;
+	}
+	
+	public abstract Torre nueva();
+	
+	public String getMiniatura() {
+		return miniatura;
+	}
+	
+	public String descripcion() {
+		String cadena="";
+		cadena+=nombre+"\n"+"$"+precio+"\n"+"Vida: "+vida+"\n"+"Daño: "+dano+"  ("+alcance+")";
+		return cadena;
 	}
 }

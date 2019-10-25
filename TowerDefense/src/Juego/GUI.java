@@ -10,6 +10,17 @@ import java.awt.event.MouseListener;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
+
+import Personajes.Alien;
+import Personajes.Dinosaurio;
+import Personajes.Dragon;
+import Personajes.Fantasma;
+import Personajes.Fenix;
+import Personajes.Golem;
+import Personajes.Hada;
+import Personajes.Leviatan;
+import Personajes.Torre;
+import PowerUpsEfecto.*;
 import Tienda.*;
 
 public class GUI extends JFrame{
@@ -47,8 +58,21 @@ public class GUI extends JFrame{
 		}
 	}
 	
-	public void habilitarBotonPremio(int i) {
-		btPowerUps[i].setEnabled(true);
+	public void habilitarBotonPremio(int i,boolean habilitar) {
+		btPowerUps[i].setEnabled(habilitar);
+		if(!habilitar)
+			btPowerUps[i].deseleccionar();
+	}
+	
+	public void actualizarOro() {
+		int n=Jugador.getJugador().getOro();
+		oro.setText("Oro: "+n);
+		for(int i=0;i<btTorres.length;i++)
+			btTorres[i].setEnabled(n>=btTorres[i].getTorre().getPrecio());
+	}
+	
+	public void actualizarPuntos() {
+		puntaje.setText("Puntos: "+Jugador.getJugador().getPuntos());
 	}
 	
 	public void crearElemento(Elemento e) {
@@ -96,10 +120,6 @@ public class GUI extends JFrame{
 		Jugador.getJugador().setOroGrafica(oro);
 	}
 	
-	public void actualizarPuntos(int puntos) {
-		puntaje.setText("Puntos: "+puntos);
-	}
-	
 	public void eliminarComponente(JLabel c) {
 		if(contentPane.isAncestorOf(c)) {
 			c.setIcon(null);
@@ -123,17 +143,16 @@ public class GUI extends JFrame{
 
 	private void agregarBotones() {
 		btTorres= new BotonTorre[8];
-		TorreTienda[] torres= {new AlienTienda(),new DinosaurioTienda(),new DragonTienda(),new FantasmaTienda(),new FenixTienda(),new GolemTienda(),new HadaTienda(),new LeviatanTienda()};
+		Torre []torres={new Alien(null),new Dinosaurio(null),new Dragon(null),new Fantasma(null),new Fenix(null),new Golem(null),new Hada(null),new Leviatan(null)};
 		for(int i=0;i<8;i++) {
 			btTorres[i]= new BotonTorre(torres[i]);
 			btTorres[i].setBounds(i*120,6*pixel, 120, 64);
 			this.add(btTorres[i]);
 		}
 		btPowerUps=new BotonPowerUp[5];
-		ImageIcon[] imagenes= {new ImageIcon("./src/Sprites/Premios/Congelar.png"),new ImageIcon("./src/Sprites/Premios/Fuerza.png"),new ImageIcon("./src/Sprites/Premios/Bomba.png"),new ImageIcon("./src/Sprites/Premios/Escudo.png"),new ImageIcon("./src/Sprites/Premios/TorreAleatoria.png")};
-		String[] descripciones= {"Congelar","Fuerza","Bomba","Escudo","Torre Aleatoria"};
+		PowerUpEfecto[] powerups= {new CongelarEfecto(),new DobleFuerzaEfecto(),new BombaEfecto(),new EscudoEfecto(),new TorreAleatoriaEfecto()};
 		for(int i=0;i<5;i++) {
-			btPowerUps[i]=new BotonPowerUp(imagenes[i],descripciones[i]);
+			btPowerUps[i]=new BotonPowerUp(powerups[i]);
 			btPowerUps[i].setBounds(960,256+i*64,pixel,64);
 			this.add(btPowerUps[i]);
 		}
@@ -152,6 +171,7 @@ public class GUI extends JFrame{
 	public class OyenteVender implements ActionListener{
 		public void actionPerformed(ActionEvent arg0) {
 			btVender.seleccionar();
+			Tienda.getTienda().vender();
 		}
 		
 	}
@@ -180,7 +200,7 @@ public class GUI extends JFrame{
 		public void mouseReleased(MouseEvent e) {
 			int x=celda.getX()/96;
 			int y=celda.getY()/96;
-			Tienda.getTienda().ubicar(x, y);}
+			Tienda.getTienda().seleccionar(Mapa.getMapa(0).getGrilla()[x][y]);}
 	}
 }	
 	/*public class OyenteMousePower implements MouseListener{

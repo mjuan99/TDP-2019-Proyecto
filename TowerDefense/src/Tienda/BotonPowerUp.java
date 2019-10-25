@@ -8,13 +8,17 @@ import java.awt.event.MouseListener;
 import javax.swing.ImageIcon;
 import javax.swing.JTextArea;
 
+import PowerUpsEfecto.PowerUpEfecto;
+
 public class BotonPowerUp extends BotonTienda {
 	ImageIcon imagen;
 	JTextArea descripcion;
-	public BotonPowerUp(ImageIcon i,String s) {
-		super(i);
-		imagen=i;
-		descripcion=new JTextArea(s);
+	PowerUpEfecto miPowerUp;
+	public BotonPowerUp(PowerUpEfecto p) {
+		super(new ImageIcon(p.getImagen()));
+		miPowerUp=p;
+		imagen=new ImageIcon(p.getImagen());
+		descripcion=new JTextArea(p.getDescripcion());
 		MouseListener mouseL=new OyenteBotonObjeto(this);
 		this.setBackground(Color.WHITE);;
 		this.setBorder(null);
@@ -31,6 +35,9 @@ public class BotonPowerUp extends BotonTienda {
 	public ImageIcon getImagen() {
 		return imagen;
 	}
+	public PowerUpEfecto getPowerUp() {
+		return miPowerUp;
+	}
 }
 class OyenteBotonObjeto implements MouseListener{
 	BotonPowerUp boton;
@@ -40,6 +47,7 @@ class OyenteBotonObjeto implements MouseListener{
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
 		boton.seleccionar();
+		boton.getPowerUp().usar();
 	}
 
 	@Override

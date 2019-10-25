@@ -11,17 +11,20 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
 
+import Personajes.Torre;
 import Tienda.BotonTienda;
 import Tienda.Tienda;
 import Tienda.TorreTienda;
 
 public class BotonTorre extends BotonTienda {
 	JTextArea descripcion;
-	TorreTienda torre;
-	public BotonTorre(TorreTienda torre) {
-		super(new ImageIcon(torre.getImagen()));
+	Torre torre;
+	ImageIcon imagen;
+	public BotonTorre(Torre torre) {
+		super(new ImageIcon(torre.getMiniatura()));
 		MouseListener mouseL=new OyenteBotonTorre(this);
 		this.torre=torre;
+		imagen=new ImageIcon(torre.getMiniatura());
 		this.setBackground(Color.WHITE);;
 		this.setBorder(null);
 		this.addMouseListener(mouseL);
@@ -31,11 +34,14 @@ public class BotonTorre extends BotonTienda {
 		descripcion.setEditable(false);
 		descripcion.addMouseListener(mouseL);
 	}
-	public TorreTienda getTorreTienda() {
-		return torre;
+	public Torre getTorre() {
+		return torre.nueva();
 	}
 	public JTextArea getTexto() {
 		return descripcion;
+	}
+	public ImageIcon getImagen() {
+		return imagen;
 	}
 }
 class OyenteBotonTorre implements MouseListener{
@@ -45,7 +51,7 @@ class OyenteBotonTorre implements MouseListener{
 	}
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
-		Tienda.getTienda().comprar(boton.getTorreTienda().getTorre());
+		Tienda.getTienda().comprar(boton.getTorre());
 		boton.seleccionar();
 	}
 
@@ -59,7 +65,7 @@ class OyenteBotonTorre implements MouseListener{
 	@Override
 	public void mouseExited(MouseEvent arg0) {
 		boton.getTexto().setVisible(false);
-		boton.setIcon(new ImageIcon(boton.getTorreTienda().getImagen()));
+		boton.setIcon(boton.getImagen());
 	}
 
 	@Override

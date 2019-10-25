@@ -12,8 +12,7 @@ public class VisitorClick extends Visitor{
 
 	@Override
 	public void visit(Torre torre) {
-		// TODO Auto-generated method stub
-		
+		Tienda.getTienda().seleccionar(torre);
 	}
 
 	@Override

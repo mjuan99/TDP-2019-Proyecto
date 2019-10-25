@@ -9,7 +9,8 @@ import Visitor.VisitorPowerUpGlobal;
 
 public abstract class PowerUpGlobal extends PowerUpEfecto {
 	protected VisitorPowerUpGlobal visitor;
-	protected PowerUpGlobal() {
+	protected PowerUpGlobal(String imagen,String desc) {
+		super(imagen,desc);
 		visitor=new VisitorPowerUpGlobal(this);
 	}
 	public void activar() {

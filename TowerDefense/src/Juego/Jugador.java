@@ -22,7 +22,7 @@ public class Jugador {
 	
 	public void sumarPuntos(int p) {
 		puntos+=p;
-		puntosGrafica.setText("Puntos: "+puntos);
+		GUI.getGUI().actualizarPuntos();
 	}
 	
 	public int getOro() {
@@ -35,6 +35,11 @@ public class Jugador {
 	
 	public void decrementarOro(int valor) {
 		presupuesto-=valor;
+		GUI.getGUI().actualizarOro();
+	}
+	public void aumentarOro(int valor) {
+		presupuesto+=valor;
+		GUI.getGUI().actualizarOro();
 	}
 	public void setOroGrafica(JLabel oro) {
 		oroGrafica=oro;
