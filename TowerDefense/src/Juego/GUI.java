@@ -100,9 +100,12 @@ public class GUI extends JFrame{
 		puntaje.setText("Puntos: "+puntos);
 	}
 	
-	public void eliminarComponente(Component c) {
-		if(contentPane.isAncestorOf(c))
+	public void eliminarComponente(JLabel c) {
+		if(contentPane.isAncestorOf(c)) {
+			c.setIcon(null);
+			c.setBounds(0,0,0,0);
 			contentPane.remove(c);
+		}
 	}
 	
 	private void crearFondo() {

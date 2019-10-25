@@ -43,7 +43,7 @@ public abstract class Enemigo extends Personaje{
 	
 	public void atacar() {
 		ataco=true;
-		Mapa.getMapa(0).crearProyectil(new ProyectilEnemigo(celda,this, dano,alcance,rutaProyectil));
+		Mapa.getMapa(0).crearElementoIntangible(new ProyectilEnemigo(celda,this, dano,alcance,rutaProyectil));
 	}
 	
 	public void danar(Elemento e,int dano) {
@@ -107,7 +107,7 @@ public abstract class Enemigo extends Personaje{
 		AutoRemove a=new AutoRemove(this,2000,animacionMuerte);
 		a.start();
 		if((int)(Math.random()*10)<3)
-			Controlador.getControlador().crearPowerUp(getPowerUp((int)(Math.random()*5),celda),celda);
+			Controlador.getControlador().crearPowerUp(getPowerUp((int)(Math.random()*5),celda));
 	
 	}
 	

@@ -1,6 +1,9 @@
 package Personajes;
 import Juego.Celda;
 import Juego.Mapa;
+import PowerUpsEfecto.CongelarEfecto;
+import PowerUpsEfecto.DobleFuerzaEfecto;
+import PowerUpsEfecto.TorreAleatoriaEfecto;
 
 public class Leviatan extends Torre {
 	
@@ -13,6 +16,7 @@ public class Leviatan extends Torre {
 	
 	public Leviatan(Celda celda) {
 		super(celda,vidaBase,tam,imagen,danoBase,alcanceBase,proyectil);
+		new TorreAleatoriaEfecto().activar(Mapa.getMapa(0).getGrilla()[(int)(Math.random()*9)][(int)(Math.random()*6)]);
 	}
 	
 	public void actuar() {}

@@ -12,7 +12,7 @@ public class EstadoDefaultAtaque implements EstadoAtaqueAliado{
 
 	@Override
 	public void atacar() {
-		Mapa.getMapa(0).crearProyectil(new ProyectilAliado(miTorre.getCelda(),miTorre , miTorre.getDano(),miTorre.getAlcance(),miTorre.getRutaProyectil()));
+		Mapa.getMapa(0).crearElementoIntangible(new ProyectilAliado(miTorre.getCelda(),miTorre , miTorre.getDano(),miTorre.getAlcance(),miTorre.getRutaProyectil()));
 	}
 
 }

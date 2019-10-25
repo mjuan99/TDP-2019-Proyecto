@@ -11,7 +11,8 @@ public class EstadoProtegidoEnemigo implements EstadoDefensaEnemigo {
 
 	@Override
 	public void danar(Elemento e, int dano) {
-		e.morir();
+		if(e!=null)
+			e.morir();
 		miEnemigo.setEstadoDefensa(new EstadoDefaultDefensaE(miEnemigo));
 	}
 

@@ -43,8 +43,6 @@ public class Mapa {
 		Elemento e;
 		while(!lista.isEmpty()) {
 			e=lista.removeFirst();
-			e.getComponenteGrafica().setIcon(null);
-			e.getComponenteGrafica().setBounds(0,0,0,0);
 			GUI.getGUI().eliminarComponente(e.getComponenteGrafica());
 		}
 	}
@@ -62,22 +60,23 @@ public class Mapa {
 				x=(int)(Math.random()*6+2);
 				y=(int)(Math.random()*6);
 			}
-			o.setCelda(grilla[x][y]);
+			crearElemento(o,x,y);
+			/*o.setCelda(grilla[x][y]);
 			grilla[x][y].setElem(o);
 			lista.add(o);
-			GUI.getGUI().crearElemento(o);
+			GUI.getGUI().crearElemento(o);*/
 		}
 	}
 	
-	public void crearProyectil(Proyectil proyectil) {
-		lista.add(proyectil);
-		GUI.getGUI().crearElemento(proyectil);
+	public void crearElementoIntangible(Elemento elem) {
+		lista.add(elem);
+		GUI.getGUI().crearElemento(elem);
 	}
 	
-	public void crearPowerUp(PowerUpRecolectable p) {
+	/*public void crearPowerUp(PowerUpRecolectable p) {
 		lista.add(p);
 		GUI.getGUI().crearElemento(p);
-	}
+	}*/
 	
 	public void visitorGlobal(Visitor v) {
 		for(Elemento e:lista) {
@@ -101,10 +100,12 @@ public class Mapa {
 					if(grilla[9][i].getElem()==null)
 						if (nivel.quedanEnemigos(i)) {
 							e=nivel.getEnemigo(i);
+							crearElemento(e,9,i);
+							/*e=nivel.getEnemigo(i);
 							e.setCelda(grilla[9][i]);
 							grilla[9][i].setElem(e);
 							lista.add(e);
-							GUI.getGUI().crearElemento(e);
+							GUI.getGUI().crearElemento(e);*/
 						}
 				}
 			}
@@ -180,14 +181,14 @@ public class Mapa {
 			grilla[x][y].setElem(elem);
 			elem.setCelda(grilla[x][y]);
 			lista.add(elem);
-			return true;
+			GUI.getGUI().crearElemento(elem);
 		}else
 			if(elem.getTamano()==2&&y<5&&grilla[x][y].getElem()==null&&grilla[x][y+1].getElem()==null) {
 				grilla[x][y].setElem(elem);
 				grilla[x][y+1].setElem(elem);
 				elem.setCelda(grilla[x][y]);
 				lista.add(elem);
-				return true;
+				GUI.getGUI().crearElemento(elem);
 			}
 		return false;
 		
