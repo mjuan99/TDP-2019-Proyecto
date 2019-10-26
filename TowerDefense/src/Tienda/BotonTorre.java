@@ -14,7 +14,6 @@ import javax.swing.JTextArea;
 import Personajes.Torre;
 import Tienda.BotonTienda;
 import Tienda.Tienda;
-import Tienda.TorreTienda;
 
 public class BotonTorre extends BotonTienda {
 	JTextArea descripcion;
