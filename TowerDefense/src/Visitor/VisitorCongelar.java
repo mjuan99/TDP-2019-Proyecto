@@ -5,7 +5,12 @@ import Objetos.ObstaculoVida;
 import Objetos.Proyectil;
 import Personajes.Enemigo;
 import Personajes.Torre;
-import PowerUps.PowerUp;
+import PowerUpsRecolectable.PowerUpRecolectable;
+import PowerUpsRecolectable.BombaRecolectable;
+import PowerUpsRecolectable.CongelarRecolectable;
+import PowerUpsRecolectable.DobleFuerzaRecolectable;
+import PowerUpsRecolectable.EscudoRecolectable;
+import PowerUpsRecolectable.TorreAleatoriaRecolectable;
 
 public class VisitorCongelar extends Visitor {
 
@@ -40,7 +45,31 @@ public class VisitorCongelar extends Visitor {
 	}
 
 	@Override
-	public void visit(PowerUp powerup) {
+	public void visit(BombaRecolectable b) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void visit(CongelarRecolectable c) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void visit(DobleFuerzaRecolectable d) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void visit(TorreAleatoriaRecolectable t) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void visit(EscudoRecolectable e) {
 		// TODO Auto-generated method stub
 		
 	}

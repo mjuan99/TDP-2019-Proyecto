@@ -1,5 +1,4 @@
 package Personajes;
-import Estado.EstadoPower;
 import Juego.Celda;
 import Juego.Elemento;
 import Juego.Mapa;

@@ -2,9 +2,12 @@ package Visitor;
 
 import Objetos.*;
 import Personajes.*;
-import PowerUps.Bomba;
-import PowerUps.DobleFuerza;
-import PowerUps.PowerUp;
+import PowerUpsRecolectable.PowerUpRecolectable;
+import PowerUpsRecolectable.BombaRecolectable;
+import PowerUpsRecolectable.CongelarRecolectable;
+import PowerUpsRecolectable.DobleFuerzaRecolectable;
+import PowerUpsRecolectable.EscudoRecolectable;
+import PowerUpsRecolectable.TorreAleatoriaRecolectable;
 
 public class VisitorAliado extends Visitor {
 
@@ -26,12 +29,12 @@ public class VisitorAliado extends Visitor {
 		//nada
 	}
 
-	public void visit(Bomba powerup) {
+	public void visit(BombaRecolectable powerup) {
 		//realizar metodo de adquisicion
 
 	}
 	
-	public void visit(DobleFuerza powerup) {
+	public void visit(DobleFuerzaRecolectable powerup) {
 //		miTorre.atacar(danio*2);
 	}
 
@@ -48,7 +51,19 @@ public class VisitorAliado extends Visitor {
 	}
 
 	@Override
-	public void visit(PowerUp powerup) {
+	public void visit(CongelarRecolectable c) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void visit(TorreAleatoriaRecolectable t) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void visit(EscudoRecolectable e) {
 		// TODO Auto-generated method stub
 		
 	}

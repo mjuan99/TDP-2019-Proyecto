@@ -2,7 +2,6 @@ package Juego;
 
 import javax.swing.JLabel;
 
-import Estado.EstadoPower;
 import Visitor.*;
 
 public abstract class Elemento {
@@ -15,7 +14,6 @@ public abstract class Elemento {
 	protected int contadorPulsos=0;
 	protected int topePulso=10;
 	protected Visitor visitor;
-	protected EstadoPower miEstado;
 	
 	protected Elemento(Celda celda,int vidaMax,int tamano,String rutaImagen) {
 		vivo=true;
@@ -25,17 +23,11 @@ public abstract class Elemento {
 		this.rutaImagen=rutaImagen;
 	}
 	
-	public void setEstado() {
-	 
-		
-		
-	}
-	
 	public int getTamano() {
 		return tamano;
 	}
 	
-	public void danar(int dano) {
+	public void danar(Elemento atacante,int dano) {
 		if(vida<=dano)
 			morir();
 		else
@@ -51,8 +43,6 @@ public abstract class Elemento {
 	public void morir() {
 		if (vivo) {
 			Mapa.getMapa(0).eliminarElemento(this);
-			componenteGrafica.setIcon(null);
-			componenteGrafica.setBounds(0, 0, 0, 0);
 			vivo = false;
 			GUI.getGUI().eliminarComponente(componenteGrafica);
 		}

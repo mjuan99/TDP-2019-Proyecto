@@ -9,8 +9,8 @@ import Visitor.VisitorProyectilAliado;
 
 public class ProyectilAliado extends Proyectil {
 	protected static int tam=1;
-	public ProyectilAliado(Celda celda, int dano,int rango,String rutaImagen) {//agregar celda y entidad de donde se crea
-		super(celda, dano,rango,tam,rutaImagen);
+	public ProyectilAliado(Celda celda,Elemento creador, int dano,int rango,String rutaImagen) {//agregar celda y entidad de donde se crea
+		super(celda,creador, dano,rango,tam,rutaImagen);
 		visitor=new VisitorProyectilAliado(this);
 	}
 	

@@ -3,6 +3,12 @@ package Personajes;
 import java.awt.Rectangle;
 import java.util.Iterator;
 
+import EstadosEnemigo.EstadoActuarEnemigo;
+import EstadosEnemigo.EstadoCongeladoEnemigo;
+import EstadosEnemigo.EstadoDefaultActuar;
+import EstadosEnemigo.EstadoDefaultDefensaE;
+import EstadosEnemigo.EstadoDefensaEnemigo;
+import EstadosEnemigo.EstadoProtegidoEnemigo;
 import Juego.AutoRemove;
 import Juego.Celda;
 import Juego.Controlador;
@@ -10,28 +16,46 @@ import Juego.Elemento;
 import Juego.Jugador;
 import Juego.Mapa;
 import Objetos.ProyectilEnemigo;
-import PowerUps.*;
+import PowerUpsRecolectable.*;
 import Visitor.Visitor;
 import Visitor.VisitorEnemigo;
 
 public abstract class Enemigo extends Personaje{
 	
+	protected EstadoDefensaEnemigo estadoDefensa;
+	protected EstadoActuarEnemigo estadoActuar;
 	protected int contadorMov=0;
 	protected int velocidad;
 	protected boolean moviendo=false;
 	protected int celdaDestino;
+	protected String imagenCongelado;
 	protected String animacionMuerte;
 	
-	protected Enemigo(Celda celda,int vidaMax,int tamano,String rutaImagen,String animacionMuerte,int dano,int alcance,String rutaProyectil,int velocBase) {
+	protected Enemigo(Celda celda,int vidaMax,int tamano,String rutaImagen,String imagenCongelado,String animacionMuerte,int dano,int alcance,String rutaProyectil,int velocBase) {
 		super(celda,vidaMax,tamano,rutaImagen,dano,alcance,rutaProyectil);
 		this.animacionMuerte=animacionMuerte;
+		this.imagenCongelado=imagenCongelado;
 		velocidad=velocBase;
 		visitor=new VisitorEnemigo(this);
+		estadoActuar=new EstadoDefaultActuar(this);
+		estadoDefensa=new EstadoDefaultDefensaE(this);
 	}
 	
 	public void atacar() {
 		ataco=true;
-		Mapa.getMapa(0).crearProyectil(new ProyectilEnemigo(celda, dano,alcance,rutaProyectil));
+		Mapa.getMapa(0).crearElementoIntangible(new ProyectilEnemigo(celda,this, dano,alcance,rutaProyectil));
+	}
+	
+	public void danar(Elemento e,int dano) {
+		estadoDefensa.danar(e, dano);
+	}
+	
+	public void setEstadoDefensa(EstadoDefensaEnemigo e) {
+		estadoDefensa=e;
+	}
+	
+	public void setEstadoActuar(EstadoActuarEnemigo e) {
+		estadoActuar=e;
 	}
 	
 	public void accept(Visitor v) {
@@ -39,6 +63,10 @@ public abstract class Enemigo extends Personaje{
 	}
 	
 	public void actuar() {
+		estadoActuar.actuar();
+	}
+	
+	public void actuarDefault() {
 		if (contadorPulsos==0) {
 			Rectangle r = componenteGrafica.getBounds();
 			if (!moviendo) {
@@ -63,6 +91,10 @@ public abstract class Enemigo extends Personaje{
 			contadorPulsos=(contadorPulsos+1)%topePulso;
 	}
 	
+	public String getImagenCongelado() {
+		return imagenCongelado;
+	}
+	
 	public void morir() {
 		//ImageIcon img=new ImageIcon("./src/Sprites/Efectos/Explosion2.gif");
 		//img.getImage().flush();
@@ -75,18 +107,18 @@ public abstract class Enemigo extends Personaje{
 		AutoRemove a=new AutoRemove(this,2000,animacionMuerte);
 		a.start();
 		if((int)(Math.random()*10)<3)
-			Controlador.getControlador().crearPowerUp(getPowerUp((int)(Math.random()*5),celda),celda);
+			Controlador.getControlador().crearPowerUp(getPowerUp((int)(Math.random()*5),celda));
 	
 	}
 	
-	private PowerUp getPowerUp(int i,Celda celda) {
-		PowerUp p=null;
+	private PowerUpRecolectable getPowerUp(int i,Celda celda) {
+		PowerUpRecolectable p=null;
 		switch(i) {
-		case 0:{p=new Bomba(celda);break;}
-		case 1:{p=new Escudo(celda);break;}
-		case 2:{p=new Congelar(celda);break;}
-		case 3:{p=new DobleFuerza(celda);break;}
-		case 4:{p=new TorreAleatoria(celda);break;}
+		case 0:{p=new BombaRecolectable(celda);break;}
+		case 1:{p=new EscudoRecolectable(celda);break;}
+		case 2:{p=new CongelarRecolectable(celda);break;}
+		case 3:{p=new DobleFuerzaRecolectable(celda);break;}
+		case 4:{p=new TorreAleatoriaRecolectable(celda);break;}
 		}
 		return p;
 	}

@@ -7,7 +7,12 @@ import Objetos.Proyectil;
 import Objetos.ProyectilEnemigo;
 import Personajes.Enemigo;
 import Personajes.Torre;
-import PowerUps.PowerUp;
+import PowerUpsRecolectable.PowerUpRecolectable;
+import PowerUpsRecolectable.BombaRecolectable;
+import PowerUpsRecolectable.CongelarRecolectable;
+import PowerUpsRecolectable.DobleFuerzaRecolectable;
+import PowerUpsRecolectable.EscudoRecolectable;
+import PowerUpsRecolectable.TorreAleatoriaRecolectable;
 
 public class VisitorProyectilEnemigo extends Visitor {
 	
@@ -20,7 +25,7 @@ public class VisitorProyectilEnemigo extends Visitor {
 	@Override
 	public void visit(Torre torre) {
 		if(torre.estaVivo()) {
-			torre.danar(miProyectil.getDano());
+			torre.danar(miProyectil.getCreador(),miProyectil.getDano());
 			miProyectil.morir();
 		}
 	}
@@ -38,15 +43,9 @@ public class VisitorProyectilEnemigo extends Visitor {
 	}
 
 	@Override
-	public void visit(PowerUp powerup) {
-		//nada
-
-	}
-
-	@Override
 	public void visit(ObstaculoVida obstaculo) {
 		if(obstaculo.estaVivo()) {
-			obstaculo.danar(miProyectil.getDano());
+			obstaculo.danar(miProyectil.getCreador(),miProyectil.getDano());
 			miProyectil.morir();
 		}
 	}
@@ -54,6 +53,36 @@ public class VisitorProyectilEnemigo extends Visitor {
 	@Override
 	public void visit(ObstaculoTiempo obstaculo) {
 		miProyectil.morir();
+	}
+
+	@Override
+	public void visit(BombaRecolectable b) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void visit(CongelarRecolectable c) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void visit(DobleFuerzaRecolectable d) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void visit(TorreAleatoriaRecolectable t) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void visit(EscudoRecolectable e) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

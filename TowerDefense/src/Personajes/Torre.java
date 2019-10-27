@@ -1,23 +1,65 @@
 package Personajes;
 import java.util.Iterator;
 
+import EstadosAliado.EstadoAtaqueAliado;
+import EstadosAliado.EstadoDefaultAtaque;
+import EstadosAliado.EstadoDefaultDefensaA;
+import EstadosAliado.EstadoDefensaAliado;
+import EstadosAliado.EstadoDobleFuerzaAtaque;
+import EstadosAliado.EstadoProtegidoAliado;
 import Juego.Celda;
 import Juego.Elemento;
+import Juego.Jugador;
 import Juego.Mapa;
-import Objetos.ProyectilAliado;
 import Visitor.Visitor;
 import Visitor.VisitorAliado;
 
 public abstract class Torre extends Personaje{
+	protected EstadoAtaqueAliado estadoAtaque;
+	protected EstadoDefensaAliado estadoDefensa;
+	protected int vidaBase;
+	protected int precio;
+	protected String nombre;
+	protected String miniatura;
 	
-	protected Torre(Celda celda,int vidaMax,int tamano,String rutaImagen,int dano,int alcance,String rutaProyectil) {
+	protected Torre(Celda celda,int vidaMax,int tamano,String rutaImagen,int dano,int alcance,String rutaProyectil,int precio,String miniatura,String nombre) {
 		super(celda,vidaMax,tamano,rutaImagen,dano,alcance,rutaProyectil);
+		this.nombre=nombre;
+		this.precio=precio;
+		vidaBase=vidaMax;
+		this.miniatura=miniatura;
 		visitor=new VisitorAliado(this);
+		estadoAtaque=new EstadoDefaultAtaque(this);
+		estadoDefensa=new EstadoDefaultDefensaA(this);
 	}
+	
+	public int getPrecio() {
+		return precio;
+	}
+	
+	public void vender() {
+		if(vida==vidaBase)
+			Jugador.getJugador().aumentarOro(precio);
+		else
+			Jugador.getJugador().aumentarOro(precio/2);
+		morir();
+	}
+	
+	public void danar(Elemento e,int dano) {
+		estadoDefensa.danar(e, dano);
+	}
+	
+	public void setEstadoAtaque(EstadoAtaqueAliado e) {
+		estadoAtaque=e;
+	}
+	
+	public void setEstadoDefensa(EstadoDefensaAliado e) {
+		estadoDefensa=e;
+	}
+	
 	public void atacar() {
 		ataco=true;
-		Mapa.getMapa(0).crearProyectil(new ProyectilAliado(celda, dano,alcance,rutaProyectil));
-			
+		estadoAtaque.atacar();
 	}
 	
 	public void accept(Visitor v) {
@@ -38,5 +80,29 @@ public abstract class Torre extends Personaje{
 				contadorPulsos=(contadorPulsos+1)%topePulso;
 		}else
 			contadorPulsos=(contadorPulsos+1)%topePulso;
+	}
+	
+	public int getDano() {
+		return dano;
+	}
+	
+	public int getAlcance() {
+		return alcance;
+	}
+	
+	public String getRutaProyectil() {
+		return rutaProyectil;
+	}
+	
+	public abstract Torre nueva();
+	
+	public String getMiniatura() {
+		return miniatura;
+	}
+	
+	public String descripcion() {
+		String cadena="";
+		cadena+=nombre+"\n"+"$"+precio+"\n"+"Vida: "+vida+"\n"+"Daño: "+dano+"  ("+alcance+")";
+		return cadena;
 	}
 }

@@ -3,7 +3,7 @@ package Juego;
 import java.awt.EventQueue;
 
 import Personajes.Torre;
-import PowerUps.*;
+import PowerUpsRecolectable.*;
 
 public class Controlador {
 	private static Controlador controlador;
@@ -50,8 +50,7 @@ public class Controlador {
 
 	public boolean agregarTorre(Torre t,int x, int y) {
 		if(Mapa.getMapa(0).posicionValidaTorre(t, x, y)) {
-			if(Mapa.getMapa(0).crearElemento(t, x, y))
-				GUI.getGUI().crearElemento(t);
+			Mapa.getMapa(0).crearElemento(t, x, y);
 			return true;
 		}
 		return false;
@@ -60,10 +59,8 @@ public class Controlador {
 		Mapa.getMapa(0).activarOleada();
 	}
 
-	public void crearPowerUp(PowerUp p,Celda celda) {
-		int x= celda.getX();
-		int y = celda.getY();
-		Mapa.getMapa(0).crearPowerUp(p);
+	public void crearPowerUp(PowerUpRecolectable p) {
+		Mapa.getMapa(0).crearElementoIntangible(p);
 	}
 	
 }
