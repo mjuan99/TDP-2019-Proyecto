@@ -11,7 +11,7 @@ public class Enemigo3 extends Enemigo {
 	protected static int danoBase=70;
 	protected static int alcanceBase=3;
 	protected static String imagen ="./src/Sprites/Enemigos/Enemigo3.gif";
-	protected static String proyectil="./src/Sprites/Ataques/AtaqueEnemigo.gif";
+	protected static String proyectil="./src/Sprites/Ataques/AtaqueFlecha.png";
 	protected static String animacionMuerte="./src/Sprites/Efectos/Muerte3.gif";
 	protected static String rutaCongelado="./src/Sprites/Efectos/EfectosPowerUps/Congelado3.png";
 	
