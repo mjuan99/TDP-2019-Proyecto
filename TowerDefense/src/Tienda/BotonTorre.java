@@ -47,8 +47,10 @@ class OyenteBotonTorre implements MouseListener{
 	}
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
-		Tienda.getTienda().comprar(boton.getTorre());
-		boton.seleccionar();
+		if(boton.isEnabled()) {
+			Tienda.getTienda().comprar(boton.getTorre());
+			boton.seleccionar();
+		}
 	}
 
 	@Override
