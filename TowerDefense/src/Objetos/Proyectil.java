@@ -2,7 +2,6 @@ package Objetos;
 
 import Juego.Celda;
 import Juego.Elemento;
-import Juego.Mapa;
 
 public abstract class Proyectil extends Elemento{
 	protected Elemento creador;

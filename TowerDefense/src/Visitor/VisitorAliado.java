@@ -2,7 +2,6 @@ package Visitor;
 
 import Objetos.*;
 import Personajes.*;
-import PowerUpsRecolectable.PowerUpRecolectable;
 import PowerUpsRecolectable.BombaRecolectable;
 import PowerUpsRecolectable.CongelarRecolectable;
 import PowerUpsRecolectable.DobleFuerzaRecolectable;

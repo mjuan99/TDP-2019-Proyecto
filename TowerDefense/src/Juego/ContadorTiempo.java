@@ -11,7 +11,7 @@ public class ContadorTiempo extends Thread {
 			}catch(InterruptedException e) {
 				e.printStackTrace();
 			}
-			Mapa.getMapa(0).actuar();
+			Mapa.getMapa().actuar();
 		}
 	}
 }

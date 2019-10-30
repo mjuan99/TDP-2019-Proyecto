@@ -5,7 +5,6 @@ import Objetos.ObstaculoVida;
 import Objetos.Proyectil;
 import Personajes.Enemigo;
 import Personajes.Torre;
-import PowerUpsRecolectable.PowerUpRecolectable;
 import PowerUpsRecolectable.BombaRecolectable;
 import PowerUpsRecolectable.CongelarRecolectable;
 import PowerUpsRecolectable.DobleFuerzaRecolectable;

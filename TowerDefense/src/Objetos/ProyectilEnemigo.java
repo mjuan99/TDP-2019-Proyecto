@@ -29,7 +29,7 @@ public class ProyectilEnemigo extends Proyectil {
 			componenteGrafica.setBounds((int)r.getX()-24,(int)r.getY(),96,96);
 		else{
 			if(celdaDestino>=0&&rango>0) {
-				celda=Mapa.getMapa(0).getGrilla()[celdaDestino][celda.getY()];
+				celda=Mapa.getMapa().getGrilla()[celdaDestino][celda.getY()];
 				componenteGrafica.setBounds((int)r.getX()-24,(int)r.getY(),96,96);
 				moviendo=false;
 				rango--;

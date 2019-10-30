@@ -14,7 +14,7 @@ public abstract class PowerUpGlobal extends PowerUpEfecto {
 		visitor=new VisitorPowerUpGlobal(this);
 	}
 	public void activar() {
-		Mapa.getMapa(0).visitorGlobal(visitor);
+		Mapa.getMapa().visitorGlobal(visitor);
 	}
 	public abstract void aplicar(Torre t);
 	public abstract void aplicar(Enemigo e);

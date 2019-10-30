@@ -10,6 +10,7 @@ import javax.swing.JTextArea;
 
 import PowerUpsEfecto.PowerUpEfecto;
 
+@SuppressWarnings("serial")
 public class BotonPowerUp extends BotonTienda {
 	ImageIcon imagen;
 	JTextArea descripcion;

@@ -2,6 +2,7 @@ package Tienda;
 
 import java.awt.Color;
 import java.awt.Cursor;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
@@ -11,12 +12,14 @@ import javax.swing.JButton;
 
 import Juego.GUI;
 
+@SuppressWarnings("serial")
 public class BotonTienda extends JButton {
 	protected BotonTienda(ImageIcon i) {
 		super(i);
 	}
-	public BotonTienda(String s) {
+	public BotonTienda(String s,ActionListener a) {
 		super(s);
+		this.addActionListener(a);
 		this.addMouseListener(new OyenteBotonTienda(this));
 	}
 	public void seleccionar() {

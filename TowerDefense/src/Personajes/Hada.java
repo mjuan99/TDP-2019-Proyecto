@@ -1,8 +1,5 @@
 package Personajes;
 import Juego.Celda;
-import Juego.Mapa;
-import Objetos.Proyectil;
-import Objetos.ProyectilAliado;
 
 public class Hada extends Torre{
 

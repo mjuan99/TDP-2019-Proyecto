@@ -1,7 +1,6 @@
 package Personajes;
 import Juego.Celda;
 import Juego.Elemento;
-import Juego.Mapa;
 
 public abstract class Personaje extends Elemento {
 	protected int dano;

@@ -1,13 +1,11 @@
 package Visitor;
 
-import Objetos.Obstaculo;
 import Objetos.ObstaculoTiempo;
 import Objetos.ObstaculoVida;
 import Objetos.Proyectil;
 import Objetos.ProyectilAliado;
 import Personajes.Enemigo;
 import Personajes.Torre;
-import PowerUpsRecolectable.PowerUpRecolectable;
 import PowerUpsRecolectable.BombaRecolectable;
 import PowerUpsRecolectable.CongelarRecolectable;
 import PowerUpsRecolectable.DobleFuerzaRecolectable;

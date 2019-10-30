@@ -1,7 +1,6 @@
 package PowerUpsEfecto;
 
 import Juego.Celda;
-import Juego.Mapa;
 import Tienda.Tienda;
 
 public class BombaEfecto extends PowerUpCelda {

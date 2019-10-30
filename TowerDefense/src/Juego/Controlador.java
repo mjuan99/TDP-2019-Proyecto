@@ -23,7 +23,7 @@ public class Controlador {
 	}
 
 	private Controlador() {
-		Mapa.getMapa(1);
+		Mapa.getMapa();
 		GUI.getGUI().setVisible(true);
 		tiempo=new ContadorTiempo();
 		tiempo.start();
@@ -39,28 +39,28 @@ public class Controlador {
 	}
 
 	public void ganar() {
-		Mapa.getMapa(0).limpiar();
+		Mapa.getMapa().limpiar();
 		GUI.getGUI().ganar();
 	}
 	
 	public void perder() {
-		Mapa.getMapa(0).limpiar();
+		Mapa.getMapa().limpiar();
 		GUI.getGUI().perder();
 	}
 
 	public boolean agregarTorre(Torre t,int x, int y) {
-		if(Mapa.getMapa(0).posicionValidaTorre(t, x, y)) {
-			Mapa.getMapa(0).crearElemento(t, x, y);
+		if(Mapa.getMapa().posicionValidaTorre(t, x, y)) {
+			Mapa.getMapa().crearElemento(t, x, y);
 			return true;
 		}
 		return false;
 	}
 	public void activarOleada() {
-		Mapa.getMapa(0).activarOleada();
+		Mapa.getMapa().activarOleada();
 	}
 
 	public void crearPowerUp(PowerUpRecolectable p) {
-		Mapa.getMapa(0).crearElementoIntangible(p);
+		Mapa.getMapa().crearElementoIntangible(p);
 	}
 	
 }

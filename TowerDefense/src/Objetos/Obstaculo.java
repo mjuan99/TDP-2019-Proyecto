@@ -2,8 +2,6 @@ package Objetos;
 
 import Juego.Celda;
 import Juego.Elemento;
-import Juego.Mapa;
-import Visitor.Visitor;
 
 public abstract class Obstaculo extends Elemento {
 	

@@ -4,11 +4,9 @@ import java.awt.Rectangle;
 import java.util.Iterator;
 
 import EstadosEnemigo.EstadoActuarEnemigo;
-import EstadosEnemigo.EstadoCongeladoEnemigo;
 import EstadosEnemigo.EstadoDefaultActuar;
 import EstadosEnemigo.EstadoDefaultDefensaE;
 import EstadosEnemigo.EstadoDefensaEnemigo;
-import EstadosEnemigo.EstadoProtegidoEnemigo;
 import Juego.AutoRemove;
 import Juego.Celda;
 import Juego.Controlador;
@@ -43,7 +41,7 @@ public abstract class Enemigo extends Personaje{
 	
 	public void atacar() {
 		ataco=true;
-		Mapa.getMapa(0).crearElementoIntangible(new ProyectilEnemigo(celda,this, dano,alcance,rutaProyectil));
+		Mapa.getMapa().crearElementoIntangible(new ProyectilEnemigo(celda,this, dano,alcance,rutaProyectil));
 	}
 	
 	public void danar(Elemento e,int dano) {
@@ -71,15 +69,15 @@ public abstract class Enemigo extends Personaje{
 			Rectangle r = componenteGrafica.getBounds();
 			if (!moviendo) {
 				ataco=false;
-				Iterator<Elemento> it=Mapa.getMapa(0).elementosRango(this).iterator();
+				Iterator<Elemento> it=Mapa.getMapa().elementosRango(this).iterator();
 				while(!ataco&&it.hasNext())
 					it.next().accept(visitor);
 				if(ataco)
 					contadorPulsos++;
 				else
-					if (Mapa.getMapa(0).puedeAvanzar(this)) {
+					if (Mapa.getMapa().puedeAvanzar(this)) {
 						celdaDestino = celda.getX() - 1;
-						Mapa.getMapa(0).avanzar(this);
+						Mapa.getMapa().avanzar(this);
 						moviendo = true;
 					}
 			} else 
@@ -101,8 +99,8 @@ public abstract class Enemigo extends Personaje{
 		//mapa.getControlador().getGui().setearLabel(this,"./src/Sprites/Efectos/Explosion2.gif");
 		Jugador.getJugador().sumarPuntos(50);
 		Celda celda= this.getCelda();
-		Mapa.getMapa(0).eliminarElemento(this);
-		Mapa.getMapa(0).decrementarEnemigos();
+		Mapa.getMapa().eliminarElemento(this);
+		Mapa.getMapa().decrementarEnemigos();
 		vivo=false;
 		AutoRemove a=new AutoRemove(this,2000,animacionMuerte);
 		a.start();

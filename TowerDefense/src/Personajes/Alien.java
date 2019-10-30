@@ -1,6 +1,5 @@
 package Personajes;
 import Juego.Celda;
-import Juego.Mapa;
 
 public class Alien extends Torre {
 	protected static int precio=50;

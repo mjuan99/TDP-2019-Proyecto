@@ -4,17 +4,14 @@ import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-
-import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JTextArea;
 
 import Personajes.Torre;
 import Tienda.BotonTienda;
 import Tienda.Tienda;
 
+@SuppressWarnings("serial")
 public class BotonTorre extends BotonTienda {
 	JTextArea descripcion;
 	Torre torre;

@@ -1,7 +1,6 @@
 package Objetos;
 
 import Juego.Celda;
-import Juego.Mapa;
 
 public abstract class ObstaculoVida extends Obstaculo {
 

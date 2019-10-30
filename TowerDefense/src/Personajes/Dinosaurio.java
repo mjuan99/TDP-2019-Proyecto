@@ -1,7 +1,5 @@
 package Personajes;
 import Juego.Celda;
-import Juego.Mapa;
-import Objetos.Proyectil;
 
 public class Dinosaurio extends Torre {
 	protected static int precio=50;

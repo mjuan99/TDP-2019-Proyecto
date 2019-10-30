@@ -10,7 +10,7 @@ public class Jugador {
 	protected int puntos;
 	private Jugador() {
 		puntos=0;
-		presupuesto=Mapa.getMapa(0).getNivel().getPresupuestoBase();
+		presupuesto=Mapa.getMapa().getNivel().getPresupuestoBase();
 	}
 	
 	public static Jugador getJugador() {

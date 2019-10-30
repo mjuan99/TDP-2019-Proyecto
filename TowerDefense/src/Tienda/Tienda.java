@@ -1,7 +1,6 @@
 package Tienda;
 
 import Juego.Celda;
-import Juego.Controlador;
 import Juego.Elemento;
 import Juego.GUI;
 import Juego.Jugador;

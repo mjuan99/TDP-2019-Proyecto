@@ -5,8 +5,6 @@ import EstadosAliado.EstadoAtaqueAliado;
 import EstadosAliado.EstadoDefaultAtaque;
 import EstadosAliado.EstadoDefaultDefensaA;
 import EstadosAliado.EstadoDefensaAliado;
-import EstadosAliado.EstadoDobleFuerzaAtaque;
-import EstadosAliado.EstadoProtegidoAliado;
 import Juego.Celda;
 import Juego.Elemento;
 import Juego.Jugador;
@@ -71,7 +69,7 @@ public abstract class Torre extends Personaje{
 	}
 	
 	public void actuar() {
-		Iterator<Elemento> it=Mapa.getMapa(0).elementosRango(this).iterator();
+		Iterator<Elemento> it=Mapa.getMapa().elementosRango(this).iterator();
 		if(contadorPulsos==0) {
 			ataco=false;
 			while(!ataco&&it.hasNext())

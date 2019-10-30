@@ -2,12 +2,12 @@ package Juego;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import Tienda.Tienda;
 import Visitor.VisitorClick;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
+@SuppressWarnings("serial")
 public class Etiqueta extends JLabel{
 	protected Elemento elemento;
 	public Etiqueta(Elemento e) {

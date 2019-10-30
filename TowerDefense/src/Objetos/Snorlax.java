@@ -1,7 +1,6 @@
 package Objetos;
 
 import Juego.Celda;
-import Juego.Mapa;
 import Visitor.Visitor;
 
 public class Snorlax extends ObstaculoVida {

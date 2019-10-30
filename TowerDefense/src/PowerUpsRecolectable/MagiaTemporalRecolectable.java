@@ -1,7 +1,6 @@
 package PowerUpsRecolectable;
 
 import Juego.Celda;
-import Juego.Mapa;
 
 public abstract class MagiaTemporalRecolectable extends PowerUpRecolectable {
 

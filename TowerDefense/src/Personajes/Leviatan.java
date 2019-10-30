@@ -1,9 +1,5 @@
 package Personajes;
 import Juego.Celda;
-import Juego.Mapa;
-import PowerUpsEfecto.CongelarEfecto;
-import PowerUpsEfecto.DobleFuerzaEfecto;
-import PowerUpsEfecto.TorreAleatoriaEfecto;
 
 public class Leviatan extends Torre {
 

@@ -42,7 +42,7 @@ public abstract class Elemento {
 	
 	public void morir() {
 		if (vivo) {
-			Mapa.getMapa(0).eliminarElemento(this);
+			Mapa.getMapa().eliminarElemento(this);
 			vivo = false;
 			GUI.getGUI().eliminarComponente(componenteGrafica);
 		}

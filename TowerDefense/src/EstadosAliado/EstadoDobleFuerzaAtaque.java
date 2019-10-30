@@ -15,7 +15,7 @@ public class EstadoDobleFuerzaAtaque implements EstadoAtaqueAliado {
 	
 	public void atacar() {
 		if(System.currentTimeMillis()<inicio+duracion)
-			Mapa.getMapa(0).crearElementoIntangible(new ProyectilAliado(miTorre.getCelda(),miTorre , 2*miTorre.getDano(),miTorre.getAlcance(),miTorre.getRutaProyectil()));
+			Mapa.getMapa().crearElementoIntangible(new ProyectilAliado(miTorre.getCelda(),miTorre , 2*miTorre.getDano(),miTorre.getAlcance(),miTorre.getRutaProyectil()));
 		else {
 			miTorre.setEstadoAtaque(new EstadoDefaultAtaque(miTorre));
 			miTorre.atacar();

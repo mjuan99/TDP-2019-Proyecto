@@ -21,6 +21,7 @@ import Personajes.Enemigo6;
 public class Oleada {
 	protected Queue<Enemigo> [] colas;
 	protected Queue<Obstaculo> obstaculos;
+	@SuppressWarnings("unchecked")
 	public Oleada(String rutaOleada) {
 		colas=(ArrayDeque<Enemigo>[])new ArrayDeque[6];
 		String [] filas=new String[7];

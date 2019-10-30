@@ -2,8 +2,9 @@ package Objetos;
 
 import java.awt.Rectangle;
 
-import Juego.*;
-import Personajes.Enemigo;
+import Juego.Celda;
+import Juego.Elemento;
+import Juego.Mapa;
 import Visitor.Visitor;
 import Visitor.VisitorProyectilAliado;
 
@@ -30,8 +31,8 @@ public class ProyectilAliado extends Proyectil {
 			if (celdaDestino * 96 > componenteGrafica.getBounds().getX())
 				componenteGrafica.setBounds((int) r.getX() + 24, (int) r.getY(), 96, 96);
 			else {
-				celda = Mapa.getMapa(0).getGrilla()[celdaDestino][celda.getY()];
-				if (celdaDestino < Mapa.getMapa(0).getX()-1 && rango > 1) {
+				celda = Mapa.getMapa().getGrilla()[celdaDestino][celda.getY()];
+				if (celdaDestino < Mapa.getMapa().getX()-1 && rango > 1) {
 					componenteGrafica.setBounds((int) r.getX() + 24, (int) r.getY(), 96, 96);
 					moviendo = false;
 					rango--;
