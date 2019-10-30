@@ -3,10 +3,8 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 import Objetos.Obstaculo;
-import Objetos.Proyectil;
 import Personajes.Enemigo;
 import Personajes.Torre;
-import PowerUpsRecolectable.PowerUpRecolectable;
 import Visitor.Visitor;
 
 public class Mapa {
@@ -19,9 +17,8 @@ public class Mapa {
 	protected boolean oleadaActiva;
 	protected int cantEnemigos;
 	
-	private Mapa(int nivel) {
+	private Mapa() {
 		lista=new LinkedList<Elemento>();
-		this.nivel=new Nivel(nivel);
 		grilla=new Celda[x][y];
 		oleadaActiva=false;
 		cantEnemigos=0;
@@ -30,9 +27,13 @@ public class Mapa {
 				grilla[j][i]=new Celda(j,i);
 	}
 	
-	public static Mapa getMapa(int nivel) {
+	public void setNivel(int nivel) {
+		this.nivel=new Nivel(nivel);
+	}
+	
+	public static Mapa getMapa() {
 		if(mapa==null) {
-			return (mapa= new Mapa(nivel));
+			return (mapa= new Mapa());
 		}
 		else {
 			return mapa;

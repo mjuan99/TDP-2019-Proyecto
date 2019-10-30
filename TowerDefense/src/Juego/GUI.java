@@ -1,12 +1,8 @@
 
 package Juego;
 
-import java.awt.Color;
-import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -23,6 +19,7 @@ import Personajes.Torre;
 import PowerUpsEfecto.*;
 import Tienda.*;
 
+@SuppressWarnings("serial")
 public class GUI extends JFrame{
 	private static GUI gui;
 	protected BotonTorre[] btTorres;
@@ -46,6 +43,9 @@ public class GUI extends JFrame{
 		contentPane.setLayout(null);
 		crearFondo();
 		agregarBotones();
+		Integer[] niveles= {1,2};
+		int nivel=JOptionPane.showOptionDialog(contentPane, "Elegir nivel", "Nivel",JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, niveles, null)+1;
+		Mapa.getMapa().setNivel(nivel);
 		agregarJugador();
 	}
 	
@@ -58,10 +58,23 @@ public class GUI extends JFrame{
 		}
 	}
 	
-	public void habilitarBotonPremio(int i,boolean habilitar) {
-		btPowerUps[i].setEnabled(habilitar);
-		if(!habilitar)
-			btPowerUps[i].deseleccionar();
+	public void crearElemento(Elemento e) {
+		int x=e.getCelda().getX();
+		int y=e.getCelda().getY();
+		Etiqueta elemento=new Etiqueta(e);
+		elemento.setBounds(x*pixel, y*pixel, pixel, e.getTamano()*pixel);
+		contentPane.add(elemento);
+		contentPane.setComponentZOrder(elemento, 0);
+		e.setComponenteGrafica(elemento);
+		elemento.repaint();
+	}
+	
+	public void eliminarComponente(JLabel c) {
+		if(contentPane.isAncestorOf(c)) {
+			c.setIcon(null);
+			c.setBounds(0,0,0,0);
+			contentPane.remove(c);
+		}
 	}
 	
 	public void actualizarOro() {
@@ -75,24 +88,22 @@ public class GUI extends JFrame{
 		puntaje.setText("Puntos: "+Jugador.getJugador().getPuntos());
 	}
 	
-	public void crearElemento(Elemento e) {
-		int x=e.getCelda().getX();
-		int y=e.getCelda().getY();
-		//JLabel elemento= new JLabel(new ImageIcon(e.getRutaImagen()));
-		Etiqueta elemento=new Etiqueta(e);
-		elemento.setBounds(x*pixel, y*pixel, pixel, e.getTamano()*pixel);
-		contentPane.add(elemento);
-		contentPane.setComponentZOrder(elemento, 0);
-		e.setComponenteGrafica(elemento);
-		elemento.repaint();
-	}
-	
 	public void deseleccionarBotones() {
 		for(int i=0;i<btTorres.length;i++)
 			btTorres[i].deseleccionar();
 		for(int i=0;i<btPowerUps.length;i++)
 			btPowerUps[i].deseleccionar();
 		btVender.deseleccionar();
+	}
+	
+	public void activarBotonOleada() {
+		btOleada.setEnabled(true);
+	}
+	
+	public void habilitarBotonPremio(int i,boolean habilitar) {
+		btPowerUps[i].setEnabled(habilitar);
+		if(!habilitar)
+			btPowerUps[i].deseleccionar();
 	}
 	
 	public void ganar() {
@@ -103,10 +114,6 @@ public class GUI extends JFrame{
 	public void perder() {
 		JOptionPane.showMessageDialog(null, "Perdiste\nPuntos: "+Jugador.getJugador().getPuntos());
 		System.exit(0);
-	}
-	
-	public void activarBotonOleada() {
-		btOleada.setEnabled(true);
 	}
 	
 	public void agregarJugador() {
@@ -120,23 +127,14 @@ public class GUI extends JFrame{
 		Jugador.getJugador().setOroGrafica(oro);
 	}
 	
-	public void eliminarComponente(JLabel c) {
-		if(contentPane.isAncestorOf(c)) {
-			c.setIcon(null);
-			c.setBounds(0,0,0,0);
-			contentPane.remove(c);
-		}
-	}
-	
 	private void crearFondo() {
-		int x=Mapa.getMapa(0).getX();
-		int y=Mapa.getMapa(0).getY();
-		celdas=new JLabel[x][y];
+		int x=Mapa.getMapa().getX();
+		int y=Mapa.getMapa().getY();
+		celdas=new CeldaGrafica[x][y];
 		for(int i=0;i<x;i++)
 			for(int j=0;j<y;j++) {
-				celdas[i][j]=new JLabel(new ImageIcon("./src/Sprites/Mapa/celda2.png"));
+				celdas[i][j]=new CeldaGrafica(new ImageIcon("./src/Sprites/Mapa/celda2.png"));
 				celdas[i][j].setBounds(i*pixel,j*pixel,pixel,pixel);
-				celdas[i][j].addMouseListener(new OyenteMouseCelda(celdas[i][j]));
 				this.add(celdas[i][j]);
 			}
 	}
@@ -157,12 +155,10 @@ public class GUI extends JFrame{
 			this.add(btPowerUps[i]);
 		}
 		
-		btOleada=new BotonTienda("Oleada");
-		btOleada.addActionListener(new OyenteOleada());
+		btOleada=new BotonTienda("Oleada",new OyenteOleada());
 		btOleada.setBounds(10*pixel,0,pixel,64);
 		this.add(btOleada);
-		btVender=new BotonTienda("Vender");
-		btVender.addActionListener(new OyenteVender());
+		btVender=new BotonTienda("Vender",new OyenteVender());
 		btVender.setBounds(960,576,pixel,64);
 		btVender.setBorder(null);
 		this.add(btVender);
@@ -183,48 +179,6 @@ public class GUI extends JFrame{
 		}
 	}
 	
-	public class OyenteMouseCelda implements MouseListener{
-		JLabel celda;
-		public OyenteMouseCelda(JLabel celda) {
-			this.celda=celda;
-		}
-		public void mouseClicked(MouseEvent e) {
-		}
-		public void mouseEntered(MouseEvent e) {
-			celda.setIcon(new ImageIcon("./src/Sprites/Mapa/celda4.png"));
-		}
-		public void mouseExited(MouseEvent e) {
-			celda.setIcon(new ImageIcon("./src/Sprites/Mapa/celda2.png"));
-		}
-		public void mousePressed(MouseEvent e) {}
-		public void mouseReleased(MouseEvent e) {
-			int x=celda.getX()/96;
-			int y=celda.getY()/96;
-			Tienda.getTienda().seleccionar(Mapa.getMapa(0).getGrilla()[x][y]);}
-	}
-}	
-	/*public class OyenteMousePower implements MouseListener{
-		JLabel celda;
-
-		
-		public OyenteMousePower(JLabel celda) {
-			this.celda=celda;
-		}
-		
-		public void mouseClicked(MouseEvent e) {
-			int x= celda.getX();
-			int y = celda.getY();
-			//eliminar imagen eliminar elemento del mapa
-			Elemento elem= controlador.getMapa().getElemento(x, y);
-			controlador.getGui().eliminarComponente(elem.componenteGrafica);
-			elem.getComponenteGrafica().setIcon(null);
-			controlador.getMapa().eliminarElemento(elem);
-			
-			//activar el estado en las torres
-			/* LinkedList<Elemento> torres= controlador.getMapa().getTorres();
-			 * for(Elemento t: torres){
-			 * t.setEstado()}
-			 * */
-			
-				
+	
+}			
 		
