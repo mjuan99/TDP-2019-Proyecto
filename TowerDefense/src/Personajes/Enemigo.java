@@ -20,6 +20,9 @@ import Visitor.VisitorEnemigo;
 
 public abstract class Enemigo extends Personaje{
 	
+	protected int oroMin;
+	protected int oroMax;
+	protected int puntos;
 	protected EstadoDefensaEnemigo estadoDefensa;
 	protected EstadoActuarEnemigo estadoActuar;
 	protected int contadorMov=0;
@@ -29,7 +32,7 @@ public abstract class Enemigo extends Personaje{
 	protected String imagenCongelado;
 	protected String animacionMuerte;
 	
-	protected Enemigo(Celda celda,int vidaMax,int tamano,String rutaImagen,String imagenCongelado,String animacionMuerte,int dano,int alcance,String rutaProyectil,int velocBase) {
+	protected Enemigo(Celda celda,int vidaMax,int tamano,String rutaImagen,String imagenCongelado,String animacionMuerte,int dano,int alcance,String rutaProyectil,int velocBase, int oroMin, int oroMax, int puntos) {
 		super(celda,vidaMax,tamano,rutaImagen,dano,alcance,rutaProyectil);
 		this.animacionMuerte=animacionMuerte;
 		this.imagenCongelado=imagenCongelado;
@@ -37,6 +40,9 @@ public abstract class Enemigo extends Personaje{
 		visitor=new VisitorEnemigo(this);
 		estadoActuar=new EstadoDefaultActuar(this);
 		estadoDefensa=new EstadoDefaultDefensaE(this);
+		this.oroMin=oroMin;
+		this.oroMax=oroMax;
+		this.puntos=puntos;
 	}
 	
 	public void atacar() {
@@ -97,7 +103,8 @@ public abstract class Enemigo extends Personaje{
 		//ImageIcon img=new ImageIcon("./src/Sprites/Efectos/Explosion2.gif");
 		//img.getImage().flush();
 		//mapa.getControlador().getGui().setearLabel(this,"./src/Sprites/Efectos/Explosion2.gif");
-		Jugador.getJugador().sumarPuntos(50);
+		Jugador.getJugador().sumarPuntos(puntos);
+		Jugador.getJugador().aumentarOro((int)(Math.random()*(oroMax-oroMin))+oroMin);
 		Celda celda= this.getCelda();
 		Mapa.getMapa().eliminarElemento(this);
 		Mapa.getMapa().decrementarEnemigos();

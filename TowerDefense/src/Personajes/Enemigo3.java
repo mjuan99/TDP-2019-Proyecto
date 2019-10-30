@@ -3,6 +3,9 @@ import Juego.Celda;
 
 public class Enemigo3 extends Enemigo {
 
+	protected static int oroMinBase=20;
+	protected static int oroMaxBase=40;
+	protected static int puntosBase=50;
 	protected static int velocBase=12;
 	protected static int vidaBase=50;
 	protected static int tam=1;
@@ -14,7 +17,7 @@ public class Enemigo3 extends Enemigo {
 	protected static String rutaCongelado="./src/Sprites/Efectos/EfectosPowerUps/Congelado3.png";
 	
 	public Enemigo3(Celda celda) {
-		super(celda,vidaBase,tam,imagen,rutaCongelado,animacionMuerte,danoBase,alcanceBase,proyectil,velocBase);
+		super(celda,vidaBase,tam,imagen,rutaCongelado,animacionMuerte,danoBase,alcanceBase,proyectil,velocBase,oroMinBase,oroMaxBase,puntosBase);
 	}
 
 }
