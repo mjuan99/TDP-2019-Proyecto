@@ -14,5 +14,9 @@ public class Slime extends ObstaculoTiempo{
 	public Slime(Celda celda) {
 		super(celda,vidaBase,tam,imagen,tiempo,mini,nombre,precio);
 	}
+	
+	public Obstaculo nuevo() {
+		return new Slime(null);
+	}
 
 }

@@ -13,5 +13,9 @@ public class Piedra extends ObstaculoVida{
 	public Piedra(Celda celda) {
 		super(celda,vidaBase,tam,imagen,mini,nombre,precio);
 	}
+	
+	public Obstaculo nuevo() {
+		return new Piedra(null);
+	}
 
 }

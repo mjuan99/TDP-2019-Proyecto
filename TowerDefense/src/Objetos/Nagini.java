@@ -14,4 +14,8 @@ public class Nagini extends ObstaculoVida {
 		super(celda,vidaBase,tam,imagen,mini,nombre,precio);
 	}
 	
+	public Obstaculo nuevo() {
+		return new Nagini(null);
+	}
+	
 }

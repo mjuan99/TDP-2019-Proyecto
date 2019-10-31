@@ -31,7 +31,7 @@ public class BotonObjeto extends BotonTienda {
 		descripcion.addMouseListener(mouseL);
 	}
 	public Obstaculo getObstaculo() {
-		return obstaculo/*.nuevo()*/;
+		return obstaculo.nuevo();
 	}
 	public JTextArea getTexto() {
 		return descripcion;

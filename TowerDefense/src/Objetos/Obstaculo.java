@@ -25,4 +25,6 @@ public abstract class Obstaculo extends Elemento {
 		return precio;
 	}
 	
+	public abstract Obstaculo nuevo();
+	
 }

@@ -14,6 +14,10 @@ public class Oso extends ObstaculoVida {
 		super(celda, vidaBase,tam, imagen,mini,nombre,precio);
 		// TODO Auto-generated constructor stub
 	}
+	
+	public Obstaculo nuevo() {
+		return new Oso(null);
+	}
 
 
 }

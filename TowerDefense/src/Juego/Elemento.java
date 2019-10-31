@@ -28,8 +28,10 @@ public abstract class Elemento {
 	}
 	
 	public void danar(Elemento atacante,int dano) {
-		if(vida<=dano)
+		if(vida<=dano) {
+			vida=0;
 			morir();
+		}
 		else
 			vida-=dano;
 	}

@@ -15,4 +15,8 @@ public class Topo extends ObstaculoTiempo {
 		super(celda, vidaBase,tam ,imagen,tiempo,mini,nombre,precio);
 		// TODO Auto-generated constructor stub
 	}
+	
+	public Obstaculo nuevo() {
+		return new Topo(null);
+	}
 }
