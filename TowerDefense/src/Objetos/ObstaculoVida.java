@@ -5,8 +5,9 @@ import Juego.Celda;
 public abstract class ObstaculoVida extends Obstaculo {
 	protected String nombre;
 
-	protected ObstaculoVida(Celda celda, int vidaMax,int tamano, String rutaImagen,String mini,int precio) {
+	protected ObstaculoVida(Celda celda, int vidaMax,int tamano, String rutaImagen,String mini,String nombre,int precio) {
 		super(celda, vidaMax,tamano, rutaImagen,mini,precio);
+		this.nombre=nombre;
 	}
 	
 	public void actuar() {}

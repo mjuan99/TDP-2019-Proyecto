@@ -12,7 +12,7 @@ public class Oso extends ObstaculoVida {
 	protected static int precio=50;
 
 	public Oso(Celda celda) {
-		super(celda, vidaBase,tam, imagen,mini,precio);
+		super(celda, vidaBase,tam, imagen,mini,nombre,precio);
 		// TODO Auto-generated constructor stub
 	}
 	

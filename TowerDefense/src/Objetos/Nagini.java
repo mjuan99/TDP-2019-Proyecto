@@ -12,7 +12,7 @@ public class Nagini extends ObstaculoVida {
 	protected static int precio=100;
 	
 	public Nagini(Celda celda) {
-		super(celda,vidaBase,tam,imagen,mini,precio);
+		super(celda,vidaBase,tam,imagen,mini,nombre,precio);
 	}
 	
 	public void actuar() {}
