@@ -14,7 +14,7 @@ public abstract class ObstaculoVida extends Obstaculo {
 	
 	public String descripcion() {
 		String cadena="";
-		cadena+=("Nombre"+nombre+"\nVida: "+vida+"\nPrecio: "+precio);
+		cadena+=(nombre+"\nVida: "+vida+"\nPrecio: "+precio);
 		return cadena;
 	}
 
