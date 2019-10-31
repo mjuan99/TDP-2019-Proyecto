@@ -14,17 +14,9 @@ public class EscudoRecolectable extends ObjetoPreciosoRecolectable {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public int getIndice() {
-		return indice;
-	}
-	
 	
 	public void accept(Visitor v) {
 		v.visit(this);
-	}
-
-	public void accept() {
-		visitor.visit(this);
 	}
 	
 }

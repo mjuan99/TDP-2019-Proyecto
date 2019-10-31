@@ -9,10 +9,4 @@ public abstract class ObjetoPreciosoRecolectable extends PowerUpRecolectable {
 		// TODO Auto-generated constructor stub
 	}
 
-	@Override
-	public void actuar() {
-		// TODO Auto-generated method stub
-
-	}
-
 }

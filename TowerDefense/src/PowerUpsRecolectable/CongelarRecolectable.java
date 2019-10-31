@@ -14,16 +14,8 @@ public class CongelarRecolectable extends MagiaTemporalRecolectable {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public int getIndice() {
-		return indice;
-	}
-	
 	
 	public void accept(Visitor v) {
 		v.visit(this);
-	}
-
-	public void accept() {
-		visitor.visit(this);
 	}
 }

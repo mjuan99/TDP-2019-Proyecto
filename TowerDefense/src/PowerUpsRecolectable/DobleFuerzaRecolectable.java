@@ -12,19 +12,10 @@ public class DobleFuerzaRecolectable extends MagiaTemporalRecolectable {
 	public DobleFuerzaRecolectable( Celda celda) {
 		super(celda, vidaBase, tam, imagen);
 		// TODO Auto-generated constructor stub
-	}
-	
-	public int getIndice() {
-		return indice;
-	}
-	
+	}	
 	
 	public void accept(Visitor v) {
 		v.visit(this);
-	}
-
-	public void accept() {
-		visitor.visit(this);
 	}
 
 }
