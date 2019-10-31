@@ -21,8 +21,8 @@ public  abstract class ObstaculoTiempo extends Obstaculo {
 	}
 	@Override
 	public void actuar() {
-		vida--;
-		if(vida==0)
+		tiempo--;
+		if(tiempo==0)
 			morir();
 	}
 
