@@ -47,10 +47,10 @@ class OyenteBotonObjeto implements MouseListener{
 	}
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
-		if(boton.isEnabled()) {
+		//if(boton.isEnabled()) {
 			boton.seleccionar();
 			boton.getPowerUp().usar();
-		}
+		//}
 	}
 
 	@Override
