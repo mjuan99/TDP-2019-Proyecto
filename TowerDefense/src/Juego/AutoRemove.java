@@ -1,6 +1,5 @@
 package Juego;
 
-import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 public class AutoRemove extends Thread {
