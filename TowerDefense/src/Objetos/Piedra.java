@@ -1,9 +1,9 @@
 package Objetos;
+
 import Juego.Celda;
 import Visitor.Visitor;
 
-public class Nagini extends ObstaculoVida {
-
+public class Piedra extends ObstaculoVida{
 	protected static int vidaBase=1500;
 	protected static int tam=2;
 	protected static String imagen ="./src/Sprites/Obstaculos/Onix.gif";
@@ -11,7 +11,7 @@ public class Nagini extends ObstaculoVida {
 	protected static String mini="";
 	protected static int precio=100;
 	
-	public Nagini(Celda celda) {
+	public Piedra(Celda celda) {
 		super(celda,vidaBase,tam,imagen,mini,precio);
 	}
 	
@@ -22,5 +22,5 @@ public class Nagini extends ObstaculoVida {
 		// TODO Auto-generated method stub
 		
 	}
-	
+
 }
