@@ -32,7 +32,7 @@ public class BombaEfecto extends PowerUpCelda {
 				System.out.println(i +"-"+j);
 				e=Mapa.getMapa().getGrilla()[i][j].getElem();
 				exp=new JLabel(img);
-				exp.setBounds(96,96,96*i,96*j);
+				exp.setBounds(96*i,96*j,96,96);
 				GUI.getGUI().getContentPane().add(exp);
 				GUI.getGUI().getContentPane().setComponentZOrder(exp, 0);
 				exp.repaint();
