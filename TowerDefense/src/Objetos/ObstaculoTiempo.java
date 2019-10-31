@@ -21,7 +21,7 @@ public  abstract class ObstaculoTiempo extends Obstaculo {
 
 	public String descripcion() {
 		String cadena="";
-		cadena+=(nombre+"\nDuracion: "+tiempo/100+" seg"+"\nPrecio: "+precio);
+		cadena+=(nombre+"\nDuracion: "+tiempo/10+" seg"+"\nPrecio: "+precio);
 		return cadena;
 	}
 	@Override

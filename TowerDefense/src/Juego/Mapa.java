@@ -2,6 +2,7 @@ package Juego;
 import java.util.LinkedList;
 import java.util.Queue;
 
+import EstadosEnemigo.EstadoProtegidoEnemigo;
 import Objetos.Obstaculo;
 import Personajes.Enemigo;
 import Personajes.Torre;
@@ -62,10 +63,6 @@ public class Mapa {
 				y=(int)(Math.random()*6);
 			}
 			crearElemento(o,x,y);
-			/*o.setCelda(grilla[x][y]);
-			grilla[x][y].setElem(o);
-			lista.add(o);
-			GUI.getGUI().crearElemento(o);*/
 		}
 	}
 	
@@ -73,11 +70,6 @@ public class Mapa {
 		lista.add(elem);
 		GUI.getGUI().crearElemento(elem);
 	}
-	
-	/*public void crearPowerUp(PowerUpRecolectable p) {
-		lista.add(p);
-		GUI.getGUI().crearElemento(p);
-	}*/
 	
 	public void visitorGlobal(Visitor v) {
 		for(Elemento e:lista) {
@@ -102,11 +94,8 @@ public class Mapa {
 						if (nivel.quedanEnemigos(i)) {
 							e=nivel.getEnemigo(i);
 							crearElemento(e,9,i);
-							/*e=nivel.getEnemigo(i);
-							e.setCelda(grilla[9][i]);
-							grilla[9][i].setElem(e);
-							lista.add(e);
-							GUI.getGUI().crearElemento(e);*/
+							if((int)(Math.random()*100)<10)
+								e.setEstadoDefensa(new EstadoProtegidoEnemigo(e));
 						}
 				}
 			}
