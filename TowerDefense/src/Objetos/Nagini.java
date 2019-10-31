@@ -7,7 +7,7 @@ public class Nagini extends ObstaculoVida {
 	protected static int tam=2;
 	protected static String imagen ="./src/Sprites/Obstaculos/Onix.gif";
 	protected static String nombre="Nagini";
-	protected static String mini="";
+	protected static String mini="./src/Sprites/Tienda/Nagini.png";
 	protected static int precio=100;
 	
 	public Nagini(Celda celda) {

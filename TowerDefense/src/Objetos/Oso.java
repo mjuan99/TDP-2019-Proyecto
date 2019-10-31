@@ -7,7 +7,7 @@ public class Oso extends ObstaculoVida {
 	protected static int tam=1;
 	protected static String imagen="./src/Sprites/Obstaculos/Oso.gif";
 	protected static String nombre="Oso";
-	protected static String mini="";
+	protected static String mini="./src/Sprites/Tienda/Oso.png";
 	protected static int precio=50;
 
 	public Oso(Celda celda) {

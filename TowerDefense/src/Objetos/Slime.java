@@ -8,7 +8,7 @@ public class Slime extends ObstaculoTiempo{
 	protected static String imagen ="./src/Sprites/Obstaculos/Slime.gif";
 	protected static int tiempo=50;
 	protected static String nombre="Slime baboso";
-	protected static String mini="";
+	protected static String mini="./src/Sprites/Tienda/Slime.png";
 	protected static int precio=75;
 	
 	public Slime(Celda celda) {
