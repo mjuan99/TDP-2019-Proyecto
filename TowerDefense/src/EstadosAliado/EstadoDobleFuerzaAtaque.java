@@ -4,9 +4,6 @@ import Juego.Mapa;
 import Objetos.ProyectilAliado;
 import Personajes.Torre;
 
-import javax.swing.Icon;
-import javax.swing.ImageIcon;
-
 public class EstadoDobleFuerzaAtaque implements EstadoAtaqueAliado {
 	protected Torre miTorre;
 	protected long inicio;

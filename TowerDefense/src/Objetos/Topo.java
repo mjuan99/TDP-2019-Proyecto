@@ -1,7 +1,6 @@
 package Objetos;
 
 import Juego.Celda;
-import Visitor.Visitor;
 
 public class Topo extends ObstaculoTiempo {
 	protected static int vidaBase=50;
@@ -15,13 +14,5 @@ public class Topo extends ObstaculoTiempo {
 	public Topo(Celda celda) {
 		super(celda, vidaBase,tam ,imagen,tiempo,mini,nombre,precio);
 		// TODO Auto-generated constructor stub
-	}
-	
-	public void accept(Visitor v) {
-		v.visit(this);
-	}
-
-	public void accept() {
-		visitor.visit(this);
 	}
 }

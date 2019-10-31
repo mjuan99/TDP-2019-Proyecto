@@ -9,9 +9,9 @@ import javax.swing.ImageIcon;
 import javax.swing.JTextArea;
 
 import Objetos.Obstaculo;
-import Personajes.Torre;
 
 
+@SuppressWarnings("serial")
 public class BotonObjeto extends BotonTienda {
 	JTextArea descripcion;
 	Obstaculo obstaculo;

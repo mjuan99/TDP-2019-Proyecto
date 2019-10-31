@@ -1,6 +1,7 @@
 package Objetos;
 
 import Juego.Celda;
+import Visitor.Visitor;
 
 public  abstract class ObstaculoTiempo extends Obstaculo {
 	
@@ -13,6 +14,10 @@ public  abstract class ObstaculoTiempo extends Obstaculo {
 		this.nombre=nombre;
 		// TODO Auto-generated constructor stub
 	}
+	
+	public void accept(Visitor v) {
+		v.visit(this);
+	}
 
 	public String descripcion() {
 		String cadena="";
@@ -21,8 +26,8 @@ public  abstract class ObstaculoTiempo extends Obstaculo {
 	}
 	@Override
 	public void actuar() {
-		vida--;
-		if(vida==0)
+		tiempo--;
+		if(tiempo==0)
 			morir();
 	}
 
