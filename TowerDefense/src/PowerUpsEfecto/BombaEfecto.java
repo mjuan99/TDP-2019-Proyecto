@@ -18,7 +18,7 @@ public class BombaEfecto extends PowerUpCelda {
 	public void activar(Celda c) {
 		Elemento e;
 		for(int i=c.getX()-1;i<=c.getX()+1;i++) {
-			for(int j=c.getY()-1;i<=c.getY()+1;i++) {
+			for(int j=c.getY()-1;j<=c.getY()+1;j++) {
 				e=Mapa.getMapa().getGrilla()[i][j].getElem();
 				if(e!=null) {
 					e.danar(null, dano);
