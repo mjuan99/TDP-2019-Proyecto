@@ -4,6 +4,7 @@ import Juego.Celda;
 import Juego.Elemento;
 import Juego.GUI;
 import Juego.Jugador;
+import Objetos.Obstaculo;
 import Personajes.Torre;
 import PowerUpsEfecto.*;
 import PowerUpsRecolectable.*;
@@ -98,6 +99,10 @@ public class Tienda {
 	
 	public void comprar(Torre t) {
 		estado=new TiendaComprarTorre(t);
+	}
+	
+	public void comprar(Obstaculo o) {
+		estado=new TiendaComprarObstaculo(o);
 	}
 	
 	public void vender() {

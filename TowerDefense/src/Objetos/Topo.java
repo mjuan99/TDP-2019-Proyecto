@@ -6,7 +6,7 @@ import Visitor.Visitor;
 public class Topo extends ObstaculoTiempo {
 	protected static int vidaBase=50;
 	protected static int tam=1;
-	protected static String imagen="./src/Sprites/Obstaculos/Dugtrio.gif";
+	protected static String imagen="./src/Sprites/Obstaculos/Topo.gif";
 	protected static int tiempo=500;
 	protected static String mini="";
 	protected static String nombre= "Topo";

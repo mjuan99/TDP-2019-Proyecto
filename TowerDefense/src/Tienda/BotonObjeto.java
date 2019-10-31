@@ -8,27 +8,30 @@ import java.awt.event.MouseListener;
 import javax.swing.ImageIcon;
 import javax.swing.JTextArea;
 
-import PowerUpsEfecto.PowerUpEfecto;
+import Objetos.Obstaculo;
+import Personajes.Torre;
 
-@SuppressWarnings("serial")
-public class BotonPowerUp extends BotonTienda {
-	ImageIcon imagen;
+
+public class BotonObjeto extends BotonTienda {
 	JTextArea descripcion;
-	PowerUpEfecto miPowerUp;
-	public BotonPowerUp(PowerUpEfecto p) {
-		super(new ImageIcon(p.getImagen()));
-		miPowerUp=p;
-		imagen=new ImageIcon(p.getImagen());
-		descripcion=new JTextArea(p.getDescripcion());
-		MouseListener mouseL=new OyenteBotonObjeto(this);
+	Obstaculo obstaculo;
+	ImageIcon imagen;
+	public BotonObjeto(Obstaculo o) {
+		super(new ImageIcon(o.getMiniatura()));
+		MouseListener mouseL=new OyenteBotonObstaculo(this);
+		obstaculo=o;
+		imagen=new ImageIcon(obstaculo.getMiniatura());
 		this.setBackground(Color.WHITE);;
 		this.setBorder(null);
 		this.addMouseListener(mouseL);
+		descripcion=new JTextArea((obstaculo.descripcion()));
 		this.add(descripcion);
-		this.setEnabled(false);
 		descripcion.setVisible(false);
 		descripcion.setEditable(false);
 		descripcion.addMouseListener(mouseL);
+	}
+	public Obstaculo getObstaculo() {
+		return obstaculo/*.nuevo()*/;
 	}
 	public JTextArea getTexto() {
 		return descripcion;
@@ -36,20 +39,17 @@ public class BotonPowerUp extends BotonTienda {
 	public ImageIcon getImagen() {
 		return imagen;
 	}
-	public PowerUpEfecto getPowerUp() {
-		return miPowerUp;
-	}
 }
-class OyenteBotonObjeto implements MouseListener{
-	BotonPowerUp boton;
-	public OyenteBotonObjeto(BotonPowerUp b) {
+class OyenteBotonObstaculo implements MouseListener{
+	BotonObjeto boton;
+	public OyenteBotonObstaculo(BotonObjeto b) {
 		boton=b;
 	}
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
 		if(boton.isEnabled()) {
+			Tienda.getTienda().comprar(boton.getObstaculo());
 			boton.seleccionar();
-			boton.getPowerUp().usar();
 		}
 	}
 
@@ -73,5 +73,4 @@ class OyenteBotonObjeto implements MouseListener{
 	@Override
 	public void mouseReleased(MouseEvent arg0) {
 	}
-	
 }

@@ -195,8 +195,8 @@ public class Mapa {
 		
 	}
 	
-	public boolean posicionValidaTorre(Torre t,int x,int y) {
-		return (x>=0&&x<this.x-1&&y>=0&&y<=this.y-t.getTamano()&&grilla[x][y].getElem()==null&&(t.getTamano()==1||grilla[x][y+1].getElem()==null));
+	public boolean posicionValida(Elemento e,int x,int y) {
+		return (x>=0&&x<this.x-1&&y>=0&&y<=this.y-e.getTamano()&&grilla[x][y].getElem()==null&&(e.getTamano()==1||grilla[x][y+1].getElem()==null));
 	}
 
 	public Celda[][] getGrilla() {

@@ -7,6 +7,11 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
+import Objetos.Nagini;
+import Objetos.Obstaculo;
+import Objetos.Oso;
+import Objetos.Slime;
+import Objetos.Topo;
 import Personajes.Alien;
 import Personajes.Dinosaurio;
 import Personajes.Dragon;
@@ -23,6 +28,7 @@ public class GUI extends JFrame{
 	private static GUI gui;
 	protected BotonTorre[] btTorres;
 	protected BotonPowerUp[] btPowerUps;
+	protected BotonObjeto[] btObjetos;
 	protected BotonTienda btOleada;
 	protected BotonTienda btVender;
 	protected JPanel contentPane;
@@ -35,7 +41,7 @@ public class GUI extends JFrame{
 		super("Juego");
 		getContentPane().setLayout(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(30,30,1100,700);
+		setBounds(30,30,1200,700);
 		contentPane= new JPanel();
 		contentPane.setBorder(new EmptyBorder(5,5,5,5));
 		setContentPane(contentPane);
@@ -146,6 +152,13 @@ public class GUI extends JFrame{
 			btTorres[i].setBounds(i*120,6*pixel, 120, 64);
 			this.add(btTorres[i]);
 		}
+		btObjetos=new BotonObjeto[4];
+		Obstaculo[] objetos= {new Nagini(null), new Slime(null), new Topo(null), new Oso(null)};
+		for(int i=0;i<4;i++) {
+			btObjetos[i]=new BotonObjeto(objetos[i]);
+			btObjetos[i].setBounds(1056,320+i*64,pixel,64);
+			this.add(btObjetos[i]);
+		}		
 		btPowerUps=new BotonPowerUp[5];
 		PowerUpEfecto[] powerups= {new CongelarEfecto(),new DobleFuerzaEfecto(),new BombaEfecto(),new EscudoEfecto(),new TorreAleatoriaEfecto()};
 		for(int i=0;i<5;i++) {
