@@ -3,6 +3,8 @@ package Personajes;
 import java.awt.Rectangle;
 import java.util.Iterator;
 
+import javax.swing.ImageIcon;
+
 import EstadosEnemigo.EstadoActuarEnemigo;
 import EstadosEnemigo.EstadoDefaultActuar;
 import EstadosEnemigo.EstadoDefaultDefensaE;
@@ -115,7 +117,11 @@ public abstract class Enemigo extends Personaje{
 		Mapa.getMapa().eliminarElemento(this);
 		Mapa.getMapa().decrementarEnemigos();
 		vivo=false;
-		AutoRemove a=new AutoRemove(this,2000,animacionMuerte);
+		ImageIcon img = new ImageIcon(animacionMuerte);
+		img.getImage().flush();
+		componenteGrafica.setIcon(img);
+		componenteGrafica.setEnabled(false);
+		AutoRemove a=new AutoRemove(componenteGrafica,2000);
 		a.start();
 		if((int)(Math.random()*10)<3)
 			Controlador.getControlador().crearPowerUp(getPowerUp((int)(Math.random()*5),celda));
