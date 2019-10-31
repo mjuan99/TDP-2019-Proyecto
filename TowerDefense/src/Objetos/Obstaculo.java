@@ -10,4 +10,6 @@ public abstract class Obstaculo extends Elemento {
 		// TODO Auto-generated constructor stub
 	}
 	
+	public abstract String descripcion();
+	
 }
