@@ -27,9 +27,8 @@ public class BombaEfecto extends PowerUpCelda {
 		JLabel exp;
 		ImageIcon img=new ImageIcon(explosion);
 		img.getImage().flush();
-		for(int i=c.getX()-1;i<=c.getX()+1;i++) {
-			for(int j=c.getY()-1;j<=c.getY()+1;j++) {
-				System.out.println(i +"-"+j);
+		for(int i=(c.getX()<1?0:c.getX()-1);i<=(c.getX()>8?9:c.getX()+1);i++) {
+			for(int j=(c.getY()<1?0:c.getY()-1);j<=(c.getY()>4?5:c.getY()+1);j++) {
 				e=Mapa.getMapa().getGrilla()[i][j].getElem();
 				exp=new JLabel(img);
 				exp.setBounds(96*i,96*j,96,96);

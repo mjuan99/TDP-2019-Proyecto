@@ -1,6 +1,7 @@
 package Objetos;
 
 import Juego.Celda;
+import Juego.Elemento;
 import Visitor.Visitor;
 
 public  abstract class ObstaculoTiempo extends Obstaculo {
@@ -30,5 +31,7 @@ public  abstract class ObstaculoTiempo extends Obstaculo {
 		if(tiempo==0)
 			morir();
 	}
+	
+	public void danar(Elemento atacante,int dano) {}
 
 }
