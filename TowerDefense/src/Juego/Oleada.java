@@ -7,9 +7,9 @@ import java.io.IOException;
 import java.util.ArrayDeque;
 import java.util.Queue;
 
-import Objetos.Topo;
+import Objetos.Huevo;
 import Objetos.Obstaculo;
-import Objetos.Oso;
+import Objetos.Piedra;
 import Personajes.Enemigo;
 import Personajes.Enemigo1;
 import Personajes.Enemigo2;
@@ -56,8 +56,8 @@ public class Oleada {
 	private Obstaculo getObstaculo(char c) {
 		Obstaculo o=null;
 		switch(c) {
-		case 't':{o=new Topo(null);break;}
-		case 'v':{o=new Oso(null);break;}
+		case 't':{o=new Huevo(null);break;}
+		case 'v':{o=new Piedra(null);break;}
 		}
 		return o;
 	}

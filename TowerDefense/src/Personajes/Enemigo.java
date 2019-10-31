@@ -31,11 +31,13 @@ public abstract class Enemigo extends Personaje{
 	protected int celdaDestino;
 	protected String imagenCongelado;
 	protected String animacionMuerte;
+	protected String imagenProtegido;
 	
-	protected Enemigo(Celda celda,int vidaMax,int tamano,String rutaImagen,String imagenCongelado,String animacionMuerte,int dano,int alcance,String rutaProyectil,int velocBase, int oroMin, int oroMax, int puntos) {
+	protected Enemigo(Celda celda,int vidaMax,int tamano,String rutaImagen,String imagenCongelado,String imagenProtegido,String animacionMuerte,int dano,int alcance,String rutaProyectil,int velocBase, int oroMin, int oroMax, int puntos) {
 		super(celda,vidaMax,tamano,rutaImagen,dano,alcance,rutaProyectil);
 		this.animacionMuerte=animacionMuerte;
 		this.imagenCongelado=imagenCongelado;
+		this.imagenProtegido=imagenProtegido;
 		velocidad=velocBase;
 		visitor=new VisitorEnemigo(this);
 		estadoActuar=new EstadoDefaultActuar(this);
@@ -97,6 +99,10 @@ public abstract class Enemigo extends Personaje{
 	
 	public String getImagenCongelado() {
 		return imagenCongelado;
+	}
+	
+	public String getImagenProtegido() {
+		return imagenProtegido;
 	}
 	
 	public void morir() {

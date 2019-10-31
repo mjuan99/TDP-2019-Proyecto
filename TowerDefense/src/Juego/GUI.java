@@ -87,6 +87,8 @@ public class GUI extends JFrame{
 		oro.setText("Oro: "+n);
 		for(int i=0;i<btTorres.length;i++)
 			btTorres[i].setEnabled(n>=btTorres[i].getTorre().getPrecio());
+		for(int i=0;i<btObjetos.length;i++)
+			btObjetos[i].setEnabled(n>=btObjetos[i].getObstaculo().getPrecio());
 	}
 	
 	public void actualizarPuntos() {
@@ -96,6 +98,8 @@ public class GUI extends JFrame{
 	public void deseleccionarBotones() {
 		for(int i=0;i<btTorres.length;i++)
 			btTorres[i].deseleccionar();
+		for(int i=0;i<btObjetos.length;i++)
+			btObjetos[i].deseleccionar();
 		for(int i=0;i<btPowerUps.length;i++)
 			btPowerUps[i].deseleccionar();
 		btVender.deseleccionar();

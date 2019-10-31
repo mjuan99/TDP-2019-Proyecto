@@ -15,8 +15,9 @@ public class Enemigo5 extends Enemigo {
 	protected static String proyectil="./src/Sprites/Ataques/AtaqueBurbuja.gif";
 	protected static String animacionMuerte="./src/Sprites/Efectos/Muerte5.gif";
 	protected static String rutaCongelado="./src/Sprites/Efectos/EfectosPowerUps/Congelado5.png";
+	protected static String rutaProtegido="./src/Sprites/Efectos/EfectosPowerUps/Escudo/Enemigo5.gif";
 	
 	public Enemigo5(Celda celda) {
-		super(celda,vidaBase,tam,imagen,rutaCongelado,animacionMuerte,danoBase,alcanceBase,proyectil,velocBase,oroMinBase,oroMaxBase,puntosBase);
+		super(celda,vidaBase,tam,imagen,rutaCongelado,rutaProtegido,animacionMuerte,danoBase,alcanceBase,proyectil,velocBase,oroMinBase,oroMaxBase,puntosBase);
 	}
 }
