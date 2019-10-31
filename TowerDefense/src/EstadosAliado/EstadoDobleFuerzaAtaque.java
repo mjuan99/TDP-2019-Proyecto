@@ -4,6 +4,9 @@ import Juego.Mapa;
 import Objetos.ProyectilAliado;
 import Personajes.Torre;
 
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+
 public class EstadoDobleFuerzaAtaque implements EstadoAtaqueAliado {
 	protected Torre miTorre;
 	protected long inicio;
@@ -14,8 +17,9 @@ public class EstadoDobleFuerzaAtaque implements EstadoAtaqueAliado {
 	}
 	
 	public void atacar() {
-		if(System.currentTimeMillis()<inicio+duracion)
+		if(System.currentTimeMillis()<inicio+duracion) {
 			Mapa.getMapa().crearElementoIntangible(new ProyectilAliado(miTorre.getCelda(),miTorre , 2*miTorre.getDano(),miTorre.getAlcance(),miTorre.getRutaProyectil()));
+		}
 		else {
 			miTorre.setEstadoAtaque(new EstadoDefaultAtaque(miTorre));
 			miTorre.atacar();

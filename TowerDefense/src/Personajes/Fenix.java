@@ -12,9 +12,10 @@ public class Fenix extends Torre {
 	protected static String proyectil="./src/Sprites/Ataques/AtaqueFenix.gif";
 	protected static String nomb="Fenix";
 	protected static String mini="./src/Sprites/Tienda/Fenix.png";
+	protected static String estadoProtegido="./src/Sprites/Efectos/EfectosPowerUps/Escudo/Fenix.gif";
 	
 	public Fenix(Celda celda) {
-		super(celda,vidaBase,tam,imagen,danoBase,alcanceBase,proyectil,precio,mini,nomb);
+		super(celda,vidaBase,tam,imagen,estadoProtegido,danoBase,alcanceBase,proyectil,precio,mini,nomb);
 	}
 	
 	public Torre nueva() {

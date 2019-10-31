@@ -12,9 +12,10 @@ public class Hada extends Torre{
 	protected static String proyectil="./src/Sprites/Ataques/AtaqueHada.gif";
 	protected static String nomb="Hada";
 	protected static String mini="./src/Sprites/Tienda/Hada.png";
+	protected static String estadoProtegido="./src/Sprites/Efectos/EfectosPowerUps/Escudo/Hada.gif";
 	
 	public Hada(Celda celda) {
-		super(celda,vidaBase,tam,imagen,danoBase,alcanceBase,proyectil,precio,mini,nomb);
+		super(celda,vidaBase,tam,imagen,estadoProtegido,danoBase,alcanceBase,proyectil,precio,mini,nomb);
 	}
 	
 	public Torre nueva() {

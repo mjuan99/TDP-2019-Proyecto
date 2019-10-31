@@ -19,18 +19,23 @@ public abstract class Torre extends Personaje{
 	protected int precio;
 	protected String nombre;
 	protected String miniatura;
+	protected String estadoDobleFuerza;
+	protected String estadoProtegido;
 	
-	protected Torre(Celda celda,int vidaMax,int tamano,String rutaImagen,int dano,int alcance,String rutaProyectil,int precio,String miniatura,String nombre) {
+	protected Torre(Celda celda,int vidaMax,int tamano,String rutaImagen,String estadoProtegido,int dano,int alcance,String rutaProyectil,int precio,String miniatura,String nombre) {
 		super(celda,vidaMax,tamano,rutaImagen,dano,alcance,rutaProyectil);
 		this.nombre=nombre;
 		this.precio=precio;
+		this.estadoProtegido=estadoProtegido;
 		vidaBase=vidaMax;
 		this.miniatura=miniatura;
 		visitor=new VisitorAliado(this);
 		estadoAtaque=new EstadoDefaultAtaque(this);
 		estadoDefensa=new EstadoDefaultDefensaA(this);
 	}
-	
+	public String getEstadoProtegido() {
+		return (estadoProtegido);
+	}
 	public int getPrecio() {
 		return precio;
 	}

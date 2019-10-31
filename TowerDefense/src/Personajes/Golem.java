@@ -12,9 +12,10 @@ public class Golem extends Torre {
 	protected static String proyectil="./src/Sprites/Ataques/AtaqueGolem.gif";
 	protected static String nomb="Golem";
 	protected static String mini="./src/Sprites/Tienda/Golem.png";
+	protected static String estadoProtegido="./src/Sprites/Efectos/EfectosPowerUps/Escudo/Golem.gif";
 	
 	public Golem(Celda celda) {
-		super(celda,vidaBase,tam,imagen,danoBase,alcanceBase,proyectil,precio,mini,nomb);
+		super(celda,vidaBase,tam,imagen,estadoProtegido,danoBase,alcanceBase,proyectil,precio,mini,nomb);
 	}
 	
 	public Torre nueva() {

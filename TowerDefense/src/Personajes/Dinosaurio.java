@@ -11,9 +11,10 @@ public class Dinosaurio extends Torre {
 	protected static String proyectil="./src/Sprites/Ataques/AtaqueDinosaurio.gif";
 	protected static String nomb="Dinosaurio";
 	protected static String mini="./src/Sprites/Tienda/Dinosaurio.png";
+	protected static String estadoProtegido="./src/Sprites/Efectos/EfectosPowerUps/Escudo/Dinosaurio.gif";
 	
 	public Dinosaurio(Celda celda) {
-		super(celda,vidaBase,tam,imagen,danoBase,alcanceBase,proyectil,precio,mini,nomb);
+		super(celda,vidaBase,tam,imagen,estadoProtegido,danoBase,alcanceBase,proyectil,precio,mini,nomb);
 	}
 	
 	public Torre nueva() {

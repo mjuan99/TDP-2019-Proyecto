@@ -3,7 +3,7 @@ import Juego.Celda;
 
 public class Leviatan extends Torre {
 
-	protected static int precio=50;
+	protected static int precio=100;
 	protected static int vidaBase=1500;
 	protected static int tam=2;
 	protected static int danoBase=0;
@@ -14,7 +14,7 @@ public class Leviatan extends Torre {
 	protected static String mini="./src/Sprites/Tienda/Onix.png";
 	
 	public Leviatan(Celda celda) {
-		super(celda,vidaBase,tam,imagen,danoBase,alcanceBase,proyectil,precio,mini,nomb);
+		super(celda,vidaBase,tam,imagen,imagen,danoBase,alcanceBase,proyectil,precio,mini,nomb);
 	}
 	
 	public Torre nueva() {

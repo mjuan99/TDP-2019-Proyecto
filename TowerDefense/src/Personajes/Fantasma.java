@@ -12,9 +12,10 @@ public class Fantasma extends Torre {
 	protected static String proyectil="./src/Sprites/Ataques/AtaqueFantasma.gif";
 	protected static String nomb="Fantasma";
 	protected static String mini="./src/Sprites/Tienda/Fantasma.png";
+	protected static String estadoProtegido="./src/Sprites/Efectos/EfectosPowerUps/Escudo/Fantasma.gif";
 	
 	public Fantasma(Celda celda) {
-		super(celda,vidaBase,tam,imagen,danoBase,alcanceBase,proyectil,precio,mini,nomb);
+		super(celda,vidaBase,tam,imagen,estadoProtegido,danoBase,alcanceBase,proyectil,precio,mini,nomb);
 	}
 	
 	public Torre nueva() {
