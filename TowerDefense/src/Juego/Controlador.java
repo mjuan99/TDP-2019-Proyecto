@@ -2,8 +2,6 @@ package Juego;
 
 import java.awt.EventQueue;
 
-import Objetos.Obstaculo;
-import Personajes.Torre;
 import PowerUpsRecolectable.*;
 
 public class Controlador {

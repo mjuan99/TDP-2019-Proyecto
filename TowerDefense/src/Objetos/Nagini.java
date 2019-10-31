@@ -1,6 +1,5 @@
 package Objetos;
 import Juego.Celda;
-import Visitor.Visitor;
 
 public class Nagini extends ObstaculoVida {
 
@@ -13,14 +12,6 @@ public class Nagini extends ObstaculoVida {
 	
 	public Nagini(Celda celda) {
 		super(celda,vidaBase,tam,imagen,mini,nombre,precio);
-	}
-	
-	public void actuar() {}
-
-	@Override
-	public void accept(Visitor v) {
-		// TODO Auto-generated method stub
-		
 	}
 	
 }
