@@ -14,7 +14,6 @@ import Personajes.Fantasma;
 import Personajes.Fenix;
 import Personajes.Golem;
 import Personajes.Hada;
-import Personajes.Nagini;
 import Personajes.Torre;
 import PowerUpsEfecto.*;
 import Tienda.*;
@@ -140,9 +139,9 @@ public class GUI extends JFrame{
 	}
 
 	private void agregarBotones() {
-		btTorres= new BotonTorre[8];
-		Torre []torres={new Alien(null),new Dinosaurio(null),new Dragon(null),new Fantasma(null),new Fenix(null),new Golem(null),new Hada(null),new Nagini(null)};
-		for(int i=0;i<8;i++) {
+		btTorres= new BotonTorre[7];
+		Torre []torres={new Alien(null),new Dinosaurio(null),new Dragon(null),new Fantasma(null),new Fenix(null),new Golem(null),new Hada(null)};
+		for(int i=0;i<7;i++) {
 			btTorres[i]= new BotonTorre(torres[i]);
 			btTorres[i].setBounds(i*120,6*pixel, 120, 64);
 			this.add(btTorres[i]);
