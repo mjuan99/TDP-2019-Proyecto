@@ -3,13 +3,13 @@ package Objetos;
 import Juego.Celda;
 import Visitor.Visitor;
 
-public class Snorlax extends ObstaculoVida {
-	protected static int vidaBase=1000;
+public class Topo extends ObstaculoTiempo {
+	protected static int vidaBase=50;
 	protected static int tam=1;
-	protected static String imagen="./src/Sprites/Obstaculos/Snorlax.gif";
+	protected static String imagen="./src/Sprites/Obstaculos/Dugtrio.gif";
 
-	public Snorlax(Celda celda) {
-		super(celda, vidaBase,tam, imagen);
+	public Topo(Celda celda) {
+		super(celda, vidaBase,tam , imagen);
 		// TODO Auto-generated constructor stub
 	}
 	
@@ -20,5 +20,4 @@ public class Snorlax extends ObstaculoVida {
 	public void accept() {
 		visitor.visit(this);
 	}
-
 }
