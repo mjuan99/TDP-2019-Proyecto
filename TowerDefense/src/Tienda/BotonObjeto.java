@@ -13,8 +13,8 @@ import Objetos.ObjetoJugador;
 
 @SuppressWarnings("serial")
 public class BotonObjeto extends BotonTienda {
-	JTextArea descripcion;
-	ObjetoJugador obstaculo;
+	protected JTextArea descripcion;
+	protected ObjetoJugador obstaculo;
 	public BotonObjeto(ObjetoJugador o) {
 		super(new ImageIcon(o.getMiniatura()));
 		MouseListener mouseL=new OyenteBotonObstaculo();
@@ -33,23 +33,23 @@ public class BotonObjeto extends BotonTienda {
 	}
 	
 	private class OyenteBotonObstaculo implements MouseListener{
-		public OyenteBotonObstaculo() {}
-		@Override
-		public void mouseClicked(MouseEvent arg0) {
-			if(isEnabled()) {
-				Tienda.getTienda().comprar(obstaculo.nuevo());
-				seleccionar();
-			}
+		protected boolean adentro;
+		public OyenteBotonObstaculo() {
+			adentro=false;
 		}
+		@Override
+		public void mouseClicked(MouseEvent arg0) {}
 
 		@Override
 		public void mouseEntered(MouseEvent arg0) {
+			adentro=true;
 			descripcion.setVisible(true);
 			descripcion.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		}
 
 		@Override
 		public void mouseExited(MouseEvent arg0) {
+			adentro=false;
 			descripcion.setVisible(false);
 		}
 
@@ -57,6 +57,11 @@ public class BotonObjeto extends BotonTienda {
 		public void mousePressed(MouseEvent arg0) {}
 
 		@Override
-		public void mouseReleased(MouseEvent arg0) {}
+		public void mouseReleased(MouseEvent arg0) {
+			if(adentro&&isEnabled()) {
+				Tienda.getTienda().comprar(obstaculo.nuevo());
+				seleccionar();
+			}
+		}
 	}
 }

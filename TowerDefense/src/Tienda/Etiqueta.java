@@ -19,23 +19,33 @@ public class Etiqueta extends JLabel{
 	}
 
 	private class OyenteClick implements MouseListener{
+		protected boolean adentro;
+		
+		public OyenteClick() {
+			adentro=false;
+		}
+		
+		@Override
+		public void mouseClicked(MouseEvent e) {}
 
 		@Override
-		public void mouseClicked(MouseEvent e) {
-			elemento.accept(new VisitorClick());
+		public void mouseEntered(MouseEvent e) {
+			adentro=true;
 		}
 
 		@Override
-		public void mouseEntered(MouseEvent e) {}
-
-		@Override
-		public void mouseExited(MouseEvent e) {}
+		public void mouseExited(MouseEvent e) {
+			adentro=false;
+		}
 
 		@Override
 		public void mousePressed(MouseEvent e) {}
 
 		@Override
-		public void mouseReleased(MouseEvent e) {}
+		public void mouseReleased(MouseEvent e) {
+			if(adentro)
+				elemento.accept(new VisitorClick());
+		}
 		
 	}
 }

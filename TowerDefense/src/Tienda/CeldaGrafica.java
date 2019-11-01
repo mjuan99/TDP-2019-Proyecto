@@ -16,19 +16,27 @@ public class CeldaGrafica extends JLabel{
 	}
 
 	private class OyenteMouseCelda implements MouseListener{
-		public OyenteMouseCelda() {}
+		protected boolean adentro;
+		public OyenteMouseCelda() {
+			adentro=false;
+		}
 		public void mouseClicked(MouseEvent e) {
 		}
 		public void mouseEntered(MouseEvent e) {
+			adentro=true;
 			setIcon(new ImageIcon("./src/Sprites/Mapa/celda4.png"));
 		}
 		public void mouseExited(MouseEvent e) {
+			adentro=false;
 			setIcon(new ImageIcon("./src/Sprites/Mapa/celda2.png"));
 		}
 		public void mousePressed(MouseEvent e) {}
 		public void mouseReleased(MouseEvent e) {
-			int x=getX()/96;
-			int y=getY()/96;
-			Tienda.getTienda().seleccionar(Mapa.getMapa().getGrilla()[x][y]);}
+			if(adentro) {
+				int x=getX()/96;
+				int y=getY()/96;
+				Tienda.getTienda().seleccionar(Mapa.getMapa().getGrilla()[x][y]);
+			}
+		}
 	}
 }

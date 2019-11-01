@@ -13,8 +13,8 @@ import Tienda.Tienda;
 
 @SuppressWarnings("serial")
 public class BotonTorre extends BotonTienda {
-	JTextArea descripcion;
-	Torre torre;
+	protected JTextArea descripcion;
+	protected Torre torre;
 	public BotonTorre(Torre torre) {
 		super(new ImageIcon(torre.getMiniatura()));
 		MouseListener mouseL=new OyenteBotonTorre();
@@ -34,23 +34,23 @@ public class BotonTorre extends BotonTienda {
 	}
 	
 	private class OyenteBotonTorre implements MouseListener{
-		public OyenteBotonTorre() {}
-		@Override
-		public void mouseClicked(MouseEvent arg0) {
-			if(isEnabled()) {
-				Tienda.getTienda().comprar(torre.nueva());
-				seleccionar();
-			}
+		protected boolean adentro;
+		public OyenteBotonTorre() {
+			adentro=false;
 		}
+		@Override
+		public void mouseClicked(MouseEvent arg0) {}
 
 		@Override
 		public void mouseEntered(MouseEvent arg0) {
+			adentro=true;
 			descripcion.setVisible(true);
 			descripcion.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		}
 
 		@Override
 		public void mouseExited(MouseEvent arg0) {
+			adentro=false;
 			descripcion.setVisible(false);
 		}
 
@@ -58,7 +58,11 @@ public class BotonTorre extends BotonTienda {
 		public void mousePressed(MouseEvent arg0) {}
 
 		@Override
-		public void mouseReleased(MouseEvent arg0) {}
+		public void mouseReleased(MouseEvent arg0) {
+			if(adentro&&isEnabled()) {
+				Tienda.getTienda().comprar(torre.nueva());
+				seleccionar();
+			}}
 		
 	}
 }

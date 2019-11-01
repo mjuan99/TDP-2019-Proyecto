@@ -50,6 +50,7 @@ public class Mapa {
 	}
 		
 	public void activarOleada() {
+		int intentos;
 		oleadaActiva=true;
 		cantEnemigos=nivel.cantEnemigos();
 		Queue<ObjetoMapa> obstaculos=nivel.getColaObstaculos();
@@ -57,12 +58,15 @@ public class Mapa {
 		int y=(int)(Math.random()*6);
 		ObjetoMapa o;
 		while(!obstaculos.isEmpty()) {
+			intentos=0;
 			o=obstaculos.poll();
-			while(grilla[x][y].getElem()!=null) {
+			while(grilla[x][y].getElem()!=null&&intentos<10) {
 				x=(int)(Math.random()*6+2);
 				y=(int)(Math.random()*6);
+				intentos++;
 			}
-			crearElemento(o,x,y);
+			if(grilla[x][y].getElem()==null)
+				crearElemento(o,x,y);
 		}
 	}
 	

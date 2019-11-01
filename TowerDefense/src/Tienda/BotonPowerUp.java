@@ -12,8 +12,8 @@ import PowerUpsEfecto.PowerUpEfecto;
 
 @SuppressWarnings("serial")
 public class BotonPowerUp extends BotonTienda {
-	JTextArea descripcion;
-	PowerUpEfecto miPowerUp;
+	protected JTextArea descripcion;
+	protected PowerUpEfecto miPowerUp;
 	public BotonPowerUp(PowerUpEfecto p) {
 		super(new ImageIcon(p.getImagen()));
 		miPowerUp=p;
@@ -30,23 +30,23 @@ public class BotonPowerUp extends BotonTienda {
 	}
 	
 	private class OyenteBotonObjeto implements MouseListener{
-		public OyenteBotonObjeto() {}
-		@Override
-		public void mouseClicked(MouseEvent arg0) {
-			if(isEnabled()) {
-				seleccionar();
-				miPowerUp.usar();
-			}
+		protected boolean adentro;
+		public OyenteBotonObjeto() {
+			adentro=false;
 		}
+		@Override
+		public void mouseClicked(MouseEvent arg0) {}
 
 		@Override
 		public void mouseEntered(MouseEvent arg0) {
+			adentro=true;
 			descripcion.setVisible(true);
 			descripcion.setCursor(new Cursor(Cursor.HAND_CURSOR));
 		}
 
 		@Override
 		public void mouseExited(MouseEvent arg0) {
+			adentro=false;
 			descripcion.setVisible(false);
 		}
 
@@ -54,7 +54,12 @@ public class BotonPowerUp extends BotonTienda {
 		public void mousePressed(MouseEvent arg0) {}
 
 		@Override
-		public void mouseReleased(MouseEvent arg0) {}
+		public void mouseReleased(MouseEvent arg0) {
+			if(adentro/*&&isEnabled()*/) {
+				seleccionar();
+				miPowerUp.usar();
+			}
+		}
 		
 	}
 }
