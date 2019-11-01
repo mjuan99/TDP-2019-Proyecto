@@ -15,12 +15,10 @@ import Tienda.Tienda;
 public class BotonTorre extends BotonTienda {
 	JTextArea descripcion;
 	Torre torre;
-	ImageIcon imagen;
 	public BotonTorre(Torre torre) {
 		super(new ImageIcon(torre.getMiniatura()));
-		MouseListener mouseL=new OyenteBotonTorre(this);
+		MouseListener mouseL=new OyenteBotonTorre();
 		this.torre=torre;
-		imagen=new ImageIcon(torre.getMiniatura());
 		this.setBackground(Color.WHITE);;
 		this.setBorder(null);
 		this.addMouseListener(mouseL);
@@ -30,46 +28,37 @@ public class BotonTorre extends BotonTienda {
 		descripcion.setEditable(false);
 		descripcion.addMouseListener(mouseL);
 	}
+	
 	public Torre getTorre() {
 		return torre.nueva();
 	}
-	public JTextArea getTexto() {
-		return descripcion;
-	}
-	public ImageIcon getImagen() {
-		return imagen;
-	}
-}
-class OyenteBotonTorre implements MouseListener{
-	BotonTorre boton;
-	public OyenteBotonTorre(BotonTorre b) {
-		boton=b;
-	}
-	@Override
-	public void mouseClicked(MouseEvent arg0) {
-		if(boton.isEnabled()) {
-			Tienda.getTienda().comprar(boton.getTorre());
-			boton.seleccionar();
-		}
-	}
-
-	@Override
-	public void mouseEntered(MouseEvent arg0) {
-		boton.setIcon(null);
-		boton.getTexto().setVisible(true);
-		boton.getTexto().setCursor(new Cursor(Cursor.HAND_CURSOR));
-	}
-
-	@Override
-	public void mouseExited(MouseEvent arg0) {
-		boton.getTexto().setVisible(false);
-		boton.setIcon(boton.getImagen());
-	}
-
-	@Override
-	public void mousePressed(MouseEvent arg0) {}
-
-	@Override
-	public void mouseReleased(MouseEvent arg0) {}
 	
+	private class OyenteBotonTorre implements MouseListener{
+		public OyenteBotonTorre() {}
+		@Override
+		public void mouseClicked(MouseEvent arg0) {
+			if(isEnabled()) {
+				Tienda.getTienda().comprar(torre.nueva());
+				seleccionar();
+			}
+		}
+
+		@Override
+		public void mouseEntered(MouseEvent arg0) {
+			descripcion.setVisible(true);
+			descripcion.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		}
+
+		@Override
+		public void mouseExited(MouseEvent arg0) {
+			descripcion.setVisible(false);
+		}
+
+		@Override
+		public void mousePressed(MouseEvent arg0) {}
+
+		@Override
+		public void mouseReleased(MouseEvent arg0) {}
+		
+	}
 }

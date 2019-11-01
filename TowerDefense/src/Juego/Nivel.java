@@ -10,6 +10,7 @@ import java.util.ArrayDeque;
 public class Nivel {
 	protected Queue<Oleada> oleadas;
 	protected int presupuestoBase;
+	
 	public Nivel(int n) {
 		oleadas=new ArrayDeque<Oleada>(3);
 		if(n==1) {

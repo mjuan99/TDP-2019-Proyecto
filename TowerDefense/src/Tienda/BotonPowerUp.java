@@ -12,15 +12,13 @@ import PowerUpsEfecto.PowerUpEfecto;
 
 @SuppressWarnings("serial")
 public class BotonPowerUp extends BotonTienda {
-	ImageIcon imagen;
 	JTextArea descripcion;
 	PowerUpEfecto miPowerUp;
 	public BotonPowerUp(PowerUpEfecto p) {
 		super(new ImageIcon(p.getImagen()));
 		miPowerUp=p;
-		imagen=new ImageIcon(p.getImagen());
 		descripcion=new JTextArea(p.getDescripcion());
-		MouseListener mouseL=new OyenteBotonObjeto(this);
+		MouseListener mouseL=new OyenteBotonObjeto();
 		this.setBackground(Color.WHITE);;
 		this.setBorder(null);
 		this.addMouseListener(mouseL);
@@ -30,46 +28,33 @@ public class BotonPowerUp extends BotonTienda {
 		descripcion.setEditable(false);
 		descripcion.addMouseListener(mouseL);
 	}
-	public JTextArea getTexto() {
-		return descripcion;
-	}
-	public ImageIcon getImagen() {
-		return imagen;
-	}
-	public PowerUpEfecto getPowerUp() {
-		return miPowerUp;
-	}
-}
-class OyenteBotonObjeto implements MouseListener{
-	BotonPowerUp boton;
-	public OyenteBotonObjeto(BotonPowerUp b) {
-		boton=b;
-	}
-	@Override
-	public void mouseClicked(MouseEvent arg0) {
-		if(boton.isEnabled()) {
-			boton.seleccionar();
-			boton.getPowerUp().usar();
-		}
-	}
-
-	@Override
-	public void mouseEntered(MouseEvent arg0) {
-		boton.setIcon(null);
-		boton.getTexto().setVisible(true);
-		boton.getTexto().setCursor(new Cursor(Cursor.HAND_CURSOR));
-	}
-
-	@Override
-	public void mouseExited(MouseEvent arg0) {
-		boton.getTexto().setVisible(false);
-		boton.setIcon(boton.getImagen());
-	}
-
-	@Override
-	public void mousePressed(MouseEvent arg0) {}
-
-	@Override
-	public void mouseReleased(MouseEvent arg0) {}
 	
+	private class OyenteBotonObjeto implements MouseListener{
+		public OyenteBotonObjeto() {}
+		@Override
+		public void mouseClicked(MouseEvent arg0) {
+			if(isEnabled()) {
+				seleccionar();
+				miPowerUp.usar();
+			}
+		}
+
+		@Override
+		public void mouseEntered(MouseEvent arg0) {
+			descripcion.setVisible(true);
+			descripcion.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		}
+
+		@Override
+		public void mouseExited(MouseEvent arg0) {
+			descripcion.setVisible(false);
+		}
+
+		@Override
+		public void mousePressed(MouseEvent arg0) {}
+
+		@Override
+		public void mouseReleased(MouseEvent arg0) {}
+		
+	}
 }

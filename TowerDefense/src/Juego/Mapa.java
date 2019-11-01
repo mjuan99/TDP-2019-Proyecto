@@ -135,14 +135,6 @@ public class Mapa {
 		}
 	}
 	
-	public void avanzar(Enemigo e) {
-		int celdaX=e.getCelda().getX();
-		int celdaY=e.getCelda().getY();
-		e.setCelda(grilla[celdaX-1][celdaY]);
-		grilla[celdaX][celdaY].setElem(null);
-		grilla[celdaX-1][celdaY].setElem(e);
-	}
-	
 	public LinkedList<Elemento> elementosRango(Enemigo e){
 		LinkedList<Elemento> lista=new LinkedList<Elemento>();
 		int n=e.getAlcance();
@@ -166,7 +158,6 @@ public class Mapa {
 	}
 	
 	public boolean crearElemento(Elemento elem,int x, int y) {
-		//System.out.println(x+" - "+y);
 		if(elem.getTamano()==1&&grilla[x][y].getElem()==null) {
 			grilla[x][y].setElem(elem);
 			elem.setCelda(grilla[x][y]);
@@ -192,16 +183,8 @@ public class Mapa {
 		return grilla;
 	}
 
-	public void setGrilla(Celda[][] grilla) {
-		this.grilla = grilla;
-	}
-
 	public Nivel getNivel() {
 		return nivel;
-	}
-
-	public void setNivel(Nivel nivel) {
-		this.nivel = nivel;
 	}
 	
 	public int getX() {
@@ -212,13 +195,3 @@ public class Mapa {
 		return y;
 	}
 }
-	//en crear elemento agrege las torres a la lista de torres que cree
-	//agregue este metodo
-	/*public Elemento getElemento(int x, int y ) {
-		return grilla[x][y].getElem();
-		
-	}
-	
-	/*public LinkedList<Elemento> getTorres() {
-		return listaTorres;
-	}*/

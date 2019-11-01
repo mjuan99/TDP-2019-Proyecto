@@ -74,6 +74,7 @@ public abstract class Enemigo extends Personaje{
 	}
 	
 	public void actuarDefault() {
+		Celda anterior;
 		if (contadorPulsos==0) {
 			Rectangle r = componenteGrafica.getBounds();
 			if (!moviendo) {
@@ -86,7 +87,10 @@ public abstract class Enemigo extends Personaje{
 				else
 					if (Mapa.getMapa().puedeAvanzar(this)) {
 						celdaDestino = celda.getX() - 1;
-						Mapa.getMapa().avanzar(this);
+						anterior=celda;
+						celda=Mapa.getMapa().getGrilla()[anterior.getX()-1][anterior.getY()];
+						anterior.setElem(null);
+						celda.setElem(this);
 						moviendo = true;
 					}
 			} else 

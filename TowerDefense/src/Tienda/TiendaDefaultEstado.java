@@ -6,13 +6,9 @@ import Personajes.Torre;
 public class TiendaDefaultEstado implements TiendaEstado{
 
 	@Override
-	public void seleccionar(Torre t) {
-
-	}
+	public void seleccionar(Torre t) {}
 
 	@Override
-	public void seleccionar(Celda c) {
-
-	}
+	public void seleccionar(Celda c) {}
 
 }

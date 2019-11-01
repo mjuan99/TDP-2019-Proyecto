@@ -11,7 +11,6 @@ public abstract class ObjetoJugador extends Objeto {
 		super(celda, vidaMax,tamano, rutaImagen);
 		this.mini=mini;
 		this.precio=precio;
-		// TODO Auto-generated constructor stub
 	}
 	
 	public abstract String descripcion();

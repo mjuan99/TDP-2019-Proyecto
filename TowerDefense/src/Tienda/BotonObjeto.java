@@ -15,12 +15,10 @@ import Objetos.ObjetoJugador;
 public class BotonObjeto extends BotonTienda {
 	JTextArea descripcion;
 	ObjetoJugador obstaculo;
-	ImageIcon imagen;
 	public BotonObjeto(ObjetoJugador o) {
 		super(new ImageIcon(o.getMiniatura()));
-		MouseListener mouseL=new OyenteBotonObstaculo(this);
+		MouseListener mouseL=new OyenteBotonObstaculo();
 		obstaculo=o;
-		imagen=new ImageIcon(obstaculo.getMiniatura());
 		this.setBackground(Color.WHITE);;
 		this.setBorder(null);
 		this.addMouseListener(mouseL);
@@ -33,42 +31,32 @@ public class BotonObjeto extends BotonTienda {
 	public ObjetoJugador getObstaculo() {
 		return obstaculo.nuevo();
 	}
-	public JTextArea getTexto() {
-		return descripcion;
-	}
-	public ImageIcon getImagen() {
-		return imagen;
-	}
-}
-class OyenteBotonObstaculo implements MouseListener{
-	BotonObjeto boton;
-	public OyenteBotonObstaculo(BotonObjeto b) {
-		boton=b;
-	}
-	@Override
-	public void mouseClicked(MouseEvent arg0) {
-		if(boton.isEnabled()) {
-			Tienda.getTienda().comprar(boton.getObstaculo());
-			boton.seleccionar();
+	
+	private class OyenteBotonObstaculo implements MouseListener{
+		public OyenteBotonObstaculo() {}
+		@Override
+		public void mouseClicked(MouseEvent arg0) {
+			if(isEnabled()) {
+				Tienda.getTienda().comprar(obstaculo.nuevo());
+				seleccionar();
+			}
 		}
+
+		@Override
+		public void mouseEntered(MouseEvent arg0) {
+			descripcion.setVisible(true);
+			descripcion.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		}
+
+		@Override
+		public void mouseExited(MouseEvent arg0) {
+			descripcion.setVisible(false);
+		}
+
+		@Override
+		public void mousePressed(MouseEvent arg0) {}
+
+		@Override
+		public void mouseReleased(MouseEvent arg0) {}
 	}
-
-	@Override
-	public void mouseEntered(MouseEvent arg0) {
-		boton.setIcon(null);
-		boton.getTexto().setVisible(true);
-		boton.getTexto().setCursor(new Cursor(Cursor.HAND_CURSOR));
-	}
-
-	@Override
-	public void mouseExited(MouseEvent arg0) {
-		boton.getTexto().setVisible(false);
-		boton.setIcon(boton.getImagen());
-	}
-
-	@Override
-	public void mousePressed(MouseEvent arg0) {}
-
-	@Override
-	public void mouseReleased(MouseEvent arg0) {}
 }

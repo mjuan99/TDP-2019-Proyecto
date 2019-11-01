@@ -20,7 +20,7 @@ public class BotonTienda extends JButton {
 	public BotonTienda(String s,ActionListener a) {
 		super(s);
 		this.addActionListener(a);
-		this.addMouseListener(new OyenteBotonTienda(this));
+		this.addMouseListener(new OyenteBotonTienda());
 	}
 	public void seleccionar() {
 		GUI.getGUI().deseleccionarBotones();
@@ -31,16 +31,13 @@ public class BotonTienda extends JButton {
 	}
 	
 	private class OyenteBotonTienda implements MouseListener{
-		BotonTienda boton;
-		public OyenteBotonTienda(BotonTienda boton) {
-			this.boton=boton;
-		}
+		public OyenteBotonTienda() {}
 		@Override
 		public void mouseClicked(MouseEvent e) {}
 
 		@Override
 		public void mouseEntered(MouseEvent e) {
-			boton.setCursor(new Cursor(Cursor.HAND_CURSOR));
+			setCursor(new Cursor(Cursor.HAND_CURSOR));
 		}
 
 		@Override

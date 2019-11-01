@@ -12,7 +12,6 @@ public class Oso extends ObjetoJugadorVida {
 
 	public Oso(Celda celda) {
 		super(celda, vidaBase,tam, imagen,mini,nombre,precio);
-		// TODO Auto-generated constructor stub
 	}
 	
 	public ObjetoJugador nuevo() {

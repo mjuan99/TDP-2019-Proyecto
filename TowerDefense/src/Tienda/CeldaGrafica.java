@@ -12,26 +12,23 @@ import Juego.Mapa;
 public class CeldaGrafica extends JLabel{
 	public CeldaGrafica(ImageIcon i) {
 		super(i);
-		this.addMouseListener(new OyenteMouseCelda(this));
+		this.addMouseListener(new OyenteMouseCelda());
 	}
 
-	public class OyenteMouseCelda implements MouseListener{
-		JLabel celda;
-		public OyenteMouseCelda(JLabel celda) {
-			this.celda=celda;
-		}
+	private class OyenteMouseCelda implements MouseListener{
+		public OyenteMouseCelda() {}
 		public void mouseClicked(MouseEvent e) {
 		}
 		public void mouseEntered(MouseEvent e) {
-			celda.setIcon(new ImageIcon("./src/Sprites/Mapa/celda4.png"));
+			setIcon(new ImageIcon("./src/Sprites/Mapa/celda4.png"));
 		}
 		public void mouseExited(MouseEvent e) {
-			celda.setIcon(new ImageIcon("./src/Sprites/Mapa/celda2.png"));
+			setIcon(new ImageIcon("./src/Sprites/Mapa/celda2.png"));
 		}
 		public void mousePressed(MouseEvent e) {}
 		public void mouseReleased(MouseEvent e) {
-			int x=celda.getX()/96;
-			int y=celda.getY()/96;
+			int x=getX()/96;
+			int y=getY()/96;
 			Tienda.getTienda().seleccionar(Mapa.getMapa().getGrilla()[x][y]);}
 	}
 }

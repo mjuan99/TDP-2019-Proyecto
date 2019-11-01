@@ -13,7 +13,6 @@ public class Topo extends ObjetoJugadorTiempo {
 	
 	public Topo(Celda celda) {
 		super(celda, vidaBase,tam ,imagen,tiempo,mini,nombre,precio);
-		// TODO Auto-generated constructor stub
 	}
 	
 	public ObjetoJugador nuevo() {
