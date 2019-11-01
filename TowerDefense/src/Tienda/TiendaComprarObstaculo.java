@@ -4,12 +4,12 @@ import Juego.Celda;
 import Juego.Controlador;
 import Juego.GUI;
 import Juego.Jugador;
-import Objetos.Obstaculo;
+import Objetos.ObjetoJugador;
 import Personajes.Torre;
 
 public class TiendaComprarObstaculo implements TiendaEstado {
-	protected Obstaculo proxObstaculo;
-	public TiendaComprarObstaculo(Obstaculo o) {
+	protected ObjetoJugador proxObstaculo;
+	public TiendaComprarObstaculo(ObjetoJugador o) {
 		proxObstaculo=o;
 	}
 
@@ -19,7 +19,7 @@ public class TiendaComprarObstaculo implements TiendaEstado {
 	}
 
 	@Override
-	public void selecciontar(Celda c) {
+	public void seleccionar(Celda c) {
 		int x=c.getX();
 		int y=c.getY();
 		if(Controlador.getControlador().agregarElemento(proxObstaculo,x, y)) {

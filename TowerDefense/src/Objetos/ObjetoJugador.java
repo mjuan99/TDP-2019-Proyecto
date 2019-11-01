@@ -1,14 +1,13 @@
 package Objetos;
 
 import Juego.Celda;
-import Juego.Elemento;
 
-public abstract class Obstaculo extends Elemento {
+public abstract class ObjetoJugador extends Objeto {
 	
 	protected String mini;
 	protected int precio;
 	
-	protected Obstaculo(Celda celda, int vidaMax,int tamano, String rutaImagen,String mini,int precio) {
+	protected ObjetoJugador(Celda celda, int vidaMax,int tamano, String rutaImagen,String mini,int precio) {
 		super(celda, vidaMax,tamano, rutaImagen);
 		this.mini=mini;
 		this.precio=precio;
@@ -25,6 +24,6 @@ public abstract class Obstaculo extends Elemento {
 		return precio;
 	}
 	
-	public abstract Obstaculo nuevo();
+	public abstract ObjetoJugador nuevo();
 	
 }

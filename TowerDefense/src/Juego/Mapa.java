@@ -3,7 +3,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 import EstadosEnemigo.EstadoProtegidoEnemigo;
-import Objetos.Obstaculo;
+import Objetos.ObjetoMapa;
 import Personajes.Enemigo;
 import Personajes.Torre;
 import Visitor.Visitor;
@@ -52,10 +52,10 @@ public class Mapa {
 	public void activarOleada() {
 		oleadaActiva=true;
 		cantEnemigos=nivel.cantEnemigos();
-		Queue<Obstaculo> obstaculos=nivel.getColaObstaculos();
+		Queue<ObjetoMapa> obstaculos=nivel.getColaObstaculos();
 		int x=(int)(Math.random()*6+2);
 		int y=(int)(Math.random()*6);
-		Obstaculo o;
+		ObjetoMapa o;
 		while(!obstaculos.isEmpty()) {
 			o=obstaculos.poll();
 			while(grilla[x][y].getElem()!=null) {

@@ -18,7 +18,7 @@ public class TiendaPowerUpTorre implements TiendaEstado {
 	}
 
 	@Override
-	public void selecciontar(Celda c) {
+	public void seleccionar(Celda c) {
 		//nada
 	}
 

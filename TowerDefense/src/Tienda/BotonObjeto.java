@@ -8,15 +8,15 @@ import java.awt.event.MouseListener;
 import javax.swing.ImageIcon;
 import javax.swing.JTextArea;
 
-import Objetos.Obstaculo;
+import Objetos.ObjetoJugador;
 
 
 @SuppressWarnings("serial")
 public class BotonObjeto extends BotonTienda {
 	JTextArea descripcion;
-	Obstaculo obstaculo;
+	ObjetoJugador obstaculo;
 	ImageIcon imagen;
-	public BotonObjeto(Obstaculo o) {
+	public BotonObjeto(ObjetoJugador o) {
 		super(new ImageIcon(o.getMiniatura()));
 		MouseListener mouseL=new OyenteBotonObstaculo(this);
 		obstaculo=o;
@@ -30,7 +30,7 @@ public class BotonObjeto extends BotonTienda {
 		descripcion.setEditable(false);
 		descripcion.addMouseListener(mouseL);
 	}
-	public Obstaculo getObstaculo() {
+	public ObjetoJugador getObstaculo() {
 		return obstaculo.nuevo();
 	}
 	public JTextArea getTexto() {

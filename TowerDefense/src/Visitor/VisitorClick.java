@@ -1,7 +1,9 @@
 package Visitor;
 
-import Objetos.ObstaculoTiempo;
-import Objetos.ObstaculoVida;
+import Objetos.ObjetoJugadorTiempo;
+import Objetos.ObjetoJugadorVida;
+import Objetos.ObjetoMapaTiempo;
+import Objetos.ObjetoMapaVida;
 import Objetos.Proyectil;
 import Personajes.Enemigo;
 import Personajes.Torre;
@@ -17,26 +19,27 @@ public class VisitorClick extends Visitor{
 
 	@Override
 	public void visit(Enemigo enemigo) {
-		// TODO Auto-generated method stub
-		
+		Tienda.getTienda().seleccionar(enemigo.getCelda());
 	}
 
 	@Override
-	public void visit(Proyectil proyectil) {
-		// TODO Auto-generated method stub
-		
+	public void visit(ObjetoJugadorVida objeto) {
+		Tienda.getTienda().seleccionar(objeto.getCelda());
 	}
 
 	@Override
-	public void visit(ObstaculoVida obstaculo) {
-		// TODO Auto-generated method stub
-		
+	public void visit(ObjetoJugadorTiempo objeto) {
+		Tienda.getTienda().seleccionar(objeto.getCelda());
 	}
 
 	@Override
-	public void visit(ObstaculoTiempo obstaculo) {
-		// TODO Auto-generated method stub
-		
+	public void visit(ObjetoMapaVida objeto) {
+		Tienda.getTienda().seleccionar(objeto.getCelda());
+	}
+
+	@Override
+	public void visit(ObjetoMapaTiempo objeto) {
+		Tienda.getTienda().seleccionar(objeto.getCelda());
 	}
 
 	@Override
@@ -67,6 +70,11 @@ public class VisitorClick extends Visitor{
 	public void visit(EscudoRecolectable e) {
 		Tienda.getTienda().disponibleEscudo();
 		e.morir();
+	}
+
+	@Override
+	public void visit(Proyectil p) {
+		Tienda.getTienda().seleccionar(p.getCelda());
 	}
 
 }

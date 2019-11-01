@@ -1,7 +1,9 @@
 package Visitor;
 
-import Objetos.ObstaculoTiempo;
-import Objetos.ObstaculoVida;
+import Objetos.ObjetoJugadorTiempo;
+import Objetos.ObjetoJugadorVida;
+import Objetos.ObjetoMapaTiempo;
+import Objetos.ObjetoMapaVida;
 import Objetos.Proyectil;
 import Objetos.ProyectilAliado;
 import Personajes.Enemigo;
@@ -21,10 +23,7 @@ public class VisitorProyectilAliado extends Visitor {
 	}
 
 	@Override
-	public void visit(Torre torre) {
-		//nada
-		
-	}
+	public void visit(Torre torre) {}
 
 	@Override
 	public void visit(Enemigo enemigo) {
@@ -35,51 +34,33 @@ public class VisitorProyectilAliado extends Visitor {
 	}
 
 	@Override
-	public void visit(Proyectil proyectil) {
-		//nada
-		
-	}
+	public void visit(ObjetoJugadorVida objeto) {}
 
 	@Override
-	public void visit(ObstaculoVida obstaculo) {
-		// nada
-		
-	}
+	public void visit(ObjetoJugadorTiempo objeto) {}
 
 	@Override
-	public void visit(ObstaculoTiempo obstaculo) {
-		// nada
-		
-	}
+	public void visit(ObjetoMapaVida objeto) {}
 
 	@Override
-	public void visit(BombaRecolectable b) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void visit(ObjetoMapaTiempo objeto) {}
 
 	@Override
-	public void visit(CongelarRecolectable c) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void visit(BombaRecolectable b) {}
 
 	@Override
-	public void visit(DobleFuerzaRecolectable d) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void visit(CongelarRecolectable c) {}
 
 	@Override
-	public void visit(TorreAleatoriaRecolectable t) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void visit(DobleFuerzaRecolectable d) {}
 
 	@Override
-	public void visit(EscudoRecolectable e) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void visit(TorreAleatoriaRecolectable t) {}
+
+	@Override
+	public void visit(EscudoRecolectable e) {}
+
+	@Override
+	public void visit(Proyectil p) {}
 
 }

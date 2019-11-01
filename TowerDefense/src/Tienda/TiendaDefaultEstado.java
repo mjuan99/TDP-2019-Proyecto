@@ -11,7 +11,7 @@ public class TiendaDefaultEstado implements TiendaEstado{
 	}
 
 	@Override
-	public void selecciontar(Celda c) {
+	public void seleccionar(Celda c) {
 
 	}
 

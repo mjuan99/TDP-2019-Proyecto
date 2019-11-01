@@ -2,7 +2,7 @@ package Objetos;
 
 import Juego.Celda;
 
-public class Oso extends ObstaculoVida {
+public class Oso extends ObjetoJugadorVida {
 	protected static int vidaBase=1000;
 	protected static int tam=1;
 	protected static String imagen="./src/Sprites/Obstaculos/Oso.gif";
@@ -15,7 +15,7 @@ public class Oso extends ObstaculoVida {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Obstaculo nuevo() {
+	public ObjetoJugador nuevo() {
 		return new Oso(null);
 	}
 

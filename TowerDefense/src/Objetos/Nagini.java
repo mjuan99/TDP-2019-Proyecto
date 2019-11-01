@@ -1,7 +1,7 @@
 package Objetos;
 import Juego.Celda;
 
-public class Nagini extends ObstaculoVida {
+public class Nagini extends ObjetoJugadorVida {
 
 	protected static int vidaBase=1500;
 	protected static int tam=2;
@@ -14,7 +14,7 @@ public class Nagini extends ObstaculoVida {
 		super(celda,vidaBase,tam,imagen,mini,nombre,precio);
 	}
 	
-	public Obstaculo nuevo() {
+	public ObjetoJugador nuevo() {
 		return new Nagini(null);
 	}
 	

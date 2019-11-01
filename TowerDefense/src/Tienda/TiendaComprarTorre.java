@@ -18,7 +18,7 @@ public class TiendaComprarTorre implements TiendaEstado {
 	}
 
 	@Override
-	public void selecciontar(Celda c) {
+	public void seleccionar(Celda c) {
 		int x=c.getX();
 		int y=c.getY();
 		if(Controlador.getControlador().agregarElemento(proxTorre,x, y)) {

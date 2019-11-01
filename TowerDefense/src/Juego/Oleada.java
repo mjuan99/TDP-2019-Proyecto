@@ -8,7 +8,7 @@ import java.util.ArrayDeque;
 import java.util.Queue;
 
 import Objetos.Huevo;
-import Objetos.Obstaculo;
+import Objetos.ObjetoMapa;
 import Objetos.Piedra;
 import Personajes.Enemigo;
 import Personajes.Enemigo1;
@@ -20,7 +20,7 @@ import Personajes.Enemigo6;
 
 public class Oleada {
 	protected Queue<Enemigo> [] colas;
-	protected Queue<Obstaculo> obstaculos;
+	protected Queue<ObjetoMapa> obstaculos;
 	@SuppressWarnings("unchecked")
 	public Oleada(String rutaOleada) {
 		colas=(ArrayDeque<Enemigo>[])new ArrayDeque[6];
@@ -48,13 +48,13 @@ public class Oleada {
 			for(int j=0;j<filas[i].length();j++)
 				colas[i].add(getEnemigo(filas[i].charAt(j)));
 		}
-		obstaculos=new ArrayDeque<Obstaculo>(filas[6].length());
+		obstaculos=new ArrayDeque<ObjetoMapa>(filas[6].length());
 		for(int j=0;j<filas[6].length();j++)
 			obstaculos.add(getObstaculo(filas[6].charAt(j)));
 	}
 	
-	private Obstaculo getObstaculo(char c) {
-		Obstaculo o=null;
+	private ObjetoMapa getObstaculo(char c) {
+		ObjetoMapa o=null;
 		switch(c) {
 		case 't':{o=new Huevo(null);break;}
 		case 'v':{o=new Piedra(null);break;}
@@ -62,7 +62,7 @@ public class Oleada {
 		return o;
 	}
 	
-	public Queue<Obstaculo> getColaObstaculos() {
+	public Queue<ObjetoMapa> getColaObstaculos() {
 		return obstaculos;
 	}
 	

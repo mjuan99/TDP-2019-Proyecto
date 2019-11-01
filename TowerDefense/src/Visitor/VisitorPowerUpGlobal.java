@@ -1,7 +1,9 @@
 package Visitor;
 
-import Objetos.ObstaculoTiempo;
-import Objetos.ObstaculoVida;
+import Objetos.ObjetoJugadorTiempo;
+import Objetos.ObjetoJugadorVida;
+import Objetos.ObjetoMapaTiempo;
+import Objetos.ObjetoMapaVida;
 import Objetos.Proyectil;
 import Personajes.Enemigo;
 import Personajes.Torre;
@@ -29,13 +31,16 @@ public class VisitorPowerUpGlobal extends Visitor {
 	}
 
 	@Override
-	public void visit(Proyectil proyectil) {}
+	public void visit(ObjetoJugadorVida objeto) {}
 
 	@Override
-	public void visit(ObstaculoVida obstaculo) {}
+	public void visit(ObjetoJugadorTiempo objeto) {}
 
 	@Override
-	public void visit(ObstaculoTiempo obstaculo) {}
+	public void visit(ObjetoMapaVida objeto) {}
+
+	@Override
+	public void visit(ObjetoMapaTiempo objeto) {}
 
 	@Override
 	public void visit(BombaRecolectable b) {}
@@ -51,5 +56,8 @@ public class VisitorPowerUpGlobal extends Visitor {
 
 	@Override
 	public void visit(EscudoRecolectable e) {}
+
+	@Override
+	public void visit(Proyectil p) {}
 
 }

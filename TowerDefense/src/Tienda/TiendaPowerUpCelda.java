@@ -12,11 +12,11 @@ public class TiendaPowerUpCelda implements TiendaEstado {
 
 	@Override
 	public void seleccionar(Torre t) {
-		//nada
+		seleccionar(t.getCelda());
 	}
 
 	@Override
-	public void selecciontar(Celda c) {
+	public void seleccionar(Celda c) {
 		miPowerUp.activar(c);
 		Tienda.getTienda().deshabilitarUltimoPowerUp();
 		Tienda.getTienda().setEstado(new TiendaDefaultEstado());

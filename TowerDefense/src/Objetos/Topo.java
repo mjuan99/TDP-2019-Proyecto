@@ -2,7 +2,7 @@ package Objetos;
 
 import Juego.Celda;
 
-public class Topo extends ObstaculoTiempo {
+public class Topo extends ObjetoJugadorTiempo {
 	protected static int vidaBase=50;
 	protected static int tam=1;
 	protected static String imagen="./src/Sprites/Obstaculos/Topo.gif";
@@ -16,7 +16,7 @@ public class Topo extends ObstaculoTiempo {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public Obstaculo nuevo() {
+	public ObjetoJugador nuevo() {
 		return new Topo(null);
 	}
 }

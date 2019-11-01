@@ -8,7 +8,7 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
 import Objetos.Nagini;
-import Objetos.Obstaculo;
+import Objetos.ObjetoJugador;
 import Objetos.Oso;
 import Objetos.Slime;
 import Objetos.Topo;
@@ -157,7 +157,7 @@ public class GUI extends JFrame{
 			this.add(btTorres[i]);
 		}
 		btObjetos=new BotonObjeto[4];
-		Obstaculo[] objetos= {new Nagini(null), new Slime(null), new Topo(null), new Oso(null)};
+		ObjetoJugador[] objetos= {new Nagini(null), new Slime(null), new Topo(null), new Oso(null)};
 		for(int i=0;i<4;i++) {
 			btObjetos[i]=new BotonObjeto(objetos[i]);
 			btObjetos[i].setBounds(1056,320+i*64,pixel,64);

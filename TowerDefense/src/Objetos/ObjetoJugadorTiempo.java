@@ -4,16 +4,15 @@ import Juego.Celda;
 import Juego.Elemento;
 import Visitor.Visitor;
 
-public  abstract class ObstaculoTiempo extends Obstaculo {
+public  abstract class ObjetoJugadorTiempo extends ObjetoJugador {
 	
 	protected int tiempo;
 	protected String nombre;
 
-	protected ObstaculoTiempo(Celda celda, int vidaMax,int tamano, String rutaImagen, int tiempo, String mini,String nombre,int precio) {
+	protected ObjetoJugadorTiempo(Celda celda, int vidaMax,int tamano, String rutaImagen, int tiempo, String mini,String nombre,int precio) {
 		super(celda, vidaMax,tamano, rutaImagen,mini,precio);
 		this.tiempo=tiempo;
 		this.nombre=nombre;
-		// TODO Auto-generated constructor stub
 	}
 	
 	public void accept(Visitor v) {

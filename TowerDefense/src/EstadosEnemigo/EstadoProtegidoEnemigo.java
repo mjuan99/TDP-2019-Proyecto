@@ -14,7 +14,7 @@ public class EstadoProtegidoEnemigo implements EstadoDefensaEnemigo {
 
 	@Override
 	public void danar(Elemento e, int dano) {
-		e.getComponenteGrafica().setIcon(new ImageIcon(e.getRutaImagen()));
+		miEnemigo.getComponenteGrafica().setIcon(new ImageIcon(miEnemigo.getRutaImagen()));
 		miEnemigo.setEstadoDefensa(new EstadoDefaultDefensaE(miEnemigo));
 	}
 

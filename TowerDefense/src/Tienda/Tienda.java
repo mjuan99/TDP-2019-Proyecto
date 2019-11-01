@@ -1,20 +1,15 @@
 package Tienda;
 
 import Juego.Celda;
-import Juego.Elemento;
 import Juego.GUI;
-import Juego.Jugador;
-import Objetos.Obstaculo;
+import Objetos.ObjetoJugador;
 import Personajes.Torre;
 import PowerUpsEfecto.*;
-import PowerUpsRecolectable.*;
 
 public class Tienda {
 	protected int ultPowerUp;
 	protected TiendaEstado estado;
 	private static Tienda tienda;
-	protected Jugador jugador;
-	protected Torre proxTorre;
 	protected boolean premiosDisponibles[];
 	
 	private Tienda () {
@@ -24,10 +19,6 @@ public class Tienda {
 			premiosDisponibles[i]=false;
 	}
 	
-	public void setEstado(TiendaEstado e){
-		estado=e;
-	}
-	
 	public static Tienda getTienda() {
 		if (tienda==null)
 			return (tienda=new Tienda());
@@ -35,17 +26,28 @@ public class Tienda {
 			return tienda;
 	}
 	
+	public void comprar(Torre t) {
+		estado=new TiendaComprarTorre(t);
+	}
+	
+	public void comprar(ObjetoJugador o) {
+		estado=new TiendaComprarObstaculo(o);
+	}
+	
+	public void vender() {
+		estado=new TiendaVenderTorre();
+	}
+	
+	public void setEstado(TiendaEstado e){
+		estado=e;
+	}
+	
 	public void seleccionar(Torre t) {
 		estado.seleccionar(t);
 	}
 	
 	public void seleccionar(Celda c) {
-		estado.selecciontar(c);
-	}
-	
-	public void usar(BombaEfecto b) {
-		ultPowerUp=2;
-		estado=new TiendaPowerUpCelda(b);
+		estado.seleccionar(c);
 	}
 	
 	public void usar(CongelarEfecto c) {
@@ -56,6 +58,11 @@ public class Tienda {
 	public void usar(DobleFuerzaEfecto d) {
 		GUI.getGUI().habilitarBotonPremio(1, false);
 		d.activar();
+	}
+	
+	public void usar(BombaEfecto b) {
+		ultPowerUp=2;
+		estado=new TiendaPowerUpCelda(b);
 	}
 	
 	public void usar(EscudoEfecto e) {
@@ -95,43 +102,6 @@ public class Tienda {
 	private void setDisponible(int i) {
 		premiosDisponibles[i]=true;
 		GUI.getGUI().habilitarBotonPremio(i,true);
-	}
-	
-	public void comprar(Torre t) {
-		estado=new TiendaComprarTorre(t);
-	}
-	
-	public void comprar(Obstaculo o) {
-		estado=new TiendaComprarObstaculo(o);
-	}
-	
-	public void vender() {
-		estado=new TiendaVenderTorre();
-	}
-	
-	/*public void ubicar(int x, int y) {
-		if(proxTorre!=null&&Controlador.getControlador().agregarTorre(proxTorre,x, y)) {
-			//jugador.decrementarOro(proxTorre.getPrecio());
-			proxTorre=null;
-			GUI.getGUI().deseleccionarBotones();
-		}
-	}*/
-	
-	public void comprar(PowerUpRecolectable p) {
-		/*if(jugador.getOro()>=p.getPrecio()) {
-			jugador.decrementarOro(p.getPrecio());
-		}*/
-	}
-	//la tienda deberia ocuparse de habilitar o deshabilitar los botones de compra
-	public boolean disponible(Elemento e) {
-		/*boolean toReturn;
-		if(jugador.getOro()>=e.getPrecio()) {
-			toReturn=true;
-		}
-		else {
-			toReturn=false;
-		}*/
-		return false;
 	}
 	
 }

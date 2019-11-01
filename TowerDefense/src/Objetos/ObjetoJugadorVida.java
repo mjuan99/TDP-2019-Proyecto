@@ -3,10 +3,10 @@ package Objetos;
 import Juego.Celda;
 import Visitor.Visitor;
 
-public abstract class ObstaculoVida extends Obstaculo {
+public abstract class ObjetoJugadorVida extends ObjetoJugador {
 	protected String nombre;
 
-	protected ObstaculoVida(Celda celda, int vidaMax,int tamano, String rutaImagen,String mini,String nombre,int precio) {
+	protected ObjetoJugadorVida(Celda celda, int vidaMax,int tamano, String rutaImagen,String mini,String nombre,int precio) {
 		super(celda, vidaMax,tamano, rutaImagen,mini,precio);
 		this.nombre=nombre;
 	}

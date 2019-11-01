@@ -16,54 +16,36 @@ public class VisitorAliado extends Visitor {
 		this.miTorre=miTorre;
 	}
 
-	public void visit(Torre torre) {
-		//nada
-	}
+	public void visit(Torre torre) {}
 	
 	public void visit(Enemigo enemigo) {
 		miTorre.atacar();
 	}
 
-	public void visit(Proyectil proyectil) {
-		//nada
-	}
+	public void visit(Proyectil proyectil) {}
 
-	public void visit(BombaRecolectable powerup) {
-		//realizar metodo de adquisicion
-
-	}
+	public void visit(BombaRecolectable powerup) {}
 	
-	public void visit(DobleFuerzaRecolectable powerup) {
-//		miTorre.atacar(danio*2);
-	}
+	public void visit(DobleFuerzaRecolectable powerup) {}
 
 	@Override
-	public void visit(ObstaculoVida obstaculo) {
-		//nada
-		
-	}
+	public void visit(ObjetoJugadorVida objeto) {}
 
 	@Override
-	public void visit(ObstaculoTiempo obstaculo) {
-		//nada
-		
-	}
+	public void visit(ObjetoJugadorTiempo objeto) {}
 
 	@Override
-	public void visit(CongelarRecolectable c) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void visit(ObjetoMapaVida objeto) {}
 
 	@Override
-	public void visit(TorreAleatoriaRecolectable t) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void visit(ObjetoMapaTiempo objeto) {}
 
 	@Override
-	public void visit(EscudoRecolectable e) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void visit(CongelarRecolectable c) {}
+
+	@Override
+	public void visit(TorreAleatoriaRecolectable t) {}
+
+	@Override
+	public void visit(EscudoRecolectable e) {}
 }

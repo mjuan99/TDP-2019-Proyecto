@@ -1,7 +1,9 @@
 package Visitor;
 
-import Objetos.ObstaculoTiempo;
-import Objetos.ObstaculoVida;
+import Objetos.ObjetoJugadorTiempo;
+import Objetos.ObjetoJugadorVida;
+import Objetos.ObjetoMapaTiempo;
+import Objetos.ObjetoMapaVida;
 import Objetos.Proyectil;
 import Objetos.ProyectilEnemigo;
 import Personajes.Enemigo;
@@ -29,58 +31,51 @@ public class VisitorProyectilEnemigo extends Visitor {
 	}
 
 	@Override
-	public void visit(Enemigo enemigo) {
-		//nada
-
-	}
+	public void visit(Enemigo enemigo) {}
 
 	@Override
-	public void visit(Proyectil proyectil) {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void visit(ObstaculoVida obstaculo) {
-		if(obstaculo.estaVivo()) {
-			obstaculo.danar(miProyectil.getCreador(),miProyectil.getDano());
+	public void visit(ObjetoJugadorVida objeto) {
+		if(objeto.estaVivo()) {
+			objeto.danar(miProyectil.getCreador(),miProyectil.getDano());
 			miProyectil.morir();
 		}
 	}
 
 	@Override
-	public void visit(ObstaculoTiempo obstaculo) {
+	public void visit(ObjetoJugadorTiempo objeto) {
 		miProyectil.morir();
 	}
 
 	@Override
-	public void visit(BombaRecolectable b) {
-		// TODO Auto-generated method stub
+	public void visit(ObjetoMapaVida objeto) {
+		if(objeto.estaVivo()) {
+			objeto.danar(miProyectil.getCreador(),miProyectil.getDano());
+			miProyectil.morir();
+		}
 		
 	}
 
 	@Override
-	public void visit(CongelarRecolectable c) {
-		// TODO Auto-generated method stub
-		
+	public void visit(ObjetoMapaTiempo objeto) {
+		miProyectil.morir();
 	}
 
 	@Override
-	public void visit(DobleFuerzaRecolectable d) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void visit(BombaRecolectable b) {}
 
 	@Override
-	public void visit(TorreAleatoriaRecolectable t) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void visit(CongelarRecolectable c) {}
 
 	@Override
-	public void visit(EscudoRecolectable e) {
-		// TODO Auto-generated method stub
-		
-	}
+	public void visit(DobleFuerzaRecolectable d) {}
+
+	@Override
+	public void visit(TorreAleatoriaRecolectable t) {}
+
+	@Override
+	public void visit(EscudoRecolectable e) {}
+
+	@Override
+	public void visit(Proyectil p) {}
 
 }
