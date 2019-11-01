@@ -69,13 +69,10 @@ public abstract class Torre extends Personaje{
 		v.visit(this);
 	}
 	
-	public void accept() {
-		visitor.visit(this);
-	}
-	
 	public void actuar() {
-		Iterator<Elemento> it=Mapa.getMapa().elementosRango(this).iterator();
+		Iterator<Elemento> it;
 		if(contadorPulsos==0) {
+			it=Mapa.getMapa().elementosRango(this).iterator();
 			ataco=false;
 			while(!ataco&&it.hasNext())
 				it.next().accept(visitor);
@@ -89,10 +86,6 @@ public abstract class Torre extends Personaje{
 		return dano;
 	}
 	
-	public int getAlcance() {
-		return alcance;
-	}
-	
 	public String getRutaProyectil() {
 		return rutaProyectil;
 	}
@@ -104,8 +97,6 @@ public abstract class Torre extends Personaje{
 	}
 	
 	public String descripcion() {
-		String cadena="";
-		cadena+=nombre+"\n"+"$"+precio+"\n"+"Vida: "+vida+"\n"+"Daño: "+dano+"  ("+alcance+")";
-		return cadena;
+		return nombre+"\n"+"$"+precio+"\n"+"Vida: "+vida+"\n"+"Daño: "+dano+"  ("+alcance+")";
 	}
 }

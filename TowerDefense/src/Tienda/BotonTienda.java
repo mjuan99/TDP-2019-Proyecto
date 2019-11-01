@@ -29,39 +29,28 @@ public class BotonTienda extends JButton {
 	public void deseleccionar() {
 		this.setBorder(null);
 	}
-}
-class OyenteBotonTienda implements MouseListener{
-	BotonTienda boton;
-	public OyenteBotonTienda(BotonTienda boton) {
-		this.boton=boton;
-	}
-	@Override
-	public void mouseClicked(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mouseEntered(MouseEvent e) {
-		boton.setCursor(new Cursor(Cursor.HAND_CURSOR));
-	}
-
-	@Override
-	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
 	
+	private class OyenteBotonTienda implements MouseListener{
+		BotonTienda boton;
+		public OyenteBotonTienda(BotonTienda boton) {
+			this.boton=boton;
+		}
+		@Override
+		public void mouseClicked(MouseEvent e) {}
+
+		@Override
+		public void mouseEntered(MouseEvent e) {
+			boton.setCursor(new Cursor(Cursor.HAND_CURSOR));
+		}
+
+		@Override
+		public void mouseExited(MouseEvent e) {}
+
+		@Override
+		public void mousePressed(MouseEvent e) {}
+
+		@Override
+		public void mouseReleased(MouseEvent e) {}
+		
+	}
 }

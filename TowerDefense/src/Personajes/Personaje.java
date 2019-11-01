@@ -17,21 +17,8 @@ public abstract class Personaje extends Elemento {
 		this.rutaProyectil=rutaProyectil;
 		ataco=false;
 	}
-	public int getDano() {
-		return dano;
-	}
-	
-	public void actuar() {}
-	
-	public void setDano(int dano) {
-		this.dano = dano;
-	}
 	public int getAlcance() {
 		return alcance;
 	}
-	public void setAlcance(int alcance) {
-		this.alcance = alcance;
-	}
-	
 	
 }

@@ -1,4 +1,4 @@
-package Juego;
+package Tienda;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -6,6 +6,8 @@ import Visitor.VisitorClick;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+
+import Juego.Elemento;
 
 @SuppressWarnings("serial")
 public class Etiqueta extends JLabel{
@@ -16,7 +18,7 @@ public class Etiqueta extends JLabel{
 		this.addMouseListener(new OyenteClick());
 	}
 
-	public class OyenteClick implements MouseListener{
+	private class OyenteClick implements MouseListener{
 
 		@Override
 		public void mouseClicked(MouseEvent e) {
@@ -24,28 +26,16 @@ public class Etiqueta extends JLabel{
 		}
 
 		@Override
-		public void mouseEntered(MouseEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
+		public void mouseEntered(MouseEvent e) {}
 
 		@Override
-		public void mouseExited(MouseEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
+		public void mouseExited(MouseEvent e) {}
 
 		@Override
-		public void mousePressed(MouseEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
+		public void mousePressed(MouseEvent e) {}
 
 		@Override
-		public void mouseReleased(MouseEvent e) {
-			// TODO Auto-generated method stub
-			
-		}
+		public void mouseReleased(MouseEvent e) {}
 		
 	}
 }

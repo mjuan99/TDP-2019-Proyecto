@@ -23,14 +23,15 @@ public class TorreAleatoriaEfecto extends PowerUpCelda {
 	@Override
 	public void activar(Celda c) {
 		if(c.getElem()==null&&c.getX()<9)
-			Mapa.getMapa().crearElemento(getTorre((int)(Math.random()*7)), c.getX(), c.getY());
+			Mapa.getMapa().crearElemento(getTorre(), c.getX(), c.getY());
 	}
 	public void usar() {
 		Tienda.getTienda().usar(this);
 	}
 	
-	private Torre getTorre(int i) {
+	private Torre getTorre() {
 		Torre t=null;
+		int i=(int)(Math.random()*7);
 		switch(i) {
 		case 0:{t=new Alien(null);break;}
 		case 1:{t=new Dragon(null);break;}

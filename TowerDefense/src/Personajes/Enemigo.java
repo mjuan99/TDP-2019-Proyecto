@@ -16,7 +16,6 @@ import Juego.Elemento;
 import Juego.Jugador;
 import Juego.Mapa;
 import Objetos.ProyectilEnemigo;
-import PowerUpsRecolectable.*;
 import Visitor.Visitor;
 import Visitor.VisitorEnemigo;
 
@@ -108,9 +107,6 @@ public abstract class Enemigo extends Personaje{
 	}
 	
 	public void morir() {
-		//ImageIcon img=new ImageIcon("./src/Sprites/Efectos/Explosion2.gif");
-		//img.getImage().flush();
-		//mapa.getControlador().getGui().setearLabel(this,"./src/Sprites/Efectos/Explosion2.gif");
 		Jugador.getJugador().sumarPuntos(puntos);
 		Jugador.getJugador().aumentarOro((int)(Math.random()*(oroMax-oroMin))+oroMin);
 		Celda celda= this.getCelda();
@@ -123,21 +119,8 @@ public abstract class Enemigo extends Personaje{
 		componenteGrafica.setEnabled(false);
 		AutoRemove a=new AutoRemove(componenteGrafica,2000);
 		a.start();
-		if((int)(Math.random()*10)<3)
-			Controlador.getControlador().crearPowerUp(getPowerUp((int)(Math.random()*5),celda));
+		Controlador.getControlador().crearPowerUpAleatorio(celda);
 	
-	}
-	
-	private PowerUpRecolectable getPowerUp(int i,Celda celda) {
-		PowerUpRecolectable p=null;
-		switch(i) {
-		case 0:{p=new BombaRecolectable(celda);break;}
-		case 1:{p=new EscudoRecolectable(celda);break;}
-		case 2:{p=new CongelarRecolectable(celda);break;}
-		case 3:{p=new DobleFuerzaRecolectable(celda);break;}
-		case 4:{p=new TorreAleatoriaRecolectable(celda);break;}
-		}
-		return p;
 	}
 	
 

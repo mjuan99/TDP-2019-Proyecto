@@ -5,7 +5,6 @@ import javax.swing.JLabel;
 public class AutoRemove extends Thread {
 	protected JLabel componente;
 	protected int t;
-	protected String rutaImagen;
 	public AutoRemove(JLabel componente, int t) {
 		this.componente=componente;
 		this.t=t;

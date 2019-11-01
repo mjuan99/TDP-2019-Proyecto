@@ -29,49 +29,27 @@ public class VisitorPowerUpGlobal extends Visitor {
 	}
 
 	@Override
-	public void visit(Proyectil proyectil) {
-		// TODO Auto-generated method stub
-
-	}
+	public void visit(Proyectil proyectil) {}
 
 	@Override
-	public void visit(ObstaculoVida obstaculo) {
-		miPowerUp.aplicar(obstaculo);
-	}
+	public void visit(ObstaculoVida obstaculo) {}
 
 	@Override
-	public void visit(ObstaculoTiempo obstaculo) {
-		miPowerUp.aplicar(obstaculo);
-	}
+	public void visit(ObstaculoTiempo obstaculo) {}
 
 	@Override
-	public void visit(BombaRecolectable b) {
-		// TODO Auto-generated method stub
-
-	}
+	public void visit(BombaRecolectable b) {}
 
 	@Override
-	public void visit(CongelarRecolectable c) {
-		// TODO Auto-generated method stub
-
-	}
+	public void visit(CongelarRecolectable c) {}
 
 	@Override
-	public void visit(DobleFuerzaRecolectable d) {
-		// TODO Auto-generated method stub
-
-	}
+	public void visit(DobleFuerzaRecolectable d) {}
 
 	@Override
-	public void visit(TorreAleatoriaRecolectable t) {
-		// TODO Auto-generated method stub
-
-	}
+	public void visit(TorreAleatoriaRecolectable t) {}
 
 	@Override
-	public void visit(EscudoRecolectable e) {
-		// TODO Auto-generated method stub
-
-	}
+	public void visit(EscudoRecolectable e) {}
 
 }

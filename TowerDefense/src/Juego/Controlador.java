@@ -54,20 +54,31 @@ public class Controlador {
 		}
 		return false;
 	}
-
-	/*public boolean agregarTorre(Torre t,int x, int y) {
-		if(Mapa.getMapa().posicionValida(t, x, y)) {
-			Mapa.getMapa().crearElemento(t, x, y);
-			return true;
-		}
-		return false;
-	}*/
+	
 	public void activarOleada() {
 		Mapa.getMapa().activarOleada();
 	}
 
 	public void crearPowerUp(PowerUpRecolectable p) {
 		Mapa.getMapa().crearElementoIntangible(p);
+	}
+	
+	public void crearPowerUpAleatorio(Celda celda) {
+		if((int)(Math.random()*10)<3)
+			Mapa.getMapa().crearElementoIntangible(getPowerUp(celda));
+	}
+	
+	private PowerUpRecolectable getPowerUp(Celda celda) {
+		PowerUpRecolectable p=null;
+		int i=(int)(Math.random()*5);
+		switch(i) {
+		case 0:{p=new BombaRecolectable(celda);break;}
+		case 1:{p=new EscudoRecolectable(celda);break;}
+		case 2:{p=new CongelarRecolectable(celda);break;}
+		case 3:{p=new DobleFuerzaRecolectable(celda);break;}
+		case 4:{p=new TorreAleatoriaRecolectable(celda);break;}
+		}
+		return p;
 	}
 	
 }
