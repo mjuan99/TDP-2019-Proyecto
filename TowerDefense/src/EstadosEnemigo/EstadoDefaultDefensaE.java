@@ -11,7 +11,7 @@ public class EstadoDefaultDefensaE implements EstadoDefensaEnemigo{
 
 	@Override
 	public void danar(Elemento e, int dano) {
-		if(miEnemigo.getVida()<dano)
+		if(miEnemigo.getVida()<=dano)
 			miEnemigo.morir();
 		else
 			miEnemigo.setVida(miEnemigo.getVida()-dano);

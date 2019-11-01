@@ -48,10 +48,14 @@ public class GUI extends JFrame{
 		contentPane.setLayout(null);
 		crearFondo();
 		agregarBotones();
-		Integer[] niveles= {1,2};
+		String[] niveles= {"1","2","Cancelar"};
 		int nivel=JOptionPane.showOptionDialog(contentPane, "Elegir nivel", "Nivel",JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, niveles, null)+1;
-		Mapa.getMapa().setNivel(nivel);
-		agregarJugador();
+		if(nivel==3)
+			System.exit(0);
+		else {
+			Mapa.getMapa().setNivel(nivel);
+			agregarJugador();
+		}
 	}
 	
 	public static GUI getGUI() {
@@ -116,13 +120,28 @@ public class GUI extends JFrame{
 	}
 	
 	public void ganar() {
-		JOptionPane.showMessageDialog(null, "Ganaste\nPuntos: "+Jugador.getJugador().getPuntos());
-		System.exit(0);
+		terminar("Ganaste");
 	}
 	
 	public void perder() {
-		JOptionPane.showMessageDialog(null, "Perdiste\nPuntos: "+Jugador.getJugador().getPuntos());
-		System.exit(0);
+		terminar("Perdiste");
+	}
+	
+	private void terminar(String mensaje) {
+		JOptionPane.showMessageDialog(null, mensaje+"\nPuntos: "+Jugador.getJugador().getPuntos());
+		String[] niveles= {"1","2","Cancelar"};
+		int nivel=JOptionPane.showOptionDialog(contentPane, "Elegir nivel", "Nivel",JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, niveles, null)+1;
+		if(nivel==3)
+			System.exit(0);
+		else {
+			Mapa.getMapa().setNivel(nivel);
+			Jugador.getJugador().reset();
+			this.actualizarOro();
+			this.actualizarPuntos();
+			for(int i=0;i<btPowerUps.length;i++)
+				habilitarBotonPremio(i,false);
+			Tienda.getTienda().reset();
+		}
 	}
 	
 	public void agregarJugador() {
