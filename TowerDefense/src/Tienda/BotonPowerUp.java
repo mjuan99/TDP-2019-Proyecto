@@ -55,7 +55,7 @@ public class BotonPowerUp extends BotonTienda {
 
 		@Override
 		public void mouseReleased(MouseEvent arg0) {
-			if(adentro/*&&isEnabled()*/) {
+			if(adentro&&isEnabled()) {
 				seleccionar();
 				miPowerUp.usar();
 			}

@@ -9,8 +9,7 @@ public class Jugador {
 	protected int presupuesto;
 	protected int puntos;
 	private Jugador() {
-		puntos=0;
-		presupuesto=Mapa.getMapa().getNivel().getPresupuestoBase();
+		reset();
 	}
 	
 	public static Jugador getJugador() {
@@ -18,6 +17,11 @@ public class Jugador {
 			return (jugador=new Jugador());
 		else
 			return jugador;
+	}
+	
+	public void reset() {
+		puntos=0;
+		presupuesto=Mapa.getMapa().getNivel().getPresupuestoBase();		
 	}
 	
 	public void sumarPuntos(int p) {

@@ -15,7 +15,7 @@ public class Tienda {
 	private Tienda () {
 		estado=new TiendaDefaultEstado();
 		premiosDisponibles=new boolean[5];
-		for(int i=0;i<5;i++)
+		for(int i=0;i<premiosDisponibles.length;i++)
 			premiosDisponibles[i]=false;
 	}
 	
@@ -24,6 +24,12 @@ public class Tienda {
 			return (tienda=new Tienda());
 		else
 			return tienda;
+	}
+	
+	public void reset() {
+		estado=new TiendaDefaultEstado();
+		for(int i=0;i<premiosDisponibles.length;i++)
+			premiosDisponibles[i]=false;
 	}
 	
 	public void comprar(Torre t) {
