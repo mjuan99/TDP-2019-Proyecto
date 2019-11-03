@@ -8,7 +8,7 @@ public class Nagini extends ObjetoJugadorVida {
 	protected static String imagen ="./src/Sprites/Obstaculos/Onix.gif";
 	protected static String nombre="Nagini";
 	protected static String mini="./src/Sprites/Tienda/Nagini.png";
-	protected static int precio=100;
+	protected static int precio=350;
 	
 	public Nagini(Celda celda) {
 		super(celda,vidaBase,tam,imagen,mini,nombre,precio);

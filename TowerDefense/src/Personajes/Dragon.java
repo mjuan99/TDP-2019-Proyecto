@@ -3,10 +3,10 @@ import Juego.Celda;
 
 public class Dragon extends Torre {
 
-	protected static int precio=50;
+	protected static int precio=500;
 	protected static int vidaBase=600;
 	protected static int tam=1;
-	protected static int danoBase=50;
+	protected static int danoBase=350;
 	protected static int alcanceBase=6;
 	protected static String imagen ="./src/Sprites/Torres/Dragon.gif";
 	protected static String proyectil="./src/Sprites/Ataques/AtaqueDragon.gif";

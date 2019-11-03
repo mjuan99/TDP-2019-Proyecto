@@ -3,10 +3,10 @@ import Juego.Celda;
 
 public class Fenix extends Torre {
 
-	protected static int precio=50;
-	protected static int vidaBase=250;
+	protected static int precio=250;
+	protected static int vidaBase=600;
 	protected static int tam=1;
-	protected static int danoBase=50;
+	protected static int danoBase=250;
 	protected static int alcanceBase=5;
 	protected static String imagen ="./src/Sprites/Torres/Fenix.gif";
 	protected static String proyectil="./src/Sprites/Ataques/AtaqueFenix.gif";

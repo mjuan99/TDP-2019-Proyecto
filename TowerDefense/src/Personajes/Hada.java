@@ -3,10 +3,10 @@ import Juego.Celda;
 
 public class Hada extends Torre{
 
-	protected static int precio=50;
-	protected static int vidaBase=250;
+	protected static int precio=100;
+	protected static int vidaBase=500;
 	protected static int tam=1;
-	protected static int danoBase=50;
+	protected static int danoBase=100;
 	protected static int alcanceBase=3;
 	protected static String imagen ="./src/Sprites/Torres/Hada.gif";
 	protected static String proyectil="./src/Sprites/Ataques/AtaqueHada.gif";

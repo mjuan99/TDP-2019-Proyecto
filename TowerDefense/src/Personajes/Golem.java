@@ -3,11 +3,11 @@ import Juego.Celda;
 
 public class Golem extends Torre {
 
-	protected static int precio=50;
-	protected static int vidaBase=250;
+	protected static int precio=350;
+	protected static int vidaBase=1200;
 	protected static int tam=1;
-	protected static int danoBase=50;
-	protected static int alcanceBase=4;
+	protected static int danoBase=175;
+	protected static int alcanceBase=5;
 	protected static String imagen ="./src/Sprites/Torres/Golem.gif";
 	protected static String proyectil="./src/Sprites/Ataques/AtaqueGolem.gif";
 	protected static String nomb="Golem";

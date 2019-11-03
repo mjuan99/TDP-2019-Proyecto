@@ -14,12 +14,12 @@ public class Nivel {
 	public Nivel(int n) {
 		oleadas=new ArrayDeque<Oleada>(3);
 		if(n==1) {
-			presupuestoBase=500;
+			presupuestoBase=1200;
 			for(int i=0;i<3;i++)
 				oleadas.add(new Oleada("./src/Oleadas/Nivel1/Oleada"+(i+1)+".txt"));
 		}
 		else {
-			presupuestoBase=300;
+			presupuestoBase=800;
 			for(int i=0;i<3;i++)
 				oleadas.add(new Oleada("./src/Oleadas/Nivel2/Oleada"+(i+1)+".txt"));
 		}

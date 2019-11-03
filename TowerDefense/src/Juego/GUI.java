@@ -169,14 +169,14 @@ public class GUI extends JFrame{
 
 	private void agregarBotones() {
 		btTorres= new BotonTorre[7];
-		Torre []torres={new Alien(null),new Dinosaurio(null),new Dragon(null),new Fantasma(null),new Fenix(null),new Golem(null),new Hada(null)};
+		Torre [] torres= {new Hada(null),new Fantasma(null),new Dinosaurio(null),new Alien(null), new Fenix(null),new Golem(null), new Dragon(null)};
 		for(int i=0;i<btTorres.length;i++) {
 			btTorres[i]= new BotonTorre(torres[i]);
 			btTorres[i].setBounds(i*120,6*pixel, 120, 64);
 			this.add(btTorres[i]);
 		}
 		btObjetos=new BotonObjeto[4];
-		ObjetoJugador[] objetos= {new Nagini(null), new Slime(null), new Topo(null), new Oso(null)};
+		ObjetoJugador[] objetos= {new Topo(null),new Slime(null),new Oso(null),new Nagini(null)};
 		for(int i=0;i<btObjetos.length;i++) {
 			btObjetos[i]=new BotonObjeto(objetos[i]);
 			btObjetos[i].setBounds(1056,320+i*64,pixel,64);

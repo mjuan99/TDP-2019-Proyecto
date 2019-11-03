@@ -64,7 +64,7 @@ public class Controlador {
 	}
 	
 	public void crearPowerUpAleatorio(Celda celda) {
-		if((int)(Math.random()*10)<3)
+		if((int)(Math.random()*10)<2)
 			Mapa.getMapa().crearElementoIntangible(getPowerUp(celda));
 	}
 	

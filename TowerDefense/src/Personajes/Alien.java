@@ -2,11 +2,11 @@ package Personajes;
 import Juego.Celda;
 
 public class Alien extends Torre {
-	protected static int precio=50;
-	protected static int vidaBase=500;
+	protected static int precio=200;
+	protected static int vidaBase=700;
 	protected static int tam=1;
-	protected static int danoBase=70;
-	protected static int alcanceBase=3;
+	protected static int danoBase=200;
+	protected static int alcanceBase=4;
 	protected static String imagen ="./src/Sprites/Torres/Alien.gif";
 	protected static String proyectil="./src/Sprites/Ataques/AtaqueAlien.gif";
 	protected static String nomb="Alien";

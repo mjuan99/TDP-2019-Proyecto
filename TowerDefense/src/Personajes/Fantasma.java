@@ -3,10 +3,10 @@ import Juego.Celda;
 
 public class Fantasma extends Torre {
 
-	protected static int precio=50;
-	protected static int vidaBase=250;
+	protected static int precio=120;
+	protected static int vidaBase=300;
 	protected static int tam=1;
-	protected static int danoBase=50;
+	protected static int danoBase=150;
 	protected static int alcanceBase=4;
 	protected static String imagen ="./src/Sprites/Torres/Fantasma.gif";
 	protected static String proyectil="./src/Sprites/Ataques/AtaqueFantasma.gif";

@@ -3,14 +3,14 @@ import Juego.Celda;
 
 public class Enemigo5 extends Enemigo {
 
-	protected static int oroMinBase=20;
-	protected static int oroMaxBase=40;
-	protected static int puntosBase=50;
+	protected static int oroMinBase=50;
+	protected static int oroMaxBase=100;
+	protected static int puntosBase=80;
 	protected static int velocBase=24;
-	protected static int vidaBase=50;
+	protected static int vidaBase=600;
 	protected static int tam=1;
-	protected static int danoBase=50;
-	protected static int alcanceBase=2;
+	protected static int danoBase=200;
+	protected static int alcanceBase=3;
 	protected static String imagen ="./src/Sprites/Enemigos/Enemigo5.gif";
 	protected static String proyectil="./src/Sprites/Ataques/AtaqueBurbuja.gif";
 	protected static String animacionMuerte="./src/Sprites/Efectos/Muertes/Muerte5.gif";
