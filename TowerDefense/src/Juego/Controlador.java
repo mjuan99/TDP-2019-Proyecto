@@ -59,7 +59,7 @@ public class Controlador {
 		Mapa.getMapa().activarOleada();
 	}
 
-	public void crearPowerUp(PowerUpRecolectable p) {
+	public void crearPowerUp(Premio p) {
 		Mapa.getMapa().crearElementoIntangible(p);
 	}
 	
@@ -68,8 +68,8 @@ public class Controlador {
 			Mapa.getMapa().crearElementoIntangible(getPowerUp(celda));
 	}
 	
-	private PowerUpRecolectable getPowerUp(Celda celda) {
-		PowerUpRecolectable p=null;
+	private Premio getPowerUp(Celda celda) {
+		Premio p=null;
 		int i=(int)(Math.random()*5);
 		switch(i) {
 		case 0:{p=new BombaRecolectable(celda);break;}

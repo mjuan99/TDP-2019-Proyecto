@@ -6,11 +6,11 @@ import Juego.Celda;
 import Juego.Elemento;
 import Juego.GUI;
 
-public abstract class PowerUpRecolectable extends Elemento {
+public abstract class Premio extends Elemento {
 	
 
 
-	protected PowerUpRecolectable(Celda celda,int tamano, String rutaImagen) {
+	protected Premio(Celda celda,int tamano, String rutaImagen) {
 		super(celda, 50,tamano, rutaImagen);
 	}
 	
