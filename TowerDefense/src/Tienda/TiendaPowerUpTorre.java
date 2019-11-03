@@ -2,7 +2,7 @@ package Tienda;
 
 import Juego.Celda;
 import Personajes.Torre;
-import PowerUpsEfecto.PowerUpTorre;
+import PowerUps.PowerUpTorre;
 
 public class TiendaPowerUpTorre extends TiendaEstado {
 	protected PowerUpTorre miPowerUp;

@@ -20,7 +20,7 @@ import Personajes.Fenix;
 import Personajes.Golem;
 import Personajes.Hada;
 import Personajes.Torre;
-import PowerUpsEfecto.*;
+import PowerUps.*;
 import Tienda.*;
 
 @SuppressWarnings("serial")
@@ -183,7 +183,7 @@ public class GUI extends JFrame{
 			this.add(btObjetos[i]);
 		}		
 		btPowerUps=new BotonPowerUp[5];
-		PowerUpEfecto[] powerups= {new CongelarEfecto(),new DobleFuerzaEfecto(),new BombaEfecto(),new EscudoEfecto(),new TorreAleatoriaEfecto()};
+		PowerUp[] powerups= {new CongelarEfecto(),new DobleFuerzaEfecto(),new BombaEfecto(),new EscudoEfecto(),new TorreAleatoriaEfecto()};
 		for(int i=0;i<5;i++) {
 			btPowerUps[i]=new BotonPowerUp(powerups[i]);
 			btPowerUps[i].setBounds(960,256+i*64,pixel,64);

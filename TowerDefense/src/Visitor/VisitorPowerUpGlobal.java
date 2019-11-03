@@ -7,7 +7,7 @@ import Objetos.ObjetoMapaVida;
 import Objetos.Proyectil;
 import Personajes.Enemigo;
 import Personajes.Torre;
-import PowerUpsEfecto.PowerUpGlobal;
+import PowerUps.PowerUpGlobal;
 import Premio.BombaRecolectable;
 import Premio.CongelarRecolectable;
 import Premio.DobleFuerzaRecolectable;

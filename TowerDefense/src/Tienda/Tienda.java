@@ -4,7 +4,7 @@ import Juego.Celda;
 import Juego.GUI;
 import Objetos.ObjetoJugador;
 import Personajes.Torre;
-import PowerUpsEfecto.*;
+import PowerUps.*;
 
 public class Tienda {
 	protected int ultPowerUp;
@@ -37,7 +37,7 @@ public class Tienda {
 	}
 	
 	public void comprar(ObjetoJugador o) {
-		estado=new TiendaComprarObstaculo(o);
+		estado=new TiendaComprarObjeto(o);
 	}
 	
 	public void vender() {

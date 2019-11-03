@@ -8,13 +8,13 @@ import java.awt.event.MouseListener;
 import javax.swing.ImageIcon;
 import javax.swing.JTextArea;
 
-import PowerUpsEfecto.PowerUpEfecto;
+import PowerUps.PowerUp;
 
 @SuppressWarnings("serial")
 public class BotonPowerUp extends BotonTienda {
 	protected JTextArea descripcion;
-	protected PowerUpEfecto miPowerUp;
-	public BotonPowerUp(PowerUpEfecto p) {
+	protected PowerUp miPowerUp;
+	public BotonPowerUp(PowerUp p) {
 		super(new ImageIcon(p.getImagen()));
 		miPowerUp=p;
 		descripcion=new JTextArea(p.getDescripcion());
