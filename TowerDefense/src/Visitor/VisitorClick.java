@@ -7,7 +7,7 @@ import Objetos.ObjetoMapaVida;
 import Objetos.Proyectil;
 import Personajes.Enemigo;
 import Personajes.Torre;
-import PowerUpsRecolectable.*;
+import Premio.*;
 import Tienda.Tienda;
 
 public class VisitorClick extends Visitor{

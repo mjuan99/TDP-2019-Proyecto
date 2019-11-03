@@ -1,4 +1,4 @@
-package PowerUpsRecolectable;
+package Premio;
 
 import Juego.Celda;
 

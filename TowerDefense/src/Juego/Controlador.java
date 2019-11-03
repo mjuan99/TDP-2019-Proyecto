@@ -2,7 +2,7 @@ package Juego;
 
 import java.awt.EventQueue;
 
-import PowerUpsRecolectable.*;
+import Premio.*;
 
 public class Controlador {
 	private static Controlador controlador;

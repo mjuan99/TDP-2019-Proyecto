@@ -2,7 +2,7 @@ package Visitor;
 
 import Objetos.*;
 import Personajes.*;
-import PowerUpsRecolectable.*;
+import Premio.*;
 
 public abstract class Visitor {
 	
