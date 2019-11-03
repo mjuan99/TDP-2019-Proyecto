@@ -7,7 +7,7 @@ import Juego.Jugador;
 import Objetos.ObjetoJugador;
 import Personajes.Torre;
 
-public class TiendaComprarObstaculo implements TiendaEstado {
+public class TiendaComprarObstaculo extends TiendaEstado {
 	protected ObjetoJugador proxObstaculo;
 	public TiendaComprarObstaculo(ObjetoJugador o) {
 		proxObstaculo=o;

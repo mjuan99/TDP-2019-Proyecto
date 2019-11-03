@@ -5,10 +5,9 @@ import javax.swing.ImageIcon;
 import Juego.Elemento;
 import Personajes.Torre;
 
-public class EstadoProtegidoAliado implements EstadoDefensaAliado{
-	protected Torre miTorre;
+public class EstadoProtegidoAliado extends EstadoDefensaAliado{
 	public EstadoProtegidoAliado(Torre t) {
-		miTorre=t;
+		super(t);
 		miTorre.getComponenteGrafica().setIcon(new ImageIcon(miTorre.getEstadoProtegido()));
 	}
 

@@ -4,10 +4,9 @@ import Juego.Mapa;
 import Objetos.ProyectilAliado;
 import Personajes.Torre;
 
-public class EstadoDefaultAtaque implements EstadoAtaqueAliado{
-	protected Torre miTorre;
+public class EstadoDefaultAtaque extends EstadoAtaqueAliado{
 	public EstadoDefaultAtaque(Torre t) {
-		miTorre=t;
+		super(t);
 	}
 
 	@Override

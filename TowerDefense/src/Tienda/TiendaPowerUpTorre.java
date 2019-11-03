@@ -4,7 +4,7 @@ import Juego.Celda;
 import Personajes.Torre;
 import PowerUpsEfecto.PowerUpTorre;
 
-public class TiendaPowerUpTorre implements TiendaEstado {
+public class TiendaPowerUpTorre extends TiendaEstado {
 	protected PowerUpTorre miPowerUp;
 	public TiendaPowerUpTorre(PowerUpTorre p) {
 		miPowerUp=p;

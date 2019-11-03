@@ -6,7 +6,7 @@ import Juego.GUI;
 import Juego.Jugador;
 import Personajes.Torre;
 
-public class TiendaComprarTorre implements TiendaEstado {
+public class TiendaComprarTorre extends TiendaEstado {
 	protected Torre proxTorre;
 	public TiendaComprarTorre(Torre t) {
 		proxTorre=t;

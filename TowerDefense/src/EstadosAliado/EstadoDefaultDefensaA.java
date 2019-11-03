@@ -3,10 +3,9 @@ package EstadosAliado;
 import Juego.Elemento;
 import Personajes.Torre;
 
-public class EstadoDefaultDefensaA implements EstadoDefensaAliado{
-	protected Torre miTorre;
+public class EstadoDefaultDefensaA extends EstadoDefensaAliado{
 	public EstadoDefaultDefensaA(Torre t) {
-		miTorre=t;
+		super(t);
 	}
 	@Override
 	public void danar(Elemento e,int dano) {

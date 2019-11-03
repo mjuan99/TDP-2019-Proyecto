@@ -4,7 +4,7 @@ import Juego.Celda;
 import Juego.GUI;
 import Personajes.Torre;
 
-public class TiendaVenderTorre implements TiendaEstado {
+public class TiendaVenderTorre extends TiendaEstado {
 
 	@Override
 	public void seleccionar(Torre t) {

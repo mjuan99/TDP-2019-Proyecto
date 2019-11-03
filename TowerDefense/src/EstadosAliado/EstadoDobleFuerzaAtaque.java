@@ -7,13 +7,12 @@ import Juego.Mapa;
 import Objetos.ProyectilAliado;
 import Personajes.Torre;
 
-public class EstadoDobleFuerzaAtaque implements EstadoAtaqueAliado {
-	protected Torre miTorre;
+public class EstadoDobleFuerzaAtaque extends EstadoAtaqueAliado {
 	protected long inicio;
 	protected int duracion=7000;
 	JLabel componente= new JLabel(new ImageIcon("./src/Sprites/Efectos/DobleFuerza/DobleFuerza.gif"));
 	public EstadoDobleFuerzaAtaque(Torre t) {
-		miTorre=t;
+		super(t);
 		componente.setBounds(0, 0, 96, 96);
 		miTorre.getComponenteGrafica().add(componente);
 		inicio=System.currentTimeMillis();
