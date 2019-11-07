@@ -4,7 +4,6 @@ package Premios;
 
 import Juego.Celda;
 import Juego.Elemento;
-import Juego.GUI;
 
 public abstract class Premio extends Elemento {
 	
