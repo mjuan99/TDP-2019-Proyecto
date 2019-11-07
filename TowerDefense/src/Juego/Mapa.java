@@ -79,6 +79,7 @@ public class Mapa {
 	}
 	
 	public void crearElementoIntangible(Elemento elem) {
+		//crea un objeto que no se reserva para si mismo la celda en la que esta (proyectil o premio recolectable)
 		lista.add(elem);
 		GUI.getGUI().crearElemento(elem);
 	}

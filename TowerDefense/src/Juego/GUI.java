@@ -138,6 +138,7 @@ public class GUI extends JFrame{
 			Jugador.getJugador().reset();
 			this.actualizarOro();
 			this.actualizarPuntos();
+			this.deseleccionarBotones();
 			for(int i=0;i<btPowerUps.length;i++)
 				habilitarBotonPremio(i,false);
 			Tienda.getTienda().reset();
