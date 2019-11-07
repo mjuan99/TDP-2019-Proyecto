@@ -40,6 +40,10 @@ public abstract class Elemento {
 		return vivo;
 	}
 	
+	public void setVivo(boolean vivo) {
+		this.vivo=vivo;
+	}
+	
 	public abstract void accept(Visitor v);
 	
 	public void morir() {

@@ -48,11 +48,13 @@ public class Mapa {
 		GUI.getGUI().activarBotonOleada();
 		while(!lista.isEmpty()) {
 			e=lista.removeFirst();
+			e.setVivo(false);
 			GUI.getGUI().eliminarComponente(e.getComponenteGrafica());
 		}
 		for(int i=0;i<x;i++)
-			for(int j=0;j<y;j++)
+			for(int j=0;j<y;j++) {
 				grilla[i][j].setElem(null);
+			}
 	}
 		
 	public void activarOleada() {
