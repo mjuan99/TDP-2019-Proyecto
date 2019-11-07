@@ -43,6 +43,9 @@ public class Mapa {
 	
 	public void limpiar() {
 		Elemento e;
+		oleadaActiva=false;
+		cantEnemigos=0;
+		GUI.getGUI().activarBotonOleada();
 		while(!lista.isEmpty()) {
 			e=lista.removeFirst();
 			GUI.getGUI().eliminarComponente(e.getComponenteGrafica());

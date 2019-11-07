@@ -4,15 +4,15 @@ import Objetos.ObjetoJugadorTiempo;
 import Objetos.ObjetoJugadorVida;
 import Objetos.ObjetoMapaTiempo;
 import Objetos.ObjetoMapaVida;
-import Objetos.Proyectil;
-import Objetos.ProyectilAliado;
 import Personajes.Enemigo;
+import Personajes.Proyectil;
+import Personajes.ProyectilAliado;
 import Personajes.Torre;
-import Premio.BombaRecolectable;
-import Premio.CongelarRecolectable;
-import Premio.DobleFuerzaRecolectable;
-import Premio.EscudoRecolectable;
-import Premio.TorreAleatoriaRecolectable;
+import Premios.BombaRecolectable;
+import Premios.CongelarRecolectable;
+import Premios.DobleFuerzaRecolectable;
+import Premios.EscudoRecolectable;
+import Premios.TorreAleatoriaRecolectable;
 
 public class VisitorProyectilAliado extends Visitor {
 	

@@ -2,11 +2,11 @@ package Visitor;
 
 import Objetos.*;
 import Personajes.*;
-import Premio.BombaRecolectable;
-import Premio.CongelarRecolectable;
-import Premio.DobleFuerzaRecolectable;
-import Premio.EscudoRecolectable;
-import Premio.TorreAleatoriaRecolectable;
+import Premios.BombaRecolectable;
+import Premios.CongelarRecolectable;
+import Premios.DobleFuerzaRecolectable;
+import Premios.EscudoRecolectable;
+import Premios.TorreAleatoriaRecolectable;
 
 public class VisitorAliado extends Visitor {
 

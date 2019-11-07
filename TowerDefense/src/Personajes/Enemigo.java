@@ -15,7 +15,6 @@ import Juego.Controlador;
 import Juego.Elemento;
 import Juego.Jugador;
 import Juego.Mapa;
-import Objetos.ProyectilEnemigo;
 import Visitor.Visitor;
 import Visitor.VisitorEnemigo;
 

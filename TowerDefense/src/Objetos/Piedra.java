@@ -3,7 +3,7 @@ package Objetos;
 import Juego.Celda;
 
 public class Piedra extends ObjetoMapaVida{
-	protected static int vidaBase=1500;
+	protected static int vidaBase=800;
 	protected static int tam=1;
 	protected static String imagen ="./src/Sprites/Obstaculos/Piedra.png";
 	

@@ -4,10 +4,10 @@ import Objetos.ObjetoJugadorTiempo;
 import Objetos.ObjetoJugadorVida;
 import Objetos.ObjetoMapaTiempo;
 import Objetos.ObjetoMapaVida;
-import Objetos.Proyectil;
 import Personajes.Enemigo;
+import Personajes.Proyectil;
 import Personajes.Torre;
-import Premio.*;
+import Premios.*;
 import Tienda.Tienda;
 
 public class VisitorClick extends Visitor{

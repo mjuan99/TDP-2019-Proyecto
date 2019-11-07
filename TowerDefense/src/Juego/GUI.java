@@ -38,7 +38,7 @@ public class GUI extends JFrame{
 	protected static int pixel=96;
 	
 	private GUI() {
-		super("Juego");
+		super("Kill the Humans");
 		getContentPane().setLayout(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(30,30,1200,700);

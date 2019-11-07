@@ -2,7 +2,7 @@ package Juego;
 
 import java.awt.EventQueue;
 
-import Premio.*;
+import Premios.*;
 
 public class Controlador {
 	private static Controlador controlador;

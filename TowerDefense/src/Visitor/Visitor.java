@@ -2,7 +2,7 @@ package Visitor;
 
 import Objetos.*;
 import Personajes.*;
-import Premio.*;
+import Premios.*;
 
 public abstract class Visitor {
 	

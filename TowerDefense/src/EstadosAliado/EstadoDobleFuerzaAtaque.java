@@ -4,7 +4,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 import Juego.Mapa;
-import Objetos.ProyectilAliado;
+import Personajes.ProyectilAliado;
 import Personajes.Torre;
 
 public class EstadoDobleFuerzaAtaque extends EstadoAtaqueAliado {

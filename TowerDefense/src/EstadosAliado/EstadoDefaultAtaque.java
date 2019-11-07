@@ -1,7 +1,7 @@
 package EstadosAliado;
 
 import Juego.Mapa;
-import Objetos.ProyectilAliado;
+import Personajes.ProyectilAliado;
 import Personajes.Torre;
 
 public class EstadoDefaultAtaque extends EstadoAtaqueAliado{
