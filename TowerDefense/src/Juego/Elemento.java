@@ -11,8 +11,8 @@ public abstract class Elemento {
 	protected int vida;
 	protected String rutaImagen;
 	protected JLabel componenteGrafica;
-	protected int contadorPulsos=0;
-	protected int topePulso=10;
+	protected int contadorPulsos;
+	protected int topePulso;
 	protected Visitor visitor;
 	
 	protected Elemento(Celda celda,int vidaMax,int tamano,String rutaImagen) {
@@ -21,6 +21,8 @@ public abstract class Elemento {
 		vida=vidaMax;
 		this.tamano=tamano;
 		this.rutaImagen=rutaImagen;
+		contadorPulsos=0;
+		topePulso=10;
 	}
 	
 	public int getTamano() {
