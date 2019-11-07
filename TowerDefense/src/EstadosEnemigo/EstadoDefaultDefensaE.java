@@ -3,10 +3,9 @@ package EstadosEnemigo;
 import Juego.Elemento;
 import Personajes.Enemigo;
 
-public class EstadoDefaultDefensaE implements EstadoDefensaEnemigo{
-	protected Enemigo miEnemigo;
+public class EstadoDefaultDefensaE extends EstadoDefensaEnemigo{
 	public EstadoDefaultDefensaE(Enemigo e) {
-		miEnemigo=e;
+		super(e);
 	}
 
 	@Override
