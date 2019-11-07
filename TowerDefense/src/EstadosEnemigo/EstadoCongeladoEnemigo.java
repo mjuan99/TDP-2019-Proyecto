@@ -4,12 +4,11 @@ import javax.swing.ImageIcon;
 
 import Personajes.Enemigo;
 
-public class EstadoCongeladoEnemigo implements EstadoActuarEnemigo {
-	protected Enemigo miEnemigo;
+public class EstadoCongeladoEnemigo extends EstadoActuarEnemigo {
 	protected long inicio;
 	protected int duracion=7000;
 	public EstadoCongeladoEnemigo(Enemigo e) {
-		miEnemigo=e;
+		super(e);
 		miEnemigo.getComponenteGrafica().setIcon(new ImageIcon(miEnemigo.getImagenCongelado()));
 		inicio=System.currentTimeMillis();
 	}

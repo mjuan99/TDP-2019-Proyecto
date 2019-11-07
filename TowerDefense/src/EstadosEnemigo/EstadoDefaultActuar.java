@@ -2,10 +2,9 @@ package EstadosEnemigo;
 
 import Personajes.Enemigo;
 
-public class EstadoDefaultActuar implements EstadoActuarEnemigo {
-	protected Enemigo miEnemigo;
+public class EstadoDefaultActuar extends EstadoActuarEnemigo {
 	public EstadoDefaultActuar(Enemigo e) {
-		miEnemigo=e;
+		super(e);
 	}
 	@Override
 	public void actuar() {
