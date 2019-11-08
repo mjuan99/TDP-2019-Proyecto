@@ -3,8 +3,8 @@ package EstadosAliado;
 import Juego.Elemento;
 import Personajes.Torre;
 
-public class EstadoDefaultDefensaA extends EstadoDefensaAliado{
-	public EstadoDefaultDefensaA(Torre t) {
+public class EstadoDefaultDefensaT extends EstadoDefensaTorre{
+	public EstadoDefaultDefensaT(Torre t) {
 		super(t);
 	}
 	@Override

@@ -5,8 +5,8 @@ import javax.swing.ImageIcon;
 import Juego.Elemento;
 import Personajes.Torre;
 
-public class EstadoProtegidoAliado extends EstadoDefensaAliado{
-	public EstadoProtegidoAliado(Torre t) {
+public class EstadoProtegidoTorre extends EstadoDefensaTorre{
+	public EstadoProtegidoTorre(Torre t) {
 		super(t);
 		miTorre.getComponenteGrafica().setIcon(new ImageIcon(miTorre.getEstadoProtegido()));
 	}
@@ -16,7 +16,7 @@ public class EstadoProtegidoAliado extends EstadoDefensaAliado{
 		if(e!=null)
 			e.morir();
 		miTorre.getComponenteGrafica().setIcon(new ImageIcon(miTorre.getRutaImagen()));
-		miTorre.setEstadoDefensa(new EstadoDefaultDefensaA(miTorre));
+		miTorre.setEstadoDefensa(new EstadoDefaultDefensaT(miTorre));
 	}
 
 }

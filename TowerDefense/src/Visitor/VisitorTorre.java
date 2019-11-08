@@ -8,11 +8,11 @@ import Premios.DobleFuerzaRecolectable;
 import Premios.EscudoRecolectable;
 import Premios.TorreAleatoriaRecolectable;
 
-public class VisitorAliado extends Visitor {
+public class VisitorTorre extends Visitor {
 
 	protected Torre miTorre;
 	
-	public VisitorAliado(Torre miTorre) {
+	public VisitorTorre(Torre miTorre) {
 		this.miTorre=miTorre;
 	}
 

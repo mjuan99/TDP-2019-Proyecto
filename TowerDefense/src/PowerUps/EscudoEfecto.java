@@ -1,6 +1,6 @@
 package PowerUps;
 
-import EstadosAliado.EstadoProtegidoAliado;
+import EstadosAliado.EstadoProtegidoTorre;
 import Personajes.Torre;
 import Tienda.Tienda;
 
@@ -14,7 +14,7 @@ public class EscudoEfecto extends PowerUpTorre {
 
 	@Override
 	public void aplicar(Torre t) {
-		t.setEstadoDefensa(new EstadoProtegidoAliado(t));
+		t.setEstadoDefensa(new EstadoProtegidoTorre(t));
 	}
 	public void usar() {
 		Tienda.getTienda().usar(this);

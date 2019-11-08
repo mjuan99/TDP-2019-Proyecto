@@ -3,9 +3,9 @@ package EstadosAliado;
 import Juego.Elemento;
 import Personajes.Torre;
 
-public abstract class EstadoDefensaAliado {
+public abstract class EstadoDefensaTorre {
 	protected Torre miTorre;
-	public EstadoDefensaAliado(Torre t) {
+	public EstadoDefensaTorre(Torre t) {
 		miTorre=t;
 	}
 	public abstract void danar(Elemento e,int dano);

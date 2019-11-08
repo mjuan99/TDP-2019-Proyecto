@@ -4,10 +4,10 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 import Juego.Mapa;
-import Personajes.ProyectilAliado;
+import Personajes.ProyectilTorre;
 import Personajes.Torre;
 
-public class EstadoDobleFuerzaAtaque extends EstadoAtaqueAliado {
+public class EstadoDobleFuerzaAtaque extends EstadoAtaqueTorre {
 	protected long inicio;
 	protected int duracion=7000;
 	JLabel componente= new JLabel(new ImageIcon("./src/Sprites/Efectos/DobleFuerza/DobleFuerza.gif"));
@@ -20,7 +20,7 @@ public class EstadoDobleFuerzaAtaque extends EstadoAtaqueAliado {
 	
 	public void atacar() {
 		if(System.currentTimeMillis()<inicio+duracion) {
-			Mapa.getMapa().crearElementoIntangible(new ProyectilAliado(miTorre.getCelda(),miTorre , 2*miTorre.getDano(),miTorre.getAlcance(),miTorre.getRutaProyectil()));
+			Mapa.getMapa().crearElementoIntangible(new ProyectilTorre(miTorre.getCelda(),miTorre , 2*miTorre.getDano(),miTorre.getAlcance(),miTorre.getRutaProyectil()));
 		
 		}
 		else {

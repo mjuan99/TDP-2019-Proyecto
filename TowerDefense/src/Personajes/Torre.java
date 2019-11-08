@@ -1,20 +1,20 @@
 package Personajes;
 import java.util.Iterator;
 
-import EstadosAliado.EstadoAtaqueAliado;
+import EstadosAliado.EstadoAtaqueTorre;
 import EstadosAliado.EstadoDefaultAtaque;
-import EstadosAliado.EstadoDefaultDefensaA;
-import EstadosAliado.EstadoDefensaAliado;
+import EstadosAliado.EstadoDefaultDefensaT;
+import EstadosAliado.EstadoDefensaTorre;
 import Juego.Celda;
 import Juego.Elemento;
 import Juego.Jugador;
 import Juego.Mapa;
 import Visitor.Visitor;
-import Visitor.VisitorAliado;
+import Visitor.VisitorTorre;
 
 public abstract class Torre extends Personaje{
-	protected EstadoAtaqueAliado estadoAtaque;
-	protected EstadoDefensaAliado estadoDefensa;
+	protected EstadoAtaqueTorre estadoAtaque;
+	protected EstadoDefensaTorre estadoDefensa;
 	protected int vidaBase;
 	protected int precio;
 	protected String nombre;
@@ -29,9 +29,9 @@ public abstract class Torre extends Personaje{
 		this.estadoProtegido=estadoProtegido;
 		vidaBase=vidaMax;
 		this.miniatura=miniatura;
-		visitor=new VisitorAliado(this);
+		visitor=new VisitorTorre(this);
 		estadoAtaque=new EstadoDefaultAtaque(this);
-		estadoDefensa=new EstadoDefaultDefensaA(this);
+		estadoDefensa=new EstadoDefaultDefensaT(this);
 	}
 	public String getEstadoProtegido() {
 		return (estadoProtegido);
@@ -52,11 +52,11 @@ public abstract class Torre extends Personaje{
 		estadoDefensa.danar(e, dano);
 	}
 	
-	public void setEstadoAtaque(EstadoAtaqueAliado e) {
+	public void setEstadoAtaque(EstadoAtaqueTorre e) {
 		estadoAtaque=e;
 	}
 	
-	public void setEstadoDefensa(EstadoDefensaAliado e) {
+	public void setEstadoDefensa(EstadoDefensaTorre e) {
 		estadoDefensa=e;
 	}
 	

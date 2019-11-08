@@ -6,13 +6,13 @@ import Juego.Celda;
 import Juego.Elemento;
 import Juego.Mapa;
 import Visitor.Visitor;
-import Visitor.VisitorProyectilAliado;
+import Visitor.VisitorProyectilTorre;
 
-public class ProyectilAliado extends Proyectil {
+public class ProyectilTorre extends Proyectil {
 	protected static int tam=1;
-	public ProyectilAliado(Celda celda,Elemento creador, int dano,int rango,String rutaImagen) {//agregar celda y entidad de donde se crea
+	public ProyectilTorre(Celda celda,Elemento creador, int dano,int rango,String rutaImagen) {//agregar celda y entidad de donde se crea
 		super(celda,creador, dano,rango,tam,rutaImagen);
-		visitor=new VisitorProyectilAliado(this);
+		visitor=new VisitorProyectilTorre(this);
 	}
 	
 	public void accept(Visitor v) {

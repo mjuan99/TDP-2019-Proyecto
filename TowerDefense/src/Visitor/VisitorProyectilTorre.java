@@ -6,7 +6,7 @@ import Objetos.ObjetoMapaTiempo;
 import Objetos.ObjetoMapaVida;
 import Personajes.Enemigo;
 import Personajes.Proyectil;
-import Personajes.ProyectilAliado;
+import Personajes.ProyectilTorre;
 import Personajes.Torre;
 import Premios.BombaRecolectable;
 import Premios.CongelarRecolectable;
@@ -14,11 +14,11 @@ import Premios.DobleFuerzaRecolectable;
 import Premios.EscudoRecolectable;
 import Premios.TorreAleatoriaRecolectable;
 
-public class VisitorProyectilAliado extends Visitor {
+public class VisitorProyectilTorre extends Visitor {
 	
-	protected ProyectilAliado miProyectil;
+	protected ProyectilTorre miProyectil;
 	
-	public VisitorProyectilAliado(ProyectilAliado miProyectil) {
+	public VisitorProyectilTorre(ProyectilTorre miProyectil) {
 		this.miProyectil=miProyectil;
 	}
 
