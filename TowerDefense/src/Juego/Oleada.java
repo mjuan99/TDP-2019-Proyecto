@@ -24,11 +24,11 @@ public class Oleada {
 	
 	@SuppressWarnings("unchecked")
 	public Oleada(String rutaOleada) {
-		colas=(ArrayDeque<Enemigo>[])new ArrayDeque[6];
+		colas=new ArrayDeque[6];
 		String [] filas=new String[7];
 		FileReader fr=null;
 		BufferedReader br;
-		try {
+		try{
 			fr=new FileReader(new File(rutaOleada));
 			br=new BufferedReader(fr);
 			for(int i=0;i<7;i++)

@@ -1,0 +1,9 @@
+ª
+src/Tienda/BotonTorre.java	TDP-sonarcommon-java"DuplicatedBlocks2,1 duplicated blocks of code must be removed.:MAJORROPENhÐÍ©À“.r
+CODE_SMELLzAXE4C5kIG_Ll9Q3zYefMË
+src/Tienda/BotonTorre.java	TDP-sonarjava"S110(2<This class has 7 parents which is greater than 5 authorized.:MAJORROPENZ f6079d298375aba7eaed495dec8230eehÐÍ©À“.r
+CODE_SMELLzAXE4C5kIG_Ll9Q3zYefNé
+src/Tienda/BotonTorre.java	TDP-sonarjava"S120(2ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.:MINORROPENZ f8ccc1c47fb6f3121025d675112513f9hÐÍ©À“.r
+CODE_SMELLzAXE4C5kIG_Ll9Q3zYefOº
+src/Tienda/BotonTorre.java	TDP-sonarjava"S1948(2'Make "torre" transient or serializable.:CRITICALROPENZ 44e6b36513b8a1ca193bb6b2550a69b9hÐÍ©À“.r
+CODE_SMELLzAXE4C5kJG_Ll9Q3zYefP

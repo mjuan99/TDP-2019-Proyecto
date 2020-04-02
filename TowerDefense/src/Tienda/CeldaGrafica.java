@@ -21,6 +21,7 @@ public class CeldaGrafica extends JLabel{
 			adentro=false;
 		}
 		public void mouseClicked(MouseEvent e) {
+			//do nothing
 		}
 		public void mouseEntered(MouseEvent e) {
 			adentro=true;
@@ -30,7 +31,9 @@ public class CeldaGrafica extends JLabel{
 			adentro=false;
 			setIcon(new ImageIcon("./src/Sprites/Mapa/celda2.png"));
 		}
-		public void mousePressed(MouseEvent e) {}
+		public void mousePressed(MouseEvent e) {
+			//do nothing
+		}
 		public void mouseReleased(MouseEvent e) {
 			if(adentro) {
 				int x=getX()/96;

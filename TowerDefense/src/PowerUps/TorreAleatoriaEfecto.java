@@ -1,5 +1,7 @@
 package PowerUps;
 
+import java.util.Random;
+
 import Juego.Celda;
 import Juego.Mapa;
 import Personajes.Alien;
@@ -15,6 +17,7 @@ import Tienda.Tienda;
 public class TorreAleatoriaEfecto extends PowerUpCelda {
 	protected static String imagen="./src/Sprites/Premios/TorreAleatoria.png";
 	protected static String desc="TorreAleatoria";
+	private Random random = new Random();
 	
 	public TorreAleatoriaEfecto() {
 		super(imagen,desc);
@@ -31,7 +34,7 @@ public class TorreAleatoriaEfecto extends PowerUpCelda {
 	
 	private Torre getTorre() {
 		Torre t=null;
-		int i=(int)(Math.random()*7);
+		int i= this.random.nextInt(7);
 		switch(i) {
 		case 0:{t=new Alien(null);break;}
 		case 1:{t=new Dragon(null);break;}

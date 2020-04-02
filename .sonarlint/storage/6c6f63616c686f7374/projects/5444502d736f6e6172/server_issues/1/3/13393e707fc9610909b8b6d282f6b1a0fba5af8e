@@ -1,0 +1,11 @@
+¨
+src/Personajes/Hada.java	TDP-sonarcommon-java"DuplicatedBlocks2,1 duplicated blocks of code must be removed.:MAJORROPENh ¬Žœã-r
+CODE_SMELLzAXE4C5raG_Ll9Q3zYegVç
+src/Personajes/Hada.java	TDP-sonarjava"S120(2ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.:MINORROPENZ a3fdca7b6ca0d27150ba07843325c59bh¨À€ºÒ-r
+CODE_SMELLzAXE4C5raG_Ll9Q3zYegW»
+src/Personajes/Hada.java	TDP-sonarjava"S2387(2+"precio" is the name of a field in "Torre".:BLOCKERROPENZ 903568d922497b335f75ec80924541f5h ¬Žœã-r
+CODE_SMELLzAXE4C5raG_Ll9Q3zYegX½
+src/Personajes/Hada.java	TDP-sonarjava"S2387(2-"vidaBase" is the name of a field in "Torre".:BLOCKERROPENZ 622e46bfa5b934d7bf91cac872c161e4h ¬Žœã-r
+CODE_SMELLzAXE4C5raG_Ll9Q3zYegYÄ
+src/Personajes/Hada.java	TDP-sonarjava"S2387(24"estadoProtegido" is the name of a field in "Torre".:BLOCKERROPENZ 90b360793c8e8da5f5362de94a794fbchˆ÷æ–â-r
+CODE_SMELLzAXE4C5raG_Ll9Q3zYegZ

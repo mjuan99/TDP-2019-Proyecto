@@ -6,16 +6,16 @@ import Premios.*;
 
 public abstract class Visitor {
 	
-	abstract public void visit(Torre torre); 
-	abstract public void visit(Enemigo enemigo);
-	abstract public void visit(ObjetoJugadorVida objeto);
-	abstract public void visit(ObjetoJugadorTiempo objeto);
-	abstract public void visit(Proyectil p);
-	abstract public void visit(BombaRecolectable b);
-	abstract public void visit(CongelarRecolectable c);
-	abstract public void visit(DobleFuerzaRecolectable d);
-	abstract public void visit(TorreAleatoriaRecolectable t);
-	abstract public void visit(EscudoRecolectable e);
-	abstract public void visit(ObjetoMapaVida objeto);
-	abstract public void visit(ObjetoMapaTiempo objeto);
+	public abstract void visit(Torre torre); 
+	public abstract void visit(Enemigo enemigo);
+	public abstract void visit(ObjetoJugadorVida objeto);
+	public abstract void visit(ObjetoJugadorTiempo objeto);
+	public abstract void visit(Proyectil p);
+	public abstract void visit(BombaRecolectable b);
+	public abstract void visit(CongelarRecolectable c);
+	public abstract void visit(DobleFuerzaRecolectable d);
+	public abstract void visit(TorreAleatoriaRecolectable t);
+	public abstract void visit(EscudoRecolectable e);
+	public abstract void visit(ObjetoMapaVida objeto);
+	public abstract void visit(ObjetoMapaTiempo objeto);
 }

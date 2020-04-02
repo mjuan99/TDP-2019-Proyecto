@@ -8,8 +8,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JTextArea;
 
 import Personajes.Torre;
-import Tienda.BotonTienda;
-import Tienda.Tienda;
 
 @SuppressWarnings("serial")
 public class BotonTorre extends BotonTienda {
@@ -19,7 +17,7 @@ public class BotonTorre extends BotonTienda {
 		super(new ImageIcon(torre.getMiniatura()));
 		MouseListener mouseL=new OyenteBotonTorre();
 		this.torre=torre;
-		this.setBackground(Color.WHITE);;
+		this.setBackground(Color.WHITE);
 		this.setBorder(null);
 		this.addMouseListener(mouseL);
 		descripcion=new JTextArea((torre.descripcion()));
@@ -39,7 +37,9 @@ public class BotonTorre extends BotonTienda {
 			adentro=false;
 		}
 		@Override
-		public void mouseClicked(MouseEvent arg0) {}
+		public void mouseClicked(MouseEvent arg0) {
+			//do nothing
+		}
 
 		@Override
 		public void mouseEntered(MouseEvent arg0) {
@@ -55,7 +55,9 @@ public class BotonTorre extends BotonTienda {
 		}
 
 		@Override
-		public void mousePressed(MouseEvent arg0) {}
+		public void mousePressed(MouseEvent arg0) {
+			//do nothing
+		}
 
 		@Override
 		public void mouseReleased(MouseEvent arg0) {

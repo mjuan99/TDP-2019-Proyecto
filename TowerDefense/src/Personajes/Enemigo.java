@@ -2,6 +2,7 @@ package Personajes;
 
 import java.awt.Rectangle;
 import java.util.Iterator;
+import java.util.Random;
 
 import javax.swing.ImageIcon;
 
@@ -32,6 +33,7 @@ public abstract class Enemigo extends Personaje{
 	protected String imagenCongelado;
 	protected String animacionMuerte;
 	protected String imagenProtegido;
+	private Random random= new Random();
 	
 	protected Enemigo(Celda celda,int vidaMax,int tamano,String rutaImagen,String imagenCongelado,String imagenProtegido,String animacionMuerte,int dano,int alcance,String rutaProyectil,int velocBase, int oroMin, int oroMax, int puntos) {
 		super(celda,vidaMax,tamano,rutaImagen,dano,alcance,rutaProyectil);
@@ -51,7 +53,7 @@ public abstract class Enemigo extends Personaje{
 		ataco=true;
 		Mapa.getMapa().crearElementoIntangible(new ProyectilEnemigo(celda,this, dano,alcance,rutaProyectil));
 	}
-	
+	@Override
 	public void danar(Elemento e,int dano) {
 		estadoDefensa.danar(e, dano);
 	}
@@ -92,12 +94,14 @@ public abstract class Enemigo extends Personaje{
 						celda.setElem(this);
 						moviendo = true;
 					}
-			} else 
+			} 
+			else 
 				if (celdaDestino * 96 < componenteGrafica.getBounds().getX())
 					componenteGrafica.setBounds((int) r.getX() - velocidad, (int) r.getY(), 96, 96);
 				else
 					moviendo = false;
-		}else
+		}
+		else
 			contadorPulsos=(contadorPulsos+1)%topePulso;
 	}
 	
@@ -109,9 +113,10 @@ public abstract class Enemigo extends Personaje{
 		return imagenProtegido;
 	}
 	
+	@Override
 	public void morir() {
 		Jugador.getJugador().sumarPuntos(puntos);
-		Jugador.getJugador().aumentarOro((int)(Math.random()*(oroMax-oroMin))+oroMin);
+		Jugador.getJugador().aumentarOro(this.random.nextInt()*(oroMax-oroMin)+oroMin);
 		Celda celda= this.getCelda();
 		Mapa.getMapa().eliminarElemento(this);
 		Mapa.getMapa().decrementarEnemigos();

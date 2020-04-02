@@ -1,0 +1,11 @@
+®
+src/Personajes/Dinosaurio.java	TDP-sonarcommon-java"DuplicatedBlocks2,1 duplicated blocks of code must be removed.:MAJORROPENh ¬Žœã-r
+CODE_SMELLzAXE4C5owG_Ll9Q3zYefyí
+src/Personajes/Dinosaurio.java	TDP-sonarjava"S120(2ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.:MINORROPENZ a3fdca7b6ca0d27150ba07843325c59bh¨À€ºÒ-r
+CODE_SMELLzAXE4C5owG_Ll9Q3zYefzÁ
+src/Personajes/Dinosaurio.java	TDP-sonarjava"S2387(2+"precio" is the name of a field in "Torre".:BLOCKERROPENZ 777a517d2a8b479dd067f93d1efd155dh ¬Žœã-r
+CODE_SMELLzAXE4C5owG_Ll9Q3zYef0Ã
+src/Personajes/Dinosaurio.java	TDP-sonarjava"S2387(2-"vidaBase" is the name of a field in "Torre".:BLOCKERROPENZ 078b98ea80cab56b3acf442a8aa976a4h ¬Žœã-r
+CODE_SMELLzAXE4C5owG_Ll9Q3zYef1Ê
+src/Personajes/Dinosaurio.java	TDP-sonarjava"S2387(24"estadoProtegido" is the name of a field in "Torre".:BLOCKERROPENZ 4b675b387f0bbb3a24982766e1a5c329hˆ÷æ–â-r
+CODE_SMELLzAXE4C5owG_Ll9Q3zYef2

@@ -3,8 +3,8 @@ import Juego.Celda;
 
 public class Hada extends Torre{
 
-	protected static int precio=100;
-	protected static int vidaBase=500;
+	protected static int prec=100;
+	protected static int vidaB=500;
 	protected static int tam=1;
 	protected static int danoBase=100;
 	protected static int alcanceBase=3;
@@ -12,10 +12,10 @@ public class Hada extends Torre{
 	protected static String proyectil="./src/Sprites/Ataques/AtaqueHada.gif";
 	protected static String nomb="Hada";
 	protected static String mini="./src/Sprites/Tienda/Hada.png";
-	protected static String estadoProtegido="./src/Sprites/Efectos/Escudo/Hada.gif";
+	protected static String estadoP="./src/Sprites/Efectos/Escudo/Hada.gif";
 	
 	public Hada(Celda celda) {
-		super(celda,vidaBase,tam,imagen,estadoProtegido,danoBase,alcanceBase,proyectil,precio,mini,nomb);
+		super(celda,vidaB,tam,imagen,estadoP,danoBase,alcanceBase,proyectil,prec,mini,nomb);
 	}
 	
 	public Torre nueva() {

@@ -12,6 +12,7 @@ import javax.swing.JButton;
 
 import Juego.GUI;
 
+
 @SuppressWarnings("serial")
 public class BotonTienda extends JButton {
 	protected BotonTienda(ImageIcon i) {
@@ -33,7 +34,9 @@ public class BotonTienda extends JButton {
 	private class OyenteBotonTienda implements MouseListener{
 		public OyenteBotonTienda() {}
 		@Override
-		public void mouseClicked(MouseEvent e) {}
+		public void mouseClicked(MouseEvent e) {
+			//do nothing
+		}
 
 		@Override
 		public void mouseEntered(MouseEvent e) {
@@ -41,13 +44,19 @@ public class BotonTienda extends JButton {
 		}
 
 		@Override
-		public void mouseExited(MouseEvent e) {}
+		public void mouseExited(MouseEvent e) {
+			//do nothing
+		}
 
 		@Override
-		public void mousePressed(MouseEvent e) {}
+		public void mousePressed(MouseEvent e) {
+			//do nothing
+		}
 
 		@Override
-		public void mouseReleased(MouseEvent e) {}
+		public void mouseReleased(MouseEvent e) {
+			//do nothing
+		}
 		
 	}
 }

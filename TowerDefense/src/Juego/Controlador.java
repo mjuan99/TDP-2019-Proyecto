@@ -1,10 +1,12 @@
 package Juego;
 
 import java.awt.EventQueue;
+import java.util.Random;
 
 import Premios.*;
 
 public class Controlador {
+	private Random random = new Random();
 	private static Controlador controlador;
 	protected ContadorTiempo tiempo;
 	
@@ -64,21 +66,41 @@ public class Controlador {
 	}
 	
 	public void crearPowerUpAleatorio(Celda celda) {
-		if((int)(Math.random()*10)<2)
+		if((this.random.nextInt(10))<2)
 			Mapa.getMapa().crearElementoIntangible(getPowerUp(celda));
 	}
 	
 	private Premio getPowerUp(Celda celda) {
 		Premio p=null;
-		int i=(int)(Math.random()*5);
+		int i= this.random.nextInt(5);
 		switch(i) {
-		case 0:{p=new BombaRecolectable(celda);break;}
-		case 1:{p=new EscudoRecolectable(celda);break;}
-		case 2:{p=new CongelarRecolectable(celda);break;}
-		case 3:{p=new DobleFuerzaRecolectable(celda);break;}
-		case 4:{p=new TorreAleatoriaRecolectable(celda);break;}
+		case 0:{p=crearBR(celda);
+				break;}
+		case 1:{p=crearER(celda);
+				break;}
+		case 2:{p=crearCR(celda);
+				break;}
+		case 3:{p=crearDFR(celda);
+				break;}
+		default:{p=crearTA(celda);
+				break;}
 		}
 		return p;
 	}
 	
+	private Premio crearBR(Celda celda) {
+		return new BombaRecolectable(celda);
+	}
+	private Premio crearER(Celda celda) {
+		return new EscudoRecolectable(celda);
+	}
+	private Premio crearCR(Celda celda) {
+		return new CongelarRecolectable(celda);
+	}
+	private Premio crearDFR(Celda celda) {
+		return new DobleFuerzaRecolectable(celda);
+	}
+	private Premio crearTA(Celda celda) {
+		return new TorreAleatoriaRecolectable(celda);
+	}
 }

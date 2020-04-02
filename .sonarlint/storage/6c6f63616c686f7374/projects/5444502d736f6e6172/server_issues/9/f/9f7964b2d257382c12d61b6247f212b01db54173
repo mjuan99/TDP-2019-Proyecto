@@ -1,0 +1,34 @@
+÷
+src/Juego/Oleada.java	TDP-sonarjava"S1301(;2KReplace this "switch" statement by "if" statements to increase readability.:MINORROPENZ 2ef961e530dc12544bcb7d7db632a091h–Õ©¿ì.r
+CODE_SMELLzAXE4C5ulG_Ll9Q3zYeg4“
+src/Juego/Oleada.java	TDP-sonarjava"S2095(!2LUse try-with-resources or close this "BufferedReader" in a "finally" clause.:BLOCKERROPENZ 7f6aaa5d5da5f1c98a584f3ec6f08a32h–Õ©¿ì.rBUGzAXE4C5ulG_Ll9Q3zYeg5∏
+src/Juego/Oleada.java	TDP-sonarjava"S1199(<2-Extract this nested code block into a method.:MINORROPENZ 2e2493450d31610661912b07443846f6h–Õ©¿ì.r
+CODE_SMELLzAXE4C5ulG_Ll9Q3zYeg6∏
+src/Juego/Oleada.java	TDP-sonarjava"S1199(=2-Extract this nested code block into a method.:MINORROPENZ b9788525af166f60889997a00f63e235h–Õ©¿ì.r
+CODE_SMELLzAXE4C5ulG_Ll9Q3zYeg7∏
+src/Juego/Oleada.java	TDP-sonarjava"S1199(I2-Extract this nested code block into a method.:MINORROPENZ 82b1dc49ae82974adb5faf1d65806d3dh–Õ©¿ì.r
+CODE_SMELLzAXE4C5ulG_Ll9Q3zYeg8∏
+src/Juego/Oleada.java	TDP-sonarjava"S1199(J2-Extract this nested code block into a method.:MINORROPENZ ec0988fd80361eaf4f411d75e1b29b5fh–Õ©¿ì.r
+CODE_SMELLzAXE4C5ulG_Ll9Q3zYeg9∏
+src/Juego/Oleada.java	TDP-sonarjava"S1199(K2-Extract this nested code block into a method.:MINORROPENZ 7b4f2ea4e98bd6ad20b42a0e530e512dh–Õ©¿ì.r
+CODE_SMELLzAXE4C5ulG_Ll9Q3zYeg-∏
+src/Juego/Oleada.java	TDP-sonarjava"S1199(L2-Extract this nested code block into a method.:MINORROPENZ 8bfd0d7b935d50246ee3d89bcdf47fc7h–Õ©¿ì.r
+CODE_SMELLzAXE4C5ulG_Ll9Q3zYeg_∏
+src/Juego/Oleada.java	TDP-sonarjava"S1199(M2-Extract this nested code block into a method.:MINORROPENZ 853003fd6fec889e8fe6427c03aac106h–Õ©¿ì.r
+CODE_SMELLzAXE4C5ulG_Ll9Q3zYehA∏
+src/Juego/Oleada.java	TDP-sonarjava"S1199(N2-Extract this nested code block into a method.:MINORROPENZ c6e159344b91c6cad8137b5c06131762h–Õ©¿ì.r
+CODE_SMELLzAXE4C5ulG_Ll9Q3zYehB‰
+src/Juego/Oleada.java	TDP-sonarjava"S120(2ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.:MINORROPENZ 253b5ee2c9dc9e1937e2783517a415bfh–Õ©¿ì.r
+CODE_SMELLzAXE4C5ulG_Ll9Q3zYehC±
+src/Juego/Oleada.java	TDP-sonarjava"S1148(%2#Use a logger to log this exception.:MINORROPENZ 2dc1665d31b37f9aa7408939a0365027h–Õ©¿ì.rVULNERABILITYzAXE4C5ulG_Ll9Q3zYehD±
+src/Juego/Oleada.java	TDP-sonarjava"S1148(,2#Use a logger to log this exception.:MINORROPENZ 2dc1665d31b37f9aa7408939a0365027h–Õ©¿ì.rVULNERABILITYzAXE4C5ulG_Ll9Q3zYehEÏ
+src/Juego/Oleada.java	TDP-sonarjava"S2093(2^Change this "try" to a try-with-resources. (sonar.java.source not set. Assuming 7 or greater.):CRITICALROPENZ 80d5b17efc16ace990c07580fc3e85ebh–Õ©¿ì.r
+CODE_SMELLzAXE4C5ulG_Ll9Q3zYehFô
+src/Juego/Oleada.java	TDP-sonarjava"S2293(02çReplace the type specification in this constructor call with the diamond operator ("<>"). (sonar.java.source not set. Assuming 7 or greater.):MINORROPENZ ab9c9da80e29eb7fff2ca2e1406044cfh–Õ©¿ì.r
+CODE_SMELLzAXE4C5ulG_Ll9Q3zYehGô
+src/Juego/Oleada.java	TDP-sonarjava"S2293(42çReplace the type specification in this constructor call with the diamond operator ("<>"). (sonar.java.source not set. Assuming 7 or greater.):MINORROPENZ 3e78f2bca8f39732355baf72462a4384h–Õ©¿ì.r
+CODE_SMELLzAXE4C5ulG_Ll9Q3zYehHØ
+src/Juego/Oleada.java	TDP-sonarjava"S131(;2"Add a default case to this switch.:CRITICALROPENZ 2ef961e530dc12544bcb7d7db632a091h–Õ©¿ì.r
+CODE_SMELLzAXE4C5ulG_Ll9Q3zYehIØ
+src/Juego/Oleada.java	TDP-sonarjava"S131(H2"Add a default case to this switch.:CRITICALROPENZ 2ef961e530dc12544bcb7d7db632a091h–Õ©¿ì.r
+CODE_SMELLzAXE4C5ulG_Ll9Q3zYehJ

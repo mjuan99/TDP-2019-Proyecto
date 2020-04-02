@@ -1,0 +1,7 @@
+Ò
+"src/Personajes/ProyectilTorre.java	TDP-sonarjava"S120(2ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.:MINORROPENZ a3fdca7b6ca0d27150ba07843325c59bhêŸë¥‰-r
+CODE_SMELLzAXE4C5r5G_Ll9Q3zYegdœ
+"src/Personajes/ProyectilTorre.java	TDP-sonarjava"S2589(*27Remove this expression which always evaluates to "true":MAJORROPENZ 3f28c6a562fe5bdf73cb526cc30e93b2h∞ƒÖ¥ﬁ-r
+CODE_SMELLzAXE4C5r5G_Ll9Q3zYegeÌ
+"src/Personajes/ProyectilTorre.java	TDP-sonarjava"S3776(2RRefactor this method to reduce its Cognitive Complexity from 19 to the 15 allowed.:CRITICALROPENZ fd8180099fe9687baf9a5c8f9100ecf5h†õ‘“·-r
+CODE_SMELLzAXE4C5r5G_Ll9Q3zYegf

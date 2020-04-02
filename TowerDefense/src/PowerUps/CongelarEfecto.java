@@ -14,7 +14,9 @@ public class CongelarEfecto extends PowerUpGlobal {
 	}
 
 	@Override
-	public void aplicar(Torre t) {}
+	public void aplicar(Torre t) {
+		//do nothing
+	}
 	public void usar() {
 		Tienda.getTienda().usar(this);
 	}

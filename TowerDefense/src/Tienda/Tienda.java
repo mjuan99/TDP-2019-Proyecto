@@ -10,7 +10,7 @@ public class Tienda {
 	protected int ultPowerUp;
 	protected TiendaEstado estado;
 	private static Tienda tienda;
-	protected boolean premiosDisponibles[];
+	protected boolean []premiosDisponibles;
 	
 	private Tienda () {
 		estado=new TiendaDefaultEstado();

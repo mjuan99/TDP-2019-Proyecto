@@ -1,0 +1,7 @@
+Ì
+src/Tienda/BotonTienda.java	TDP-sonarjava"S110(2<This class has 6 parents which is greater than 5 authorized.:MAJORROPENZ d2287ced2cf1222766c485fea158d0afhÐÍ©À“.r
+CODE_SMELLzAXE4C5nxG_Ll9Q3zYefkê
+src/Tienda/BotonTienda.java	TDP-sonarjava"S120(2ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.:MINORROPENZ f8ccc1c47fb6f3121025d675112513f9hÐÍ©À“.r
+CODE_SMELLzAXE4C5nxG_Ll9Q3zYefl•
+src/Tienda/BotonTienda.java	TDP-sonarjava"S1186(#2€Add a nested comment explaining why this method is empty, throw an UnsupportedOperationException or complete the implementation.:CRITICALROPENZ a6bab6a28e37cf64bc1ad99c16e87a9fhÐÍ©À“.r
+CODE_SMELLzAXE4C5nxG_Ll9Q3zYefm

@@ -1,0 +1,5 @@
+ç
+src/Visitor/Visitor.java	TDP-sonarjava"S120(2ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.:MINORROPENZ 1f9da135f740ecebd2ab2cf0bcd380fchÐÍ©À“.r
+CODE_SMELLzAXE4C50WG_Ll9Q3zYeipù
+src/Visitor/Visitor.java	TDP-sonarjava"S1610(2kConvert the abstract class "Visitor" into an interface. (sonar.java.source not set. Assuming 8 or greater.):MINORROPENZ 8af111f9c5147980f1e694eea5c47e09hÐÍ©À“.r
+CODE_SMELLzAXE4C50WG_Ll9Q3zYeiq

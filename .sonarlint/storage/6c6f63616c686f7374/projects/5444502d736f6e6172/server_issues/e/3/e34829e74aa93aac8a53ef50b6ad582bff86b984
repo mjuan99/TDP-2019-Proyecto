@@ -1,0 +1,12 @@
+€
+src/Personajes/Torre.java	TDP-sonarjava"S3973(Q2IUse indentation to denote the code conditionally executed by this "else".:CRITICALROPENZ ced10000c8475263283ba2a70887d268hòò”Ñﬁ-r
+CODE_SMELLzAXE4C5q7G_Ll9Q3zYegP–
+src/Personajes/Torre.java	TDP-sonarjava"S107(2BConstructor has 11 parameters, which is greater than 7 authorized.:MAJORROPENZ 952680e137366eaf79d175fb1cfa74d7h∏¿¸ì‚-r
+CODE_SMELLzAXE4C5q7G_Ll9Q3zYegQË
+src/Personajes/Torre.java	TDP-sonarjava"S120(2ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.:MINORROPENZ a3fdca7b6ca0d27150ba07843325c59bh®¿Ä∫“-r
+CODE_SMELLzAXE4C5q7G_Ll9Q3zYegRÃ
+src/Personajes/Torre.java	TDP-sonarjava"S2583(O2DChange this condition so that it does not always evaluate to "false":MAJORROPENZ c602e185822230348a6c66986b6367c6hòò”Ñﬁ-rBUGzAXE4C5q7G_Ll9Q3zYegS∆
+src/Personajes/Torre.java	TDP-sonarjava"S2589(M27Remove this expression which always evaluates to "true":MAJORROPENZ 16241534a31a6e0cb9e60db172500f5dhòò”Ñﬁ-r
+CODE_SMELLzAXE4C5q7G_Ll9Q3zYegT…
+src/Personajes/Torre.java	TDP-sonarjava"S1161(32:Add the "@Override" annotation above this method signature:MAJORROPENZ ef7c6690a2e0ecb0ee7969f1c7999eceh‡çüÄ‡-r
+CODE_SMELLzAXE4C5q7G_Ll9Q3zYegU

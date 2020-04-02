@@ -19,7 +19,7 @@ public class BotonObjeto extends BotonTienda {
 		super(new ImageIcon(o.getMiniatura()));
 		MouseListener mouseL=new OyenteBotonObstaculo();
 		obstaculo=o;
-		this.setBackground(Color.WHITE);;
+		this.setBackground(Color.WHITE);
 		this.setBorder(null);
 		this.addMouseListener(mouseL);
 		descripcion=new JTextArea((obstaculo.descripcion()));
@@ -38,7 +38,9 @@ public class BotonObjeto extends BotonTienda {
 			adentro=false;
 		}
 		@Override
-		public void mouseClicked(MouseEvent arg0) {}
+		public void mouseClicked(MouseEvent arg0) {
+			//do nothing
+		}
 
 		@Override
 		public void mouseEntered(MouseEvent arg0) {
@@ -54,7 +56,9 @@ public class BotonObjeto extends BotonTienda {
 		}
 
 		@Override
-		public void mousePressed(MouseEvent arg0) {}
+		public void mousePressed(MouseEvent arg0) {
+			//do nothing
+		}
 
 		@Override
 		public void mouseReleased(MouseEvent arg0) {

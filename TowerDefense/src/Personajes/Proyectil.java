@@ -7,7 +7,7 @@ public abstract class Proyectil extends Elemento{
 	protected Elemento creador;
 	protected int dano;
 	protected int rango;
-	protected String rutaImagen;
+	protected String rutaImag;
 	protected boolean moviendo=false;
 	protected int celdaDestino;
 	public Proyectil(Celda celda,Elemento creador, int dano,int rango,int tamano,String rutaImagen) {//agregar celda y entidad de donde se crea
@@ -15,7 +15,7 @@ public abstract class Proyectil extends Elemento{
 		this.creador=creador;
 		this.dano=dano;
 		this.rango=rango;
-		this.rutaImagen=rutaImagen;
+		this.rutaImag=rutaImagen;
 	}
 	
 	public void accept() {

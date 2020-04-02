@@ -26,7 +26,9 @@ public class Etiqueta extends JLabel{
 		}
 		
 		@Override
-		public void mouseClicked(MouseEvent e) {}
+		public void mouseClicked(MouseEvent e) {
+			//do nothing
+		}
 
 		@Override
 		public void mouseEntered(MouseEvent e) {
@@ -39,7 +41,9 @@ public class Etiqueta extends JLabel{
 		}
 
 		@Override
-		public void mousePressed(MouseEvent e) {}
+		public void mousePressed(MouseEvent e) {
+			//do nothing
+		}
 
 		@Override
 		public void mouseReleased(MouseEvent e) {

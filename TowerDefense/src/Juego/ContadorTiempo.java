@@ -3,7 +3,7 @@ package Juego;
 public class ContadorTiempo extends Thread {
 	ContadorTiempo(){
 	}
-	
+	@Override
 	public void run() {
 		while(true) {
 			try {

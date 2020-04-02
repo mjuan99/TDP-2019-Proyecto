@@ -19,7 +19,7 @@ public class BotonPowerUp extends BotonTienda {
 		miPowerUp=p;
 		descripcion=new JTextArea(p.getDescripcion());
 		MouseListener mouseL=new OyenteBotonObjeto();
-		this.setBackground(Color.WHITE);;
+		this.setBackground(Color.WHITE);
 		this.setBorder(null);
 		this.addMouseListener(mouseL);
 		this.add(descripcion);
@@ -35,7 +35,9 @@ public class BotonPowerUp extends BotonTienda {
 			adentro=false;
 		}
 		@Override
-		public void mouseClicked(MouseEvent arg0) {}
+		public void mouseClicked(MouseEvent arg0) {
+			//do nothing
+		}
 
 		@Override
 		public void mouseEntered(MouseEvent arg0) {
@@ -51,7 +53,9 @@ public class BotonPowerUp extends BotonTienda {
 		}
 
 		@Override
-		public void mousePressed(MouseEvent arg0) {}
+		public void mousePressed(MouseEvent arg0) {
+			//do nothing
+		}
 
 		@Override
 		public void mouseReleased(MouseEvent arg0) {

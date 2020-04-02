@@ -1,0 +1,51 @@
+˚
+src/Juego/Mapa.java	TDP-sonarjava"S1319(ó2qThe return type of this method should be an interface such as "List" rather than the implementation "LinkedList".:MINORROPENZ 0638be159bcef38cb73250b04a74cd08hòò”Ñﬁ-r
+CODE_SMELLzAXE4C5vzG_Ll9Q3zYehQ˚
+src/Juego/Mapa.java	TDP-sonarjava"S1319(¢2qThe return type of this method should be an interface such as "List" rather than the implementation "LinkedList".:MINORROPENZ a17eeca195d00e385464f5ab90c4fb4fhòò”Ñﬁ-r
+CODE_SMELLzAXE4C5vzG_Ll9Q3zYehR∏
+src/Juego/Mapa.java	TDP-sonarjava"S1066(k2/Merge this if statement with the enclosing one.:MAJORROPENZ 1e631e90938abdd41189e7db97714546hê•ìŸﬁ-r
+CODE_SMELLzAXE4C5vzG_Ll9Q3zYehS‚
+src/Juego/Mapa.java	TDP-sonarjava"S120(2ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.:MINORROPENZ 253b5ee2c9dc9e1937e2783517a415bfh®¿Ä∫“-r
+CODE_SMELLzAXE4C5vzG_Ll9Q3zYehT∑
+src/Juego/Mapa.java	TDP-sonarjava"S1121(%2.Extract the assignment out of this expression.:MAJORROPENZ ac4aa08fca5e987edc73843a223f1958hòÒ‘“·-r
+CODE_SMELLzAXE4C5vzG_Ll9Q3zYehUó
+src/Juego/Mapa.java	TDP-sonarjava"S2293(2çReplace the type specification in this constructor call with the diamond operator ("<>"). (sonar.java.source not set. Assuming 7 or greater.):MINORROPENZ 035c54de6de3fd80f208f9a95c099337h¯≠…Œ◊-r
+CODE_SMELLzAXE4C5vzG_Ll9Q3zYehVæ
+src/Juego/Mapa.java	TDP-sonarjava"S1117(A25Rename "x" which hides the field declared at line 14.:MAJORROPENZ c4f477485b7398617565acb60e469b77hêÕ¯¢ﬂ-r
+CODE_SMELLzAXE4C5vzG_Ll9Q3zYehW≤
+src/Juego/Mapa.java	TDP-sonarjava"S2140(A2)Use "java.util.Random.nextInt()" instead.:MINORROPENZ c4f477485b7398617565acb60e469b77hêÕ¯¢ﬂ-r
+CODE_SMELLzAXE4C5vzG_Ll9Q3zYehXæ
+src/Juego/Mapa.java	TDP-sonarjava"S1117(B25Rename "y" which hides the field declared at line 15.:MAJORROPENZ be1c72b2289ce0298b917a643d743298hêÕ¯¢ﬂ-r
+CODE_SMELLzAXE4C5vzG_Ll9Q3zYehZ≤
+src/Juego/Mapa.java	TDP-sonarjava"S2140(B2)Use "java.util.Random.nextInt()" instead.:MINORROPENZ be1c72b2289ce0298b917a643d743298hêÕ¯¢ﬂ-r
+CODE_SMELLzAXE4C5vzG_Ll9Q3zYeha≤
+src/Juego/Mapa.java	TDP-sonarjava"S2140(H2)Use "java.util.Random.nextInt()" instead.:MINORROPENZ 58858947cef6dcf96d51e41d9d358b94hêÕ¯¢ﬂ-r
+CODE_SMELLzAXE4C5vzG_Ll9Q3zYehc≤
+src/Juego/Mapa.java	TDP-sonarjava"S2140(I2)Use "java.util.Random.nextInt()" instead.:MINORROPENZ f2fe83c0ce250678f9a51d7f8cd552a6hêÕ¯¢ﬂ-r
+CODE_SMELLzAXE4C5vzG_Ll9Q3zYeheﬁ
+src/Juego/Mapa.java	TDP-sonarjava"S3776(^2RRefactor this method to reduce its Cognitive Complexity from 29 to the 15 allowed.:CRITICALROPENZ fd8180099fe9687baf9a5c8f9100ecf5h∞¶≈ñ‚-r
+CODE_SMELLzAXE4C5vzG_Ll9Q3zYehgó
+src/Juego/Mapa.java	TDP-sonarjava"S2293(`2çReplace the type specification in this constructor call with the diamond operator ("<>"). (sonar.java.source not set. Assuming 7 or greater.):MINORROPENZ d2c7740b13d50ab488ece63303405358h¯≠…Œ◊-r
+CODE_SMELLzAXE4C5vzG_Ll9Q3zYehh≤
+src/Juego/Mapa.java	TDP-sonarjava"S2140(n2)Use "java.util.Random.nextInt()" instead.:MINORROPENZ 7d083c48aa54e378b1adc66b940e4d1dh∞¶≈ñ‚-r
+CODE_SMELLzAXE4C5vzG_Ll9Q3zYehiø
+src/Juego/Mapa.java	TDP-sonarjava"S1117(Å25Rename "x" which hides the field declared at line 14.:MAJORROPENZ f0624923966cd63245e39acf1866d54dh∞»⁄¬Ÿ-r
+CODE_SMELLzAXE4C5vzG_Ll9Q3zYehkø
+src/Juego/Mapa.java	TDP-sonarjava"S1117(Ç25Rename "y" which hides the field declared at line 15.:MAJORROPENZ 5add3ca263a4407ff5d7779f249d2b24h∞»⁄¬Ÿ-r
+CODE_SMELLzAXE4C5vzG_Ll9Q3zYehl√
+src/Juego/Mapa.java	TDP-sonarjava"S1117(ò29Rename "lista" which hides the field declared at line 17.:MAJORROPENZ 66dbe7daaf031bf6fb08d1f58a730a18hòò”Ñﬁ-r
+CODE_SMELLzAXE4C5vzG_Ll9Q3zYehmò
+src/Juego/Mapa.java	TDP-sonarjava"S2293(ò2çReplace the type specification in this constructor call with the diamond operator ("<>"). (sonar.java.source not set. Assuming 7 or greater.):MINORROPENZ 66dbe7daaf031bf6fb08d1f58a730a18hòò”Ñﬁ-r
+CODE_SMELLzAXE4C5vzG_Ll9Q3zYehnø
+src/Juego/Mapa.java	TDP-sonarjava"S1117(ö25Rename "x" which hides the field declared at line 14.:MAJORROPENZ f0624923966cd63245e39acf1866d54dhòò”Ñﬁ-r
+CODE_SMELLzAXE4C5vzG_Ll9Q3zYehoø
+src/Juego/Mapa.java	TDP-sonarjava"S1117(õ25Rename "y" which hides the field declared at line 15.:MAJORROPENZ 5add3ca263a4407ff5d7779f249d2b24hòò”Ñﬁ-r
+CODE_SMELLzAXE4C5vzG_Ll9Q3zYehp√
+src/Juego/Mapa.java	TDP-sonarjava"S1117(£29Rename "lista" which hides the field declared at line 17.:MAJORROPENZ 66dbe7daaf031bf6fb08d1f58a730a18hòò”Ñﬁ-r
+CODE_SMELLzAXE4C5vzG_Ll9Q3zYehqò
+src/Juego/Mapa.java	TDP-sonarjava"S2293(£2çReplace the type specification in this constructor call with the diamond operator ("<>"). (sonar.java.source not set. Assuming 7 or greater.):MINORROPENZ 66dbe7daaf031bf6fb08d1f58a730a18hòò”Ñﬁ-r
+CODE_SMELLzAXE4C5vzG_Ll9Q3zYehrø
+src/Juego/Mapa.java	TDP-sonarjava"S1117(•25Rename "x" which hides the field declared at line 14.:MAJORROPENZ 2094761e685ac216405ae4b756a50e06hòò”Ñﬁ-r
+CODE_SMELLzAXE4C5vzG_Ll9Q3zYehsø
+src/Juego/Mapa.java	TDP-sonarjava"S1117(¶25Rename "y" which hides the field declared at line 15.:MAJORROPENZ 9502eced2865f3ac6243f1c8988597f2hòò”Ñﬁ-r
+CODE_SMELLzAXE4C5vzG_Ll9Q3zYeht

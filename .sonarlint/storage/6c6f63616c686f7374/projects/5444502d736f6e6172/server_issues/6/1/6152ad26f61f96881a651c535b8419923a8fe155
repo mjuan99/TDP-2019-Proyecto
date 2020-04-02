@@ -1,0 +1,9 @@
+«
+src/Tienda/BotonObjeto.java	TDP-sonarcommon-java"DuplicatedBlocks2,1 duplicated blocks of code must be removed.:MAJORROPENhÐÍ©À“.r
+CODE_SMELLzAXE4C5nSG_Ll9Q3zYefbÌ
+src/Tienda/BotonObjeto.java	TDP-sonarjava"S110(2<This class has 7 parents which is greater than 5 authorized.:MAJORROPENZ 4c4d641ed2c882810f2b80fabe7485f5hÐÍ©À“.r
+CODE_SMELLzAXE4C5nSG_Ll9Q3zYefcê
+src/Tienda/BotonObjeto.java	TDP-sonarjava"S120(2ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.:MINORROPENZ f8ccc1c47fb6f3121025d675112513f9hÐÍ©À“.r
+CODE_SMELLzAXE4C5nSG_Ll9Q3zYefd¿
+src/Tienda/BotonObjeto.java	TDP-sonarjava"S1948(2+Make "obstaculo" transient or serializable.:CRITICALROPENZ cb4891e88b7685d59e4ae4cf66408992hÐÍ©À“.r
+CODE_SMELLzAXE4C5nSG_Ll9Q3zYefe

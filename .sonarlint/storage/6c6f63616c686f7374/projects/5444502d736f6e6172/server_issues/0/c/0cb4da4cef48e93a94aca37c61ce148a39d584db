@@ -1,0 +1,9 @@
+Ã
+src/Juego/GUI.java	TDP-sonarjava"S110(2<This class has 6 parents which is greater than 5 authorized.:MAJORROPENZ abad58959803fd2d283be3e91a7a3098hÈ€•†Ò-r
+CODE_SMELLzAXE4C5vUG_Ll9Q3zYehMá
+src/Juego/GUI.java	TDP-sonarjava"S120(2ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.:MINORROPENZ 253b5ee2c9dc9e1937e2783517a415bfh¨À€ºÒ-r
+CODE_SMELLzAXE4C5vUG_Ll9Q3zYehN¶
+src/Juego/GUI.java	TDP-sonarjava"S1121(?2.Extract the assignment out of this expression.:MAJORROPENZ f8be4aa9741e8c9fafcc485c11f38c10hè˜¾àÞ-r
+CODE_SMELLzAXE4C5vUG_Ll9Q3zYehOÔ
+src/Juego/GUI.java	TDP-sonarjava"S3252(+2IUse static access with "javax.swing.WindowConstants" for "EXIT_ON_CLOSE".:CRITICALROPENZ 74dfb040d73b9c1fd8efd76d24248a08hÈ€•†Ò-r
+CODE_SMELLzAXE4C5vUG_Ll9Q3zYehP

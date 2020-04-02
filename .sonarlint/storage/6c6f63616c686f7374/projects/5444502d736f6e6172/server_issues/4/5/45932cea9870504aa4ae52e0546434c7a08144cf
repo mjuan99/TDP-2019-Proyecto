@@ -1,0 +1,5 @@
+Ï
+src/Juego/ContadorTiempo.java	TDP-sonarjava"S120(2ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.:MINORROPENZ 253b5ee2c9dc9e1937e2783517a415bfh–Õ©¿ì.r
+CODE_SMELLzAXE4C5uGG_Ll9Q3zYegyπ
+src/Juego/ContadorTiempo.java	TDP-sonarjava"S1148(2#Use a logger to log this exception.:MINORROPENZ 2dc1665d31b37f9aa7408939a0365027h–Õ©¿ì.rVULNERABILITYzAXE4C5uGG_Ll9Q3zYegz“
+src/Juego/ContadorTiempo.java	TDP-sonarjava"S2142(2FEither re-interrupt this method or rethrow the "InterruptedException".:MAJORROPENZ eb375774c265dedeefeb29283ceea9bch–Õ©¿ì.rBUGzAXE4C5uGG_Ll9Q3zYeg0

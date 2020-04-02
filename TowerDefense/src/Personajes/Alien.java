@@ -2,8 +2,8 @@ package Personajes;
 import Juego.Celda;
 
 public class Alien extends Torre {
-	protected static int precio=200;
-	protected static int vidaBase=700;
+	protected static int prec=200;
+	protected static int vidaB=700;
 	protected static int tam=1;
 	protected static int danoBase=200;
 	protected static int alcanceBase=4;
@@ -11,10 +11,10 @@ public class Alien extends Torre {
 	protected static String proyectil="./src/Sprites/Ataques/AtaqueAlien.gif";
 	protected static String nomb="Alien";
 	protected static String mini="./src/Sprites/Tienda/Alien.png";
-	protected static String estadoProtegido="./src/Sprites/Efectos/Escudo/Alien.gif";
+	protected static String estadoP="./src/Sprites/Efectos/Escudo/Alien.gif";
 	
 	public Alien(Celda celda) {
-		super(celda,vidaBase,tam,imagen,estadoProtegido,danoBase,alcanceBase,proyectil,precio,mini,nomb);
+		super(celda,vidaB,tam,imagen,estadoP,danoBase,alcanceBase,proyectil,prec,mini,nomb);
 	}
 	
 	public Torre nueva() {

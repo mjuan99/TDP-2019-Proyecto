@@ -37,9 +37,8 @@ public class BombaEfecto extends PowerUpCelda {
 				exp.repaint();
 				a=new AutoRemove(exp,2000);
 				a.start();
-				if(e!=null) {
-					e.danar(null, dano);
-				}
+				assert e!=null;
+				e.danar(null, dano);
 			}
 		}
 	}

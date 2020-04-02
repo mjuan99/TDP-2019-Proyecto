@@ -1,0 +1,9 @@
+¨
+src/Tienda/BotonPowerUp.java	TDP-sonarcommon-java"DuplicatedBlocks2,1 duplicated blocks of code must be removed.:MAJORROPENh–Õ©¿ì.r
+CODE_SMELLzAXE4C5llG_Ll9Q3zYefUÕ
+src/Tienda/BotonPowerUp.java	TDP-sonarjava"S110(2<This class has 7 parents which is greater than 5 authorized.:MAJORROPENZ b5e33330b23b4977e717f403203d13edh–Õ©¿ì.r
+CODE_SMELLzAXE4C5llG_Ll9Q3zYefVÎ
+src/Tienda/BotonPowerUp.java	TDP-sonarjava"S120(2ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.:MINORROPENZ f8ccc1c47fb6f3121025d675112513f9h–Õ©¿ì.r
+CODE_SMELLzAXE4C5llG_Ll9Q3zYefW¿
+src/Tienda/BotonPowerUp.java	TDP-sonarjava"S1948(2+Make "miPowerUp" transient or serializable.:CRITICALROPENZ a4f8f7226c0dce848011003c1c398f47h–Õ©¿ì.r
+CODE_SMELLzAXE4C5l0G_Ll9Q3zYefX
