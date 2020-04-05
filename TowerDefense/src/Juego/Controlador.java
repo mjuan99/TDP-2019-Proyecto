@@ -5,7 +5,7 @@ import java.util.Random;
 
 import Premios.*;
 
-public class Controlador {
+public final class Controlador {
 	private Random random = new Random();
 	private static Controlador controlador;
 	protected ContadorTiempo tiempo;

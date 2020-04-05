@@ -2,5 +2,5 @@ projectKey=TDP-sonar
 serverUrl=http://localhost:9000
 serverVersion=8.2.0.32929
 dashboardUrl=http://localhost:9000/dashboard?id=TDP-sonar
-ceTaskId=AXE4OhpBBH6FRd6rrrgk
-ceTaskUrl=http://localhost:9000/api/ce/task?id=AXE4OhpBBH6FRd6rrrgk
+ceTaskId=AXFGxHC6EeKi1-tvk2Vf
+ceTaskUrl=http://localhost:9000/api/ce/task?id=AXFGxHC6EeKi1-tvk2Vf

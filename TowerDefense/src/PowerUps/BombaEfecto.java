@@ -37,11 +37,16 @@ public class BombaEfecto extends PowerUpCelda {
 				exp.repaint();
 				a=new AutoRemove(exp,2000);
 				a.start();
-				assert e!=null;
-				e.danar(null, dano);
+				aux(e);
 			}
 		}
 	}
+	
+	private void aux(Elemento e) {
+		if(e!=null)
+			e.danar(null, dano);
+	}
+	
 	public void usar() {
 		Tienda.getTienda().usar(this);
 	}

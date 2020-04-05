@@ -116,7 +116,7 @@ public abstract class Enemigo extends Personaje{
 	@Override
 	public void morir() {
 		Jugador.getJugador().sumarPuntos(puntos);
-		Jugador.getJugador().aumentarOro(this.random.nextInt()*(oroMax-oroMin)+oroMin);
+		Jugador.getJugador().aumentarOro((this.random.nextInt(oroMax-oroMin))+oroMin);
 		Celda celda= this.getCelda();
 		Mapa.getMapa().eliminarElemento(this);
 		Mapa.getMapa().decrementarEnemigos();

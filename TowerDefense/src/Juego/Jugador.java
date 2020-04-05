@@ -2,7 +2,7 @@ package Juego;
 
 import javax.swing.JLabel;
 
-public class Jugador {
+public final class Jugador {
 	protected static Jugador jugador;
 	protected JLabel oroGrafica;
 	protected JLabel puntosGrafica;
