@@ -3,6 +3,9 @@
 csharpsquid:S1135
 csharpsquidS1135INFO
 0
+csharpsquid:S4136
+csharpsquidS4136MINOR
+0
 csharpsquid:S2344
 csharpsquidS2344MINOR
 0
@@ -109,9 +112,6 @@
 0
 csharpsquid:S3963
 csharpsquidS3963MINOR
-0
-csharpsquid:S4136
-csharpsquidS4136MINOR
 0
 csharpsquid:S3604
 csharpsquidS3604MINOR
@@ -484,6 +484,12 @@ J
 csharpsquid:S4035
 csharpsquidS4035MAJOR
 3
+csharpsquid:S5659
+csharpsquidS5659CRITICAL
+3
+csharpsquid:S4275
+csharpsquidS4275CRITICAL
+3
 csharpsquid:S2346
 csharpsquidS2346CRITICAL
 3
@@ -614,9 +620,12 @@ J
 3
 csharpsquid:S4277
 csharpsquidS4277CRITICAL
-3
-csharpsquid:S4275
-csharpsquidS4275CRITICAL
+2
+csharpsquid:S4426
+csharpsquidS4426BLOCKER
+2
+csharpsquid:S2755
+csharpsquidS2755BLOCKER
 2
 csharpsquid:S3433
 csharpsquidS3433BLOCKER
@@ -645,9 +654,6 @@ J
 csharpsquid:S2368
 csharpsquidS2368BLOCKER
 2
-csharpsquid:S4426
-csharpsquidS4426BLOCKER
-2
 csharpsquid:S1048
 csharpsquidS1048BLOCKER
 2
@@ -659,9 +665,6 @@ J
 2
 csharpsquid:S2187
 csharpsquidS2187BLOCKER
-2
-csharpsquid:S2755
-csharpsquidS2755BLOCKER
 2
 csharpsquid:S2190
 csharpsquidS2190BLOCKER

@@ -26,23 +26,12 @@ public class Oleada {
 	public Oleada(String rutaOleada) {
 		colas=new ArrayDeque[6];
 		String [] filas=new String[7];
-		FileReader fr=null;
-		BufferedReader br;
-		try{
-			fr=new FileReader(new File(rutaOleada));
-			br=new BufferedReader(fr);
+		try (FileReader fr=new FileReader(new File(rutaOleada));
+				BufferedReader br = new BufferedReader(fr)){
 			for(int i=0;i<7;i++)
 				filas[i]=br.readLine();
 		} catch (IOException e) {
 			e.printStackTrace();
-		}
-		finally {
-			try {
-				if(fr!=null)
-					fr.close();
-			}catch(IOException e) {
-				e.printStackTrace();
-			}
 		}
 		for(int i=0;i<6;i++){
 			colas[i]=new ArrayDeque<Enemigo>(filas[i].length());

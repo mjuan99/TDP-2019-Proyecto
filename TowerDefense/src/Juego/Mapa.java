@@ -8,7 +8,7 @@ import Personajes.Enemigo;
 import Personajes.Torre;
 import Visitor.Visitor;
 
-public class Mapa {
+public final class Mapa {
 	private static Mapa mapa;
 	protected Celda[][] grilla;
 	protected int x=10;

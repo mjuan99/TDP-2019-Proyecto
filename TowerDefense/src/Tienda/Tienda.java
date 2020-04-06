@@ -6,7 +6,7 @@ import Objetos.ObjetoJugador;
 import Personajes.Torre;
 import PowerUps.*;
 
-public class Tienda {
+public final class Tienda {
 	protected int ultPowerUp;
 	protected TiendaEstado estado;
 	private static Tienda tienda;

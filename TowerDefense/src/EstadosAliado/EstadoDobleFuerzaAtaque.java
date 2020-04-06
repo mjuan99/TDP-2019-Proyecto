@@ -10,7 +10,7 @@ import Personajes.Torre;
 public class EstadoDobleFuerzaAtaque extends EstadoAtaqueTorre {
 	protected long inicio;
 	protected int duracion=7000;
-	JLabel componente= new JLabel(new ImageIcon("./src/Sprites/Efectos/DobleFuerza/DobleFuerza.gif"));
+	private JLabel componente= new JLabel(new ImageIcon("./src/Sprites/Efectos/DobleFuerza/DobleFuerza.gif"));
 	public EstadoDobleFuerzaAtaque(Torre t) {
 		super(t);
 		componente.setBounds(0, 0, 96, 96);

@@ -1,7 +1,7 @@
 package Juego;
 
 public class ContadorTiempo extends Thread {
-	ContadorTiempo(){
+	public ContadorTiempo(){
 	}
 	@Override
 	public void run() {

@@ -50,11 +50,12 @@ public final class Controlador {
 	}
 	
 	public boolean agregarElemento(Elemento e,int x,int y) {
+		boolean toReturn=false;
 		if(Mapa.getMapa().posicionValida(e, x, y)) {
 			Mapa.getMapa().crearElemento(e, x, y);
-			return true;
+			toReturn= true;
 		}
-		return false;
+		return toReturn;
 	}
 	
 	public void activarOleada() {
